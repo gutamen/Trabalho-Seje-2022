@@ -3,18 +3,18 @@ package base;
 public class letra_A {
     face fA = new face("A", null);
 
-    vertice vA_A = new vertice("A", -0.5, 2, 0, null);
-    vertice vA_B = new vertice("B", 0.5, 2, 0, null);
-    vertice vA_C = new vertice("C", -0.25, 1.5, 0, null);
-    vertice vA_D = new vertice("D", 0.25, 1.5, 0, null);
-    vertice vA_E = new vertice("E", -0.75, 0, 0, null);
-    vertice vA_F = new vertice("F", 0.75, 2, 0, null);
-    vertice vA_G = new vertice("G", -0.9375, -0.5, 0, null);
-    vertice vA_H = new vertice("H", 0.9375, -0.5, 0, null);
-    vertice vA_I = new vertice("I", -2, -2, 0, null);
-    vertice vA_J = new vertice("J", -1.5, -2, 0, null);
-    vertice vA_K = new vertice("K", 1.5, -2, 0, null);
-    vertice vA_L = new vertice("L", 2, -2, 0, null);
+    vertice vA_A = new vertice("A", -0.5f, 2f, 0f, null);
+    vertice vA_B = new vertice("B", 0.5f, 2f, 0f, null);
+    vertice vA_C = new vertice("C", -0.25f, 1.5f, 0f, null);
+    vertice vA_D = new vertice("D", 0.25f, 1.5f, 0f, null);
+    vertice vA_E = new vertice("E", -0.75f, 0f, 0f, null);
+    vertice vA_F = new vertice("F", 0.75f, 0f, 0f, null);
+    vertice vA_G = new vertice("G", -0.9375f, -0.5f, 0f, null);
+    vertice vA_H = new vertice("H", 0.9375f, -0.5f, 0f, null);
+    vertice vA_I = new vertice("I", -2f, -2f, 0f, null);
+    vertice vA_J = new vertice("J", -1.5f, -2f, 0f, null);
+    vertice vA_K = new vertice("K", 1.5f, -2.0f, 0f, null);
+    vertice vA_L = new vertice("L", 2f, -2f, 0f, null);
 
     aresta A_B = new aresta("A_B", vA_A, vA_B, fA, null, null, null, null, null);
     aresta B_L = new aresta("B_L", vA_B, vA_L, fA, null, null, A_B, null, null);

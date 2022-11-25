@@ -1,10 +1,10 @@
 package base;
 public class vertice {
 	String nomeVertice;
-	double x,y,z;
+	float x,y,z;
 	aresta arestaVertice;
 
-    public vertice(String nomeVertice, double x, double y, double z, aresta arestaVertice) {
+    public vertice(String nomeVertice, float x, float y, float z, aresta arestaVertice) {
         this.nomeVertice = nomeVertice;
         this.x = x;
         this.y = y;
@@ -20,27 +20,27 @@ public class vertice {
         this.nomeVertice = nomeVertice;
     }
 
-    public double getX() {
+    public float getX() {
         return x;
     }
 
-    public void setX(double x) {
+    public void setX(float x) {
         this.x = x;
     }
 
-    public double getY() {
+    public float getY() {
         return y;
     }
 
-    public void setY(double y) {
+    public void setY(float y) {
         this.y = y;
     }
 
-    public double getZ() {
+    public float getZ() {
         return z;
     }
 
-    public void setZ(double z) {
+    public void setZ(float z) {
         this.z = z;
     }
 

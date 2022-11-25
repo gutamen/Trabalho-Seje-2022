@@ -22,7 +22,7 @@ public class Main extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Graf gf = new Graf();
+        Graf3D gf = new Graf3D();
         gf.run();
     }
     

@@ -29,8 +29,8 @@ import javax.vecmath.Point3d;
 import javax.vecmath.Point3f;
 import javax.vecmath.Vector3f;
 
-public final class Graf extends JPanel {
-    public Graf() {
+public final class Graf3D extends JPanel {
+    public Graf3D() {
         setLayout(new BorderLayout());
         GraphicsConfiguration gc=SimpleUniverse.getPreferredConfiguration();
         Canvas3D canvas3D = new Canvas3D(gc);
@@ -50,20 +50,21 @@ public final class Graf extends JPanel {
         simpleU.addBranchGraph(scene);
     }
     public BranchGroup createSceneGraph() {
-        letra_A lA = new letra_A();
+        int tam = 96;
+        letra_A3D lA = new letra_A3D();
         BranchGroup lineGroup = new BranchGroup();
         Appearance app = new Appearance();
-        int[] vet = new int[24];
-        for(int i=0;i<24;i++){
+        int[] vet = new int[tam];
+        for(int i=0;i<tam;i++){
             vet[i] = 2;
         }
-        LineStripArray lsa = new LineStripArray(48, LineStripArray.COORDINATES, vet);
-        //Vector3f [] normals=new Vector3f[12];
-        //for(int i=0;i<24;i++)normals[i]=new Vector3f();
-        Point3f [] pts=new Point3f[24];
-        for(int i=0;i<24;i++)pts[i]=new Point3f();
-        Color3f [] clrs=new Color3f[24];
-        for(int i=0;i<12;i++)clrs[i]=new Color3f(1f,0.0f,0.0f);
+        LineStripArray lsa = new LineStripArray(tam*2, LineStripArray.COORDINATES|LineStripArray.NORMALS, vet);
+        Vector3f [] normals=new Vector3f[tam];
+        for(int i=0;i<tam;i++)normals[i]=new Vector3f();
+        Point3f [] pts=new Point3f[tam];
+        for(int i=0;i<tam;i++)pts[i]=new Point3f();
+        Color3f [] clrs=new Color3f[tam];
+        for(int i=0;i<tam;i++)clrs[i]=new Color3f(0.5f,0.5f,0.5f);
         //cube=6 quads 
         //first quad
         pts[0].x=lA.vA_A.getX();pts[0].y=lA.vA_A.getY();pts[0].z=lA.vA_A.getZ();
@@ -91,11 +92,98 @@ public final class Graf extends JPanel {
         pts[21].x=lA.vA_D.getX();pts[21].y=lA.vA_D.getY();pts[21].z=lA.vA_D.getZ();
         pts[22]=pts[21];
         pts[23]=pts[16];
+        //AKI
+        pts[24].x=lA.vA_A3D.getX();pts[24].y=lA.vA_A3D.getY();pts[24].z=lA.vA_A3D.getZ();
+        pts[25].x=lA.vA_B3D.getX();pts[25].y=lA.vA_B3D.getY();pts[25].z=lA.vA_B3D.getZ();
+        pts[26]=pts[25];
+        pts[27].x=lA.vA_L3D.getX();pts[27].y=lA.vA_L3D.getY();pts[27].z=lA.vA_L3D.getZ();
+        pts[28]=pts[27];
+        pts[29].x=lA.vA_K3D.getX();pts[29].y=lA.vA_K3D.getY();pts[29].z=lA.vA_K3D.getZ();
+        pts[30]=pts[29];
+        pts[31].x=lA.vA_H3D.getX();pts[31].y=lA.vA_H3D.getY();pts[31].z=lA.vA_H3D.getZ();
+        pts[32]=pts[31];
+        pts[33].x=lA.vA_G3D.getX();pts[33].y=lA.vA_G3D.getY();pts[33].z=lA.vA_G3D.getZ();
+        pts[34]=pts[33];
+        pts[35].x=lA.vA_J3D.getX();pts[35].y=lA.vA_J3D.getY();pts[35].z=lA.vA_J3D.getZ();
+        pts[36]=pts[35];
+        pts[37].x=lA.vA_I3D.getX();pts[37].y=lA.vA_I3D.getY();pts[37].z=lA.vA_I3D.getZ();
+        pts[38]=pts[37];  
+        pts[39]=pts[24];
         
-        //for(int i=0;i<12;i++)System.out.println(pts[i].x+" "+pts[i].y+" "+pts[i].z);
+        pts[40].x=lA.vA_C3D.getX();pts[40].y=lA.vA_C3D.getY();pts[40].z=lA.vA_C3D.getZ();
+        pts[41].x=lA.vA_E3D.getX();pts[41].y=lA.vA_E3D.getY();pts[41].z=lA.vA_E3D.getZ();
+        pts[42]=pts[41];
+        pts[43].x=lA.vA_F3D.getX();pts[43].y=lA.vA_F3D.getY();pts[43].z=lA.vA_F3D.getZ();
+        pts[44]=pts[43];
+        pts[45].x=lA.vA_D3D.getX();pts[45].y=lA.vA_D3D.getY();pts[45].z=lA.vA_D3D.getZ();
+        pts[46]=pts[45];
+        pts[47]=pts[40];
+        
+        pts[48]=pts[0];
+        pts[49]=pts[24];
+        pts[50]=pts[1];
+        pts[51]=pts[25];
+        pts[52]=pts[2];
+        pts[53]=pts[26];
+        pts[54]=pts[3];
+        pts[55]=pts[27];
+        pts[56]=pts[4];
+        pts[57]=pts[28];
+        pts[58]=pts[5];
+        pts[59]=pts[29];
+        pts[60]=pts[6];
+        pts[61]=pts[30];
+        pts[62]=pts[7];
+        pts[63]=pts[31];
+        pts[64]=pts[8];
+        pts[65]=pts[32];
+        pts[66]=pts[9];
+        pts[67]=pts[33];
+        pts[68]=pts[10];
+        pts[69]=pts[34];
+        pts[70]=pts[11];
+        pts[71]=pts[35];
+        pts[72]=pts[12];
+        pts[73]=pts[36];
+        pts[74]=pts[13];
+        pts[75]=pts[37];
+        pts[76]=pts[14];
+        pts[77]=pts[38];
+        pts[78]=pts[15];
+        pts[79]=pts[39];
+        pts[80]=pts[16];
+        pts[81]=pts[40];
+        pts[82]=pts[17];
+        pts[83]=pts[41];
+        pts[84]=pts[18];
+        pts[85]=pts[42];
+        pts[86]=pts[19];
+        pts[87]=pts[43];
+        pts[88]=pts[20];
+        pts[89]=pts[44];
+        pts[90]=pts[21];
+        pts[91]=pts[45];
+        pts[92]=pts[22];
+        pts[93]=pts[46];
+        pts[94]=pts[23];
+        pts[95]=pts[47];
+        float j = 2, k = 0;
+        for(int i=0;i<tam;i++){
+            if(j%2 == 0){
+                if(k == 2)j++;
+                normals[i].x=-1;
+                k+=2;
+            }else{
+                normals[i].x=1;
+                j+=0.5;
+                k=0;
+            }
+        }
+        
+        for(int i=0;i<tam;i++)System.out.println(normals[i]);
         System.out.println(lsa.getVertexFormat());
         
-        //lsa.setNormals(0, normals);
+        lsa.setNormals(0, normals);
         lsa.setCoordinates(0, pts);
         Shape3D sh=new Shape3D();
         PolygonAttributes pa=new PolygonAttributes();
@@ -145,7 +233,7 @@ public final class Graf extends JPanel {
     public void run(){
         createSceneGraph();
         JFrame frame = new JFrame();
-        frame.add(new JScrollPane(new Graf()));
+        frame.add(new JScrollPane(new Graf3D()));
         frame.setSize(500, 500);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
