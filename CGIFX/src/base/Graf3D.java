@@ -2,7 +2,11 @@ package base;
 
 
 import com.sun.j3d.utils.behaviors.mouse.MouseRotate;
+import com.sun.j3d.utils.geometry.GeometryInfo;
+import com.sun.j3d.utils.geometry.NormalGenerator;
 import com.sun.j3d.utils.geometry.Sphere;
+import com.sun.j3d.utils.geometry.Stripifier;
+import com.sun.j3d.utils.geometry.Triangulator;
 import com.sun.j3d.utils.universe.SimpleUniverse;
 import java.awt.BorderLayout;
 import java.awt.GraphicsConfiguration;
@@ -58,7 +62,9 @@ public final class Graf3D extends JPanel {
         for(int i=0;i<tam;i++){
             vet[i] = 2;
         }
-        LineStripArray lsa = new LineStripArray(tam*2, LineStripArray.COORDINATES|LineStripArray.NORMALS, vet);
+        
+        
+        //LineStripArray lsa = new LineStripArray(tam*2, LineStripArray.COORDINATES|LineStripArray.NORMALS, vet);
         Vector3f [] normals=new Vector3f[tam];
         for(int i=0;i<tam;i++)normals[i]=new Vector3f();
         Point3f [] pts=new Point3f[tam];
@@ -180,11 +186,11 @@ public final class Graf3D extends JPanel {
             }
         }
         
-        for(int i=0;i<tam;i++)System.out.println(normals[i]);
-        System.out.println(lsa.getVertexFormat());
+        //for(int i=0;i<tam;i++)System.out.println(normals[i]);
+        //System.out.println(lsa.getVertexFormat());
         
-        lsa.setNormals(0, normals);
-        lsa.setCoordinates(0, pts);
+        //lsa.setNormals(0, normals);
+        //lsa.setCoordinates(0, pts);
         Shape3D sh=new Shape3D();
         PolygonAttributes pa=new PolygonAttributes();
         pa.setPolygonMode(PolygonAttributes.POLYGON_FILL);
@@ -204,13 +210,23 @@ public final class Graf3D extends JPanel {
         app.setRenderingAttributes(ra);   
         app.setMaterial(mat);
         app.setPolygonAttributes(pa);
-        sh.setGeometry(lsa);
+        //sh.setGeometry(lsa);
         sh.setAppearance(app);
         sh.setPickable(true); 
         TransformGroup objRotate = new TransformGroup();
         objRotate.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
         objRotate.addChild(sh);
-
+        
+        GeometryInfo ginfo=new GeometryInfo(GeometryInfo.POLYGON_ARRAY);
+        NormalGenerator normalGenerator = new NormalGenerator();
+        //Stripifier st = new Stripifier();
+        int [] iint=new int[]{4,4,4,4,4,4,4,4,4,4,4,4,8,8,8,8,8,8};
+        ginfo.setStripCounts(iint);
+        ginfo.setCoordinates(pts);     
+        normalGenerator.generateNormals( ginfo );
+        //st.stripify(ginfo);
+        sh.setGeometry(ginfo.getGeometryArray());
+        
         DirectionalLight light1=new DirectionalLight();
         light1.setInfluencingBounds(new BoundingSphere(new Point3d(-5.0,0,0),10.0));
         light1.setColor(new Color3f(1f,1f,1f));

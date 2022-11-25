@@ -2,7 +2,11 @@ package base;
 
 
 import com.sun.j3d.utils.behaviors.mouse.MouseRotate;
+import com.sun.j3d.utils.geometry.GeometryInfo;
+import com.sun.j3d.utils.geometry.NormalGenerator;
 import com.sun.j3d.utils.geometry.Sphere;
+import com.sun.j3d.utils.geometry.Stripifier;
+import com.sun.j3d.utils.geometry.Triangulator;
 import com.sun.j3d.utils.universe.SimpleUniverse;
 import java.awt.BorderLayout;
 import java.awt.GraphicsConfiguration;
@@ -12,6 +16,7 @@ import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Canvas3D;
 import javax.media.j3d.ColoringAttributes;
 import javax.media.j3d.DirectionalLight;
+import javax.media.j3d.GeometryArray;
 import javax.media.j3d.GeometryStripArray;
 import javax.media.j3d.LineArray;
 import javax.media.j3d.LineStripArray;
@@ -57,7 +62,7 @@ public final class Graf extends JPanel {
         for(int i=0;i<24;i++){
             vet[i] = 2;
         }
-        LineStripArray lsa = new LineStripArray(48, LineStripArray.COORDINATES, vet);
+        //LineStripArray lsa = new LineStripArray(48, LineStripArray.COORDINATES, vet);
         //Vector3f [] normals=new Vector3f[12];
         //for(int i=0;i<24;i++)normals[i]=new Vector3f();
         Point3f [] pts=new Point3f[24];
@@ -93,10 +98,10 @@ public final class Graf extends JPanel {
         pts[23]=pts[16];
         
         //for(int i=0;i<12;i++)System.out.println(pts[i].x+" "+pts[i].y+" "+pts[i].z);
-        System.out.println(lsa.getVertexFormat());
+        //System.out.println(lsa.getVertexFormat());
         
         //lsa.setNormals(0, normals);
-        lsa.setCoordinates(0, pts);
+        //lsa.setCoordinates(0, pts);
         Shape3D sh=new Shape3D();
         PolygonAttributes pa=new PolygonAttributes();
         pa.setPolygonMode(PolygonAttributes.POLYGON_FILL);
@@ -116,13 +121,26 @@ public final class Graf extends JPanel {
         app.setRenderingAttributes(ra);   
         app.setMaterial(mat);
         app.setPolygonAttributes(pa);
-        sh.setGeometry(lsa);
+        //sh.setGeometry(lsa);
         sh.setAppearance(app);
         sh.setPickable(true); 
+        
+        GeometryArray ga=null;
+        GeometryInfo ginfo=new GeometryInfo(GeometryInfo.POLYGON_ARRAY);
+        //Triangulator tr = new Triangulator();
+        NormalGenerator normalGenerator = new NormalGenerator();
+        //Stripifier st = new Stripifier();  
+        //int [] iint=new int[]{10,10,10,10};
+        //ginfo.setStripCounts(iint);
+        ginfo.setCoordinates(pts); 
+        //tr.triangulate(ginfo); // ginfo contains the geometry     
+        normalGenerator.generateNormals( ginfo );
+        //st.stripify(ginfo);
+        sh.setGeometry(ginfo.getGeometryArray());
+        
         TransformGroup objRotate = new TransformGroup();
         objRotate.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
         objRotate.addChild(sh);
-
         DirectionalLight light1=new DirectionalLight();
         light1.setInfluencingBounds(new BoundingSphere(new Point3d(-5.0,0,0),10.0));
         light1.setColor(new Color3f(1f,1f,1f));
