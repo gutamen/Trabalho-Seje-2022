@@ -1,4 +1,4 @@
-package base;
+package cgi;
 public class vertice {
 	String nomeVertice;
 	float x,y,z;

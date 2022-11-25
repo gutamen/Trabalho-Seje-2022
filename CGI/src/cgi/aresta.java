@@ -1,4 +1,4 @@
-package base;
+package cgi;
 public class aresta {
     String nomeAresta;
     vertice inicio, fim;

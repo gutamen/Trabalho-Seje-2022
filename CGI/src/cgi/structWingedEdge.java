@@ -1,4 +1,4 @@
-package base;
+package cgi;
 import java.util.ArrayList;
 
 public class structWingedEdge {

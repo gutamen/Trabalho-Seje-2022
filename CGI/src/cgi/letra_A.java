@@ -1,4 +1,4 @@
-package base;
+package cgi;
 
 public class letra_A {
     face fA = new face("A", null);

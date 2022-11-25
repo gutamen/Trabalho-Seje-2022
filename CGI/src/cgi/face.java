@@ -1,4 +1,4 @@
-package base;
+package cgi;
 public class face {
     String nomeFace;
     aresta arestaFace;
