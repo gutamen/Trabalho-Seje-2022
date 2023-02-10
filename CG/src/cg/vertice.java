@@ -1,14 +1,16 @@
 package cg;
+
+import javafx.geometry.Point3D;
+
 public class vertice {
 	String nomeVertice;
-	double x,y,z;
+	Point3D ponto;
 	aresta arestaVertice;
 
     public vertice(String nomeVertice, double x, double y, double z, aresta arestaVertice) {
         this.nomeVertice = nomeVertice;
-        this.x = x;
-        this.y = y;
-        this.z = z;
+        this.ponto = new Point3D(x,y,z);
+        
         this.arestaVertice = arestaVertice;
     }
 
@@ -21,27 +23,27 @@ public class vertice {
     }
 
     public double getX() {
-        return x;
+        return ponto.getX();
     }
 
     public void setX(double x) {
-        this.x = x;
+        this.ponto.add(x,ponto.getY(),ponto.getZ());
     }
 
     public double getY() {
-        return y;
+        return this.ponto.getY();
     }
 
     public void setY(double y) {
-        this.y = y;
+        this.ponto.add(this.ponto.getX(),y,ponto.getZ());
     }
 
     public double getZ() {
-        return z;
+        return this.ponto.getZ();
     }
 
     public void setZ(double z) {
-        this.z = z;
+        this.ponto.add(this.ponto.getX(),ponto.getY(),z);
     }
 
     public aresta getArestaVertice() {
