@@ -37,6 +37,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polyline;
+import javafx.scene.shape.Shape;
+import javafx.scene.shape.Sphere;
 import javafx.scene.text.Text;
 import javafx.scene.text.Font;
 
@@ -45,15 +47,12 @@ public class CG extends Application {
     @Override public void start(Stage stage) {
         
         Group root = new Group();
+        Group other = new Group();
         Scene scene = new Scene(root, 500, 400);
         scene.setFill(Color.rgb(255, 255, 255, 0));
 
         Circle circle = new Circle(60, 40, 30, Color.GREEN);
-        Line line = new Line();
-        line.setStartX(0.0f);
-        line.setStartY(200.0f);
-        line.setEndX(200.0f);
-        line.setEndY(200.0f);
+        
 
         letraB b = new letraB();
         
@@ -64,7 +63,7 @@ public class CG extends Application {
         text.setFont(font);
         
         Polyline polyline = new Polyline();
-        for(int i = 0 ; i < b.arestas.size(); i++)
+        for(int i = 0 ; i < 10; i++)
         {
             polyline.getPoints().addAll(new Double[]{
                 50*(b.arestas.get(i).getInicio().getX() + 3), 50*(b.arestas.get(i).getInicio().getY() + 3),
@@ -72,13 +71,30 @@ public class CG extends Application {
                 });
         }
         
+        Polyline teste = new Polyline();
+        for(int i = 10 ; i < 14; i++)
+        {
+            teste.getPoints().addAll(new Double[]{
+                50*(b.arestas.get(i).getInicio().getX() + 3), 50*(b.arestas.get(i).getInicio().getY() + 3),
+                50*(b.arestas.get(i).getFim().getX() + 3), 50*(b.arestas.get(i).getFim().getY() + 3)
+                });
+        }
+        
+        
         //polyline.setFill(Color.BLANCHEDALMOND);
+        //teste.setFill(Color.WHITE);
+        other.getChildren().add(text);
+        
+        
         
         //root.getChildren().add(line);
         //root.getChildren().add(circle);
         root.getChildren().add(polyline);
+        root.getChildren().add(teste);
+        
         stage.setScene(scene);
         stage.show();
+        
     }
 
     public static void main(String[] args) {
