@@ -10,12 +10,12 @@ import java.util.ArrayList;
  *
  * @author Gustavo
  */
-public class letra_B {
+public class letraB {
     ArrayList<vertice> vertices; 
     ArrayList<aresta> arestas;
     //vertice V1,V2,V3,V4,V5,V6,V7,V8,V9,V10,V11,V12,V13,V14,V15,V16,V17,V18;
 
-    public letra_B() {
+    public letraB() {
         vertices = new ArrayList<>();
         arestas = new ArrayList<>();
         vertices.add( new vertice("A", -2.0, -2.0, 0, null));

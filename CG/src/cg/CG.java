@@ -46,7 +46,7 @@ public class CG extends Application {
         
         Group root = new Group();
         Scene scene = new Scene(root, 500, 400);
-        scene.setFill(Color.LIGHTGRAY);
+        scene.setFill(Color.rgb(255, 255, 255, 0));
 
         Circle circle = new Circle(60, 40, 30, Color.GREEN);
         Line line = new Line();
@@ -55,7 +55,7 @@ public class CG extends Application {
         line.setEndX(200.0f);
         line.setEndY(200.0f);
 
-        letra_B b = new letra_B();
+        letraB b = new letraB();
         
         Text text = new Text(10, 90, "JavaFX Scene");
         text.setFill(Color.DARKRED);
@@ -64,7 +64,6 @@ public class CG extends Application {
         text.setFont(font);
         
         Polyline polyline = new Polyline();
-        char k = 'A';
         for(int i = 0 ; i < b.arestas.size(); i++)
         {
             polyline.getPoints().addAll(new Double[]{
@@ -72,6 +71,8 @@ public class CG extends Application {
                 50*(b.arestas.get(i).getFim().getX() + 3), 50*(b.arestas.get(i).getFim().getY() + 3)
                 });
         }
+        
+        //polyline.setFill(Color.BLANCHEDALMOND);
         
         //root.getChildren().add(line);
         //root.getChildren().add(circle);
