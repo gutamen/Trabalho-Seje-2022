@@ -27,7 +27,7 @@ public class vertice {
     }
 
     public void setX(double x) {
-        this.ponto.add(x,ponto.getY(),ponto.getZ());
+        this.ponto = this.ponto.add(x - this.ponto.getX(),0,0);
     }
 
     public double getY() {
@@ -35,7 +35,7 @@ public class vertice {
     }
 
     public void setY(double y) {
-        this.ponto.add(this.ponto.getX(),y,ponto.getZ());
+        this.ponto = this.ponto.add(0,y - this.ponto.getY(),0);
     }
 
     public double getZ() {
@@ -43,7 +43,7 @@ public class vertice {
     }
 
     public void setZ(double z) {
-        this.ponto.add(this.ponto.getX(),ponto.getY(),z);
+        this.ponto = this.ponto.add(0,0,z - this.ponto.getZ());
     }
 
     public aresta getArestaVertice() {

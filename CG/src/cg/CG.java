@@ -6,6 +6,7 @@ package cg;
 
 
 
+import letras.letraB;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -47,53 +48,69 @@ public class CG extends Application {
     @Override public void start(Stage stage) {
         
         Group root = new Group();
-        Group other = new Group();
+        //Group other = new Group();
         Scene scene = new Scene(root, 500, 400);
         scene.setFill(Color.rgb(255, 255, 255, 0));
 
-        Circle circle = new Circle(60, 40, 30, Color.GREEN);
+        //Circle circle = new Circle(60, 40, 30, Color.GREEN);
         
 
         letraB b = new letraB();
         
-        Text text = new Text(10, 90, "JavaFX Scene");
-        text.setFill(Color.DARKRED);
+        //Text text = new Text(10, 90, "JavaFX Scene");
+        //text.setFill(Color.DARKRED);
         
-        Font font = new Font(20);
-        text.setFont(font);
+        //Font font = new Font(20);
+        //text.setFont(font);
         
-        Polyline polyline = new Polyline();
+        /*Polyline polyline = new Polyline();
         for(int i = 0 ; i < 10; i++)
         {
             polyline.getPoints().addAll(new Double[]{
                 50*(b.arestas.get(i).getInicio().getX() + 3), 50*(b.arestas.get(i).getInicio().getY() + 3),
                 50*(b.arestas.get(i).getFim().getX() + 3), 50*(b.arestas.get(i).getFim().getY() + 3)
                 });
-        }
+        }*/
         
-        Polyline teste = new Polyline();
+        /*Polyline teste = new Polyline();
         for(int i = 10 ; i < 14; i++)
         {
             teste.getPoints().addAll(new Double[]{
                 50*(b.arestas.get(i).getInicio().getX() + 3), 50*(b.arestas.get(i).getInicio().getY() + 3),
                 50*(b.arestas.get(i).getFim().getX() + 3), 50*(b.arestas.get(i).getFim().getY() + 3)
                 });
+        }*/
+        
+        
+        
+        
+                
+        
+        for(int i = 0 ; i < b.arestas.size(); i++)
+        {
+                root.getChildren().add(new Line( 50*(b.arestas.get(i).getInicio().getX() + 3), 50*(b.arestas.get(i).getInicio().getY() + 3) 
+                        , 50*(b.arestas.get(i).getFim().getX() + 3), 50*(b.arestas.get(i).getFim().getY() + 3)));
+                
+                
         }
         
         
         //polyline.setFill(Color.BLANCHEDALMOND);
         //teste.setFill(Color.WHITE);
-        other.getChildren().add(text);
-        
-        
-        
+        //other.getChildren().add(text);
+        Line teste = (Line) root.getChildren().get(0);
+        //b.arestas.get(0).getInicio().setX(10);
+        //teste.setStartX(10);
         //root.getChildren().add(line);
         //root.getChildren().add(circle);
-        root.getChildren().add(polyline);
-        root.getChildren().add(teste);
+        //root.getChildren().add(polyline);
+        //root.getChildren().add(teste);
         
         stage.setScene(scene);
+       
         stage.show();
+        
+        
         
     }
 
