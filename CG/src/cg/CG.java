@@ -6,28 +6,7 @@ package cg;
 
 
 
-import letras.letraB;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-/*public class CG extends Application {
-
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("hellofx.fxml"));
-        primaryStage.setTitle("Hello Worldi");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
-    }
-
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-}*/
 
 
 import javafx.application.Application;
@@ -35,14 +14,9 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Polyline;
-import javafx.scene.shape.Shape;
-import javafx.scene.shape.Sphere;
-import javafx.scene.text.Text;
-import javafx.scene.text.Font;
-import letras.letraA;
+import letras.*;
+
 
 public class CG extends Application {
 
@@ -56,7 +30,7 @@ public class CG extends Application {
         //Circle circle = new Circle(60, 40, 30, Color.GREEN);
         
 
-        letraA b = new letraA();
+        letraK b = new letraK();
         
         //Text text = new Text(10, 90, "JavaFX Scene");
         //text.setFill(Color.DARKRED);
