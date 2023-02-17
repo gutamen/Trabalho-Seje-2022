@@ -42,6 +42,7 @@ import javafx.scene.shape.Shape;
 import javafx.scene.shape.Sphere;
 import javafx.scene.text.Text;
 import javafx.scene.text.Font;
+import letras.letraA;
 
 public class CG extends Application {
 
@@ -55,7 +56,7 @@ public class CG extends Application {
         //Circle circle = new Circle(60, 40, 30, Color.GREEN);
         
 
-        letraB b = new letraB();
+        letraA b = new letraA();
         
         //Text text = new Text(10, 90, "JavaFX Scene");
         //text.setFill(Color.DARKRED);
@@ -88,12 +89,14 @@ public class CG extends Application {
         
         for(int i = 0 ; i < b.arestas.size(); i++)
         {
-                root.getChildren().add(new Line( 50*(b.arestas.get(i).getInicio().getX() + 3), 50*(b.arestas.get(i).getInicio().getY() + 3) 
-                        , 50*(b.arestas.get(i).getFim().getX() + 3), 50*(b.arestas.get(i).getFim().getY() + 3)));
+                root.getChildren().add(new Line( 50*(b.arestas.get(i).getInicio().getX() + 3), 50*(b.arestas.get(i).getInicio().getY()*-1 + 3) 
+                        , 50*(b.arestas.get(i).getFim().getX() + 3), 50*(b.arestas.get(i).getFim().getY()*-1 + 3)));
                 
                 
         }
         
+        
+        //System.out.println(b.encontraVertice("B"));
         
         //polyline.setFill(Color.BLANCHEDALMOND);
         //teste.setFill(Color.WHITE);

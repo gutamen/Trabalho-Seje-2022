@@ -9,6 +9,7 @@ import cg.vertice;
 import java.util.ArrayList;
 import javafx.scene.shape.Shape;
 
+//tesola
 
 /**
  *
@@ -17,7 +18,7 @@ import javafx.scene.shape.Shape;
 public class letraB extends Shape{
     public ArrayList<vertice> vertices; 
     public ArrayList<aresta> arestas;
-    //vertice V1,V2,V3,V4,V5,V6,V7,V8,V9,V10,V11,V12,V13,V14,V15,V16,V17,V18;
+    
 
     public letraB() {
         vertices = new ArrayList<>();
@@ -62,5 +63,13 @@ public class letraB extends Shape{
         arestas.add( new aresta("Q_R", vertices.get(16), vertices.get(17), null, null, null, null, null, null));
         arestas.add( new aresta("R_O", vertices.get(17), vertices.get(14), null, null, null, null, null, null));
         
+    }
+    
+    public int encontraVertice(String S){
+        for(int i=0; i < this.vertices.size(); i++){
+            if(this.vertices.get(i).getNomeVertice().contains(S))
+                return i;
+        }
+        return -1;
     }
 }
