@@ -73,14 +73,14 @@ public class letraA extends Shape{
         arestas.add(new aresta("H_A", vertices.get(7), vertices.get(0), null, null, null, null, null, null));
         vertices.get(7).setArestaVertice(arestas.get(7));
 
-        arestas.add(new aresta("I_J", vertices.get(8), vertices.get(9), null, null, null, null, null, null));      
+        arestas.add(new aresta("I_L", vertices.get(8), vertices.get(11), null, null, null, null, null, null));      
         vertices.get(8).setArestaVertice(arestas.get(8));
-        arestas.add(new aresta("J_K", vertices.get(9), vertices.get(10), null, null, null, null, null, null));
-        vertices.get(9).setArestaVertice(arestas.get(9));
-        arestas.add(new aresta("K_L", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("L_K", vertices.get(11), vertices.get(10), null, null, null, null, null, null));
+        vertices.get(11).setArestaVertice(arestas.get(9));
+        arestas.add(new aresta("K_J", vertices.get(10), vertices.get(9), null, null, null, null, null, null));
         vertices.get(10).setArestaVertice(arestas.get(10));
-        arestas.add(new aresta("L_I", vertices.get(11), vertices.get(8), null, null, null, null, null, null));
-        vertices.get(11).setArestaVertice(arestas.get(11));
+        arestas.add(new aresta("J_I", vertices.get(9), vertices.get(8), null, null, null, null, null, null));
+        vertices.get(9).setArestaVertice(arestas.get(11));
         
         
         arestas.add(new aresta("AT_BT", vertices.get(12),vertices.get(13), null, null, null, null, null, null));
@@ -100,14 +100,14 @@ public class letraA extends Shape{
         arestas.add(new aresta("HT_AT", vertices.get(19), vertices.get(12), null, null, null, null, null, null));
         vertices.get(19).setArestaVertice(arestas.get(19));
 
-        arestas.add(new aresta("IT_JT", vertices.get(20), vertices.get(21), null, null, null, null, null, null));      
+        arestas.add(new aresta("IT_LT", vertices.get(20), vertices.get(23), null, null, null, null, null, null));      
         vertices.get(20).setArestaVertice(arestas.get(20));
-        arestas.add(new aresta("JT_KT", vertices.get(21), vertices.get(22), null, null, null, null, null, null));
-        vertices.get(21).setArestaVertice(arestas.get(21));
-        arestas.add(new aresta("KT_LT", vertices.get(22), vertices.get(23), null, null, null, null, null, null));
+        arestas.add(new aresta("LT_KT", vertices.get(23), vertices.get(22), null, null, null, null, null, null));
+        vertices.get(23).setArestaVertice(arestas.get(21));
+        arestas.add(new aresta("KT_JT", vertices.get(22), vertices.get(21), null, null, null, null, null, null));
         vertices.get(22).setArestaVertice(arestas.get(22));
-        arestas.add(new aresta("LT_IT", vertices.get(23), vertices.get(20), null, null, null, null, null, null));
-        vertices.get(23).setArestaVertice(arestas.get(23));
+        arestas.add(new aresta("JT_IT", vertices.get(21), vertices.get(20), null, null, null, null, null, null));
+        vertices.get(21).setArestaVertice(arestas.get(23));
         
         arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(12), null, null, null, null, null, null));
         arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(13), null, null, null, null, null, null));
@@ -122,5 +122,25 @@ public class letraA extends Shape{
         arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(22), null, null, null, null, null, null));
         arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(23), null, null, null, null, null, null));
         
+        arestas.add(new aresta("ligacao_G_I", vertices.get(6), vertices.get(8), null, null, null, null, null, null));
+        
+        
+        
+    }
+    
+    public int encontraVertice(String S){
+        for(int i=0; i < this.vertices.size(); i++){
+            if(this.vertices.get(i).getNomeVertice().contains(S))
+                return i;
+        }
+        return -1;
+    }
+    
+    public int encontraAresta(String S){
+        for(int i=0; i < this.arestas.size(); i++){
+            if(this.arestas.get(i).getNomeAresta().contains(S))
+                return i;
+        }
+        return -1;
     }
 }
