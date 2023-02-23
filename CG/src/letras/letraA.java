@@ -11,6 +11,7 @@ package letras;
  */
 
 
+import cg.face;
 import estrutura.aresta;
 import estrutura.vertice;
 import java.util.ArrayList;
@@ -24,11 +25,13 @@ import javafx.scene.shape.Shape;
 public class letraA extends Shape{
     public ArrayList<vertice> vertices; 
     public ArrayList<aresta> arestas;
+    public ArrayList<face> faces;
     
 
     public letraA() {
         vertices = new ArrayList<>();
         arestas = new ArrayList<>();
+        faces = new ArrayList<>();
         
         vertices.add(new vertice("A", -2, -2, 0.25, null));
         vertices.add(new vertice("B", -0.5, 2.0, 0.25, null));
@@ -122,8 +125,23 @@ public class letraA extends Shape{
         arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(22), null, null, null, null, null, null));
         arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(23), null, null, null, null, null, null));
         
+        
         arestas.add(new aresta("ligacao_G_I", vertices.get(6), vertices.get(8), null, null, null, null, null, null));
         
+        faces.add(new face("frente", arestas.get(encontraAresta("A_B"))));
+        faces.add(new face("tras",arestas.get(encontraAresta("AT_BT"))));
+        faces.add(new face("topo", arestas.get(encontraAresta("B_C"))));
+        faces.add(new face("esquerda", arestas.get(encontraAresta("A_B"))));
+        faces.add(new face("direita",arestas.get(encontraAresta("C_D"))));
+        faces.add(new face("baixoEsquerda", arestas.get(encontraAresta("H_A"))));
+        faces.add(new face("baixoDireita", arestas.get(encontraAresta("D_E"))));
+        faces.add(new face("centroBaixoEsquerda", arestas.get(encontraAresta("G_H"))));
+        faces.add(new face("centroBaixoDireita", arestas.get(encontraAresta("E_F"))));
+        faces.add(new face("centroBaixoMeio", arestas.get(encontraAresta("F_G"))));
+        faces.add(new face("centroAltoEsquerda", arestas.get(encontraAresta("J_I"))));
+        faces.add(new face("centroAltoDireita", arestas.get(encontraAresta("L_K"))));
+        faces.add(new face("centroAltoTopo", arestas.get(encontraAresta("K_J"))));
+        faces.add(new face("centroAltoBase", arestas.get(encontraAresta("I_L"))));
         
         
     }

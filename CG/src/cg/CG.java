@@ -32,8 +32,8 @@ public class CG extends Application {
 
         letraA b = new letraA();
         
-        //System.out.println(b.arestas.get(0).toString());
-        //System.out.println(b.vertices.get(0).getArestaVertice().toString());
+        System.out.println(b.arestas.get(12).toString());
+        System.out.println(b.faces.get(1).getArestaFace().toString());
         //Text text = new Text(10, 90, "JavaFX Scene");
         //text.setFill(Color.DARKRED);
         
