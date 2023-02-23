@@ -8,8 +8,8 @@ package letras;
  *
  * @author gustavo
  */
-import cg.aresta;
-import cg.vertice;
+import estrutura.aresta;
+import estrutura.vertice;
 import java.util.ArrayList;
 import javafx.scene.shape.Shape;
 

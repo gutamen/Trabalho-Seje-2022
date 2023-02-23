@@ -1,4 +1,7 @@
 package cg;
+
+import estrutura.aresta;
+
 public class face {
     String nomeFace;
     aresta arestaFace;
