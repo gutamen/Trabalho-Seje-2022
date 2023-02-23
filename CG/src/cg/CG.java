@@ -30,7 +30,7 @@ public class CG extends Application {
         //Circle circle = new Circle(60, 40, 30, Color.GREEN);
         
 
-        num9 b = new num9();
+        letraA b = new letraA();
         
         //Text text = new Text(10, 90, "JavaFX Scene");
         //text.setFill(Color.DARKRED);
