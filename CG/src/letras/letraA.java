@@ -29,40 +29,40 @@ public final class letraA extends Shape{
     
 
     public letraA() {
-        vertices = new ArrayList<>();
-        arestas = new ArrayList<>();
-        faces = new ArrayList<>();
+        vertices    = new ArrayList<>();
+        arestas     = new ArrayList<>();
+        faces       = new ArrayList<>();
         
         // Vértices da frente da letra
-        vertices.add(new vertice("A", -2, -2, 0.25, null));
-        vertices.add(new vertice("B", -0.5, 2.0, 0.25, null));
-        vertices.add(new vertice("C", 0.5, 2, 0.25, null));
-        vertices.add(new vertice("D", 2, -2, 0.25, null));
-        vertices.add(new vertice("E", 1.5, -2.0, 0.25, null));
-        vertices.add(new vertice("F", 0.9375, -0.5, 0.25, null));
-        vertices.add(new vertice("G", -0.9375, -0.5, 0.25, null));
-        vertices.add(new vertice("H", -1.5, -2, 0.25, null));
-        vertices.add(new vertice("I", -0.75, 0, 0.25, null));
-        vertices.add(new vertice("J", -0.25, 1.5, 0.25, null));   
-        vertices.add(new vertice("K", 0.25, 1.5, 0.25, null));
-        vertices.add(new vertice("L", 0.75, 0, 0.25, null));
+        vertices.add(new vertice("A", -2    	, -2	, 0.25, null));
+        vertices.add(new vertice("B", -0.5  	, 2.0	, 0.25, null));
+        vertices.add(new vertice("C", 0.5   	, 2	    , 0.25, null));
+        vertices.add(new vertice("D", 2     	, -2	, 0.25, null));
+        vertices.add(new vertice("E", 1.5   	, -2.0	, 0.25, null));
+        vertices.add(new vertice("F", 0.9375	, -0.5	, 0.25, null));
+        vertices.add(new vertice("G", -0.9375 	, -0.5	, 0.25, null));
+        vertices.add(new vertice("H", -1.5    	, -2	, 0.25, null));
+        vertices.add(new vertice("I", -0.75   	, 0	    , 0.25, null));
+        vertices.add(new vertice("J", -0.25   	, 1.5	, 0.25, null));   
+        vertices.add(new vertice("K", 0.25  	, 1.5	, 0.25, null));
+        vertices.add(new vertice("L", 0.75  	, 0	    , 0.25, null));
         
         // Vértices das costas da letra
-        vertices.add(new vertice("AT", -2, -2, -0.25, null));
-        vertices.add(new vertice("BT", -0.5, 2.0, -0.25, null));
-        vertices.add(new vertice("CT", 0.5, 2, -0.25, null));
-        vertices.add(new vertice("DT", 2, -2, -0.25, null));
-        vertices.add(new vertice("ET", 1.5, -2.0, -0.25, null));
-        vertices.add(new vertice("FT", 0.9375, -0.5, -0.25, null));
-        vertices.add(new vertice("GT", -0.9375, -0.5, -0.25, null));
-        vertices.add(new vertice("HT", -1.5, -2, -0.25, null));
-        vertices.add(new vertice("IT", -0.75, 0, -0.25, null));
-        vertices.add(new vertice("JT", -0.25, 1.5, -0.25, null));   
-        vertices.add(new vertice("KT", 0.25, 1.5, -0.25, null));
-        vertices.add(new vertice("LT", 0.75, 0, -0.25, null));
+        vertices.add(new vertice("AT", -2       , -2    , -0.25, null));
+        vertices.add(new vertice("BT", -0.5     , 2.0   , -0.25, null));
+        vertices.add(new vertice("CT", 0.5      , 2     , -0.25, null));
+        vertices.add(new vertice("DT", 2        , -2    , -0.25, null));
+        vertices.add(new vertice("ET", 1.5      , -2.0  , -0.25, null));
+        vertices.add(new vertice("FT", 0.9375   , -0.5  , -0.25, null));
+        vertices.add(new vertice("GT", -0.9375  , -0.5  , -0.25, null));
+        vertices.add(new vertice("HT", -1.5     , -2    , -0.25, null));
+        vertices.add(new vertice("IT", -0.75    , 0     , -0.25, null));
+        vertices.add(new vertice("JT", -0.25    , 1.5   , -0.25, null));   
+        vertices.add(new vertice("KT", 0.25     , 1.5   , -0.25, null));
+        vertices.add(new vertice("LT", 0.75     , 0     , -0.25, null));
         
         // Arestas da borda da frente
-        arestas.add(new aresta("A_B", vertices.get(0),vertices.get(1), null, null, null, null, null, null));
+        arestas.add(new aresta("A_B", vertices.get(0), vertices.get(1), null, null, null, null, null, null));
         arestas.add(new aresta("B_C", vertices.get(1), vertices.get(2), null, null, null, null, null, null));
         arestas.add(new aresta("C_D", vertices.get(2), vertices.get(3), null, null, null, null, null, null));
         arestas.add(new aresta("D_E", vertices.get(3), vertices.get(4), null, null, null, null, null, null));
@@ -137,20 +137,20 @@ public final class letraA extends Shape{
         vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("L_LT")));
         
         // Criação das faces
-        faces.add(new face("frente", arestas.get(encontraAresta("A_B"))));
-        faces.add(new face("tras",arestas.get(encontraAresta("AT_BT"))));
-        faces.add(new face("topo", arestas.get(encontraAresta("B_C"))));
-        faces.add(new face("esquerda", arestas.get(encontraAresta("A_B"))));
-        faces.add(new face("direita",arestas.get(encontraAresta("C_D"))));
-        faces.add(new face("baixoEsquerda", arestas.get(encontraAresta("H_A"))));
-        faces.add(new face("baixoDireita", arestas.get(encontraAresta("D_E"))));
+        faces.add(new face("frente"             , arestas.get(encontraAresta("A_B"))));
+        faces.add(new face("tras"               , arestas.get(encontraAresta("AT_BT"))));
+        faces.add(new face("topo"               , arestas.get(encontraAresta("B_C"))));
+        faces.add(new face("esquerda"           , arestas.get(encontraAresta("A_B"))));
+        faces.add(new face("direita"            , arestas.get(encontraAresta("C_D"))));
+        faces.add(new face("baixoEsquerda"      , arestas.get(encontraAresta("H_A"))));
+        faces.add(new face("baixoDireita"       , arestas.get(encontraAresta("D_E"))));
         faces.add(new face("centroBaixoEsquerda", arestas.get(encontraAresta("G_H"))));
-        faces.add(new face("centroBaixoDireita", arestas.get(encontraAresta("E_F"))));
-        faces.add(new face("centroBaixoMeio", arestas.get(encontraAresta("F_G"))));
-        faces.add(new face("centroAltoEsquerda", arestas.get(encontraAresta("J_I"))));
-        faces.add(new face("centroAltoDireita", arestas.get(encontraAresta("L_K"))));
-        faces.add(new face("centroAltoTopo", arestas.get(encontraAresta("K_J"))));
-        faces.add(new face("centroAltoBase", arestas.get(encontraAresta("I_L"))));
+        faces.add(new face("centroBaixoDireita" , arestas.get(encontraAresta("E_F"))));
+        faces.add(new face("centroBaixoMeio"    , arestas.get(encontraAresta("F_G"))));
+        faces.add(new face("centroAltoEsquerda" , arestas.get(encontraAresta("J_I"))));
+        faces.add(new face("centroAltoDireita"  , arestas.get(encontraAresta("L_K"))));
+        faces.add(new face("centroAltoTopo"     , arestas.get(encontraAresta("K_J"))));
+        faces.add(new face("centroAltoBase"     , arestas.get(encontraAresta("I_L"))));
         
         
     }
@@ -166,6 +166,14 @@ public final class letraA extends Shape{
     public int encontraAresta(String S){
         for(int i=0; i < this.arestas.size(); i++){
             if(this.arestas.get(i).getNomeAresta().equals(S))
+                return i;
+        }
+        return -1;
+    }
+    
+    public int encontraFace(String S){
+        for(int i=0; i < this.faces.size(); i++){
+            if(this.faces.get(i).getNomeFace().equals(S))
                 return i;
         }
         return -1;

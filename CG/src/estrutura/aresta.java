@@ -63,6 +63,11 @@ public class aresta {
     public void setEsquerda(face esquerda) {
         this.esquerda = esquerda;
     }
+    
+    public void setFaces(face direita, face esquerda){
+        this.direita = direita;
+        this.esquerda = esquerda;
+    }
 
     public aresta getArestaEsquerdaPred() {
         return arestaEsquerdaPred;
