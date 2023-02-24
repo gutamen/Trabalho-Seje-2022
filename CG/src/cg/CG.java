@@ -32,8 +32,12 @@ public class CG extends Application {
 
         letraA b = new letraA();
         
-        System.out.println(b.arestas.get(12).toString());
-        System.out.println(b.faces.get(1).getArestaFace().toString());
+        System.out.println(b.arestas.get(b.encontraAresta("A_B")).getDireita().toString());
+        System.out.println(b.faces.get(b.encontraFace("frente")).toString());
+        
+        System.out.println(b.arestas.size());
+        
+
         //Text text = new Text(10, 90, "JavaFX Scene");
         //text.setFill(Color.DARKRED);
         

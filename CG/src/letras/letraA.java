@@ -152,6 +152,48 @@ public final class letraA extends Shape{
         faces.add(new face("centroAltoTopo"     , arestas.get(encontraAresta("K_J"))));
         faces.add(new face("centroAltoBase"     , arestas.get(encontraAresta("I_L"))));
         
+        // Colocar faces nas arestas
+        arestas.get(encontraAresta("A_B")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("esquerda")));
+        arestas.get(encontraAresta("B_C")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("topo")));
+        arestas.get(encontraAresta("C_D")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("direita")));
+        arestas.get(encontraAresta("D_E")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("baixoDireita")));
+        arestas.get(encontraAresta("E_F")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("centroBaixoDireita")));
+        arestas.get(encontraAresta("F_G")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("centroBaixoMeio")));
+        arestas.get(encontraAresta("G_H")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("centroBaixoEsquerda")));
+        arestas.get(encontraAresta("H_A")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("baixoEsquerda")));
+        arestas.get(encontraAresta("I_L")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("centroAltoBase")));
+        arestas.get(encontraAresta("L_K")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("centroAltoDireita")));
+        arestas.get(encontraAresta("K_J")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("centroAltoTopo")));
+        arestas.get(encontraAresta("J_I")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("centroAltoEsquerda")));
+        
+        arestas.get(encontraAresta("AT_BT")).setFaces(faces.get(encontraFace("esquerda")), faces.get(encontraFace("tras")));
+        arestas.get(encontraAresta("BT_CT")).setFaces(faces.get(encontraFace("topo")), faces.get(encontraFace("tras")));
+        arestas.get(encontraAresta("CT_DT")).setFaces(faces.get(encontraFace("direita")), faces.get(encontraFace("tras")));
+        arestas.get(encontraAresta("DT_ET")).setFaces(faces.get(encontraFace("baixoDireita")), faces.get(encontraFace("tras")));
+        arestas.get(encontraAresta("ET_FT")).setFaces(faces.get(encontraFace("centroBaixoDireita")), faces.get(encontraFace("tras")));
+        arestas.get(encontraAresta("FT_GT")).setFaces(faces.get(encontraFace("centroBaixoMeio")), faces.get(encontraFace("tras")));
+        arestas.get(encontraAresta("GT_HT")).setFaces(faces.get(encontraFace("centroBaixoEsquerda")), faces.get(encontraFace("tras")));
+        arestas.get(encontraAresta("HT_AT")).setFaces(faces.get(encontraFace("baixoEsquerda")), faces.get(encontraFace("tras")));
+        arestas.get(encontraAresta("IT_LT")).setFaces(faces.get(encontraFace("centroAltoBase")), faces.get(encontraFace("tras")));
+        arestas.get(encontraAresta("LT_KT")).setFaces(faces.get(encontraFace("centroAltoDireita")), faces.get(encontraFace("tras")));
+        arestas.get(encontraAresta("KT_JT")).setFaces(faces.get(encontraFace("centroAltoTopo")), faces.get(encontraFace("tras")));
+        arestas.get(encontraAresta("JT_IT")).setFaces(faces.get(encontraFace("centroAltoEsquerda")), faces.get(encontraFace("tras")));
+        
+        arestas.get(encontraAresta("A_AT")).setFaces(faces.get(encontraFace("esquerda")), faces.get(encontraFace("baixoEsquerda")));
+        arestas.get(encontraAresta("B_BT")).setFaces(faces.get(encontraFace("topo")), faces.get(encontraFace("esquerda")));
+        arestas.get(encontraAresta("C_CT")).setFaces(faces.get(encontraFace("direita")), faces.get(encontraFace("topo")));
+        arestas.get(encontraAresta("D_DT")).setFaces(faces.get(encontraFace("baixoDireita")), faces.get(encontraFace("direita")));
+        arestas.get(encontraAresta("E_ET")).setFaces(faces.get(encontraFace("centroBaixoDireita")), faces.get(encontraFace("baixoDireita")));
+        arestas.get(encontraAresta("F_FT")).setFaces(faces.get(encontraFace("centroBaixoMeio")), faces.get(encontraFace("centroBaixoDireita")));
+        arestas.get(encontraAresta("G_GT")).setFaces(faces.get(encontraFace("centroBaixoEsquerda")), faces.get(encontraFace("centroBaixoMeio")));
+        arestas.get(encontraAresta("H_HT")).setFaces(faces.get(encontraFace("baixoEsquerda")), faces.get(encontraFace("centroBaixoEsquerda")));
+        arestas.get(encontraAresta("I_IT")).setFaces(faces.get(encontraFace("centroAltoBase")), faces.get(encontraFace("centroAltoEsquerda")));
+        arestas.get(encontraAresta("J_JT")).setFaces(faces.get(encontraFace("centroAltoEsquerda")), faces.get(encontraFace("centroAltoTopo")));
+        arestas.get(encontraAresta("K_KT")).setFaces(faces.get(encontraFace("centroAltoTopo")), faces.get(encontraFace("centroAltoDireita")));
+        arestas.get(encontraAresta("L_LT")).setFaces(faces.get(encontraFace("centroAltoDireita")), faces.get(encontraFace("centroAltoBase")));
+        
+        
+        
         
     }
     
