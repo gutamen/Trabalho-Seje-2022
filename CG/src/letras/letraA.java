@@ -22,7 +22,7 @@ import javafx.scene.shape.Shape;
  *
  * @author Gustavo
  */
-public class letraA extends Shape{
+public final class letraA extends Shape{
     public ArrayList<vertice> vertices; 
     public ArrayList<aresta> arestas;
     public ArrayList<face> faces;
@@ -33,6 +33,7 @@ public class letraA extends Shape{
         arestas = new ArrayList<>();
         faces = new ArrayList<>();
         
+        // Vértices da frente da letra
         vertices.add(new vertice("A", -2, -2, 0.25, null));
         vertices.add(new vertice("B", -0.5, 2.0, 0.25, null));
         vertices.add(new vertice("C", 0.5, 2, 0.25, null));
@@ -46,6 +47,7 @@ public class letraA extends Shape{
         vertices.add(new vertice("K", 0.25, 1.5, 0.25, null));
         vertices.add(new vertice("L", 0.75, 0, 0.25, null));
         
+        // Vértices das costas da letra
         vertices.add(new vertice("AT", -2, -2, -0.25, null));
         vertices.add(new vertice("BT", -0.5, 2.0, -0.25, null));
         vertices.add(new vertice("CT", 0.5, 2, -0.25, null));
@@ -59,59 +61,39 @@ public class letraA extends Shape{
         vertices.add(new vertice("KT", 0.25, 1.5, -0.25, null));
         vertices.add(new vertice("LT", 0.75, 0, -0.25, null));
         
+        // Arestas da borda da frente
         arestas.add(new aresta("A_B", vertices.get(0),vertices.get(1), null, null, null, null, null, null));
-        vertices.get(0).setArestaVertice(arestas.get(0));
         arestas.add(new aresta("B_C", vertices.get(1), vertices.get(2), null, null, null, null, null, null));
-        vertices.get(1).setArestaVertice(arestas.get(1));
         arestas.add(new aresta("C_D", vertices.get(2), vertices.get(3), null, null, null, null, null, null));
-        vertices.get(2).setArestaVertice(arestas.get(2));
         arestas.add(new aresta("D_E", vertices.get(3), vertices.get(4), null, null, null, null, null, null));
-        vertices.get(3).setArestaVertice(arestas.get(3));
         arestas.add(new aresta("E_F", vertices.get(4), vertices.get(5), null, null, null, null, null, null));
-        vertices.get(4).setArestaVertice(arestas.get(4));
         arestas.add(new aresta("F_G", vertices.get(5), vertices.get(6), null, null, null, null, null, null));
-        vertices.get(5).setArestaVertice(arestas.get(5));
         arestas.add(new aresta("G_H", vertices.get(6), vertices.get(7), null, null, null, null, null, null));
-        vertices.get(6).setArestaVertice(arestas.get(6));
         arestas.add(new aresta("H_A", vertices.get(7), vertices.get(0), null, null, null, null, null, null));
-        vertices.get(7).setArestaVertice(arestas.get(7));
-
-        arestas.add(new aresta("I_L", vertices.get(8), vertices.get(11), null, null, null, null, null, null));      
-        vertices.get(8).setArestaVertice(arestas.get(8));
+        
+        // Arestas do centro da frente da letra
+        arestas.add(new aresta("I_L", vertices.get(8), vertices.get(11), null, null, null, null, null, null));
         arestas.add(new aresta("L_K", vertices.get(11), vertices.get(10), null, null, null, null, null, null));
-        vertices.get(11).setArestaVertice(arestas.get(9));
         arestas.add(new aresta("K_J", vertices.get(10), vertices.get(9), null, null, null, null, null, null));
-        vertices.get(10).setArestaVertice(arestas.get(10));
         arestas.add(new aresta("J_I", vertices.get(9), vertices.get(8), null, null, null, null, null, null));
-        vertices.get(9).setArestaVertice(arestas.get(11));
         
-        
+        // Arestas das costas da letra
         arestas.add(new aresta("AT_BT", vertices.get(12),vertices.get(13), null, null, null, null, null, null));
-        vertices.get(12).setArestaVertice(arestas.get(12));
         arestas.add(new aresta("BT_CT", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
-        vertices.get(13).setArestaVertice(arestas.get(13));
         arestas.add(new aresta("CT_DT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
-        vertices.get(14).setArestaVertice(arestas.get(14));
         arestas.add(new aresta("DT_ET", vertices.get(15), vertices.get(16), null, null, null, null, null, null));
-        vertices.get(15).setArestaVertice(arestas.get(15));
         arestas.add(new aresta("ET_FT", vertices.get(16), vertices.get(17), null, null, null, null, null, null));
-        vertices.get(16).setArestaVertice(arestas.get(16));
         arestas.add(new aresta("FT_GT", vertices.get(17), vertices.get(18), null, null, null, null, null, null));
-        vertices.get(17).setArestaVertice(arestas.get(17));
         arestas.add(new aresta("GT_HT", vertices.get(18), vertices.get(19), null, null, null, null, null, null));
-        vertices.get(18).setArestaVertice(arestas.get(18));
         arestas.add(new aresta("HT_AT", vertices.get(19), vertices.get(12), null, null, null, null, null, null));
-        vertices.get(19).setArestaVertice(arestas.get(19));
-
-        arestas.add(new aresta("IT_LT", vertices.get(20), vertices.get(23), null, null, null, null, null, null));      
-        vertices.get(20).setArestaVertice(arestas.get(20));
-        arestas.add(new aresta("LT_KT", vertices.get(23), vertices.get(22), null, null, null, null, null, null));
-        vertices.get(23).setArestaVertice(arestas.get(21));
-        arestas.add(new aresta("KT_JT", vertices.get(22), vertices.get(21), null, null, null, null, null, null));
-        vertices.get(22).setArestaVertice(arestas.get(22));
-        arestas.add(new aresta("JT_IT", vertices.get(21), vertices.get(20), null, null, null, null, null, null));
-        vertices.get(21).setArestaVertice(arestas.get(23));
         
+        // Arestas do centro da traseira da letra
+        arestas.add(new aresta("IT_LT", vertices.get(20), vertices.get(23), null, null, null, null, null, null));
+        arestas.add(new aresta("LT_KT", vertices.get(23), vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("KT_JT", vertices.get(22), vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("JT_IT", vertices.get(21), vertices.get(20), null, null, null, null, null, null));
+        
+        // Arestas que ligam a frente e costas da letra
         arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(12), null, null, null, null, null, null));
         arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(13), null, null, null, null, null, null));
         arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(14), null, null, null, null, null, null));
@@ -125,9 +107,36 @@ public class letraA extends Shape{
         arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(22), null, null, null, null, null, null));
         arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(23), null, null, null, null, null, null));
         
-        
+        // Aresta para ser invisível
         arestas.add(new aresta("ligacao_G_I", vertices.get(6), vertices.get(8), null, null, null, null, null, null));
         
+        // Adicionando areta para vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("A_B")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("B_C")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("C_D")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("D_E")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("E_F")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("F_G")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("G_H")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("H_A")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("I_L")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("L_K")));
+        vertices.get(encontraVertice("K")).setArestaVertice(arestas.get(encontraAresta("K_J")));
+        vertices.get(encontraVertice("L")).setArestaVertice(arestas.get(encontraAresta("J_I")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("I_IT")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
+        vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("K_KT")));
+        vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("L_LT")));
+        
+        // Criação das faces
         faces.add(new face("frente", arestas.get(encontraAresta("A_B"))));
         faces.add(new face("tras",arestas.get(encontraAresta("AT_BT"))));
         faces.add(new face("topo", arestas.get(encontraAresta("B_C"))));
@@ -148,7 +157,7 @@ public class letraA extends Shape{
     
     public int encontraVertice(String S){
         for(int i=0; i < this.vertices.size(); i++){
-            if(this.vertices.get(i).getNomeVertice().contains(S))
+            if(this.vertices.get(i).getNomeVertice().equals(S))
                 return i;
         }
         return -1;
@@ -156,7 +165,7 @@ public class letraA extends Shape{
     
     public int encontraAresta(String S){
         for(int i=0; i < this.arestas.size(); i++){
-            if(this.arestas.get(i).getNomeAresta().contains(S))
+            if(this.arestas.get(i).getNomeAresta().equals(S))
                 return i;
         }
         return -1;
