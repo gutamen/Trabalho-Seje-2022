@@ -75,6 +75,9 @@ public class CG extends Application {
                 
         }
         
+        /*root.getChildren().add(new Line( 50*(b.arestas.get(0).getInicio().getX() + 3), 50*(b.arestas.get(0).getInicio().getY()*1 + 3) 
+                        , 50*(b.arestas.get(0).getFim().getX() + 3), 50*(b.arestas.get(0).getFim().getY()*1 + 3)));*/
+        
         
         //System.out.println(b.encontraVertice("B"));
         

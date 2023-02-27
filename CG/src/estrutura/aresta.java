@@ -68,6 +68,16 @@ public class aresta {
         this.direita = direita;
         this.esquerda = esquerda;
     }
+    
+    public void setArestasDireita(aresta pred, aresta suc){
+        this.arestaDireitaPred = pred;
+        this.arestaDireitaSuc = suc;
+    }
+    
+    public void setArestasEsquerda(aresta pred, aresta suc){
+        this.arestaEsquerdaPred = pred;
+        this.arestaEsquerdaSuc = suc;
+    }
 
     public aresta getArestaEsquerdaPred() {
         return arestaEsquerdaPred;
