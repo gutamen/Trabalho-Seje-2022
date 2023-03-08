@@ -64,7 +64,7 @@ public class aresta {
         this.esquerda = esquerda;
     }
     
-    public void setFaces(face direita, face esquerda){
+    public void setFaces(face esquerda, face direita){
         this.direita = direita;
         this.esquerda = esquerda;
     }

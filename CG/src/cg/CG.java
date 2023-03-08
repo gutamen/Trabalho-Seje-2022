@@ -32,8 +32,6 @@ public class CG extends Application {
 
         letraA b = new letraA();
         
-        System.out.println(b.arestas.get(b.encontraAresta("A_B")).getDireita().toString());
-        System.out.println(b.faces.get(b.encontraFace("frente")).toString());
         
         System.out.println(b.arestas.size());
         
