@@ -1,7 +1,6 @@
 package estrutura;
 
 import cg.face;
-import estrutura.vertice;
 
 public class aresta {
     String nomeAresta;

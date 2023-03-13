@@ -108,7 +108,7 @@ public final class letraA extends Shape{
         arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(23), null, null, null, null, null, null));
         
         // Aresta para ser invisível
-        arestas.add(new aresta("ligacao_G_I", vertices.get(6), vertices.get(8), null, null, null, null, null, null));
+        //arestas.add(new aresta("ligacao_G_I", vertices.get(6), vertices.get(8), null, null, null, null, null, null));
         
         // Adicionando aresta para vértice
         vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));

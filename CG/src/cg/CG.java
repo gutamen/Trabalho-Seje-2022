@@ -9,10 +9,15 @@ package cg;
 
 
 
+import estrutura.aresta;
+import java.util.ArrayList;
+import java.util.Arrays;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Group;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import letras.*;
@@ -27,62 +32,39 @@ public class CG extends Application {
         Scene scene = new Scene(root, 500, 400);
         scene.setFill(Color.rgb(255, 255, 255, 0));
 
-        //Circle circle = new Circle(60, 40, 30, Color.GREEN);
-        
-
         letraA b = new letraA();
+        Canvas canvas = new Canvas(300,300);
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        
+        desenhaFiguraPorAresta(gc,b.arestas);
+        
+        root.getChildren().add(canvas);
+        
+        
         
         
         System.out.println(b.arestas.size());
         
 
-        //Text text = new Text(10, 90, "JavaFX Scene");
-        //text.setFill(Color.DARKRED);
-        
-        //Font font = new Font(20);
-        //text.setFont(font);
-        
-        /*Polyline polyline = new Polyline();
-        for(int i = 0 ; i < 10; i++)
-        {
-            polyline.getPoints().addAll(new Double[]{
-                50*(b.arestas.get(i).getInicio().getX() + 3), 50*(b.arestas.get(i).getInicio().getY() + 3),
-                50*(b.arestas.get(i).getFim().getX() + 3), 50*(b.arestas.get(i).getFim().getY() + 3)
-                });
-        }*/
-        
-        /*Polyline teste = new Polyline();
-        for(int i = 10 ; i < 14; i++)
-        {
-            teste.getPoints().addAll(new Double[]{
-                50*(b.arestas.get(i).getInicio().getX() + 3), 50*(b.arestas.get(i).getInicio().getY() + 3),
-                50*(b.arestas.get(i).getFim().getX() + 3), 50*(b.arestas.get(i).getFim().getY() + 3)
-                });
-        }*/
-        
-        
-        
         
                 
         
-        for(int i = 0 ; i < b.arestas.size(); i++)
+        /*for(int i = 0 ; i < b.arestas.size(); i++)
         {
                 root.getChildren().add(new Line( 50*(b.arestas.get(i).getInicio().getX() + 3), 50*(b.arestas.get(i).getInicio().getY()*-1 + 3) 
                         , 50*(b.arestas.get(i).getFim().getX() + 3), 50*(b.arestas.get(i).getFim().getY()*-1 + 3)));
                 
                 
-        }
+        }*/
         
-        /*root.getChildren().add(new Line( 50*(b.arestas.get(0).getInicio().getX() + 3), 50*(b.arestas.get(0).getInicio().getY()*1 + 3) 
-                        , 50*(b.arestas.get(0).getFim().getX() + 3), 50*(b.arestas.get(0).getFim().getY()*1 + 3)));*/
-        
+        //root.getChildren().add(b);
         
         //System.out.println(b.encontraVertice("B"));
         
         //polyline.setFill(Color.BLANCHEDALMOND);
         //teste.setFill(Color.WHITE);
         //other.getChildren().add(text);
-        Line teste = (Line) root.getChildren().get(0);
+        //Line teste = (Line) root.getChildren().get(0);
         //b.arestas.get(0).getInicio().setX(10);
         //teste.setStartX(10);
         //root.getChildren().add(line);
@@ -100,5 +82,32 @@ public class CG extends Application {
 
     public static void main(String[] args) {
         Application.launch(args);
+    }
+    
+    
+    private void desenhaFiguraPorAresta(GraphicsContext gc, ArrayList<aresta> arestas) {
+
+        
+        double[] xpoints = new double[2];
+        double[] ypoints = new double[2];
+       
+        
+        for(int i = 0; arestas.size() > i; i++){
+            
+            
+            xpoints[0]=30*(arestas.get(i).getInicio().getX()+5);
+            ypoints[0]=30*((arestas.get(i).getInicio().getY()*-1)+5);
+           
+            xpoints[1]=30*(arestas.get(i).getFim().getX()+5);
+            ypoints[1]=30*((arestas.get(i).getFim().getY()*-1)+5);
+            gc.strokePolyline(xpoints, ypoints, 2);
+            
+        }
+        System.out.println(Arrays.toString(xpoints));
+        System.out.println(Arrays.toString(ypoints));
+        
+        
+        gc.restore();
+        
     }
 }
