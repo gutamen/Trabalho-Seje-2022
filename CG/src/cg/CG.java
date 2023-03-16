@@ -12,10 +12,14 @@ package cg;
 import estrutura.aresta;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -32,7 +36,7 @@ public class CG extends Application {
         Scene scene = new Scene(root, 500, 400);
         scene.setFill(Color.rgb(255, 255, 255, 0));
 
-        letraA b = new letraA();
+        letraC b = new letraC();
         Canvas canvas = new Canvas(300,300);
         GraphicsContext gc = canvas.getGraphicsContext2D();
         
@@ -43,38 +47,19 @@ public class CG extends Application {
         
         
         
-        System.out.println(b.arestas.size());
-        
-
-        
-                
-        
-        /*for(int i = 0 ; i < b.arestas.size(); i++)
-        {
-                root.getChildren().add(new Line( 50*(b.arestas.get(i).getInicio().getX() + 3), 50*(b.arestas.get(i).getInicio().getY()*-1 + 3) 
-                        , 50*(b.arestas.get(i).getFim().getX() + 3), 50*(b.arestas.get(i).getFim().getY()*-1 + 3)));
-                
-                
-        }*/
-        
-        //root.getChildren().add(b);
-        
-        //System.out.println(b.encontraVertice("B"));
-        
-        //polyline.setFill(Color.BLANCHEDALMOND);
-        //teste.setFill(Color.WHITE);
-        //other.getChildren().add(text);
-        //Line teste = (Line) root.getChildren().get(0);
-        //b.arestas.get(0).getInicio().setX(10);
-        //teste.setStartX(10);
-        //root.getChildren().add(line);
-        //root.getChildren().add(circle);
-        //root.getChildren().add(polyline);
-        //root.getChildren().add(teste);
-        
         stage.setScene(scene);
        
         stage.show();
+        
+        /*try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(CG.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        
+        Canvas ma = new Canvas();
+        
+        //root.getChildren().set(0, (Node) ma);
         
         
         
