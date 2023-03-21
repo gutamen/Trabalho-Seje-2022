@@ -28,6 +28,7 @@ public final class letraC extends Shape{
     public letraC() {
         vertices = new ArrayList<>();
         arestas = new ArrayList<>();
+        faces = new ArrayList<>();
         
         //Vértices da frente da letra
         vertices.add(new vertice("A", -2, -2, 0.25, null));
@@ -101,12 +102,12 @@ public final class letraC extends Shape{
         // Criação das faces
         faces.add(new face("frente"             , arestas.get(encontraAresta("B_A"))));
         faces.add(new face("tras"               , arestas.get(encontraAresta("BT_AT"))));
-        faces.add(new face("topo"               , arestas.get(encontraAresta("CT_BT"))));
-        faces.add(new face("baixo"              , arestas.get(encontraAresta("E_D"))));
+        faces.add(new face("topo"               , arestas.get(encontraAresta("C_B"))));
+        faces.add(new face("baixo"              , arestas.get(encontraAresta("A_H"))));
         faces.add(new face("esquerda"           , arestas.get(encontraAresta("B_A"))));
         faces.add(new face("direitaCima"        , arestas.get(encontraAresta("D_C"))));
-        faces.add(new face("direitaBaixo"       , arestas.get(encontraAresta("A_H"))));   
-        faces.add(new face("centroDireitaTopo"  , arestas.get(encontraAresta("H_G"))));
+        faces.add(new face("direitaBaixo"       , arestas.get(encontraAresta("H_G"))));   
+        faces.add(new face("centroDireitaTopo"  , arestas.get(encontraAresta("E_D"))));
         faces.add(new face("centroDireitaMeio"  , arestas.get(encontraAresta("F_E"))));
         faces.add(new face("centroDireitoBase"  , arestas.get(encontraAresta("G_F"))));
 
