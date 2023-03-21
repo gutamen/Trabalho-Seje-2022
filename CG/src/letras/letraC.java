@@ -109,8 +109,18 @@ public final class letraC extends Shape{
         faces.add(new face("direitaBaixo"       , arestas.get(encontraAresta("H_G"))));   
         faces.add(new face("centroDireitaTopo"  , arestas.get(encontraAresta("E_D"))));
         faces.add(new face("centroDireitaMeio"  , arestas.get(encontraAresta("F_E"))));
-        faces.add(new face("centroDireitoBase"  , arestas.get(encontraAresta("G_F"))));
+        faces.add(new face("centroDireitaBase"  , arestas.get(encontraAresta("G_F"))));
 
+        // Colocar faces nas arestas
+        arestas.get(encontraAresta("B_A")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("esquerda")));
+        arestas.get(encontraAresta("C_B")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("topo")));
+        arestas.get(encontraAresta("D_C")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("direitaCima")));
+        arestas.get(encontraAresta("E_D")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("centroDireitaTopo")));
+        arestas.get(encontraAresta("F_E")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("centroDireitaMeio")));
+        arestas.get(encontraAresta("G_F")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("centroDireitaBase")));
+        arestas.get(encontraAresta("H_G")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("direitaBaixo")));
+        arestas.get(encontraAresta("A_H")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("baixo")));
+      
         
     }
     
