@@ -100,26 +100,26 @@ public final class letraC extends Shape{
         vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
         
         // Criação das faces
-        faces.add(new face("frente"             , arestas.get(encontraAresta("B_A"))));
-        faces.add(new face("tras"               , arestas.get(encontraAresta("BT_AT"))));
-        faces.add(new face("topo"               , arestas.get(encontraAresta("C_B"))));
-        faces.add(new face("baixo"              , arestas.get(encontraAresta("A_H"))));
-        faces.add(new face("esquerda"           , arestas.get(encontraAresta("B_A"))));
-        faces.add(new face("direitaCima"        , arestas.get(encontraAresta("D_C"))));
-        faces.add(new face("direitaBaixo"       , arestas.get(encontraAresta("H_G"))));   
-        faces.add(new face("centroDireitaTopo"  , arestas.get(encontraAresta("E_D"))));
-        faces.add(new face("centroDireitaMeio"  , arestas.get(encontraAresta("F_E"))));
-        faces.add(new face("centroDireitaBase"  , arestas.get(encontraAresta("G_F"))));
+        faces.add(new face("A_H_G_F_E_D_C_B"        , arestas.get(encontraAresta("B_A"))));
+        faces.add(new face("AT_HT_GT_FT_ET_DT_CT_BT", arestas.get(encontraAresta("BT_AT"))));
+        faces.add(new face("B_C_CT_BT"              , arestas.get(encontraAresta("C_B"))));
+        faces.add(new face("A_H_HT_AT"              , arestas.get(encontraAresta("A_H"))));
+        faces.add(new face("A_B_BT_AT"              , arestas.get(encontraAresta("B_A"))));
+        faces.add(new face("C_D_DT_CT"              , arestas.get(encontraAresta("D_C"))));
+        faces.add(new face("G_H_HT_GT"              , arestas.get(encontraAresta("H_G"))));   
+        faces.add(new face("D_E_ET_DT"              , arestas.get(encontraAresta("E_D"))));
+        faces.add(new face("E_F_FT_ET"              , arestas.get(encontraAresta("F_E"))));
+        faces.add(new face("F_G_GT_FT"              , arestas.get(encontraAresta("G_F"))));
 
         // Colocar faces nas arestas
-        arestas.get(encontraAresta("B_A")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("esquerda")));
-        arestas.get(encontraAresta("C_B")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("topo")));
-        arestas.get(encontraAresta("D_C")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("direitaCima")));
-        arestas.get(encontraAresta("E_D")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("centroDireitaTopo")));
-        arestas.get(encontraAresta("F_E")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("centroDireitaMeio")));
-        arestas.get(encontraAresta("G_F")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("centroDireitaBase")));
-        arestas.get(encontraAresta("H_G")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("direitaBaixo")));
-        arestas.get(encontraAresta("A_H")).setFaces(faces.get(encontraFace("frente")), faces.get(encontraFace("baixo")));
+        arestas.get(encontraAresta("B_A")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("A_B_BT_AT")));
+        arestas.get(encontraAresta("C_B")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("B_C_CT_BT")));
+        arestas.get(encontraAresta("D_C")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("C_D_DT_CT")));
+        arestas.get(encontraAresta("E_D")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("D_E_ET_DT")));
+        arestas.get(encontraAresta("F_E")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("E_F_FT_ET")));
+        arestas.get(encontraAresta("G_F")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("F_G_GT_FT")));
+        arestas.get(encontraAresta("H_G")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("G_H_HT_GT")));
+        arestas.get(encontraAresta("A_H")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("A_H_HT_AT")));
       
         
     }

@@ -33,7 +33,7 @@ public final class letraA extends Shape{
         arestas     = new ArrayList<>();
         faces       = new ArrayList<>();
         
-        // Vértices da A_H_G_F_E_D_C_B da letra
+        // Vértices da frente da letra
         vertices.add(new vertice("A", -2    	, -2	, 0.25, null));
         vertices.add(new vertice("B", -0.5  	, 2.0	, 0.25, null));
         vertices.add(new vertice("C", 0.5   	, 2	    , 0.25, null));
@@ -61,7 +61,7 @@ public final class letraA extends Shape{
         vertices.add(new vertice("KT", 0.25     , 1.5   , -0.25, null));
         vertices.add(new vertice("LT", 0.75     , 0     , -0.25, null));
         
-        // Arestas da borda da A_H_G_F_E_D_C_B
+        // Arestas da borda da frente
         arestas.add(new aresta("B_A", vertices.get(1), vertices.get(0), null, null, null, null, null, null));
         arestas.add(new aresta("C_B", vertices.get(2), vertices.get(1), null, null, null, null, null, null));
         arestas.add(new aresta("D_C", vertices.get(3), vertices.get(2), null, null, null, null, null, null));
@@ -71,7 +71,7 @@ public final class letraA extends Shape{
         arestas.add(new aresta("H_G", vertices.get(7), vertices.get(6), null, null, null, null, null, null));
         arestas.add(new aresta("A_H", vertices.get(0), vertices.get(7), null, null, null, null, null, null));
         
-        // Arestas do centro da A_H_G_F_E_D_C_B da letra
+        // Arestas do centro da frente da letra
         arestas.add(new aresta("I_J", vertices.get(8), vertices.get(9), null, null, null, null, null, null));
         arestas.add(new aresta("K_L", vertices.get(9), vertices.get(10), null, null, null, null, null, null));
         arestas.add(new aresta("J_K", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
@@ -93,7 +93,7 @@ public final class letraA extends Shape{
         arestas.add(new aresta("KT_LT", vertices.get(22), vertices.get(23), null, null, null, null, null, null));
         arestas.add(new aresta("LT_IT", vertices.get(23), vertices.get(20), null, null, null, null, null, null));
         
-        // Arestas que ligam a A_H_G_F_E_D_C_B e costas da letra
+        // Arestas que ligam a frente e costas da letra
         arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(12), null, null, null, null, null, null));
         arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(13), null, null, null, null, null, null));
         arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(14), null, null, null, null, null, null));
