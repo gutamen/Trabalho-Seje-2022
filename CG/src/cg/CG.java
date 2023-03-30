@@ -36,7 +36,7 @@ public class CG extends Application {
         Scene scene = new Scene(root, 500, 400);
         scene.setFill(Color.rgb(255, 255, 255, 0));
 
-        letraC b = new letraC();
+        letraA b = new letraA();
         Canvas canvas = new Canvas(300,300);
         GraphicsContext gc = canvas.getGraphicsContext2D();
         
