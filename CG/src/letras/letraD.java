@@ -40,12 +40,12 @@ public class letraD extends Shape{
         vertices.add(new vertice("K", 1, -.5, 0, null));
         vertices.add(new vertice("L", .5, -1, 0, null));
         
-        arestas.add(new aresta("A_B", vertices.get(0),vertices.get(1), null, null, null, null, null, null));
-        arestas.add(new aresta("B_C", vertices.get(1), vertices.get(2), null, null, null, null, null, null));
-        arestas.add(new aresta("C_D", vertices.get(2), vertices.get(3), null, null, null, null, null, null));
-        arestas.add(new aresta("D_E", vertices.get(3), vertices.get(4), null, null, null, null, null, null));
-        arestas.add(new aresta("E_F", vertices.get(4), vertices.get(5), null, null, null, null, null, null));
-        arestas.add(new aresta("F_A", vertices.get(5), vertices.get(0), null, null, null, null, null, null));
+        arestas.add(new aresta("B_A", vertices.get(1), vertices.get(0), null, null, null, null, null, null));
+        arestas.add(new aresta("C_B", vertices.get(2), vertices.get(1), null, null, null, null, null, null));
+        arestas.add(new aresta("D_C", vertices.get(3), vertices.get(2), null, null, null, null, null, null));
+        arestas.add(new aresta("E_D", vertices.get(4), vertices.get(3), null, null, null, null, null, null));
+        arestas.add(new aresta("F_E", vertices.get(5), vertices.get(4), null, null, null, null, null, null));
+        arestas.add(new aresta("A_F", vertices.get(0), vertices.get(5), null, null, null, null, null, null));
         
         
         arestas.add(new aresta("G_H", vertices.get(6), vertices.get(7), null, null, null, null, null, null));
