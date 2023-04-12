@@ -30,21 +30,41 @@ public class ctrl extends Application {
         
         Group root = new Group();
         //Group other = new Group();
-        Scene scene = new Scene(root, 1024, 768, Color.BLACK);
+        Scene scene = new Scene(root, 1024, 768, Color.WHITE);
         //scene.setFill(Color.rgb(0, 0, 0, 0));
 
         letraC b = new letraC();
-        Canvas canvas = new Canvas(300,300);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+        final Canvas canvas1 = new Canvas(300, 300);
+        final Canvas canvas2 = new Canvas(300, 300);
+        final Canvas canvas3 = new Canvas(300, 300);
+        final Canvas canvas4 = new Canvas(300, 300);
         
-        desenhaFiguraPorAresta(gc,b.arestas);
+        canvas1.setLayoutX(20);
+        canvas1.setLayoutY(250);
+        canvas2.setLayoutX(340);
+        canvas2.setLayoutY(250);
+        canvas3.setLayoutX(20);
+        canvas3.setLayoutY(500);
+        canvas4.setLayoutX(340);
+        canvas4.setLayoutY(500);
         
-        root.getChildren().add(canvas);
+        GraphicsContext gc1 = canvas1.getGraphicsContext2D();
+        GraphicsContext gc2 = canvas2.getGraphicsContext2D();
+        GraphicsContext gc3 = canvas3.getGraphicsContext2D();
+        GraphicsContext gc4 = canvas4.getGraphicsContext2D();
+
         
-        canvas.setHeight(300);
-        canvas.setWidth(300);
+        desenhaFiguraPorAresta(gc1,b.arestas);
+        desenhaFiguraPorAresta(gc2,b.arestas);
+        desenhaFiguraPorAresta(gc3,b.arestas);
+        desenhaFiguraPorAresta(gc4,b.arestas);
         
+        root.getChildren().add(canvas1);
+        root.getChildren().add(canvas2);
+        root.getChildren().add(canvas3);
+        root.getChildren().add(canvas4);
         
+   
         stage.setScene(scene);
        
         stage.show();
@@ -54,8 +74,6 @@ public class ctrl extends Application {
         } catch (InterruptedException ex) {
             Logger.getLogger(CG.class.getName()).log(Level.SEVERE, null, ex);
         }*/
-        
-        Canvas ma = new Canvas();
         
         //root.getChildren().set(0, (Node) ma);
         
@@ -115,4 +133,11 @@ public class ctrl extends Application {
         gc.restore();
         
     }
+
+    private void ctrlVRP2SRU2(){
+        vrp vrp = new vrp(0, 0, -20);
+        
+        
+    }
+    
 }
