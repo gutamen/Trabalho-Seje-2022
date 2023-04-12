@@ -30,32 +30,32 @@ public class caractere {
         faces       = new ArrayList<>();
         
         // Vértices da frente da letra
-        vertices.add(new vertice("A", -2    	, -2	, 0.25, null));
-        vertices.add(new vertice("B", -0.5  	, 2.0	, 0.25, null));
-        vertices.add(new vertice("C", 0.5   	, 2	    , 0.25, null));
-        vertices.add(new vertice("D", 2     	, -2	, 0.25, null));
-        vertices.add(new vertice("E", 1.5   	, -2.0	, 0.25, null));
-        vertices.add(new vertice("F", 0.9375	, -0.5	, 0.25, null));
-        vertices.add(new vertice("G", -0.9375 	, -0.5	, 0.25, null));
-        vertices.add(new vertice("H", -1.5    	, -2	, 0.25, null));
-        vertices.add(new vertice("I", -0.75   	, 0	    , 0.25, null));
-        vertices.add(new vertice("J", -0.25   	, 1.5	, 0.25, null));   
-        vertices.add(new vertice("K", 0.25  	, 1.5	, 0.25, null));
-        vertices.add(new vertice("L", 0.75  	, 0	    , 0.25, null));
+        vertices.add(new vertice("A", -2    	, -2	, 0, null));
+        vertices.add(new vertice("B", -0.5  	, 2.0	, 0, null));
+        vertices.add(new vertice("C", 0.5   	, 2	    , 0, null));
+        vertices.add(new vertice("D", 2     	, -2	, 0, null));
+        vertices.add(new vertice("E", 1.5   	, -2.0	, 0, null));
+        vertices.add(new vertice("F", 0.9375	, -0.5	, 0, null));
+        vertices.add(new vertice("G", -0.9375 	, -0.5	, 0, null));
+        vertices.add(new vertice("H", -1.5    	, -2	, 0, null));
+        vertices.add(new vertice("I", -0.75   	, 0	    , 0, null));
+        vertices.add(new vertice("J", -0.25   	, 1.5	, 0, null));   
+        vertices.add(new vertice("K", 0.25  	, 1.5	, 0, null));
+        vertices.add(new vertice("L", 0.75  	, 0	    , 0, null));
         
         // Vértices das costas da letra
-        vertices.add(new vertice("AT", -2       , -2    , -0.25, null));
-        vertices.add(new vertice("BT", -0.5     , 2.0   , -0.25, null));
-        vertices.add(new vertice("CT", 0.5      , 2     , -0.25, null));
-        vertices.add(new vertice("DT", 2        , -2    , -0.25, null));
-        vertices.add(new vertice("ET", 1.5      , -2.0  , -0.25, null));
-        vertices.add(new vertice("FT", 0.9375   , -0.5  , -0.25, null));
-        vertices.add(new vertice("GT", -0.9375  , -0.5  , -0.25, null));
-        vertices.add(new vertice("HT", -1.5     , -2    , -0.25, null));
-        vertices.add(new vertice("IT", -0.75    , 0     , -0.25, null));
-        vertices.add(new vertice("JT", -0.25    , 1.5   , -0.25, null));   
-        vertices.add(new vertice("KT", 0.25     , 1.5   , -0.25, null));
-        vertices.add(new vertice("LT", 0.75     , 0     , -0.25, null));
+        vertices.add(new vertice("AT", -2       , -2    , 0, null));
+        vertices.add(new vertice("BT", -0.5     , 2.0   , 0, null));
+        vertices.add(new vertice("CT", 0.5      , 2     , 0, null));
+        vertices.add(new vertice("DT", 2        , -2    , 0, null));
+        vertices.add(new vertice("ET", 1.5      , -2.0  , 0, null));
+        vertices.add(new vertice("FT", 0.9375   , -0.5  , 0, null));
+        vertices.add(new vertice("GT", -0.9375  , -0.5  , 0, null));
+        vertices.add(new vertice("HT", -1.5     , -2    , 0, null));
+        vertices.add(new vertice("IT", -0.75    , 0     , 0, null));
+        vertices.add(new vertice("JT", -0.25    , 1.5   , 0, null));   
+        vertices.add(new vertice("KT", 0.25     , 1.5   , 0, null));
+        vertices.add(new vertice("LT", 0.75     , 0     , 0, null));
         
         // Arestas da borda da frente
         arestas.add(new aresta("B_A", vertices.get(1), vertices.get(0), null, null, null, null, null, null));
@@ -289,8 +289,17 @@ public class caractere {
         arestas.get(encontraAresta("H_HT")).setArestasDireita(arestas.get(encontraAresta("HT_AT")), arestas.get(encontraAresta("A_H")));
         arestas.get(encontraAresta("H_HT")).setArestasEsquerda(arestas.get(encontraAresta("H_G")), arestas.get(encontraAresta("GT_HT")));
         
-        arestas.get(encontraAresta("I_IT")).setArestasDireita(arestas.get(encontraAresta("AT_BT")), arestas.get(encontraAresta("B_A")));
-        arestas.get(encontraAresta("I_IT")).setArestasEsquerda(arestas.get(encontraAresta("A_H")), arestas.get(encontraAresta("HT_AT")));
+        arestas.get(encontraAresta("I_IT")).setArestasDireita(arestas.get(encontraAresta("IT_LT")), arestas.get(encontraAresta("L_I")));
+        arestas.get(encontraAresta("I_IT")).setArestasEsquerda(arestas.get(encontraAresta("I_J")), arestas.get(encontraAresta("JT_IT")));
+        
+        arestas.get(encontraAresta("J_JT")).setArestasDireita(arestas.get(encontraAresta("JT_IT")), arestas.get(encontraAresta("I_J")));
+        arestas.get(encontraAresta("J_JT")).setArestasEsquerda(arestas.get(encontraAresta("J_K")), arestas.get(encontraAresta("KT_JT")));
+        
+        arestas.get(encontraAresta("K_KT")).setArestasDireita(arestas.get(encontraAresta("KT_JT")), arestas.get(encontraAresta("J_K")));
+        arestas.get(encontraAresta("K_KT")).setArestasEsquerda(arestas.get(encontraAresta("K_L")), arestas.get(encontraAresta("LT_KT")));
+        
+        arestas.get(encontraAresta("L_LT")).setArestasDireita(arestas.get(encontraAresta("LT_KT")), arestas.get(encontraAresta("K_L")));
+        arestas.get(encontraAresta("L_LT")).setArestasEsquerda(arestas.get(encontraAresta("L_I")), arestas.get(encontraAresta("IT_LT")));
         
     }
     
