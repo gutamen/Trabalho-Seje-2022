@@ -101,9 +101,9 @@ public final class letraC extends Shape{
         
         // Criação das faces
         faces.add(new face("A_H_G_F_E_D_C_B"        , arestas.get(encontraAresta("B_A"))));
-        faces.add(new face("AT_HT_GT_FT_ET_DT_CT_BT", arestas.get(encontraAresta("BT_AT"))));
+        faces.add(new face("AT_BT_CT_DT_ET_FT_GT_HT", arestas.get(encontraAresta("BT_AT"))));
         faces.add(new face("B_C_CT_BT"              , arestas.get(encontraAresta("C_B"))));
-        faces.add(new face("A_H_HT_AT"              , arestas.get(encontraAresta("A_H"))));
+        faces.add(new face("H_A_AT_HT"              , arestas.get(encontraAresta("A_H"))));
         faces.add(new face("A_B_BT_AT"              , arestas.get(encontraAresta("B_A"))));
         faces.add(new face("C_D_DT_CT"              , arestas.get(encontraAresta("D_C"))));
         faces.add(new face("G_H_HT_GT"              , arestas.get(encontraAresta("H_G"))));   
@@ -119,31 +119,31 @@ public final class letraC extends Shape{
         arestas.get(encontraAresta("F_E")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("E_F_FT_ET")));
         arestas.get(encontraAresta("G_F")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("F_G_GT_FT")));
         arestas.get(encontraAresta("H_G")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("G_H_HT_GT")));
-        arestas.get(encontraAresta("A_H")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("A_H_HT_AT")));
+        arestas.get(encontraAresta("A_H")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("H_A_AT_HT")));
         
-        arestas.get(encontraAresta("BT_AT")).setFaces(faces.get(encontraFace("A_B_BT_AT")), faces.get(encontraFace("AT_HT_GT_FT_ET_DT_CT_BT")));
-        arestas.get(encontraAresta("CT_BT")).setFaces(faces.get(encontraFace("B_C_CT_BT")), faces.get(encontraFace("AT_HT_GT_FT_ET_DT_CT_BT")));
-        arestas.get(encontraAresta("DT_CT")).setFaces(faces.get(encontraFace("C_D_DT_CT")), faces.get(encontraFace("AT_HT_GT_FT_ET_DT_CT_BT")));
-        arestas.get(encontraAresta("ET_DT")).setFaces(faces.get(encontraFace("D_E_ET_DT")), faces.get(encontraFace("AT_HT_GT_FT_ET_DT_CT_BT")));
-        arestas.get(encontraAresta("FT_ET")).setFaces(faces.get(encontraFace("E_F_FT_ET")), faces.get(encontraFace("AT_HT_GT_FT_ET_DT_CT_BT")));
-        arestas.get(encontraAresta("GT_FT")).setFaces(faces.get(encontraFace("F_G_GT_FT")), faces.get(encontraFace("AT_HT_GT_FT_ET_DT_CT_BT")));
-        arestas.get(encontraAresta("HT_GT")).setFaces(faces.get(encontraFace("G_H_HT_GT")), faces.get(encontraFace("AT_HT_GT_FT_ET_DT_CT_BT")));
-        arestas.get(encontraAresta("AT_HT")).setFaces(faces.get(encontraFace("A_H_HT_AT")), faces.get(encontraFace("AT_HT_GT_FT_ET_DT_CT_BT")));
+        arestas.get(encontraAresta("BT_AT")).setFaces(faces.get(encontraFace("A_B_BT_AT")), faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")));
+        arestas.get(encontraAresta("CT_BT")).setFaces(faces.get(encontraFace("B_C_CT_BT")), faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")));
+        arestas.get(encontraAresta("DT_CT")).setFaces(faces.get(encontraFace("C_D_DT_CT")), faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")));
+        arestas.get(encontraAresta("ET_DT")).setFaces(faces.get(encontraFace("D_E_ET_DT")), faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")));
+        arestas.get(encontraAresta("FT_ET")).setFaces(faces.get(encontraFace("E_F_FT_ET")), faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")));
+        arestas.get(encontraAresta("GT_FT")).setFaces(faces.get(encontraFace("F_G_GT_FT")), faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")));
+        arestas.get(encontraAresta("HT_GT")).setFaces(faces.get(encontraFace("G_H_HT_GT")), faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")));
+        arestas.get(encontraAresta("AT_HT")).setFaces(faces.get(encontraFace("H_A_AT_HT")), faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")));
         
-        arestas.get(encontraAresta("A_AT")).setFaces(faces.get(encontraFace("A_H_HT_AT")), faces.get(encontraFace("A_B_BT_AT")));
+        arestas.get(encontraAresta("A_AT")).setFaces(faces.get(encontraFace("H_A_AT_HT")), faces.get(encontraFace("A_B_BT_AT")));
         arestas.get(encontraAresta("B_BT")).setFaces(faces.get(encontraFace("B_C_CT_BT")), faces.get(encontraFace("C_D_DT_CT")));
-        arestas.get(encontraAresta("C_CT")).setFaces(faces.get(encontraFace("C_D_DT_CT")), faces.get(encontraFace("AT_HT_GT_FT_ET_DT_CT_BT")));
-        arestas.get(encontraAresta("D_DT")).setFaces(faces.get(encontraFace("D_E_ET_DT")), faces.get(encontraFace("AT_HT_GT_FT_ET_DT_CT_BT")));
-        arestas.get(encontraAresta("E_ET")).setFaces(faces.get(encontraFace("E_F_FT_ET")), faces.get(encontraFace("AT_HT_GT_FT_ET_DT_CT_BT")));
-        arestas.get(encontraAresta("F_FT")).setFaces(faces.get(encontraFace("F_G_GT_FT")), faces.get(encontraFace("AT_HT_GT_FT_ET_DT_CT_BT")));
-        arestas.get(encontraAresta("G_GT")).setFaces(faces.get(encontraFace("G_H_HT_GT")), faces.get(encontraFace("AT_HT_GT_FT_ET_DT_CT_BT")));
-        arestas.get(encontraAresta("H_HT")).setFaces(faces.get(encontraFace("A_H_HT_AT")), faces.get(encontraFace("AT_HT_GT_FT_ET_DT_CT_BT")));
+        arestas.get(encontraAresta("C_CT")).setFaces(faces.get(encontraFace("C_D_DT_CT")), faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")));
+        arestas.get(encontraAresta("D_DT")).setFaces(faces.get(encontraFace("D_E_ET_DT")), faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")));
+        arestas.get(encontraAresta("E_ET")).setFaces(faces.get(encontraFace("E_F_FT_ET")), faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")));
+        arestas.get(encontraAresta("F_FT")).setFaces(faces.get(encontraFace("F_G_GT_FT")), faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")));
+        arestas.get(encontraAresta("G_GT")).setFaces(faces.get(encontraFace("G_H_HT_GT")), faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")));
+        arestas.get(encontraAresta("H_HT")).setFaces(faces.get(encontraFace("H_A_AT_HT")), faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")));
         
       
         
     }
     
-        public int encontraVertice(String S){
+    public int encontraVertice(String S){
         for(int i=0; i < this.vertices.size(); i++){
             if(this.vertices.get(i).getNomeVertice().equals(S))
                 return i;
