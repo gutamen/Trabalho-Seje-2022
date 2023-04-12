@@ -5,6 +5,7 @@
 package controller;
 
 import estrutura.aresta;
+import estrutura.vertice;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javafx.application.Application;
@@ -137,7 +138,44 @@ public class ctrl extends Application {
     private void ctrlVRP2SRU2(){
         vrp vrp = new vrp(0, 0, -20);
         
+        double[][] matrixProj = {{1, 0, 0, 0},
+                                 {0, 1, 0, 0},
+                                 {0, 0, 0, 0},
+                                 {0, 0, 0, 1}};
         
+        double[][] matrixTransModel = {{1, 0, 0, 0},
+                                       {0, 1, 0, 0},
+                                       {0, 0, 1, 20},
+                                       {0, 0, 0, 1}};
+        
+        double[][] PxM = mulM1M2(matrixProj, matrixTransModel);
+        
+        
+     
     }
     
+    public double[][] genMTransModel(caractere pts){
+        double[][] matrixTransModel = {{pts}};        
+        return matrixTransModel;
+    }
+    
+    public int encontraVertice(String S, ArrayList<vertice> vertices){
+        for(int i=0; i < vertices.size(); i++){
+            if(vertices.get(i).getNomeVertice().equals(S))
+                return i;
+        }
+        return -1;
+    }
+    
+    public static double[][] mulM1M2(double[][] matriz, double[][] matriz1){
+        double[][] matrizR = new double[matriz.length][matriz1[0].length];
+        for(int i = 0; i < matriz.length; i++){
+            for(int k = 0; k < matriz1[0].length; k++){
+                for(int l = 0; l < matriz1.length; l++){
+                    matrizR[i][k] += (matriz[i][l])*(matriz1[l][k]);
+                }
+            }
+        }
+        return matrizR;
+    }
 }
