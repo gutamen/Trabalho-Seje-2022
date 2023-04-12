@@ -1,34 +1,30 @@
-package letras;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
-/**
- *
- * @author gustavo
- */
-
+package letras;
 
 import estrutura.face;
 import estrutura.aresta;
 import estrutura.vertice;
 import java.util.ArrayList;
-import javafx.scene.shape.Shape;
-
 
 /**
  *
- * @author Gustavo
+ * @author gustavo
  */
-public final class letraA extends Shape{
+public class caractere {
     public ArrayList<vertice> vertices; 
     public ArrayList<aresta> arestas;
     public ArrayList<face> faces;
     
-
-    public letraA() {
+    public caractere(String caractereDefinido){
+        if(caractereDefinido.equals("a") )
+            createA();
+    }
+    
+    
+    private void createA(){
         vertices    = new ArrayList<>();
         arestas     = new ArrayList<>();
         faces       = new ArrayList<>();
@@ -293,19 +289,12 @@ public final class letraA extends Shape{
         arestas.get(encontraAresta("H_HT")).setArestasDireita(arestas.get(encontraAresta("HT_AT")), arestas.get(encontraAresta("A_H")));
         arestas.get(encontraAresta("H_HT")).setArestasEsquerda(arestas.get(encontraAresta("H_G")), arestas.get(encontraAresta("GT_HT")));
         
-        arestas.get(encontraAresta("I_IT")).setArestasDireita(arestas.get(encontraAresta("IT_LT")), arestas.get(encontraAresta("L_I")));
-        arestas.get(encontraAresta("I_IT")).setArestasEsquerda(arestas.get(encontraAresta("I_J")), arestas.get(encontraAresta("JT_IT")));
-        
-        arestas.get(encontraAresta("J_JT")).setArestasDireita(arestas.get(encontraAresta("JT_IT")), arestas.get(encontraAresta("I_J")));
-        arestas.get(encontraAresta("J_JT")).setArestasEsquerda(arestas.get(encontraAresta("J_K")), arestas.get(encontraAresta("KT_JT")));
-        
-        arestas.get(encontraAresta("K_KT")).setArestasDireita(arestas.get(encontraAresta("KT_JT")), arestas.get(encontraAresta("J_K")));
-        arestas.get(encontraAresta("K_KT")).setArestasEsquerda(arestas.get(encontraAresta("K_L")), arestas.get(encontraAresta("LT_KT")));
-        
-        arestas.get(encontraAresta("L_LT")).setArestasDireita(arestas.get(encontraAresta("LT_KT")), arestas.get(encontraAresta("K_L")));
-        arestas.get(encontraAresta("L_LT")).setArestasEsquerda(arestas.get(encontraAresta("L_I")), arestas.get(encontraAresta("IT_LT")));
+        arestas.get(encontraAresta("I_IT")).setArestasDireita(arestas.get(encontraAresta("AT_BT")), arestas.get(encontraAresta("B_A")));
+        arestas.get(encontraAresta("I_IT")).setArestasEsquerda(arestas.get(encontraAresta("A_H")), arestas.get(encontraAresta("HT_AT")));
         
     }
+    
+    
     
     private int encontraVertice(String S){
         for(int i=0; i < this.vertices.size(); i++){
@@ -330,4 +319,5 @@ public final class letraA extends Shape{
         }
         return -1;
     }
+    
 }

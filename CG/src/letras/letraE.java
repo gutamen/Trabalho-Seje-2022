@@ -8,7 +8,7 @@ package letras;
  *
  * @author gustavo
  */
-import cg.face;
+import estrutura.face;
 import estrutura.aresta;
 import estrutura.vertice;
 import java.util.ArrayList;

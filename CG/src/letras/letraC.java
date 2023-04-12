@@ -8,7 +8,7 @@ package letras;
  *
  * @author gustavo
  */
-import cg.face;
+import estrutura.face;
 import estrutura.aresta;
 import estrutura.vertice;
 import java.util.ArrayList;
@@ -143,7 +143,7 @@ public final class letraC extends Shape{
         
     }
     
-    public int encontraVertice(String S){
+    private int encontraVertice(String S){
         for(int i=0; i < this.vertices.size(); i++){
             if(this.vertices.get(i).getNomeVertice().equals(S))
                 return i;
@@ -151,7 +151,7 @@ public final class letraC extends Shape{
         return -1;
     }
     
-    public int encontraAresta(String S){
+    private int encontraAresta(String S){
         for(int i=0; i < this.arestas.size(); i++){
             if(this.arestas.get(i).getNomeAresta().equals(S))
                 return i;
@@ -159,7 +159,7 @@ public final class letraC extends Shape{
         return -1;
     }
     
-    public int encontraFace(String S){
+    private int encontraFace(String S){
         for(int i=0; i < this.faces.size(); i++){
             if(this.faces.get(i).getNomeFace().equals(S))
                 return i;

@@ -1,6 +1,5 @@
 package estrutura;
 
-import cg.face;
 
 public class aresta {
     String nomeAresta;

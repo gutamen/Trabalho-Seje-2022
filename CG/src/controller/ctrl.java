@@ -15,7 +15,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import letras.letraC;
+import letras.*;
 
 /**
  *
@@ -24,7 +24,7 @@ import letras.letraC;
 public class ctrl extends Application {
         @Override public void start(Stage stage) {
         //falseStart(stage);
-        trueStart(stage);
+        falseStart(stage);
     }
         
     private void trueStart(Stage stage){
@@ -33,6 +33,7 @@ public class ctrl extends Application {
         //Group other = new Group();
         Scene scene = new Scene(root, 1024, 768, Color.WHITE);
         //scene.setFill(Color.rgb(0, 0, 0, 0));
+
 
         letraC b = new letraC();
         final Canvas canvas1 = new Canvas(300, 300);
@@ -53,6 +54,15 @@ public class ctrl extends Application {
         GraphicsContext gc2 = canvas2.getGraphicsContext2D();
         GraphicsContext gc3 = canvas3.getGraphicsContext2D();
         GraphicsContext gc4 = canvas4.getGraphicsContext2D();
+
+
+        //letraD b = new letraD();
+        Canvas canvas = new Canvas(300,300);
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        
+        desenhaFiguraPorAresta(gc,b.arestas);
+        
+        root.getChildren().add(canvas);
 
         
         desenhaFiguraPorAresta(gc1,b.arestas);
@@ -87,9 +97,11 @@ public class ctrl extends Application {
         Scene scene = new Scene(root, 500, 400);
         scene.setFill(Color.rgb(255, 255, 255, 0));
 
-        letraC b = new letraC();
+        letraA b = new letraA();
         Canvas canvas = new Canvas(300,300);
         GraphicsContext gc = canvas.getGraphicsContext2D();
+        
+        
         
         desenhaFiguraPorAresta(gc,b.arestas);
         
@@ -154,10 +166,10 @@ public class ctrl extends Application {
      
     }
     
-    public double[][] genMTransModel(caractere pts){
+    /*public double[][] genMTransModel(caractere pts){
         double[][] matrixTransModel = {{pts}};        
         return matrixTransModel;
-    }
+    }*/
     
     public int encontraVertice(String S, ArrayList<vertice> vertices){
         for(int i=0; i < vertices.size(); i++){
