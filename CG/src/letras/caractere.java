@@ -25,11 +25,47 @@ public class caractere {
         this.faces      = new ArrayList<>();
         this.letra      = caractereDefinido.charAt(0);
         
+        switch(letra){
+            case 'a' -> this.createA();
+            case 'b' -> this.createB();
+            case 'c' -> this.createC();
+            case 'd' -> this.createD();
+            case 'e' -> this.createE();
+            case 'f' -> this.createF();
+            case 'g' -> this.createG();
+            case 'h' -> this.createH();
+            case 'i' -> this.createI();
+            case 'j' -> this.createJ();
+            case 'k' -> this.createK();
+            case 'l' -> this.createL();
+            case 'm' -> this.createM();
+            case 'n' -> this.createN();
+            case 'o' -> this.createO();
+            case 'p' -> this.createP();
+            case 'q' -> this.createQ();
+            case 'r' -> this.createR();
+            case 's' -> this.createS();
+            case 't' -> this.createT();
+            case 'u' -> this.createU();
+            case 'v' -> this.createV();
+            case 'w' -> this.createW();
+            case 'x' -> this.createX();
+            case 'y' -> this.createY();
+            case 'z' -> this.createZ();
+            case '0' -> this.create0();
+            case '1' -> this.create1();
+            case '2' -> this.create2();
+            case '3' -> this.create3();
+            case '4' -> this.create4();
+            case '5' -> this.create5();
+            case '6' -> this.create6();
+            case '7' -> this.create7();
+            case '8' -> this.create8();
+            case '9' -> this.create9();            
+        }
+                       
+                       
         
-        if(letra == 'a')
-            createA();
-        if(letra == 'c' )
-            createC();
     }
     
     
