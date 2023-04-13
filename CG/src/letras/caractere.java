@@ -343,6 +343,7 @@ public class caractere {
     }
     
     private void createB(){
+        // Vértices frente da letra
         vertices.add( new vertice("A", -2.0, -2.0, 0, null));
         vertices.add( new vertice("B", -2.0, 2.0, 0, null));
         vertices.add( new vertice("C", 1, 2.0, 0, null));
@@ -362,22 +363,44 @@ public class caractere {
         vertices.add( new vertice("Q", .5, 1.5, 0, null));
         vertices.add( new vertice("R", .5, .5, 0, null));
         
-        arestas.add( new aresta("A_B", vertices.get(0), vertices.get(1), null, null, null, null, null, null));
-        arestas.add( new aresta("B_C", vertices.get(1), vertices.get(2), null, null, null, null, null, null));
-        arestas.add( new aresta("C_D", vertices.get(2), vertices.get(3), null, null, null, null, null, null));
-        arestas.add( new aresta("D_E", vertices.get(3), vertices.get(4), null, null, null, null, null, null));
-        arestas.add( new aresta("E_F", vertices.get(4), vertices.get(5), null, null, null, null, null, null));
-        arestas.add( new aresta("F_G", vertices.get(5), vertices.get(6), null, null, null, null, null, null));
-        arestas.add( new aresta("G_H", vertices.get(6), vertices.get(7), null, null, null, null, null, null));
-        arestas.add( new aresta("H_I", vertices.get(7), vertices.get(8), null, null, null, null, null, null));
-        arestas.add( new aresta("I_J", vertices.get(8), vertices.get(9), null, null, null, null, null, null));
-        arestas.add( new aresta("J_A", vertices.get(9), vertices.get(0), null, null, null, null, null, null));
+        // Vértices de trás da letra
+        vertices.add( new vertice("AT", -2.0, -2.0, 0, null));
+        vertices.add( new vertice("BT", -2.0, 2.0, 0, null));
+        vertices.add( new vertice("CT", 1, 2.0, 0, null));
+        vertices.add( new vertice("DT", 1.5, 1.5, 0, null));
+        vertices.add( new vertice("ET", 1.5, .75, 0, null));
+        vertices.add( new vertice("FT", 1, 0.2, 0, null));
+        vertices.add( new vertice("GT", 1, -0.2, 0, null));
+        vertices.add( new vertice("HT", 1.5, -.75, 0, null));
+        vertices.add( new vertice("IT", 1.5, -1.5, 0, null));
+        vertices.add( new vertice("JT", 1, -2, 0, null));
+        vertices.add( new vertice("KT", -1.25, -1.5, 0, null));
+        vertices.add( new vertice("LT", -1.25, -.5, 0, null));
+        vertices.add( new vertice("MT", .5, -.5, 0, null));
+        vertices.add( new vertice("NT", .5, -1.5, 0, null));
+        vertices.add( new vertice("OT", -1.25, .5, 0, null));
+        vertices.add( new vertice("PT", -1.25, 1.5, 0, null));
+        vertices.add( new vertice("QT", .5, 1.5, 0, null));
+        vertices.add( new vertice("RT", .5, .5, 0, null));
         
+        arestas.add( new aresta("B_C", vertices.get(1), vertices.get(0), null, null, null, null, null, null));
+        arestas.add( new aresta("C_B", vertices.get(2), vertices.get(1), null, null, null, null, null, null));
+        arestas.add( new aresta("D_C", vertices.get(3), vertices.get(2), null, null, null, null, null, null));
+        arestas.add( new aresta("E_D", vertices.get(4), vertices.get(3), null, null, null, null, null, null));
+        arestas.add( new aresta("F_E", vertices.get(5), vertices.get(4), null, null, null, null, null, null));
+        arestas.add( new aresta("G_F", vertices.get(6), vertices.get(5), null, null, null, null, null, null));
+        arestas.add( new aresta("H_G", vertices.get(7), vertices.get(6), null, null, null, null, null, null));
+        arestas.add( new aresta("I_H", vertices.get(8), vertices.get(7), null, null, null, null, null, null));
+        arestas.add( new aresta("J_I", vertices.get(9), vertices.get(8), null, null, null, null, null, null));
+        arestas.add( new aresta("A_J", vertices.get(0), vertices.get(9), null, null, null, null, null, null));
+        
+        // Vértices Quadrado baixo
         arestas.add( new aresta("K_L", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
         arestas.add( new aresta("L_M", vertices.get(11), vertices.get(12), null, null, null, null, null, null));
         arestas.add( new aresta("M_N", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
         arestas.add( new aresta("N_K", vertices.get(13), vertices.get(10), null, null, null, null, null, null));
         
+        // Vértices Quadrado alto
         arestas.add( new aresta("O_P", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
         arestas.add( new aresta("P_Q", vertices.get(15), vertices.get(16), null, null, null, null, null, null));
         arestas.add( new aresta("Q_R", vertices.get(16), vertices.get(17), null, null, null, null, null, null));
@@ -1006,7 +1029,7 @@ public class caractere {
         arestas.add(new aresta("M_N", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
         arestas.add(new aresta("N_O", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
         arestas.add(new aresta("O_P", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
-        arestas.add(new aresta("P_H", vertices.get(15), vertices.get(7), null, null, null, null, null, null));
+        arestas.add(new aresta("P_I", vertices.get(15), vertices.get(8), null, null, null, null, null, null));
     }
     
     private void createR(){
