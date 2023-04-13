@@ -166,10 +166,15 @@ public class ctrl extends Application {
      
     }
     
-    /*public double[][] genMTransModel(caractere pts){
-        double[][] matrixTransModel = {{pts}};        
+    public double[][] genMTransModel(caractere pts){
+        double[][] matrixTransModel = new double[pts.vertices.size()][pts.vertices.size()];
+        
+        for(int i = 0; i < pts.vertices.size(); i++){
+            matrixTransModel[0][i] = 
+        }
+        
         return matrixTransModel;
-    }*/
+    }
     
     public int encontraVertice(String S, ArrayList<vertice> vertices){
         for(int i=0; i < vertices.size(); i++){
