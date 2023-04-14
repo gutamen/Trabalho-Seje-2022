@@ -9,6 +9,7 @@ import estrutura.vertice;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javafx.application.Application;
+import javafx.geometry.Point3D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -139,8 +140,15 @@ public class ctrl extends Application {
     }
 
     private void ctrlVRP2SRU(caractere pts){
-        vrp vrp = new vrp(0, 0, -20);
+        ctrlCam ct = new ctrlCam();
+        ct.setVRP(50, 15, 30);
+        ct.setP(20, 6, 15);
+        ct.setYc(0, 1, 0);
+        ct.setDp(17);
+        ct.setViewport(-8, -5, 8, 5);
+        ct.setWindow(0, 0, 320, 240);
         
+        /*
         double[][] matrixProj = {{1, 0, 0, 0},
                                  {0, 1, 0, 0},
                                  {0, 0, 0, 0},
@@ -158,27 +166,65 @@ public class ctrl extends Application {
         result = mulM1M2(matrixTransModel, result);
         System.out.println("\n");
         writMat(result);
+        */
+        
+        System.out.println("N = "+ct.getNzao());
+        System.out.println("n = "+ct.getNzin());
+        System.out.println("V = "+ct.getVzao());
+        System.out.println("v = "+ct.getVzin());
+        System.out.println("u = "+ct.getUzin());
+        System.out.println("YN = "+ct.getYN());
+        
+        System.out.println("VRP_PP");
+        writMat(ct.getVRP_PP());
+        System.out.println("\n");
+        System.out.println("VRP_SRC");
+        writMat(ct.getVRP_SRC());
+        System.out.println("\n");
+        System.out.println("VP_PP");
+        writMat(ct.getVP_PP());
+        System.out.println("\n");
+        System.out.println("VP_SRC");
+        writMat(ct.getVP_SRC());
+        System.out.println("\n");
+        System.out.println("Matri R");
+        writMat(ct.getR());
+        System.out.println("\n");
+        System.out.println("Matriz T");
+        writMat(ct.getT());
+        System.out.println("\n");
+        System.out.println("Matriz M(SRU,SRT)");
+        writMat(ct.getM_SRU2SRC());
+        System.out.println("\n");
+        System.out.println("Matriz Proj");
+        writMat(ct.getMProj());
+        System.out.println("\n");
+        System.out.println("Matriz Jp");
+        writMat(ct.getMJp());
+        System.out.println("\n");
+        System.out.println("Matriz Pipeline (SRU,SRT)");
+        writMat(ct.getPipeline_SRU2SRT());
     }
     
     public double[][] genMTransModel(caractere pts){
-        double[][] matrixTransModel = new double[4][pts.vertices.size()];
+        double[][] verticesDaLetra = new double[4][pts.vertices.size()];
         
         for(int i = 0; i < pts.vertices.size(); i++){
-            matrixTransModel[0][i] = pts.vertices.get(i).getX();
-            matrixTransModel[1][i] = pts.vertices.get(i).getY();
-            matrixTransModel[2][i] = pts.vertices.get(i).getZ();
-            matrixTransModel[3][i] = 1;
+            verticesDaLetra[0][i] = pts.vertices.get(i).getX();
+            verticesDaLetra[1][i] = pts.vertices.get(i).getY();
+            verticesDaLetra[2][i] = pts.vertices.get(i).getZ();
+            verticesDaLetra[3][i] = 1;
         }
         
-        writMat(matrixTransModel);
+        writMat(verticesDaLetra);
         
-        return matrixTransModel;
+        return verticesDaLetra;
     }
     
     public static double[][] writMat(double[][] matrizR){
         for(int i = 0; i < matrizR.length; i++){
             for(int k = 0; k < matrizR[0].length; k++){
-                System.out.print((Double.toString(matrizR[i][k])));
+                System.out.print((Double.toString(matrizR[i][k]))+" | ");
             }
             System.out.println("");
         }
