@@ -9,32 +9,32 @@ package controller;
  * @author macedo
  */
 public class Point4P {
-    public double x;
-    public double y;
-    public double z;
-    public double k;
+    public double xmin;
+    public double ymin;
+    public double xmax;
+    public double ymax;
 
-    public Point4P(double x, double y, double z, double k) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.k = k;
+    public Point4P(double xmin, double ymin, double xmax, double ymax) {
+        this.xmin = xmin;
+        this.ymin = ymin;
+        this.xmax = xmax;
+        this.ymax = ymax;
     }
 
-    public double getX() {
-        return x;
+    public double getXmin() {
+        return xmin;
     }
 
-    public double getY() {
-        return y;
+    public double getYmin() {
+        return ymin;
     }
 
-    public double getZ() {
-        return z;
+    public double getXmax() {
+        return xmax;
     }
 
-    public double getK() {
-        return k;
+    public double getYmax() {
+        return ymax;
     }
     
 }

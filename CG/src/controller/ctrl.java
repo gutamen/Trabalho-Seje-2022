@@ -145,8 +145,8 @@ public class ctrl extends Application {
         ct.setP(20, 6, 15);
         ct.setYc(0, 1, 0);
         ct.setDp(17);
-        ct.setViewport(-8, -5, 8, 5);
-        ct.setWindow(0, 0, 320, 240);
+        ct.setViewport(0, 0, 320, 240);
+        ct.setWindow(-8, -5, 8, 5);
         
         /*
         double[][] matrixProj = {{1, 0, 0, 0},

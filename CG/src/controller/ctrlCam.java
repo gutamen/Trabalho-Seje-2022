@@ -40,16 +40,16 @@ public class ctrlCam {
         return Viewport;
     }
 
-    public void setViewport(double x, double y, double z, double k) {
-        this.Viewport = new Point4P(x, y, z, k);
+    public void setViewport(double xmin, double ymin, double xmax, double ymax) {
+        this.Viewport = new Point4P(xmin, ymin, xmax, ymax);
     }
 
     public Point4P getWindow() {
         return Window;
     }
 
-    public void setWindow(double x, double y, double z, double k) {
-        this.Window = new Point4P(x, y, z, k);
+    public void setWindow(double xmin, double ymin, double xmax, double ymax) {
+        this.Window = new Point4P(xmin, ymin, xmax, ymax);
     }
     
     public double getDp() {
@@ -169,12 +169,12 @@ public class ctrlCam {
     }
 
     public double[][] getMJp() {
-        System.out.println((getViewport().getZ()-getViewport().getX())/(getWindow().getZ()-getWindow().getX()));
+        System.out.println((getViewport().getXmax()-getViewport().getXmin())/(getWindow().getXmax()-getWindow().getXmin()));
         return MJp = new double[][]{
-            {(getViewport().getZ()-getViewport().getX())/(getWindow().getZ()-getWindow().getX()), 
-                0, 0, getWindow().getX()*((getViewport().getZ()-getViewport().getX())/(getWindow().getZ()-getWindow().getX()))+getViewport().getX()},
-            {0, (getViewport().getY()-getViewport().getK())/(getWindow().getK()-getWindow().getY()),
-                0, getWindow().getX()*((getViewport().getK()-getViewport().getY())/(getWindow().getK()-getWindow().getY()))+getViewport().getX()},
+            {(getViewport().getXmax()-getViewport().getXmin())/(getWindow().getXmax()-getWindow().getXmin()), 
+                0, 0, -getWindow().getXmin()*((getViewport().getXmax()-getViewport().getXmin())/(getWindow().getXmax()-getWindow().getXmin()))+getViewport().getXmin()},
+            {0, (getViewport().getYmax()-getViewport().getYmin())/(getWindow().getYmax()-getWindow().getYmin()),
+                0, -getWindow().getYmin()*((getViewport().getYmax()-getViewport().getYmin())/(getWindow().getYmax()-getWindow().getYmin()))+getViewport().getYmin()},
             {0, 0, 1, 0},
             {0, 0, 0, 1}};
     }
