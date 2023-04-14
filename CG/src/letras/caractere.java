@@ -383,6 +383,7 @@ public class caractere {
         vertices.add( new vertice("QT", .5, 1.5, 0, null));
         vertices.add( new vertice("RT", .5, .5, 0, null));
         
+        // Arestas da frente da letra
         arestas.add( new aresta("B_C", vertices.get(1), vertices.get(0), null, null, null, null, null, null));
         arestas.add( new aresta("C_B", vertices.get(2), vertices.get(1), null, null, null, null, null, null));
         arestas.add( new aresta("D_C", vertices.get(3), vertices.get(2), null, null, null, null, null, null));
@@ -394,17 +395,21 @@ public class caractere {
         arestas.add( new aresta("J_I", vertices.get(9), vertices.get(8), null, null, null, null, null, null));
         arestas.add( new aresta("A_J", vertices.get(0), vertices.get(9), null, null, null, null, null, null));
         
-        // Vértices Quadrado baixo
+        // Arestas Quadrado baixo
         arestas.add( new aresta("K_L", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
         arestas.add( new aresta("L_M", vertices.get(11), vertices.get(12), null, null, null, null, null, null));
         arestas.add( new aresta("M_N", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
         arestas.add( new aresta("N_K", vertices.get(13), vertices.get(10), null, null, null, null, null, null));
         
-        // Vértices Quadrado alto
+        // Arestas Quadrado alto
         arestas.add( new aresta("O_P", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
         arestas.add( new aresta("P_Q", vertices.get(15), vertices.get(16), null, null, null, null, null, null));
         arestas.add( new aresta("Q_R", vertices.get(16), vertices.get(17), null, null, null, null, null, null));
         arestas.add( new aresta("R_O", vertices.get(17), vertices.get(14), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra
+        
+        
     }
     
     private void createC(){
