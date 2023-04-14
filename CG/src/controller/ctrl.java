@@ -24,7 +24,7 @@ import letras.*;
 public class ctrl extends Application {
         @Override public void start(Stage stage) {
         //falseStart(stage);
-        falseStart(stage);
+        trueStart(stage);
     }
         
     private void trueStart(Stage stage){
@@ -35,7 +35,7 @@ public class ctrl extends Application {
         //scene.setFill(Color.rgb(0, 0, 0, 0));
 
 
-        letraC b = new letraC();
+        caractere b = new caractere("b");
         final Canvas canvas1 = new Canvas(300, 300);
         final Canvas canvas2 = new Canvas(300, 300);
         final Canvas canvas3 = new Canvas(300, 300);
@@ -54,16 +54,6 @@ public class ctrl extends Application {
         GraphicsContext gc2 = canvas2.getGraphicsContext2D();
         GraphicsContext gc3 = canvas3.getGraphicsContext2D();
         GraphicsContext gc4 = canvas4.getGraphicsContext2D();
-
-
-        //letraD b = new letraD();
-        Canvas canvas = new Canvas(300,300);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        
-        desenhaFiguraPorAresta(gc,b.arestas);
-        
-        root.getChildren().add(canvas);
-
         
         desenhaFiguraPorAresta(gc1,b.arestas);
         desenhaFiguraPorAresta(gc2,b.arestas);
@@ -75,6 +65,7 @@ public class ctrl extends Application {
         root.getChildren().add(canvas3);
         root.getChildren().add(canvas4);
         
+        ctrlVRP2SRU(b);
    
         stage.setScene(scene);
        
@@ -147,7 +138,7 @@ public class ctrl extends Application {
         
     }
 
-    private void ctrlVRP2SRU2(){
+    private void ctrlVRP2SRU(caractere pts){
         vrp vrp = new vrp(0, 0, -20);
         
         double[][] matrixProj = {{1, 0, 0, 0},
@@ -162,18 +153,37 @@ public class ctrl extends Application {
         
         double[][] PxM = mulM1M2(matrixProj, matrixTransModel);
         
+        double[][] result = genMTransModel(pts);
         
-     
+        result = mulM1M2(matrixTransModel, result);
+        System.out.println("\n");
+        writMat(result);
     }
     
     public double[][] genMTransModel(caractere pts){
-        double[][] matrixTransModel = new double[pts.vertices.size()][pts.vertices.size()];
+        double[][] matrixTransModel = new double[4][pts.vertices.size()];
         
         for(int i = 0; i < pts.vertices.size(); i++){
-            matrixTransModel[0][i] = 
+            matrixTransModel[0][i] = pts.vertices.get(i).getX();
+            matrixTransModel[1][i] = pts.vertices.get(i).getY();
+            matrixTransModel[2][i] = pts.vertices.get(i).getZ();
+            matrixTransModel[3][i] = 1;
         }
         
+        writMat(matrixTransModel);
+        
         return matrixTransModel;
+    }
+    
+    public static double[][] writMat(double[][] matrizR){
+        for(int i = 0; i < matrizR.length; i++){
+            for(int k = 0; k < matrizR[0].length; k++){
+                System.out.print((Double.toString(matrizR[i][k])));
+            }
+            System.out.println("");
+        }
+
+        return matrizR;
     }
     
     public int encontraVertice(String S, ArrayList<vertice> vertices){
