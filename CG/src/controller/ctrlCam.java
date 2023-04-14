@@ -173,7 +173,7 @@ public class ctrlCam {
         return MJp = new double[][]{
             {(getViewport().getXmax()-getViewport().getXmin())/(getWindow().getXmax()-getWindow().getXmin()), 
                 0, 0, -getWindow().getXmin()*((getViewport().getXmax()-getViewport().getXmin())/(getWindow().getXmax()-getWindow().getXmin()))+getViewport().getXmin()},
-            {0, (getViewport().getYmax()-getViewport().getYmin())/(getWindow().getYmax()-getWindow().getYmin()),
+            {0, (getViewport().getYmin()-getViewport().getYmax())/(getWindow().getYmax()-getWindow().getYmin()),
                 0, -getWindow().getYmin()*((getViewport().getYmax()-getViewport().getYmin())/(getWindow().getYmax()-getWindow().getYmin()))+getViewport().getYmin()},
             {0, 0, 1, 0},
             {0, 0, 0, 1}};
