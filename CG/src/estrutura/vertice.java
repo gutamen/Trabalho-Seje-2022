@@ -53,4 +53,8 @@ public class vertice {
     public void setArestaVertice(aresta arestaVertice) {
         this.arestaVertice = arestaVertice;
     }
+    
+    public void setVertice(double x, double y, double z){
+        this.ponto = new Point3D(x, y, z);
+    }
 }

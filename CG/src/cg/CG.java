@@ -7,8 +7,10 @@ package cg;
 import controller.ctrl;
 import javafx.application.Application;
 
+
 public class CG extends ctrl {
     public static void main(String[] args) {
         Application.launch(args);
+        
     }
 }

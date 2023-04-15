@@ -19,6 +19,8 @@ public class ctrlCam {
     public Point3D Vzao;
     public Point3D vzin;
     public Point3D uzin;
+    public double[][] NmPPLxMT;
+    public double[][] PPLxMT;
     public double[][] MProj;
     public double[][] MJp;
     public double[][] VRP_SRC;
@@ -169,7 +171,6 @@ public class ctrlCam {
     }
 
     public double[][] getMJp() {
-        System.out.println((getViewport().getXmax()-getViewport().getXmin())/(getWindow().getXmax()-getWindow().getXmin()));
         return MJp = new double[][]{
             {(getViewport().getXmax()-getViewport().getXmin())/(getWindow().getXmax()-getWindow().getXmin()), 
                 0, 0, -getWindow().getXmin()*((getViewport().getXmax()-getViewport().getXmin())/(getWindow().getXmax()-getWindow().getXmin()))+getViewport().getXmin()},
@@ -182,8 +183,32 @@ public class ctrlCam {
     public double[][] getPipeline_SRU2SRT() {
         return Pipeline_SRU2SRT = mulM1M2(getMJp(), mulM1M2(getMProj(), getM_SRU2SRC()));
     }
+
+    public double[][] getPPLxMT() {
+        return PPLxMT;
+    }
+
+    public void setPPLxMT(double[][] PPL, double[][] MT) {
+        this.PPLxMT = mulM1M2(PPL, MT);
+    }
+
+    public double[][] getNmPPLxMT() {
+        double[][] aux = new double[getPPLxMT().length][getPPLxMT()[0].length];
+        for(int i = 0; i < 4; i++){
+            if(i != 2){
+                for(int j = 0; j < getPPLxMT()[0].length; j++){
+                    aux[i][j] = getPPLxMT()[i][j]/getPPLxMT()[3][j];
+                }
+            }else{
+                for(int j = 0; j < getPPLxMT()[0].length; j++){
+                    aux[i][j] = getPPLxMT()[i][j];
+                }
+            }
+        }
+        return aux;
+    }
     
-    public static double[][] mulM1M2(double[][] matriz, double[][] matriz1){
+    public double[][] mulM1M2(double[][] matriz, double[][] matriz1){
         double[][] matrizR = new double[matriz.length][matriz1[0].length];
         for(int i = 0; i < matriz.length; i++){
             for(int k = 0; k < matriz1[0].length; k++){
