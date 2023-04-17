@@ -40,6 +40,9 @@ public class ctrl extends Application {
         
         for(int i = 0; i < readed.length(); i++){
             chars.add(new caractere(readed.substring(i, i+1)));
+            for(int j = chars.get(i).vertices.size()/2+1; j < chars.get(i).vertices.size(); j++){
+                chars.get(i).vertices.get(j).setZ(2);
+            }
             //System.out.println(chars.get(i).letra);
         }
         
@@ -48,45 +51,83 @@ public class ctrl extends Application {
         Group root = new Group();
         Scene scene = new Scene(root, 1920, 1080, Color.WHITE);
         
-        ctrlCam ct = new ctrlCam();
+        ctrlCam ct1 = new ctrlCam();
+        ctrlCam ct2 = new ctrlCam();
+        ctrlCam ct3 = new ctrlCam();
+        ctrlCam ct4 = new ctrlCam();
         
         final Canvas canvas1 = new Canvas(600, 600);
-        //final Canvas canvas2 = new Canvas(300, 300);
-        //final Canvas canvas3 = new Canvas(300, 300);
-        //final Canvas canvas4 = new Canvas(300, 300);
+        final Canvas canvas2 = new Canvas(600, 600);
+        final Canvas canvas3 = new Canvas(600, 600);
+        final Canvas canvas4 = new Canvas(600, 600);
 
         canvas1.setLayoutX(0);
         canvas1.setLayoutY(0);
-        //canvas2.setLayoutX(340);
-        //canvas2.setLayoutY(250);
-        //canvas3.setLayoutX(20);
-        //canvas3.setLayoutY(500);
-        //canvas4.setLayoutX(340);
-        //canvas4.setLayoutY(500);
+        canvas2.setLayoutY(200);
+        canvas3.setLayoutY(400);
+        canvas4.setLayoutY(600);
         
         GraphicsContext gc1 = canvas1.getGraphicsContext2D();
-        //GraphicsContext gc2 = canvas2.getGraphicsContext2D();
-        //GraphicsContext gc3 = canvas3.getGraphicsContext2D();
-        //raphicsContext gc4 = canvas4.getGraphicsContext2D();
+        GraphicsContext gc2 = canvas2.getGraphicsContext2D();
+        GraphicsContext gc3 = canvas3.getGraphicsContext2D();
+        GraphicsContext gc4 = canvas4.getGraphicsContext2D();
            
         root.getChildren().add(canvas1);
-        //root.getChildren().add(canvas2);
-        //root.getChildren().add(canvas3);
-        //root.getChildren().add(canvas4);
+        root.getChildren().add(canvas2);
+        root.getChildren().add(canvas3);
+        root.getChildren().add(canvas4);
         
         root.setAutoSizeChildren(false);
-        canvas1.resizeRelocate(0, 0, 0, 0);
         
         ArrayList<caractere> refactChars = new ArrayList<caractere>();
+        
         for(int i = 0; i < readed.length(); i++){
             refactChars.add(new caractere(readed.substring(i, i+1)));
+            for(int j = refactChars.get(i).vertices.size()/2+1; j < refactChars.get(i).vertices.size(); j++){
+                refactChars.get(i).vertices.get(j).setZ(2);
+            }
         }
         
         tela2String(chars.size(), refactChars);
         
+        ct1.setVRP(0, 0, 19);
+        ct1.setP(0, 0, -2);
+        ct1.setYc(0, 1, 0);
+        ct1.setDp(21);
+        ct1.setViewport(0, 0, 80*chars.size(), 200);
+        ct1.setWindow(-2*chars.size()-2, -2-1, 2*chars.size()+2, 2+1);
+        
+        ct2.setVRP(0, 19, 0);
+        ct2.setP(0, -2, 0);
+        ct2.setYc(0, 1, 0);
+        ct2.setDp(21);
+        ct2.setViewport(0, 0, 80*chars.size(), 200);
+        ct2.setWindow(-2*chars.size()-2, -2-1, 2*chars.size()+2, 2+1);
+        
+        ct3.setVRP(19, 0, 0);
+        ct3.setP(-2, 0, 0);
+        ct3.setYc(0, 1, 0);
+        ct3.setDp(21);
+        ct3.setViewport(0, 0, 80*chars.size(), 200);
+        ct3.setWindow(-2*chars.size()-2, -2-1, 2*chars.size()+2, 2+1);
+        
+        ct4.setVRP(0, 0, 19);
+        ct4.setP(0, 0, -1);
+        ct4.setYc(0, 1, 0);
+        ct4.setDp(20);
+        ct4.setViewport(0, 0, 80*chars.size(), 200);
+        ct4.setWindow(-2*chars.size()-2, -2-1, 2*chars.size()+2, 2+1);
+        
+        
         for(int i = 0; i < refactChars.size(); i++){
-            refact(refactChars.get(i), ctrlVRP2SRU(chars.get(i), chars.size()*1.3));
+            refact(refactChars.get(i), ctrlVRP2SRU(chars.get(i), ct1));
             desenhaFiguraPorAresta(gc1, refactChars.get(i).arestas);
+            refact(refactChars.get(i), ctrlVRP2SRU(chars.get(i), ct2));
+            desenhaFiguraPorAresta(gc2, refactChars.get(i).arestas);
+            refact(refactChars.get(i), ctrlVRP2SRU(chars.get(i), ct3));
+            desenhaFiguraPorAresta(gc3, refactChars.get(i).arestas);
+            refact(refactChars.get(i), ctrlVRP2SRU(chars.get(i), ct4));
+            desenhaFiguraPorAresta(gc4, refactChars.get(i).arestas);
         }
         
         //desenhaFiguraPorAresta(gc3,bRefact.arestas);
@@ -115,7 +156,8 @@ public class ctrl extends Application {
     }
     
     private void tela2String(int sizeChar, ArrayList<caractere> arrsc){
-        sizeChar *= -4;
+        sizeChar *= -2;
+        sizeChar += 2;
         for(int i = 0; i < arrsc.size(); i++){
             if(arrsc.size() > 1){
                 for(int j = 0; j < arrsc.get(i).vertices.size(); j++){
@@ -197,16 +239,17 @@ public class ctrl extends Application {
         
     }
 
-    private ctrlCam ctrlVRP2SRU(caractere pts, double sizeChars){
-        ctrlCam ct = new ctrlCam();
+    private ctrlCam ctrlVRP2SRU(caractere pts, ctrlCam ct){
+        /*
         ct.setVRP(0, 0, 19);
         ct.setP(0, 0, -1);
         ct.setYc(0, 1, 0);
         ct.setDp(20);
-        ct.setViewport(0, 0, 400, 250);
-        ct.setWindow(-4*sizeChars, -4*sizeChars, 4*sizeChars, 4*sizeChars);
+        ct.setViewport(0, 0, 800*sizeChars, 200);
+        ct.setWindow(-2*sizeChars-2, -2-1, 2*sizeChars+2, 2+1);
+        */
         ct.setPPLxMT(ct.getPipeline_SRU2SRT(), getMatPts(pts));
-        /*
+        
         System.out.println("N = "+ct.getNzao());
         System.out.println("n = "+ct.getNzin());
         System.out.println("V = "+ct.getVzao());
@@ -249,7 +292,7 @@ public class ctrl extends Application {
         writMat(ct.getPPLxMT());
         System.out.println("NmPPLxMT");
         writMat(ct.getNmPPLxMT());
-        */
+        
         return ct;
     }
     
