@@ -83,44 +83,36 @@ public class ctrl extends Application {
         
         ArrayList<caractere> refactChars1 = new ArrayList<caractere>();
         ArrayList<caractere> refactChars2 = new ArrayList<caractere>();
-        ArrayList<caractere> refactChars3 = new ArrayList<caractere>();
-        ArrayList<caractere> refactChars4 = new ArrayList<caractere>();
         
         
         for(int i = 0; i < readed.length(); i++){
             refactChars1.add(new caractere(readed.substring(i, i+1)));
             refactChars2.add(new caractere(readed.substring(i, i+1)));
-            refactChars3.add(new caractere(readed.substring(i, i+1)));
-            refactChars4.add(new caractere(readed.substring(i, i+1)));            
             for(int j = refactChars1.get(i).vertices.size()/2; j < refactChars1.get(i).vertices.size(); j++){
-                refactChars1.get(i).vertices.get(j).setZ(2);
+                refactChars1.get(i).vertices.get(j).setZ(50);
                 refactChars2.get(i).vertices.get(j).setZ(2);
-                refactChars3.get(i).vertices.get(j).setZ(2);
-                refactChars4.get(i).vertices.get(j).setZ(2);           
             }
             for(int j = 0; j < refactChars1.get(i).vertices.size()/2; j++){
                 refactChars1.get(i).vertices.get(j).setZ(1);
                 refactChars2.get(i).vertices.get(j).setZ(1);
-                refactChars3.get(i).vertices.get(j).setZ(1);
-                refactChars4.get(i).vertices.get(j).setZ(1);
             }
         }
         
         tela2String(chars.size(), refactChars1);
         tela2String(chars.size(), refactChars2);
-        tela2String(chars.size(), refactChars3);
-        tela2String(chars.size(), refactChars4);      
-
+       
         //VRP, P, Y, booelan projecao
         System.out.println("0...");
         ctrlVRP2SRU(ct1, refactChars1, gc1, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), false);
         System.out.println("1...");
-        ctrlVRP2SRU(ct2, refactChars2, gc2, new Point3D(0, 19, 0), new Point3D(0, -2, 0), new Point3D(0, 1, 0), false);
-        System.out.println("2...");
-        ctrlVRP2SRU(ct3, refactChars3, gc3, new Point3D(19, 0, 0), new Point3D(-2, 0, 0), new Point3D(0, 1, 0), false);
-        System.out.println("3...");
-        ctrlVRP2SRU(ct4, refactChars4, gc4, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
+        ctrlVRP2SRU(ct4, refactChars2, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
         
+        for(int i = 0; i < refactChars1.size(); i++){
+            desenhaFiguraPorAresta(gc1, refactChars1.get(i).arestas);
+            desenhaFiguraPorArestaTopo(gc2, refactChars1.get(i).arestas);
+            desenhaFiguraPorArestaLateral(gc3, refactChars1.get(i).arestas);
+            desenhaFiguraPorAresta(gc4, refactChars2.get(i).arestas);
+        }
         stage.setScene(scene);
        
         stage.show();
@@ -192,10 +184,10 @@ public class ctrl extends Application {
             
             
             xpoints[0]=(arestas.get(i).getInicio().getX());
-            ypoints[0]=((arestas.get(i).getInicio().getY()));
+            ypoints[0]=((arestas.get(i).getInicio().getZ()));
            
             xpoints[1]=(arestas.get(i).getFim().getX());
-            ypoints[1]=((arestas.get(i).getFim().getY()));
+            ypoints[1]=((arestas.get(i).getFim().getZ()));
             gc.strokePolyline(xpoints, ypoints, 2);
             
         }
@@ -215,10 +207,10 @@ public class ctrl extends Application {
         for(int i = 0; arestas.size() > i; i++){
             
             
-            xpoints[0]=(arestas.get(i).getInicio().getX());
+            xpoints[0]=(arestas.get(i).getInicio().getZ());
             ypoints[0]=((arestas.get(i).getInicio().getY()));
            
-            xpoints[1]=(arestas.get(i).getFim().getX());
+            xpoints[1]=(arestas.get(i).getFim().getZ());
             ypoints[1]=((arestas.get(i).getFim().getY()));
             gc.strokePolyline(xpoints, ypoints, 2);
             
@@ -243,13 +235,11 @@ public class ctrl extends Application {
             for(int i = 0; i < refactChars.size(); i++){
                 ct.setPPLxMT(ct.getPipeline_SRU2SRTNormal(), getMatPts(refactChars.get(i)));
                 refact(refactChars.get(i), ct);
-                desenhaFiguraPorAresta(gc, refactChars.get(i).arestas);
             }
         }else{
             for(int i = 0; i < refactChars.size(); i++){
                 ct.setPPLxMT(ct.getPipeline_SRU2SRT(), getMatPts(refactChars.get(i)));
                 refact(refactChars.get(i), ct);
-                desenhaFiguraPorAresta(gc, refactChars.get(i).arestas);
             }
         }
         
