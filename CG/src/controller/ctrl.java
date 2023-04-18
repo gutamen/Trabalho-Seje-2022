@@ -40,10 +40,12 @@ public class ctrl extends Application {
         
         for(int i = 0; i < readed.length(); i++){
             chars.add(new caractere(readed.substring(i, i+1)));
-            for(int j = chars.get(i).vertices.size()/2+1; j < chars.get(i).vertices.size(); j++){
+            for(int j = chars.get(i).vertices.size()/2; j < chars.get(i).vertices.size(); j++){
                 chars.get(i).vertices.get(j).setZ(2);
             }
-            //System.out.println(chars.get(i).letra);
+            for(int j = 0; j < chars.get(i).vertices.size()/2; j++){
+                chars.get(i).vertices.get(j).setZ(1);
+            }
         }
         
         tela2String(chars.size(), chars);
@@ -71,7 +73,7 @@ public class ctrl extends Application {
         GraphicsContext gc2 = canvas2.getGraphicsContext2D();
         GraphicsContext gc3 = canvas3.getGraphicsContext2D();
         GraphicsContext gc4 = canvas4.getGraphicsContext2D();
-           
+        
         root.getChildren().add(canvas1);
         root.getChildren().add(canvas2);
         root.getChildren().add(canvas3);
@@ -79,74 +81,49 @@ public class ctrl extends Application {
         
         root.setAutoSizeChildren(false);
         
-        ArrayList<caractere> refactChars = new ArrayList<caractere>();
+        ArrayList<caractere> refactChars1 = new ArrayList<caractere>();
+        ArrayList<caractere> refactChars2 = new ArrayList<caractere>();
+        ArrayList<caractere> refactChars3 = new ArrayList<caractere>();
+        ArrayList<caractere> refactChars4 = new ArrayList<caractere>();
+        
         
         for(int i = 0; i < readed.length(); i++){
-            refactChars.add(new caractere(readed.substring(i, i+1)));
-            for(int j = refactChars.get(i).vertices.size()/2+1; j < refactChars.get(i).vertices.size(); j++){
-                refactChars.get(i).vertices.get(j).setZ(2);
+            refactChars1.add(new caractere(readed.substring(i, i+1)));
+            refactChars2.add(new caractere(readed.substring(i, i+1)));
+            refactChars3.add(new caractere(readed.substring(i, i+1)));
+            refactChars4.add(new caractere(readed.substring(i, i+1)));            
+            for(int j = refactChars1.get(i).vertices.size()/2; j < refactChars1.get(i).vertices.size(); j++){
+                refactChars1.get(i).vertices.get(j).setZ(2);
+                refactChars2.get(i).vertices.get(j).setZ(2);
+                refactChars3.get(i).vertices.get(j).setZ(2);
+                refactChars4.get(i).vertices.get(j).setZ(2);           
+            }
+            for(int j = 0; j < refactChars1.get(i).vertices.size()/2; j++){
+                refactChars1.get(i).vertices.get(j).setZ(1);
+                refactChars2.get(i).vertices.get(j).setZ(1);
+                refactChars3.get(i).vertices.get(j).setZ(1);
+                refactChars4.get(i).vertices.get(j).setZ(1);
             }
         }
         
-        tela2String(chars.size(), refactChars);
-        
-        ct1.setVRP(0, 0, 19);
-        ct1.setP(0, 0, -2);
-        ct1.setYc(0, 1, 0);
-        ct1.setDp(21);
-        ct1.setViewport(0, 0, 80*chars.size(), 200);
-        ct1.setWindow(-2*chars.size()-2, -2-1, 2*chars.size()+2, 2+1);
-        
-        ct2.setVRP(0, 19, 0);
-        ct2.setP(0, -2, 0);
-        ct2.setYc(0, 1, 0);
-        ct2.setDp(21);
-        ct2.setViewport(0, 0, 80*chars.size(), 200);
-        ct2.setWindow(-2*chars.size()-2, -2-1, 2*chars.size()+2, 2+1);
-        
-        ct3.setVRP(19, 0, 0);
-        ct3.setP(-2, 0, 0);
-        ct3.setYc(0, 1, 0);
-        ct3.setDp(21);
-        ct3.setViewport(0, 0, 80*chars.size(), 200);
-        ct3.setWindow(-2*chars.size()-2, -2-1, 2*chars.size()+2, 2+1);
-        
-        ct4.setVRP(0, 0, 19);
-        ct4.setP(0, 0, -1);
-        ct4.setYc(0, 1, 0);
-        ct4.setDp(20);
-        ct4.setViewport(0, 0, 80*chars.size(), 200);
-        ct4.setWindow(-2*chars.size()-2, -2-1, 2*chars.size()+2, 2+1);
-        
-        
-        for(int i = 0; i < refactChars.size(); i++){
-            refact(refactChars.get(i), ctrlVRP2SRU(chars.get(i), ct1));
-            desenhaFiguraPorAresta(gc1, refactChars.get(i).arestas);
-            refact(refactChars.get(i), ctrlVRP2SRU(chars.get(i), ct2));
-            desenhaFiguraPorAresta(gc2, refactChars.get(i).arestas);
-            refact(refactChars.get(i), ctrlVRP2SRU(chars.get(i), ct3));
-            desenhaFiguraPorAresta(gc3, refactChars.get(i).arestas);
-            refact(refactChars.get(i), ctrlVRP2SRU(chars.get(i), ct4));
-            desenhaFiguraPorAresta(gc4, refactChars.get(i).arestas);
-        }
-        
-        //desenhaFiguraPorAresta(gc3,bRefact.arestas);
-        //desenhaFiguraPorAresta(gc4,bRefact.arestas);
-        
-        //writMat(getMatPts(aRefact));
+        tela2String(chars.size(), refactChars1);
+        tela2String(chars.size(), refactChars2);
+        tela2String(chars.size(), refactChars3);
+        tela2String(chars.size(), refactChars4);      
+
+        //VRP, P, Y, booelan projecao
+        System.out.println("0...");
+        ctrlVRP2SRU(ct1, refactChars1, gc1, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), false);
+        System.out.println("1...");
+        ctrlVRP2SRU(ct2, refactChars2, gc2, new Point3D(0, 19, 0), new Point3D(0, -2, 0), new Point3D(0, 1, 0), false);
+        System.out.println("2...");
+        ctrlVRP2SRU(ct3, refactChars3, gc3, new Point3D(19, 0, 0), new Point3D(-2, 0, 0), new Point3D(0, 1, 0), false);
+        System.out.println("3...");
+        ctrlVRP2SRU(ct4, refactChars4, gc4, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
         
         stage.setScene(scene);
        
         stage.show();
-        
-        /*try {
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(CG.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        
-        //root.getChildren().set(0, (Node) ma);
-        
     }
         
     private void refact(caractere pts, ctrlCam ct){
@@ -182,39 +159,6 @@ public class ctrl extends Application {
         return max-min;
     }
     
-    private void falseStart(Stage stage){
-        
-        Group root = new Group();
-        //Group other = new Group();
-        Scene scene = new Scene(root, 500, 400);
-        scene.setFill(Color.rgb(255, 255, 255, 0));
-
-        letraA b = new letraA();
-        Canvas canvas = new Canvas(300,300);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        
-        
-        
-        desenhaFiguraPorAresta(gc,b.arestas);
-        
-        root.getChildren().add(canvas);
-        
-        stage.setScene(scene);
-       
-        stage.show();
-        
-        /*try {
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(CG.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        
-        Canvas ma = new Canvas();
-        
-        //root.getChildren().set(0, (Node) ma);
-        
-    }
-    
     private void desenhaFiguraPorAresta(GraphicsContext gc, ArrayList<aresta> arestas) {    
         double[] xpoints = new double[2];
         double[] ypoints = new double[2];
@@ -239,16 +183,28 @@ public class ctrl extends Application {
         
     }
 
-    private ctrlCam ctrlVRP2SRU(caractere pts, ctrlCam ct){
-        /*
-        ct.setVRP(0, 0, 19);
-        ct.setP(0, 0, -1);
-        ct.setYc(0, 1, 0);
-        ct.setDp(20);
-        ct.setViewport(0, 0, 800*sizeChars, 200);
-        ct.setWindow(-2*sizeChars-2, -2-1, 2*sizeChars+2, 2+1);
-        */
-        ct.setPPLxMT(ct.getPipeline_SRU2SRT(), getMatPts(pts));
+    private void ctrlVRP2SRU(ctrlCam ct, ArrayList<caractere> refactChars, GraphicsContext gc, Point3D VRP, Point3D P, Point3D Y, boolean projecao){
+        ct.setVRP(VRP.getX(), VRP.getY(), VRP.getZ());
+        ct.setP(P.getX(), P.getY(), P.getZ());
+        ct.setYc(Y.getX(), Y.getY(), Y.getZ());
+        ct.setDp(21);
+        ct.setViewport(0, 0, 80*refactChars.size(), 200);
+        ct.setWindow(-2*refactChars.size()-2, -2-1, 2*refactChars.size()+2, 2+1);
+        
+        if(!projecao){
+            for(int i = 0; i < refactChars.size(); i++){
+                ct.setPPLxMT(ct.getPipeline_SRU2SRTNormal(), getMatPts(refactChars.get(i)));
+                refact(refactChars.get(i), ct);
+                desenhaFiguraPorAresta(gc, refactChars.get(i).arestas);
+            }
+        }else{
+            for(int i = 0; i < refactChars.size(); i++){
+                ct.setPPLxMT(ct.getPipeline_SRU2SRT(), getMatPts(refactChars.get(i)));
+                refact(refactChars.get(i), ct);
+                desenhaFiguraPorAresta(gc, refactChars.get(i).arestas);
+            }
+        }
+        
         
         System.out.println("N = "+ct.getNzao());
         System.out.println("n = "+ct.getNzin());
@@ -292,8 +248,6 @@ public class ctrl extends Application {
         writMat(ct.getPPLxMT());
         System.out.println("NmPPLxMT");
         writMat(ct.getNmPPLxMT());
-        
-        return ct;
     }
     
     public double[][] getMatPts(caractere pts){

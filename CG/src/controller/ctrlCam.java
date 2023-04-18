@@ -102,11 +102,13 @@ public class ctrlCam {
         return YN = (getYc().getX()*getNzin().getX())+(getYc().getY()*getNzin().getY())+(getYc().getZ()*getNzin().getZ());
     }
     
-    //Y-(Y, n). n-Y
+    //Y-(Y, n). n
     public Point3D getVzao() {
-        return Vzao = new Point3D(getYc().getX()-getNzin().getX()*getYN(),
-                                  getYc().getY()-getNzin().getY()*getYN(),
-                                  getYc().getZ()-getNzin().getZ()*getYN());
+        Vzao = new Point3D(getYc().getX()-getYN()*getNzin().getX(),
+                           getYc().getY()-getYN()*getNzin().getY(),
+                           getYc().getZ()-getYN()*getNzin().getZ());
+        //System.out.println(Vzao);
+        return Vzao;
     }
 
     public double getIVI(){
@@ -170,6 +172,13 @@ public class ctrlCam {
                                       {0, 0, -1/getDp(), getVRP_SRC()[2][0]/getDp(), 0}};
     }
 
+    public double[][] getMProjNormal() {
+        return MProj = new double[][]{{1, 0, 0, 0},
+                                      {0, 1, 0, 0},
+                                      {0, 0, 0, 0},
+                                      {0, 0, 0, 1}};
+    }
+    
     public double[][] getMJp() {
         return MJp = new double[][]{
             {(getViewport().getXmax()-getViewport().getXmin())/(getWindow().getXmax()-getWindow().getXmin()), 
@@ -183,7 +192,11 @@ public class ctrlCam {
     public double[][] getPipeline_SRU2SRT() {
         return Pipeline_SRU2SRT = mulM1M2(getMJp(), mulM1M2(getMProj(), getM_SRU2SRC()));
     }
-
+    
+    public double[][] getPipeline_SRU2SRTNormal() {
+        return Pipeline_SRU2SRT = mulM1M2(getMJp(), mulM1M2(getMProjNormal(), getM_SRU2SRC()));
+    }
+    
     public double[][] getPPLxMT() {
         return PPLxMT;
     }
