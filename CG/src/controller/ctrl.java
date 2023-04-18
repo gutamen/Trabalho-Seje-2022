@@ -182,6 +182,54 @@ public class ctrl extends Application {
         gc.restore();
         
     }
+    
+    private void desenhaFiguraPorArestaTopo(GraphicsContext gc, ArrayList<aresta> arestas) {    
+        double[] xpoints = new double[2];
+        double[] ypoints = new double[2];
+       
+        
+        for(int i = 0; arestas.size() > i; i++){
+            
+            
+            xpoints[0]=(arestas.get(i).getInicio().getX());
+            ypoints[0]=((arestas.get(i).getInicio().getY()));
+           
+            xpoints[1]=(arestas.get(i).getFim().getX());
+            ypoints[1]=((arestas.get(i).getFim().getY()));
+            gc.strokePolyline(xpoints, ypoints, 2);
+            
+        }
+        System.out.println(Arrays.toString(xpoints));
+        System.out.println(Arrays.toString(ypoints));
+        
+        
+        gc.restore();
+        
+    }
+    
+    private void desenhaFiguraPorArestaLateral(GraphicsContext gc, ArrayList<aresta> arestas) {    
+        double[] xpoints = new double[2];
+        double[] ypoints = new double[2];
+       
+        
+        for(int i = 0; arestas.size() > i; i++){
+            
+            
+            xpoints[0]=(arestas.get(i).getInicio().getX());
+            ypoints[0]=((arestas.get(i).getInicio().getY()));
+           
+            xpoints[1]=(arestas.get(i).getFim().getX());
+            ypoints[1]=((arestas.get(i).getFim().getY()));
+            gc.strokePolyline(xpoints, ypoints, 2);
+            
+        }
+        System.out.println(Arrays.toString(xpoints));
+        System.out.println(Arrays.toString(ypoints));
+        
+        
+        gc.restore();
+        
+    }
 
     private void ctrlVRP2SRU(ctrlCam ct, ArrayList<caractere> refactChars, GraphicsContext gc, Point3D VRP, Point3D P, Point3D Y, boolean projecao){
         ct.setVRP(VRP.getX(), VRP.getY(), VRP.getZ());

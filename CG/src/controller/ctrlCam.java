@@ -175,7 +175,7 @@ public class ctrlCam {
     public double[][] getMProjNormal() {
         return MProj = new double[][]{{1, 0, 0, 0},
                                       {0, 1, 0, 0},
-                                      {0, 0, 0, 0},
+                                      {0, 0, 1, 0},
                                       {0, 0, 0, 1}};
     }
     
@@ -194,7 +194,7 @@ public class ctrlCam {
     }
     
     public double[][] getPipeline_SRU2SRTNormal() {
-        return Pipeline_SRU2SRT = mulM1M2(getMJp(), mulM1M2(getMProjNormal(), getM_SRU2SRC()));
+        return Pipeline_SRU2SRT = mulM1M2(getMJp(), getMProjNormal());
     }
     
     public double[][] getPPLxMT() {
