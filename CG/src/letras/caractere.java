@@ -1128,6 +1128,31 @@ public class caractere {
         arestas.add(new aresta("H_G", vertices.get(7), vertices.get(6), null, null, null, null, null, null));
         arestas.add(new aresta("I_H", vertices.get(8), vertices.get(7), null, null, null, null, null, null));      
         arestas.add(new aresta("J_I", vertices.get(9), vertices.get(8), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(11), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(15), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(16), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_HT", vertices.get(17), vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_JT", vertices.get(18), vertices.get(19), null, null, null, null, null, null));      
+        arestas.add(new aresta("JT_AT", vertices.get(19), vertices.get(10), null, null, null, null, null, null));
+        
+        // Arestas da frente da letra
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("I_IT", vertices.get(8), vertices.get(18), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9), vertices.get(19), null, null, null, null, null, null));
+        
     }
     
     private void createG(){
@@ -1172,6 +1197,35 @@ public class caractere {
         arestas.add(new aresta("J_I", vertices.get(9), vertices.get(8), null, null, null, null, null, null));
         arestas.add(new aresta("K_J", vertices.get(10), vertices.get(9), null, null, null, null, null, null));
         arestas.add(new aresta("L_K", vertices.get(11), vertices.get(10), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(15), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(16), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(17), vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(18), vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_IT", vertices.get(19), vertices.get(20), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_JT", vertices.get(20), vertices.get(21), null, null, null, null, null, null));      
+        arestas.add(new aresta("JT_KT", vertices.get(21), vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("KT_LT", vertices.get(22), vertices.get(23), null, null, null, null, null, null));
+        arestas.add(new aresta("LT_AT", vertices.get(23), vertices.get(12), null, null, null, null, null, null));
+        
+        // Arestas de ligação frente e trás da letra
+        arestas.add(new aresta("A_AT", vertices.get(0),  vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1),  vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2),  vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3),  vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4),  vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5),  vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7),  vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("I_IT", vertices.get(8),  vertices.get(20), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9),  vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(23), null, null, null, null, null, null));
+        
     }
     
     private void createH(){
@@ -1216,6 +1270,34 @@ public class caractere {
         arestas.add(new aresta("J_I", vertices.get(9), vertices.get(8), null, null, null, null, null, null));
         arestas.add(new aresta("K_J", vertices.get(10), vertices.get(9), null, null, null, null, null, null));
         arestas.add(new aresta("L_K", vertices.get(11), vertices.get(10), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(12),vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(15), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(16), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(17), vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(18), vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_IT", vertices.get(19), vertices.get(20), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_JT", vertices.get(20), vertices.get(21), null, null, null, null, null, null));      
+        arestas.add(new aresta("JT_KT", vertices.get(21), vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("KT_LT", vertices.get(22), vertices.get(23), null, null, null, null, null, null));
+        arestas.add(new aresta("LT_AT", vertices.get(23), vertices.get(12), null, null, null, null, null, null));
+        
+        // Arestas de ligação de frente e trás da letra
+        arestas.add(new aresta("A_AT", vertices.get(0),  vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1),  vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2),  vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3),  vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4),  vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5),  vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7),  vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("I_IT", vertices.get(8),  vertices.get(20), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9),  vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(23), null, null, null, null, null, null));
     }
     
     private void createI(){
@@ -1236,6 +1318,18 @@ public class caractere {
         arestas.add(new aresta("B_A", vertices.get(1), vertices.get(0), null, null, null, null, null, null));
         arestas.add(new aresta("C_B", vertices.get(2), vertices.get(1), null, null, null, null, null, null));
         arestas.add(new aresta("D_C", vertices.get(3), vertices.get(2), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(4), vertices.get(5), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(5), vertices.get(6), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(6), vertices.get(7), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_AT", vertices.get(7), vertices.get(4), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás da letra
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(4), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(5), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(6), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(7), null, null, null, null, null, null));
     }
     
     private void createJ(){
@@ -1274,6 +1368,30 @@ public class caractere {
         arestas.add(new aresta("H_G", vertices.get(7), vertices.get(6), null, null, null, null, null, null));
         arestas.add(new aresta("I_H", vertices.get(8), vertices.get(7), null, null, null, null, null, null));      
         arestas.add(new aresta("J_I", vertices.get(9), vertices.get(8), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(11), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(15), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(16), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_IT", vertices.get(17), vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_JT", vertices.get(18), vertices.get(19), null, null, null, null, null, null));      
+        arestas.add(new aresta("JT_AT", vertices.get(19), vertices.get(10), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás da letra
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("I_IT", vertices.get(8), vertices.get(18), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9), vertices.get(19), null, null, null, null, null, null));
     }
     
     private void createK(){
@@ -1318,6 +1436,34 @@ public class caractere {
         arestas.add(new aresta("J_I", vertices.get(9),  vertices.get(8), null, null, null, null, null, null));
         arestas.add(new aresta("K_J", vertices.get(10), vertices.get(9), null, null, null, null, null, null));
         arestas.add(new aresta("L_K", vertices.get(11), vertices.get(10), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(12),  vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(13),  vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(14),  vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(15),  vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(16),  vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(17),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(18),  vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_IT", vertices.get(19),  vertices.get(20), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_JT", vertices.get(20),  vertices.get(21), null, null, null, null, null, null));      
+        arestas.add(new aresta("JT_KT", vertices.get(21),  vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("KT_LT", vertices.get(22),  vertices.get(23), null, null, null, null, null, null));
+        arestas.add(new aresta("LT_AT", vertices.get(23),  vertices.get(12), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás da letra
+        arestas.add(new aresta("A_AT", vertices.get(0),  vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1),  vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2),  vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3),  vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4),  vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5),  vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7),  vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("I_IT", vertices.get(8),  vertices.get(20), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9),  vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(23), null, null, null, null, null, null));
     }
     
     private void createL(){
@@ -1344,6 +1490,23 @@ public class caractere {
         arestas.add(new aresta("D_C", vertices.get(3), vertices.get(2), null, null, null, null, null, null));
         arestas.add(new aresta("E_D", vertices.get(4), vertices.get(3), null, null, null, null, null, null));
         arestas.add(new aresta("F_E", vertices.get(5), vertices.get(4), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(6), vertices.get(7), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(7), vertices.get(8), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(8), vertices.get(9), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(9), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_AT", vertices.get(11), vertices.get(6), null, null, null, null, null, null));
+        
+        // Arestas que frente e trás da letra
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(6), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(7), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(8), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(9), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(11), null, null, null, null, null, null));
+        
     }
     
     private void createM(){
@@ -1391,6 +1554,36 @@ public class caractere {
         arestas.add(new aresta("K_J", vertices.get(10), vertices.get(9), null, null, null, null, null, null));
         arestas.add(new aresta("L_K", vertices.get(11), vertices.get(10), null, null, null, null, null, null));
         arestas.add(new aresta("M_L", vertices.get(12), vertices.get(11), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(13),  vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(14),  vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(15),  vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(16),  vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(17),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(18),  vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(19),  vertices.get(20), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_IT", vertices.get(20),  vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_JT", vertices.get(21),  vertices.get(22), null, null, null, null, null, null));      
+        arestas.add(new aresta("JT_KT", vertices.get(22),  vertices.get(23), null, null, null, null, null, null));
+        arestas.add(new aresta("KT_LT", vertices.get(23), vertices.get(24), null, null, null, null, null, null));
+        arestas.add(new aresta("LT_MT", vertices.get(24), vertices.get(25), null, null, null, null, null, null));
+        arestas.add(new aresta("MT_AT", vertices.get(25), vertices.get(13), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás da letra
+        arestas.add(new aresta("A_AT", vertices.get(0),  vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1),  vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2),  vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3),  vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4),  vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6),  vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7),  vertices.get(20), null, null, null, null, null, null));
+        arestas.add(new aresta("I_IT", vertices.get(8),  vertices.get(21), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9),  vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(23), null, null, null, null, null, null));
+        arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(24), null, null, null, null, null, null));
+        arestas.add(new aresta("M_MT", vertices.get(12), vertices.get(25), null, null, null, null, null, null));
     }
     
     private void createN(){
@@ -1429,6 +1622,30 @@ public class caractere {
         arestas.add(new aresta("H_G", vertices.get(7), vertices.get(6), null, null, null, null, null, null));
         arestas.add(new aresta("I_H", vertices.get(8), vertices.get(7), null, null, null, null, null, null));      
         arestas.add(new aresta("J_I", vertices.get(9), vertices.get(8), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(11), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(15), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(16), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_IT", vertices.get(17), vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_JT", vertices.get(18), vertices.get(19), null, null, null, null, null, null));      
+        arestas.add(new aresta("JT_AT", vertices.get(19), vertices.get(10), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás da letra
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("I_IT", vertices.get(8), vertices.get(18), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9), vertices.get(19), null, null, null, null, null, null));
     }
     
     private void createO(){
@@ -1463,7 +1680,31 @@ public class caractere {
         arestas.add(new aresta("F_G", vertices.get(5), vertices.get(6), null, null, null, null, null, null));
         arestas.add(new aresta("G_H", vertices.get(6), vertices.get(7), null, null, null, null, null, null));
         arestas.add(new aresta("H_E", vertices.get(7), vertices.get(4), null, null, null, null, null, null));
+        
+        // Arestas de trás fora
+        arestas.add(new aresta("AT_BT", vertices.get(8), vertices.get(9), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(9), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_AT", vertices.get(11), vertices.get(8), null, null, null, null, null, null));
+        
+        // Arestas de trás dentro
+        arestas.add(new aresta("FT_ET", vertices.get(13), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_FT", vertices.get(14), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_GT", vertices.get(15), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_HT", vertices.get(12), vertices.get(15), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás 
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(8), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(9), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(15), null, null, null, null, null, null));
+    
     }
+    
     
     private void createP(){
         // Vértices da frente da letra
@@ -1503,6 +1744,32 @@ public class caractere {
         arestas.add(new aresta("H_I", vertices.get(7),  vertices.get(8), null, null, null, null, null, null));      
         arestas.add(new aresta("I_J", vertices.get(8),  vertices.get(9), null, null, null, null, null, null));
         arestas.add(new aresta("J_G", vertices.get(9), vertices.get(6), null, null, null, null, null, null));
+        
+        // Arestas de trás fora
+        arestas.add(new aresta("AT_BT", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(11), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_AT", vertices.get(15), vertices.get(10), null, null, null, null, null, null));
+        
+        // Arestas de trás dentro
+        arestas.add(new aresta("HT_GT", vertices.get(17),  vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_HT", vertices.get(18),  vertices.get(17), null, null, null, null, null, null));      
+        arestas.add(new aresta("JT_IT", vertices.get(19),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_JT", vertices.get(16), vertices.get(19), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás
+        arestas.add(new aresta("A_AT", vertices.get(0),  vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1),  vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2),  vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3),  vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4),  vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5),  vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6),  vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7),  vertices.get(17), null, null, null, null, null, null));      
+        arestas.add(new aresta("I_IT", vertices.get(8),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("J_JT", vertices.get(9),  vertices.get(19), null, null, null, null, null, null));
     }
     
     private void createQ(){
@@ -1561,6 +1828,44 @@ public class caractere {
         arestas.add(new aresta("N_O", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
         arestas.add(new aresta("O_P", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
         arestas.add(new aresta("P_I", vertices.get(15), vertices.get(8), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra fora
+        arestas.add(new aresta("AT_BT", vertices.get(16), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(17), vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(18), vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(19), vertices.get(20), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(20), vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(21), vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(22), vertices.get(23), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_AT", vertices.get(23), vertices.get(16), null, null, null, null, null, null));
+        
+        // Arestas da frente da letra dentro
+        arestas.add(new aresta("JT_IT", vertices.get(25),  vertices.get(24), null, null, null, null, null, null));      
+        arestas.add(new aresta("KT_JT", vertices.get(26),  vertices.get(25), null, null, null, null, null, null));
+        arestas.add(new aresta("LT_KT", vertices.get(27), vertices.get(26), null, null, null, null, null, null));
+        arestas.add(new aresta("MT_LT", vertices.get(28), vertices.get(27), null, null, null, null, null, null));
+        arestas.add(new aresta("NT_MT", vertices.get(29), vertices.get(28), null, null, null, null, null, null));
+        arestas.add(new aresta("OT_NT", vertices.get(30), vertices.get(29), null, null, null, null, null, null));
+        arestas.add(new aresta("PT_OT", vertices.get(31), vertices.get(30), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_PT", vertices.get(24), vertices.get(31), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás da letra
+        arestas.add(new aresta("A_AT", vertices.get(0),  vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1),  vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3),  vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4),  vertices.get(20), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5),  vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6),  vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7),  vertices.get(23), null, null, null, null, null, null));
+        arestas.add(new aresta("I_IT", vertices.get(8),  vertices.get(24), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9),  vertices.get(25), null, null, null, null, null, null));
+        arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(26), null, null, null, null, null, null));
+        arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(27), null, null, null, null, null, null));
+        arestas.add(new aresta("M_MT", vertices.get(12), vertices.get(28), null, null, null, null, null, null));
+        arestas.add(new aresta("N_NT", vertices.get(13), vertices.get(29), null, null, null, null, null, null));
+        arestas.add(new aresta("O_OT", vertices.get(14), vertices.get(30), null, null, null, null, null, null));
+        arestas.add(new aresta("P_PT", vertices.get(15), vertices.get(31), null, null, null, null, null, null));
     }
     
     private void createR(){
@@ -1613,6 +1918,40 @@ public class caractere {
         arestas.add(new aresta("L_M", vertices.get(11), vertices.get(12), null, null, null, null, null, null));
         arestas.add(new aresta("M_N", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
         arestas.add(new aresta("N_K", vertices.get(13), vertices.get(10), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra fora
+        arestas.add(new aresta("AT_BT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(15), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(16), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(17), vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(18), vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(19), vertices.get(20), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(20), vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_IT", vertices.get(21), vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_JT", vertices.get(22), vertices.get(23), null, null, null, null, null, null));      
+        arestas.add(new aresta("JT_AT", vertices.get(23), vertices.get(14), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra dentro
+        arestas.add(new aresta("LT_KT", vertices.get(25), vertices.get(24), null, null, null, null, null, null));
+        arestas.add(new aresta("MT_LT", vertices.get(26), vertices.get(25), null, null, null, null, null, null));
+        arestas.add(new aresta("NT_MT", vertices.get(27), vertices.get(26), null, null, null, null, null, null));
+        arestas.add(new aresta("KT_NT", vertices.get(24), vertices.get(27), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás da letra fora
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6), vertices.get(20), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("I_IT", vertices.get(8), vertices.get(22), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9), vertices.get(23), null, null, null, null, null, null));
+        arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(24), null, null, null, null, null, null));
+        arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(25), null, null, null, null, null, null));
+        arestas.add(new aresta("M_MT", vertices.get(12), vertices.get(26), null, null, null, null, null, null));
+        arestas.add(new aresta("N_NT", vertices.get(13), vertices.get(27), null, null, null, null, null, null));
     }
     
     private void createS(){
@@ -1658,6 +1997,35 @@ public class caractere {
         arestas.add(new aresta("K_J", vertices.get(10), vertices.get(9), null, null, null, null, null, null));
         arestas.add(new aresta("L_K", vertices.get(11), vertices.get(10), null, null, null, null, null, null));
         
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(12),  vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(13),  vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(14),  vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(15),  vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(16),  vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(17),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(18),  vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_IT", vertices.get(19),  vertices.get(20), null, null, null, null, null, null));  
+        arestas.add(new aresta("IT_JT", vertices.get(20),  vertices.get(21), null, null, null, null, null, null));      
+        arestas.add(new aresta("JT_KT", vertices.get(21),  vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("KT_LT", vertices.get(22),  vertices.get(23), null, null, null, null, null, null));
+        arestas.add(new aresta("LT_AT", vertices.get(23),  vertices.get(12), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás da letra
+        arestas.add(new aresta("A_AT", vertices.get(0),  vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1),  vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2),  vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3),  vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4),  vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5),  vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7),  vertices.get(19), null, null, null, null, null, null));  
+        arestas.add(new aresta("I_IT", vertices.get(8),  vertices.get(20), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9),  vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(23), null, null, null, null, null, null));
+        
+        
     }
     
     private void createT(){
@@ -1681,7 +2049,7 @@ public class caractere {
         vertices.add(new vertice("GT", -0.5, 1, 0, null));
         vertices.add(new vertice("HT", -2, 1, 0, null));
         
-        // Arestas de frente da letra
+        // Arestas da frente da letra
         arestas.add(new aresta("A_H", vertices.get(0), vertices.get(7), null, null, null, null, null, null));
         arestas.add(new aresta("B_A", vertices.get(1), vertices.get(0), null, null, null, null, null, null));
         arestas.add(new aresta("C_B", vertices.get(2), vertices.get(1), null, null, null, null, null, null));
@@ -1690,6 +2058,26 @@ public class caractere {
         arestas.add(new aresta("F_E", vertices.get(5), vertices.get(4), null, null, null, null, null, null));
         arestas.add(new aresta("G_F", vertices.get(6), vertices.get(5), null, null, null, null, null, null));
         arestas.add(new aresta("H_G", vertices.get(7), vertices.get(6), null, null, null, null, null, null));  
+        
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(8), vertices.get(9), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(9), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(11), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_AT", vertices.get(15), vertices.get(8), null, null, null, null, null, null));  
+        
+        // Arestas que ligam frente e trás da letra
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(8), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(9), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(15), null, null, null, null, null, null));  
     }
     
     private void createU(){
@@ -1722,6 +2110,26 @@ public class caractere {
         arestas.add(new aresta("F_E", vertices.get(5), vertices.get(4), null, null, null, null, null, null));
         arestas.add(new aresta("G_F", vertices.get(6), vertices.get(5), null, null, null, null, null, null));
         arestas.add(new aresta("H_G", vertices.get(7), vertices.get(6), null, null, null, null, null, null));  
+        
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(8),  vertices.get(9), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(9),  vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(11), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_AT", vertices.get(15), vertices.get(8), null, null, null, null, null, null));  
+        
+        // Arestas que ligam frente e trás da letra
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(8), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(9), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(15), null, null, null, null, null, null));  
     }
     
     private void createV(){
@@ -1754,6 +2162,26 @@ public class caractere {
         arestas.add(new aresta("F_E", vertices.get(5), vertices.get(4), null, null, null, null, null, null));
         arestas.add(new aresta("G_F", vertices.get(6), vertices.get(5), null, null, null, null, null, null));
         arestas.add(new aresta("H_G", vertices.get(7), vertices.get(6), null, null, null, null, null, null));  
+        
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(8),  vertices.get(9), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(9),  vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(11), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_AT", vertices.get(15), vertices.get(8), null, null, null, null, null, null));  
+        
+        // Arestas que ligam frente e trás da letra
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(8), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(9), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(15), null, null, null, null, null, null));  
     }
     
     private void createW(){
@@ -1810,6 +2238,42 @@ public class caractere {
         arestas.add(new aresta("N_M", vertices.get(13), vertices.get(12), null, null, null, null, null, null));
         arestas.add(new aresta("O_N", vertices.get(14), vertices.get(13), null, null, null, null, null, null));
         arestas.add(new aresta("P_O", vertices.get(15), vertices.get(14), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(16),  vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(17),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(18),  vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(19),  vertices.get(20), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(20),  vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(21),  vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(22),  vertices.get(23), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_IT", vertices.get(23),  vertices.get(24), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_JT", vertices.get(24),  vertices.get(25), null, null, null, null, null, null));      
+        arestas.add(new aresta("JT_KT", vertices.get(25),  vertices.get(26), null, null, null, null, null, null));
+        arestas.add(new aresta("KT_LT", vertices.get(26),  vertices.get(27), null, null, null, null, null, null));
+        arestas.add(new aresta("LT_MT", vertices.get(27),  vertices.get(28), null, null, null, null, null, null));
+        arestas.add(new aresta("MT_NT", vertices.get(28),  vertices.get(29), null, null, null, null, null, null));
+        arestas.add(new aresta("NT_OT", vertices.get(29),  vertices.get(30), null, null, null, null, null, null));
+        arestas.add(new aresta("OT_PT", vertices.get(30),  vertices.get(31), null, null, null, null, null, null));
+        arestas.add(new aresta("PT_AT", vertices.get(31),  vertices.get(16), null, null, null, null, null, null));
+        
+        // Arestas da frente da letra
+        arestas.add(new aresta("A_AT", vertices.get(0),  vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1),  vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3),  vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4),  vertices.get(20), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5),  vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6),  vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7),  vertices.get(23), null, null, null, null, null, null));
+        arestas.add(new aresta("I_IT", vertices.get(8),  vertices.get(24), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9),  vertices.get(25), null, null, null, null, null, null));
+        arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(26), null, null, null, null, null, null));
+        arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(27), null, null, null, null, null, null));
+        arestas.add(new aresta("M_MT", vertices.get(12), vertices.get(28), null, null, null, null, null, null));
+        arestas.add(new aresta("N_NT", vertices.get(13), vertices.get(29), null, null, null, null, null, null));
+        arestas.add(new aresta("O_OT", vertices.get(14), vertices.get(30), null, null, null, null, null, null));
+        arestas.add(new aresta("P_PT", vertices.get(15), vertices.get(31), null, null, null, null, null, null));
     }
     
     private void createX(){
@@ -1860,6 +2324,38 @@ public class caractere {
         arestas.add(new aresta("L_K", vertices.get(11), vertices.get(10), null, null, null, null, null, null));
         arestas.add(new aresta("M_L", vertices.get(12), vertices.get(11), null, null, null, null, null, null));
         arestas.add(new aresta("N_M", vertices.get(13), vertices.get(12), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(15), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(16), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(17), vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(18), vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(19), vertices.get(20), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(20), vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_IT", vertices.get(21), vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_JT", vertices.get(22), vertices.get(23), null, null, null, null, null, null));      
+        arestas.add(new aresta("JT_KT", vertices.get(23), vertices.get(24), null, null, null, null, null, null));
+        arestas.add(new aresta("KT_LT", vertices.get(24), vertices.get(25), null, null, null, null, null, null));
+        arestas.add(new aresta("LT_MT", vertices.get(25), vertices.get(26), null, null, null, null, null, null));
+        arestas.add(new aresta("MT_NT", vertices.get(26), vertices.get(27), null, null, null, null, null, null));
+        arestas.add(new aresta("NT_AT", vertices.get(27), vertices.get(14), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás da letra
+        arestas.add(new aresta("A_AT", vertices.get(0),  vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1),  vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2),  vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3),  vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5),  vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6),  vertices.get(20), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7),  vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("I_IT", vertices.get(8),  vertices.get(22), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9),  vertices.get(23), null, null, null, null, null, null));
+        arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(24), null, null, null, null, null, null));
+        arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(25), null, null, null, null, null, null));
+        arestas.add(new aresta("M_MT", vertices.get(12), vertices.get(26), null, null, null, null, null, null));
+        arestas.add(new aresta("N_NT", vertices.get(13), vertices.get(27), null, null, null, null, null, null));
     }
     
     private void createY(){
@@ -1898,6 +2394,31 @@ public class caractere {
         arestas.add(new aresta("H_G", vertices.get(7), vertices.get(6), null, null, null, null, null, null));
         arestas.add(new aresta("I_H", vertices.get(8), vertices.get(7), null, null, null, null, null, null));      
         arestas.add(new aresta("J_I", vertices.get(9), vertices.get(8), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(10),vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(11), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(15), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(16), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_IT", vertices.get(17), vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_JT", vertices.get(18), vertices.get(19), null, null, null, null, null, null));      
+        arestas.add(new aresta("JT_AT", vertices.get(19), vertices.get(10), null, null, null, null, null, null));
+        
+        // Arestas da frente da letra
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("I_IT", vertices.get(8), vertices.get(18), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9), vertices.get(19), null, null, null, null, null, null));
+        
     }
     
     private void createZ(){
@@ -1915,7 +2436,7 @@ public class caractere {
 
         // Vértices de trás da letra
         vertices.add(new vertice("AT", -2, -2, 0, null));
-        vertices.add(new vertice("BT", -2, -1, 0.0, null));
+        vertices.add(new vertice("BT", -2, -0.5, 0, null));
         vertices.add(new vertice("CT", 0.5, 1, 0, null));
         vertices.add(new vertice("DT", -2, 1, 0, null));
         vertices.add(new vertice("ET", -2, 2, 0, null));
@@ -1923,7 +2444,7 @@ public class caractere {
         vertices.add(new vertice("GT", 2, 1, 0, null));
         vertices.add(new vertice("HT", -0.5, -1, 0, null));
         vertices.add(new vertice("IT", 2, -1, 0, null));
-        vertices.add(new vertice("JT", 2, -2, 0, null));  
+        vertices.add(new vertice("JT", 2, -2, 0, null)); 
         
         // Arestas da frente da letra
         arestas.add(new aresta("A_J", vertices.get(0),vertices.get(9), null, null, null, null, null, null));
@@ -1936,6 +2457,30 @@ public class caractere {
         arestas.add(new aresta("H_G", vertices.get(7), vertices.get(6), null, null, null, null, null, null));
         arestas.add(new aresta("I_H", vertices.get(8), vertices.get(7), null, null, null, null, null, null));      
         arestas.add(new aresta("J_I", vertices.get(9), vertices.get(8), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(10),vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(11), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(15), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(16), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_IT", vertices.get(17), vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_JT", vertices.get(18), vertices.get(19), null, null, null, null, null, null));      
+        arestas.add(new aresta("JT_AT", vertices.get(19), vertices.get(10), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás da letra
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("I_IT", vertices.get(8), vertices.get(18), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9), vertices.get(19), null, null, null, null, null, null));
     }
     
     private void create0(){
@@ -1959,17 +2504,39 @@ public class caractere {
         vertices.add(new vertice("GT", 1, 1, 0, null));
         vertices.add(new vertice("HT", 1, -1, 0, null));
         
-        // Arestas da frente do número
+        // Arestas da frente do número fora
         arestas.add(new aresta("A_D", vertices.get(0), vertices.get(3), null, null, null, null, null, null));
         arestas.add(new aresta("B_A", vertices.get(1), vertices.get(0), null, null, null, null, null, null));
         arestas.add(new aresta("C_B", vertices.get(2), vertices.get(1), null, null, null, null, null, null));
         arestas.add(new aresta("D_C", vertices.get(3), vertices.get(2), null, null, null, null, null, null));
         
-        // Arestas de trás do número
+        // Arestas da frente do número dentro
         arestas.add(new aresta("E_F", vertices.get(4), vertices.get(5), null, null, null, null, null, null));
         arestas.add(new aresta("F_G", vertices.get(5), vertices.get(6), null, null, null, null, null, null));
         arestas.add(new aresta("G_H", vertices.get(6), vertices.get(7), null, null, null, null, null, null));
         arestas.add(new aresta("H_E", vertices.get(7), vertices.get(4), null, null, null, null, null, null));
+        
+        // Arestas de trás do número fora
+        arestas.add(new aresta("AT_BT", vertices.get(8), vertices.get(9), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(9), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_AT", vertices.get(11), vertices.get(8), null, null, null, null, null, null));
+        
+        // Arestas de trás do número
+        arestas.add(new aresta("FT_ET", vertices.get(13), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_FT", vertices.get(14), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_GT", vertices.get(15), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_HT", vertices.get(12), vertices.get(15), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás do número
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(8), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(9), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(11), null, null, null, null, null, null));              
+        arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(15), null, null, null, null, null, null));
     }
     
     private void create1(){
@@ -1996,6 +2563,22 @@ public class caractere {
         arestas.add(new aresta("E_D", vertices.get(4), vertices.get(3), null, null, null, null, null, null));
         arestas.add(new aresta("F_E", vertices.get(5), vertices.get(4), null, null, null, null, null, null));
         arestas.add(new aresta("A_F", vertices.get(0), vertices.get(5), null, null, null, null, null, null));
+        
+        // Arestas de trás do número
+        arestas.add(new aresta("AT_BT", vertices.get(6),  vertices.get(7), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(7),  vertices.get(8), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(8),  vertices.get(9), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(9),  vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_AT", vertices.get(11), vertices.get(6), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás do número
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(6), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(7), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(8), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(9), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(11), null, null, null, null, null, null));                                
         
     }
     
@@ -2047,6 +2630,22 @@ public class caractere {
         arestas.add(new aresta("L_K", vertices.get(11), vertices.get(10), null, null, null, null, null, null));
         arestas.add(new aresta("M_L", vertices.get(12), vertices.get(11), null, null, null, null, null, null));
         arestas.add(new aresta("N_M", vertices.get(13), vertices.get(12), null, null, null, null, null, null));
+        
+        // Arestas da frente do número
+        arestas.add(new aresta("AT_BT", vertices.get(14),  vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(15),  vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(16),  vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(17),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(18),  vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(19),  vertices.get(20), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(20),  vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_IT", vertices.get(21),  vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_JT", vertices.get(22),  vertices.get(23), null, null, null, null, null, null));      
+        arestas.add(new aresta("JT_KT", vertices.get(23),  vertices.get(24), null, null, null, null, null, null));
+        arestas.add(new aresta("KT_LT", vertices.get(24),  vertices.get(25), null, null, null, null, null, null));
+        arestas.add(new aresta("LT_MT", vertices.get(25),  vertices.get(26), null, null, null, null, null, null));
+        arestas.add(new aresta("MT_NT", vertices.get(26),  vertices.get(27), null, null, null, null, null, null));
+        arestas.add(new aresta("NT_AT", vertices.get(27),  vertices.get(14), null, null, null, null, null, null));
     }
     
     private void create3(){
@@ -2091,6 +2690,34 @@ public class caractere {
         arestas.add(new aresta("J_I", vertices.get(9), vertices.get(8), null, null, null, null, null, null));
         arestas.add(new aresta("K_J", vertices.get(10), vertices.get(9), null, null, null, null, null, null));
         arestas.add(new aresta("L_K", vertices.get(11), vertices.get(10), null, null, null, null, null, null));
+        
+        // Arestas de trás do número
+        arestas.add(new aresta("AT_BT", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(15), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(16), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(17), vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(18), vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_IT", vertices.get(19), vertices.get(20), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_JT", vertices.get(20), vertices.get(21), null, null, null, null, null, null));      
+        arestas.add(new aresta("JT_KT", vertices.get(21), vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("KT_LT", vertices.get(22), vertices.get(23), null, null, null, null, null, null));
+        arestas.add(new aresta("LT_AT", vertices.get(23), vertices.get(12), null, null, null, null, null, null));
+        
+        // Arestas da frente do número
+        arestas.add(new aresta("A_AT", vertices.get(0),  vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1),  vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2),  vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3),  vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4),  vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5),  vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7),  vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("I_IT", vertices.get(8),  vertices.get(20), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9),  vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(23), null, null, null, null, null, null));
     }
     
     private void create4(){
@@ -2131,6 +2758,32 @@ public class caractere {
         arestas.add(new aresta("H_I", vertices.get(7), vertices.get(8), null, null, null, null, null, null));
         arestas.add(new aresta("I_J", vertices.get(8), vertices.get(9), null, null, null, null, null, null));      
         arestas.add(new aresta("J_G", vertices.get(9), vertices.get(6), null, null, null, null, null, null));
+        
+        // Arestas da trás do número fora
+        arestas.add(new aresta("AT_BT", vertices.get(10),vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(11), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_AT", vertices.get(15), vertices.get(10), null, null, null, null, null, null));
+        
+        // Arestas de trás do número dentro
+        arestas.add(new aresta("HT_GT", vertices.get(17), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_HT", vertices.get(18), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("JT_IT", vertices.get(19), vertices.get(18), null, null, null, null, null, null));      
+        arestas.add(new aresta("GT_JT", vertices.get(16), vertices.get(19), null, null, null, null, null, null));
+        
+        // Arestas da frente do número fora
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(15), null, null, null, null, null, null));                
+        arestas.add(new aresta("G_GT", vertices.get(6), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("I_IT", vertices.get(8), vertices.get(18), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9), vertices.get(19), null, null, null, null, null, null));
     }
     
     private void create5(){
@@ -2163,18 +2816,46 @@ public class caractere {
         vertices.add(new vertice("LT", 2, -2, 0, null));
         
         // Arestas da frente da letra
-        arestas.add(new aresta("A_L", vertices.get(0),vertices.get(11), null, null, null, null, null, null));
-        arestas.add(new aresta("B_A", vertices.get(1), vertices.get(0), null, null, null, null, null, null));
-        arestas.add(new aresta("C_B", vertices.get(2), vertices.get(1), null, null, null, null, null, null));
-        arestas.add(new aresta("D_C", vertices.get(3), vertices.get(2), null, null, null, null, null, null));
-        arestas.add(new aresta("E_D", vertices.get(4), vertices.get(3), null, null, null, null, null, null));
-        arestas.add(new aresta("F_E", vertices.get(5), vertices.get(4), null, null, null, null, null, null));
-        arestas.add(new aresta("G_F", vertices.get(6), vertices.get(5), null, null, null, null, null, null));
-        arestas.add(new aresta("H_G", vertices.get(7), vertices.get(6), null, null, null, null, null, null));  
-        arestas.add(new aresta("I_H", vertices.get(8), vertices.get(7), null, null, null, null, null, null));      
-        arestas.add(new aresta("J_I", vertices.get(9), vertices.get(8), null, null, null, null, null, null));
+        arestas.add(new aresta("A_L", vertices.get(0),  vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("B_A", vertices.get(1),  vertices.get(0), null, null, null, null, null, null));
+        arestas.add(new aresta("C_B", vertices.get(2),  vertices.get(1), null, null, null, null, null, null));
+        arestas.add(new aresta("D_C", vertices.get(3),  vertices.get(2), null, null, null, null, null, null));
+        arestas.add(new aresta("E_D", vertices.get(4),  vertices.get(3), null, null, null, null, null, null));
+        arestas.add(new aresta("F_E", vertices.get(5),  vertices.get(4), null, null, null, null, null, null));
+        arestas.add(new aresta("G_F", vertices.get(6),  vertices.get(5), null, null, null, null, null, null));
+        arestas.add(new aresta("H_G", vertices.get(7),  vertices.get(6), null, null, null, null, null, null));  
+        arestas.add(new aresta("I_H", vertices.get(8),  vertices.get(7), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_I", vertices.get(9),  vertices.get(8), null, null, null, null, null, null));
         arestas.add(new aresta("K_J", vertices.get(10), vertices.get(9), null, null, null, null, null, null));
         arestas.add(new aresta("L_K", vertices.get(11), vertices.get(10), null, null, null, null, null, null));
+        
+        // Arestas de trás da letra
+        arestas.add(new aresta("AT_BT", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(15), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(16), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(17), vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(18), vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_IT", vertices.get(19), vertices.get(20), null, null, null, null, null, null));  
+        arestas.add(new aresta("IT_JT", vertices.get(20), vertices.get(21), null, null, null, null, null, null));      
+        arestas.add(new aresta("JT_KT", vertices.get(21), vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("KT_LT", vertices.get(22), vertices.get(23), null, null, null, null, null, null));
+        arestas.add(new aresta("LT_AT", vertices.get(23), vertices.get(12), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás da letra
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6), vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(19), null, null, null, null, null, null));  
+        arestas.add(new aresta("I_IT", vertices.get(8), vertices.get(20), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9), vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("K_KT", vertices.get(10),vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("L_LT", vertices.get(11),vertices.get(23), null, null, null, null, null, null));
     }
     
     private void create6(){
@@ -2222,6 +2903,37 @@ public class caractere {
         arestas.add(new aresta("K_L", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
         arestas.add(new aresta("L_I", vertices.get(11), vertices.get(8), null, null, null, null, null, null));
         
+        // Arestas de trás do número fora
+        arestas.add(new aresta("AT_BT", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(15), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(16), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_GT", vertices.get(17), vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_HT", vertices.get(18), vertices.get(19), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_AT", vertices.get(19), vertices.get(12), null, null, null, null, null, null));  
+        
+        // Arestas de trás do número dentro
+        arestas.add(new aresta("JT_IT", vertices.get(21),  vertices.get(20), null, null, null, null, null, null));      
+        arestas.add(new aresta("KT_JT", vertices.get(22),  vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("LT_KT", vertices.get(23),  vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_LT", vertices.get(20),  vertices.get(23), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás do número fora
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1),  vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2),  vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3),  vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4),  vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5),  vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7),  vertices.get(19), null, null, null, null, null, null));                  
+        arestas.add(new aresta("I_IT", vertices.get(8),  vertices.get(20), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9),  vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(23), null, null, null, null, null, null));
+        
+        
     }
     
     private void create7(){
@@ -2248,6 +2960,22 @@ public class caractere {
         arestas.add(new aresta("D_C", vertices.get(3), vertices.get(2), null, null, null, null, null, null));
         arestas.add(new aresta("E_D", vertices.get(4), vertices.get(3), null, null, null, null, null, null));
         arestas.add(new aresta("F_E", vertices.get(5), vertices.get(4), null, null, null, null, null, null));  
+        
+        // Arestas de trás do número
+        arestas.add(new aresta("AT_BT", vertices.get(6),  vertices.get(7), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(7),  vertices.get(8), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(8),  vertices.get(9), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(9),  vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_AT", vertices.get(11), vertices.get(6), null, null, null, null, null, null));  
+        
+        // Arestas que frente e trás do número
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(6), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(7), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(8), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(9), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(11), null, null, null, null, null, null));  
     }
     
     private void create8(){
@@ -2281,9 +3009,9 @@ public class caractere {
         
         // Arestas da frente do número fora 
         arestas.add(new aresta("A_D", vertices.get(0),vertices.get(3), null, null, null, null, null, null));
-        arestas.add(new aresta("B_B", vertices.get(1), vertices.get(0), null, null, null, null, null, null));
-        arestas.add(new aresta("C_C", vertices.get(2), vertices.get(1), null, null, null, null, null, null));
-        arestas.add(new aresta("D_A", vertices.get(3), vertices.get(2), null, null, null, null, null, null));
+        arestas.add(new aresta("B_A", vertices.get(1), vertices.get(0), null, null, null, null, null, null));
+        arestas.add(new aresta("C_B", vertices.get(2), vertices.get(1), null, null, null, null, null, null));
+        arestas.add(new aresta("D_C", vertices.get(3), vertices.get(2), null, null, null, null, null, null));
         
         // Arestas da frente do número dentro
         arestas.add(new aresta("E_F", vertices.get(4), vertices.get(5), null, null, null, null, null, null));
@@ -2294,6 +3022,36 @@ public class caractere {
         arestas.add(new aresta("J_K", vertices.get(9), vertices.get(10), null, null, null, null, null, null));
         arestas.add(new aresta("K_L", vertices.get(10), vertices.get(11), null, null, null, null, null, null));
         arestas.add(new aresta("L_I", vertices.get(11), vertices.get(8), null, null, null, null, null, null));
+        
+        // Arestas de trás do número fora 
+        arestas.add(new aresta("AT_BT", vertices.get(12), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(13), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(14), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_AT", vertices.get(15), vertices.get(14), null, null, null, null, null, null));
+        
+        // Arestas de trás do número dentro
+        arestas.add(new aresta("FT_ET", vertices.get(17), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("GT_FT", vertices.get(18), vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("HT_GT", vertices.get(19), vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_HT", vertices.get(16), vertices.get(19), null, null, null, null, null, null));  
+        arestas.add(new aresta("JT_IT", vertices.get(21), vertices.get(20), null, null, null, null, null, null));      
+        arestas.add(new aresta("KT_JT", vertices.get(22), vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("LT_KT", vertices.get(23), vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_LT", vertices.get(20), vertices.get(23), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás do número fora 
+        arestas.add(new aresta("A_AT", vertices.get(0),  vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1),  vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2),  vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3),  vertices.get(15), null, null, null, null, null, null));                
+        arestas.add(new aresta("E_ET", vertices.get(4),  vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5),  vertices.get(17), null, null, null, null, null, null));
+        arestas.add(new aresta("G_GT", vertices.get(6),  vertices.get(18), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7),  vertices.get(19), null, null, null, null, null, null));  
+        arestas.add(new aresta("I_IT", vertices.get(8),  vertices.get(20), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9),  vertices.get(21), null, null, null, null, null, null));
+        arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(22), null, null, null, null, null, null));
+        arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(23), null, null, null, null, null, null));
     }
     
     private void create9(){
@@ -2334,6 +3092,32 @@ public class caractere {
         arestas.add(new aresta("H_I", vertices.get(7), vertices.get(8), null, null, null, null, null, null));  
         arestas.add(new aresta("I_J", vertices.get(8), vertices.get(9), null, null, null, null, null, null));      
         arestas.add(new aresta("J_G", vertices.get(9), vertices.get(6), null, null, null, null, null, null));
+        
+         // Arestas da frente do número fora
+        arestas.add(new aresta("AT_BT", vertices.get(10),vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("BT_CT", vertices.get(11), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("CT_DT", vertices.get(12), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("DT_ET", vertices.get(13), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("ET_FT", vertices.get(14), vertices.get(15), null, null, null, null, null, null));
+        arestas.add(new aresta("FT_AT", vertices.get(15), vertices.get(10), null, null, null, null, null, null));
+        
+        // Arestas da frente do número dentro
+        arestas.add(new aresta("HT_GT", vertices.get(17), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("IT_HT", vertices.get(18), vertices.get(17), null, null, null, null, null, null));  
+        arestas.add(new aresta("JT_IT", vertices.get(19), vertices.get(18), null, null, null, null, null, null));      
+        arestas.add(new aresta("GT_JT", vertices.get(17), vertices.get(19), null, null, null, null, null, null));
+        
+        // Arestas que ligam frente e trás do número fora
+        arestas.add(new aresta("A_AT", vertices.get(0), vertices.get(10), null, null, null, null, null, null));
+        arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(11), null, null, null, null, null, null));
+        arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(12), null, null, null, null, null, null));
+        arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(13), null, null, null, null, null, null));
+        arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(14), null, null, null, null, null, null));
+        arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(15), null, null, null, null, null, null));               
+        arestas.add(new aresta("G_GT", vertices.get(6), vertices.get(16), null, null, null, null, null, null));
+        arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(17), null, null, null, null, null, null));  
+        arestas.add(new aresta("I_IT", vertices.get(8), vertices.get(18), null, null, null, null, null, null));      
+        arestas.add(new aresta("J_JT", vertices.get(9), vertices.get(19), null, null, null, null, null, null));
     }
     
     private int encontraVertice(String S){
