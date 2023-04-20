@@ -29,7 +29,9 @@ import javafx.scene.input.MouseEvent;
  * @author macedo
  */
 public class ctrl extends Application {
-    boolean color = true;
+    int selectedChar;
+    long localX, localY;
+    
     
     @Override public void start(Stage stage) {
         //falseStart(stage);
@@ -126,19 +128,58 @@ public class ctrl extends Application {
         }
         
         canvas1.addEventHandler(MouseEvent.MOUSE_PRESSED, (event)->{
-            long localX = Double.doubleToLongBits(event.getX());
-            long localY = Double.doubleToLongBits(event.getY());
+            localX = (long) event.getX();
+            localY = (long) event.getY();
+            selectedChar = -1;
             
-            System.out.println(localX);
             
             for(int i = 0; i < refactChars1.size(); i++){
-                for(int j = 0; i < refactChars1.get(i).arestas.size(); j++)
+                ArrayList<vertice> vertices = refactChars1.get(i).vertices;
+                long maxX = Long.MIN_VALUE;
+                long minX = Long.MAX_VALUE;
+                long maxY = Long.MIN_VALUE;
+                long minY = Long.MAX_VALUE;
+                
+                for(int j = 0; j < vertices.size(); j++)
                 {
-                    
+                    Point3D verticeAtual = vertices.get(j).ponto;
+           
+                    if( (long) verticeAtual.getX() < minX) minX =(long) verticeAtual.getX();
+                    if( (long) verticeAtual.getX() > maxX) maxX =(long) verticeAtual.getX();
+                    if( (long) verticeAtual.getY() < minY) minY =(long) verticeAtual.getY();
+                    if( (long) verticeAtual.getY() > maxY) maxY =(long) verticeAtual.getY();        
                 }
+                
+                
+                if((localX >= minX && localX <= maxX) && (localY >= minY && localY <= maxY)){
+                    selectedChar = i;
+                    break;
+                }
+                
+                
+            }
+            
+            if(selectedChar != -1){
+                System.out.println(chars.get(selectedChar).letra + " selecionada");
+            }
+            else{
+                System.out.println("não apertou em nada");
             }
             
         });
+        
+        canvas1.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
+            if(selectedChar != -1){
+                if((event.getX() <= canvas1.getHeight() && event.getX() >= 0) && (event.getY() <= canvas1.getWidth() && event.getY() >= 0))
+                {
+                    localX -= (long) event.getX();
+                    localY -= (long) event.getY();
+                }
+                
+            }
+        
+        });
+        
         
         
         root.getChildren().add(canvas1);
@@ -150,10 +191,10 @@ public class ctrl extends Application {
         
         stage.show();
         
-        stage.addEventHandler(KeyEvent.KEY_PRESSED,  (event) -> {
+        /*stage.addEventHandler(KeyEvent.KEY_PRESSED,  (event) -> {
             System.out.println("Key pressed: " + event.toString());
 
-            /*switch(event.getCode().getCode()) {
+            switch(event.getCode().getCode()) {
                 case 27 : { // 27 = ESC key
                     stage.close();
                     break;
@@ -164,12 +205,12 @@ public class ctrl extends Application {
                 default:  {
                     System.out.println("Unrecognized key");
                 }
-            }*/
+            }
             
            
            
             
-        });
+        });*/
 
         
         

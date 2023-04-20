@@ -4,7 +4,7 @@ import javafx.geometry.Point3D;
 
 public class vertice {
 	String nomeVertice;
-	Point3D ponto;
+	public Point3D ponto;
 	aresta arestaVertice;
 
     public vertice(String nomeVertice, double x, double y, double z, aresta arestaVertice) {
