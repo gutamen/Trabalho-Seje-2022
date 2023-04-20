@@ -18,15 +18,24 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import letras.*;
 import java.util.Scanner;
+import javafx.event.EventType;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+
+
 
 /**
  *
  * @author macedo
  */
 public class ctrl extends Application {
-        @Override public void start(Stage stage) {
+    boolean color = true;
+    
+    @Override public void start(Stage stage) {
         //falseStart(stage);
         trueStart(stage);
+        
+        
     }
         
     public static Scanner read = new Scanner(System.in);
@@ -67,17 +76,19 @@ public class ctrl extends Application {
         canvas1.setLayoutY(0);
         canvas2.setLayoutY(200);
         canvas3.setLayoutY(400);
-        canvas4.setLayoutY(600);
+        canvas4.setLayoutY(500);
+        canvas4.setLayoutX(500);
         
         GraphicsContext gc1 = canvas1.getGraphicsContext2D();
         GraphicsContext gc2 = canvas2.getGraphicsContext2D();
         GraphicsContext gc3 = canvas3.getGraphicsContext2D();
         GraphicsContext gc4 = canvas4.getGraphicsContext2D();
         
-        root.getChildren().add(canvas1);
-        root.getChildren().add(canvas2);
-        root.getChildren().add(canvas3);
-        root.getChildren().add(canvas4);
+        
+        
+        
+        
+        
         
         root.setAutoSizeChildren(false);
         
@@ -113,9 +124,57 @@ public class ctrl extends Application {
             desenhaFiguraPorArestaLateral(gc3, refactChars1.get(i).arestas);
             desenhaFiguraPorAresta(gc4, refactChars2.get(i).arestas);
         }
+        
+        canvas1.addEventHandler(MouseEvent.MOUSE_PRESSED, (event)->{
+            long localX = Double.doubleToLongBits(event.getX());
+            long localY = Double.doubleToLongBits(event.getY());
+            
+            System.out.println(localX);
+            
+            for(int i = 0; i < refactChars1.size(); i++){
+                for(int j = 0; i < refactChars1.get(i).arestas.size(); j++)
+                {
+                    
+                }
+            }
+            
+        });
+        
+        
+        root.getChildren().add(canvas1);
+        root.getChildren().add(canvas2);
+        root.getChildren().add(canvas3);
+        root.getChildren().add(canvas4);
+        
         stage.setScene(scene);
-       
+        
         stage.show();
+        
+        stage.addEventHandler(KeyEvent.KEY_PRESSED,  (event) -> {
+            System.out.println("Key pressed: " + event.toString());
+
+            /*switch(event.getCode().getCode()) {
+                case 27 : { // 27 = ESC key
+                    stage.close();
+                    break;
+                }
+                case 10 : { // 10 = Return
+                    stage.setWidth( stage.getWidth() * 2);
+                }
+                default:  {
+                    System.out.println("Unrecognized key");
+                }
+            }*/
+            
+           
+           
+            
+        });
+
+        
+        
+        
+        
     }
         
     private void refact(caractere pts, ctrlCam ct){
@@ -244,7 +303,7 @@ public class ctrl extends Application {
         }
         
         
-        System.out.println("N = "+ct.getNzao());
+        /*System.out.println("N = "+ct.getNzao());
         System.out.println("n = "+ct.getNzin());
         System.out.println("V = "+ct.getVzao());
         System.out.println("v = "+ct.getVzin());
@@ -285,7 +344,7 @@ public class ctrl extends Application {
         System.out.println("PPLxMT");
         writMat(ct.getPPLxMT());
         System.out.println("NmPPLxMT");
-        writMat(ct.getNmPPLxMT());
+        writMat(ct.getNmPPLxMT());*/
     }
     
     public double[][] getMatPts(caractere pts){
