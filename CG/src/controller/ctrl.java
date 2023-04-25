@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import letras.*;
 import java.util.Scanner;
 import javafx.event.EventType;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
@@ -87,12 +88,12 @@ public class ctrl extends Application {
         GraphicsContext gc4 = canvas4.getGraphicsContext2D();
         
         
+        //Button bt = new Button("jeugue");
+        //root.getChildren().add(bt);
         
         
         
-        
-        
-        root.setAutoSizeChildren(false);
+        //root.setAutoSizeChildren(false);
         
         ArrayList<caractere> refactChars1 = new ArrayList<caractere>();
         ArrayList<caractere> refactChars2 = new ArrayList<caractere>();
@@ -173,7 +174,26 @@ public class ctrl extends Application {
                 if((event.getX() <= canvas1.getHeight() && event.getX() >= 0) && (event.getY() <= canvas1.getWidth() && event.getY() >= 0))
                 {
                     localX -= (long) event.getX();
+                    localX *= -1;
                     localY -= (long) event.getY();
+                    localY *= -1;
+                    caractere mudanssa = refactChars1.get(selectedChar);
+                    
+                    for(int k = 0; k < mudanssa.vertices.size(); k++){
+                        mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(localX, localY, 0);
+                        
+                    }
+                    
+                    canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
+                    canvas2.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
+                    canvas3.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
+                    for(int k = 0; k < refactChars1.size(); k++){
+                        desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k).arestas);
+                        desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars1.get(k).arestas);
+                        desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars1.get(k).arestas);
+                    }
+                    
+                    
                 }
                 
             }
