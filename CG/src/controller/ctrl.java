@@ -18,19 +18,36 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import letras.*;
 import java.util.Scanner;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 
 /**
  *
  * @author macedo
  */
 public class ctrl extends Application {
-        @Override public void start(Stage stage) {
+        public void start(Stage stage) {
         //falseStart(stage);
         trueStart(stage);
     }
         
     public static Scanner read = new Scanner(System.in);
     public static double offSet;
+    
+    public void intFace(Group root){
+        Button bt = new Button("OK");
+        TextArea ta = new TextArea();
+        ta.setLayoutX(620);
+        ta.setLayoutY(40);
+        ta.setMinSize(0, 0);
+        ta.setMaxSize(200, 28);
+        bt.setMinSize(0, 0);
+        bt.setMaxSize(200, 30);
+        bt.setLayoutX(830);
+        bt.setLayoutY(40);
+        root.getChildren().add(ta);
+        root.getChildren().add(bt);
+    }
     
     private void trueStart(Stage stage){
         String readed = read.nextLine();
@@ -51,7 +68,7 @@ public class ctrl extends Application {
         tela2String(chars.size(), chars);
         
         Group root = new Group();
-        Scene scene = new Scene(root, 1920, 1080, Color.WHITE);
+        Scene scene = new Scene(root, 880, 800, Color.WHITE);
         
         ctrlCam ct1 = new ctrlCam();
         ctrlCam ct2 = new ctrlCam();
@@ -62,8 +79,7 @@ public class ctrl extends Application {
         final Canvas canvas2 = new Canvas(600, 600);
         final Canvas canvas3 = new Canvas(600, 600);
         final Canvas canvas4 = new Canvas(600, 600);
-
-        canvas1.setLayoutX(0);
+        
         canvas1.setLayoutY(0);
         canvas2.setLayoutY(200);
         canvas3.setLayoutY(400);
@@ -73,13 +89,14 @@ public class ctrl extends Application {
         GraphicsContext gc2 = canvas2.getGraphicsContext2D();
         GraphicsContext gc3 = canvas3.getGraphicsContext2D();
         GraphicsContext gc4 = canvas4.getGraphicsContext2D();
-        
+       
         root.getChildren().add(canvas1);
         root.getChildren().add(canvas2);
         root.getChildren().add(canvas3);
         root.getChildren().add(canvas4);
         
-        root.setAutoSizeChildren(false);
+        //teste interface
+        intFace(root);
         
         ArrayList<caractere> refactChars1 = new ArrayList<caractere>();
         ArrayList<caractere> refactChars2 = new ArrayList<caractere>();
@@ -113,6 +130,7 @@ public class ctrl extends Application {
             desenhaFiguraPorArestaLateral(gc3, refactChars1.get(i).arestas);
             desenhaFiguraPorAresta(gc4, refactChars2.get(i).arestas);
         }
+        
         stage.setScene(scene);
        
         stage.show();
@@ -133,7 +151,7 @@ public class ctrl extends Application {
                     arrsc.get(i).vertices.get(j).setX(arrsc.get(i).vertices.get(j).getX()+sizeChar);
                 }
             }
-            sizeChar += 4;
+            sizeChar += 5;
         }
     }
     
@@ -243,7 +261,7 @@ public class ctrl extends Application {
             }
         }
         
-        
+        /*
         System.out.println("N = "+ct.getNzao());
         System.out.println("n = "+ct.getNzin());
         System.out.println("V = "+ct.getVzao());
@@ -285,7 +303,7 @@ public class ctrl extends Application {
         System.out.println("PPLxMT");
         writMat(ct.getPPLxMT());
         System.out.println("NmPPLxMT");
-        writMat(ct.getNmPPLxMT());
+        writMat(ct.getNmPPLxMT());*/
     }
     
     public double[][] getMatPts(caractere pts){
