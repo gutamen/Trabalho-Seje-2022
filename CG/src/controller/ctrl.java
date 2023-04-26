@@ -160,41 +160,10 @@ public class ctrl extends Application {
             else{
                 System.out.println("não apertou em nada");
             }
-        });
-        
-        
+        });   
         canvas1.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
             mouseApertado = false;
-            /*if(selectedChar != -1){
-                if((event.getX() <= canvas1.getHeight() && event.getX() >= 0) && (event.getY() <= canvas1.getWidth() && event.getY() >= 0))
-                {
-                    localX -= (long) event.getX();
-                    localX *= -1;
-                    localY -= (long) event.getY();
-                    localY *= -1;
-                    caractere mudanssa = refactChars1.get(selectedChar);
-                    
-                    for(int k = 0; k < mudanssa.vertices.size(); k++){
-                        mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(localX, localY, 0);
-                        
-                    }
-                    
-                    canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
-                    canvas2.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
-                    canvas3.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
-                    for(int k = 0; k < refactChars1.size(); k++){
-                        desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k).arestas);
-                        desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars1.get(k).arestas);
-                        desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars1.get(k).arestas);
-                    }
-                    
-                    
-                }
-                
-            }*/
-        
         });
-        
         canvas1.addEventHandler(MouseEvent.ANY, (event)->{
             long nowLocalX = (long) event.getX();
             long nowLocalY = (long) event.getY();
@@ -211,8 +180,8 @@ public class ctrl extends Application {
                             mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(localX, localY, 0);
                         }
                         canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
-                        canvas2.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
-                        canvas3.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
+                        canvas2.getGraphicsContext2D().clearRect(0, 0, canvas2.getWidth(), canvas2.getHeight());
+                        canvas3.getGraphicsContext2D().clearRect(0, 0, canvas3.getWidth(), canvas3.getHeight());
                         for(int k = 0; k < refactChars1.size(); k++){
                             desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k).arestas);
                             desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars1.get(k).arestas);
@@ -228,6 +197,141 @@ public class ctrl extends Application {
         });
         
         
+        
+        canvas2.addEventHandler(MouseEvent.MOUSE_PRESSED, e->{
+            localX = (long) e.getX();
+            localY = (long) e.getY();
+            selectedChar = -1;
+            for(int i = 0; i < refactChars1.size(); i++){
+                ArrayList<vertice> vertices = refactChars1.get(i).vertices;
+                long maxX = Long.MIN_VALUE;
+                long minX = Long.MAX_VALUE;
+                long maxY = Long.MIN_VALUE;
+                long minY = Long.MAX_VALUE;
+                for(int j = 0; j < vertices.size(); j++)
+                {
+                    Point3D verticeAtual = vertices.get(j).ponto;
+                    if( (long) verticeAtual.getX() < minX) minX =(long) verticeAtual.getX();
+                    if( (long) verticeAtual.getX() > maxX) maxX =(long) verticeAtual.getX();
+                    if( (long) verticeAtual.getZ() < minY) minY =(long) verticeAtual.getZ();
+                    if( (long) verticeAtual.getZ() > maxY) maxY =(long) verticeAtual.getZ();        
+                }
+                if((localX >= minX && localX <= maxX) && (localY >= minY && localY <= maxY)){
+                    selectedChar = i;
+                    break;
+                }
+            }
+
+            if(selectedChar != -1){
+                System.out.println(chars.get(selectedChar).letra + " selecionada");
+                mouseApertado = true;
+            }
+            else{
+                System.out.println("não apertou em nada");
+            }
+        });   
+        canvas2.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
+            mouseApertado = false;
+        });
+        canvas2.addEventHandler(MouseEvent.ANY, (event)->{
+            long nowLocalX = (long) event.getX();
+            long nowLocalY = (long) event.getY();
+            if(selectedChar != -1){
+                if(mouseApertado){
+                    if((nowLocalX <= canvas2.getHeight() && nowLocalX >= 0) && (nowLocalY <= canvas2.getWidth() && nowLocalY >= 0))
+                    {
+                        localX = localX - ((long) event.getX());
+                        localX *= -1;
+                        localY = localY - ((long) event.getY());
+                        localY *= -1;
+                        caractere mudanssa = refactChars1.get(selectedChar);
+                        for(int k = 0; k < mudanssa.vertices.size(); k++){
+                            mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(localX, 0, localY);
+                        }
+                        canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
+                        canvas2.getGraphicsContext2D().clearRect(0, 0, canvas2.getWidth(), canvas2.getHeight());
+                        canvas3.getGraphicsContext2D().clearRect(0, 0, canvas3.getWidth(), canvas3.getHeight());
+                        for(int k = 0; k < refactChars1.size(); k++){
+                            desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k).arestas);
+                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars1.get(k).arestas);
+                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars1.get(k).arestas);
+                        }
+                    }
+                    localX = nowLocalX;
+                    localY = nowLocalY;
+                    nowLocalX = (long) event.getX();
+                    nowLocalY = (long) event.getY();
+                }
+            }
+        });
+        
+        
+        canvas3.addEventHandler(MouseEvent.MOUSE_PRESSED, e->{
+            localX = (long) e.getX();
+            localY = (long) e.getY();
+            selectedChar = -1;
+            for(int i = 0; i < refactChars1.size(); i++){
+                ArrayList<vertice> vertices = refactChars1.get(i).vertices;
+                long maxX = Long.MIN_VALUE;
+                long minX = Long.MAX_VALUE;
+                long maxY = Long.MIN_VALUE;
+                long minY = Long.MAX_VALUE;
+                for(int j = 0; j < vertices.size(); j++)
+                {
+                    Point3D verticeAtual = vertices.get(j).ponto;
+                    if( (long) verticeAtual.getZ() < minX) minX =(long) verticeAtual.getZ();
+                    if( (long) verticeAtual.getZ() > maxX) maxX =(long) verticeAtual.getZ();
+                    if( (long) verticeAtual.getY() < minY) minY =(long) verticeAtual.getY();
+                    if( (long) verticeAtual.getY() > maxY) maxY =(long) verticeAtual.getY();        
+                }
+                if((localX >= minX && localX <= maxX) && (localY >= minY && localY <= maxY)){
+                    selectedChar = i;
+                    break;
+                }
+            }
+
+            if(selectedChar != -1){
+                System.out.println(chars.get(selectedChar).letra + " selecionada");
+                mouseApertado = true;
+            }
+            else{
+                System.out.println("não apertou em nada");
+            }
+        });   
+        canvas3.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
+            mouseApertado = false;
+        });
+        canvas3.addEventHandler(MouseEvent.ANY, (event)->{
+            long nowLocalX = (long) event.getX();
+            long nowLocalY = (long) event.getY();
+            if(selectedChar != -1){
+                if(mouseApertado){
+                    if((nowLocalX <= canvas3.getHeight() && nowLocalX >= 0) && (nowLocalY <= canvas3.getWidth() && nowLocalY >= 0))
+                    {
+                        localX = localX - ((long) event.getX());
+                        localX *= -1;
+                        localY = localY - ((long) event.getY());
+                        localY *= -1;
+                        caractere mudanssa = refactChars1.get(selectedChar);
+                        for(int k = 0; k < mudanssa.vertices.size(); k++){
+                            mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(0, localY, localX);
+                        }
+                        canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
+                        canvas2.getGraphicsContext2D().clearRect(0, 0, canvas2.getWidth(), canvas2.getHeight());
+                        canvas3.getGraphicsContext2D().clearRect(0, 0, canvas3.getWidth(), canvas3.getHeight());
+                        for(int k = 0; k < refactChars1.size(); k++){
+                            desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k).arestas);
+                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars1.get(k).arestas);
+                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars1.get(k).arestas);
+                        }
+                    }
+                    localX = nowLocalX;
+                    localY = nowLocalY;
+                    nowLocalX = (long) event.getX();
+                    nowLocalY = (long) event.getY();
+                }
+            }
+        });
         
         
         
