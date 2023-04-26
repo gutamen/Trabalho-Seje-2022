@@ -4,6 +4,7 @@
  */
 package controller;
 
+
 import estrutura.aresta;
 import estrutura.vertice;
 import java.util.ArrayList;
@@ -18,9 +19,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import letras.*;
 import java.util.Scanner;
-import javafx.event.EventType;
-import javafx.scene.control.Button;
-import javafx.scene.input.KeyEvent;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 
@@ -32,7 +32,7 @@ import javafx.scene.input.MouseEvent;
 public class ctrl extends Application {
     int selectedChar;
     long localX, localY;
-    
+    boolean mouseApertado;
     
     @Override public void start(Stage stage) {
         //falseStart(stage);
@@ -128,49 +128,44 @@ public class ctrl extends Application {
             desenhaFiguraPorAresta(gc4, refactChars2.get(i).arestas);
         }
         
-        canvas1.addEventHandler(MouseEvent.MOUSE_PRESSED, (event)->{
-            localX = (long) event.getX();
-            localY = (long) event.getY();
+        
+        canvas1.addEventHandler(MouseEvent.MOUSE_PRESSED, e->{
+            localX = (long) e.getX();
+            localY = (long) e.getY();
             selectedChar = -1;
-            
-            
             for(int i = 0; i < refactChars1.size(); i++){
                 ArrayList<vertice> vertices = refactChars1.get(i).vertices;
                 long maxX = Long.MIN_VALUE;
                 long minX = Long.MAX_VALUE;
                 long maxY = Long.MIN_VALUE;
                 long minY = Long.MAX_VALUE;
-                
                 for(int j = 0; j < vertices.size(); j++)
                 {
                     Point3D verticeAtual = vertices.get(j).ponto;
-           
                     if( (long) verticeAtual.getX() < minX) minX =(long) verticeAtual.getX();
                     if( (long) verticeAtual.getX() > maxX) maxX =(long) verticeAtual.getX();
                     if( (long) verticeAtual.getY() < minY) minY =(long) verticeAtual.getY();
                     if( (long) verticeAtual.getY() > maxY) maxY =(long) verticeAtual.getY();        
                 }
-                
-                
                 if((localX >= minX && localX <= maxX) && (localY >= minY && localY <= maxY)){
                     selectedChar = i;
                     break;
                 }
-                
-                
             }
-            
+
             if(selectedChar != -1){
                 System.out.println(chars.get(selectedChar).letra + " selecionada");
+                mouseApertado = true;
             }
             else{
                 System.out.println("não apertou em nada");
             }
-            
         });
         
+        
         canvas1.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
-            if(selectedChar != -1){
+            mouseApertado = false;
+            /*if(selectedChar != -1){
                 if((event.getX() <= canvas1.getHeight() && event.getX() >= 0) && (event.getY() <= canvas1.getWidth() && event.getY() >= 0))
                 {
                     localX -= (long) event.getX();
@@ -196,9 +191,43 @@ public class ctrl extends Application {
                     
                 }
                 
-            }
+            }*/
         
         });
+        
+        canvas1.addEventHandler(MouseEvent.ANY, (event)->{
+            long nowLocalX = (long) event.getX();
+            long nowLocalY = (long) event.getY();
+            if(selectedChar != -1){
+                if(mouseApertado){
+                    if((nowLocalX <= canvas1.getHeight() && nowLocalX >= 0) && (nowLocalY <= canvas1.getWidth() && nowLocalY >= 0))
+                    {
+                        localX = localX - ((long) event.getX());
+                        localX *= -1;
+                        localY = localY - ((long) event.getY());
+                        localY *= -1;
+                        caractere mudanssa = refactChars1.get(selectedChar);
+                        for(int k = 0; k < mudanssa.vertices.size(); k++){
+                            mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(localX, localY, 0);
+                        }
+                        canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
+                        canvas2.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
+                        canvas3.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
+                        for(int k = 0; k < refactChars1.size(); k++){
+                            desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k).arestas);
+                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars1.get(k).arestas);
+                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars1.get(k).arestas);
+                        }
+                    }
+                    localX = nowLocalX;
+                    localY = nowLocalY;
+                    nowLocalX = (long) event.getX();
+                    nowLocalY = (long) event.getY();
+                }
+            }
+        });
+        
+        
         
         
         
@@ -287,8 +316,8 @@ public class ctrl extends Application {
             gc.strokePolyline(xpoints, ypoints, 2);
             
         }
-        System.out.println(Arrays.toString(xpoints));
-        System.out.println(Arrays.toString(ypoints));
+        //System.out.println(Arrays.toString(xpoints));
+        //System.out.println(Arrays.toString(ypoints));
         
         
         gc.restore();
@@ -311,8 +340,8 @@ public class ctrl extends Application {
             gc.strokePolyline(xpoints, ypoints, 2);
             
         }
-        System.out.println(Arrays.toString(xpoints));
-        System.out.println(Arrays.toString(ypoints));
+        //System.out.println(Arrays.toString(xpoints));
+        //System.out.println(Arrays.toString(ypoints));
         
         
         gc.restore();
@@ -335,8 +364,8 @@ public class ctrl extends Application {
             gc.strokePolyline(xpoints, ypoints, 2);
             
         }
-        System.out.println(Arrays.toString(xpoints));
-        System.out.println(Arrays.toString(ypoints));
+        //System.out.println(Arrays.toString(xpoints));
+        //System.out.println(Arrays.toString(ypoints));
         
         
         gc.restore();
