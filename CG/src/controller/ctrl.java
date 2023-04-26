@@ -18,6 +18,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import letras.*;
 import java.util.Scanner;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
@@ -28,13 +30,16 @@ import javafx.scene.control.TextArea;
 public class ctrl extends Application {
         public void start(Stage stage) {
         //falseStart(stage);
-        trueStart(stage);
+        Group root = new Group();
+        Scene scene = new Scene(root, 880, 800, Color.WHITE);
+        intFace(stage, root, scene);
     }
         
     public static Scanner read = new Scanner(System.in);
     public static double offSet;
+    public static String desespero = new String();
     
-    public void intFace(Group root){
+    public void intFace(Stage stage, Group root, Scene scene){        
         Button bt = new Button("OK");
         TextArea ta = new TextArea();
         ta.setLayoutX(620);
@@ -45,14 +50,21 @@ public class ctrl extends Application {
         bt.setMaxSize(200, 30);
         bt.setLayoutX(830);
         bt.setLayoutY(40);
+        trueStart(stage, root, ta.getText(), scene);
         root.getChildren().add(ta);
         root.getChildren().add(bt);
+        bt.setOnAction((ActionEvent evento) -> {
+            root.getChildren().clear();
+            root.getChildren().add(ta);
+            root.getChildren().add(bt);
+            trueStart(stage, root, ta.getText(), scene);
+        });
     }
-    
-    private void trueStart(Stage stage){
-        String readed = read.nextLine();
-        readed = readed.toLowerCase();
-        
+ 
+    private void trueStart(Stage stage, Group root, String readed, Scene scene){
+        //String readed = read.nextLine();
+        //readed = readed.toLowerCase();
+        System.out.println(readed);
         ArrayList<caractere> chars = new ArrayList<caractere>();
         
         for(int i = 0; i < readed.length(); i++){
@@ -66,9 +78,6 @@ public class ctrl extends Application {
         }
         
         tela2String(chars.size(), chars);
-        
-        Group root = new Group();
-        Scene scene = new Scene(root, 880, 800, Color.WHITE);
         
         ctrlCam ct1 = new ctrlCam();
         ctrlCam ct2 = new ctrlCam();
@@ -90,13 +99,7 @@ public class ctrl extends Application {
         GraphicsContext gc3 = canvas3.getGraphicsContext2D();
         GraphicsContext gc4 = canvas4.getGraphicsContext2D();
        
-        root.getChildren().add(canvas1);
-        root.getChildren().add(canvas2);
-        root.getChildren().add(canvas3);
-        root.getChildren().add(canvas4);
-        
-        //teste interface
-        intFace(root);
+        root.getChildren().addAll(canvas1, canvas2, canvas3, canvas4);
         
         ArrayList<caractere> refactChars1 = new ArrayList<caractere>();
         ArrayList<caractere> refactChars2 = new ArrayList<caractere>();
