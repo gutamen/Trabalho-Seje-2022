@@ -19,7 +19,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import letras.*;
 import java.util.Scanner;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
@@ -34,9 +37,35 @@ public class ctrl extends Application {
     long localX, localY;
     boolean mouseApertado;
     
+    public void intFace(Stage stage, Group root, Scene scene){        
+        Button bt = new Button("OK");
+        TextArea ta = new TextArea();
+        ta.setLayoutX(620);
+        ta.setLayoutY(40);
+        ta.setMinSize(0, 0);
+        ta.setMaxSize(200, 28);
+        bt.setMinSize(0, 0);
+        bt.setMaxSize(200, 30);
+        bt.setLayoutX(830);
+        bt.setLayoutY(40);
+        trueStart(stage, root, ta.getText(), scene);
+        root.getChildren().add(ta);
+        root.getChildren().add(bt);
+        bt.setOnAction((ActionEvent evento) -> {
+            root.getChildren().clear();
+            root.getChildren().add(ta);
+            root.getChildren().add(bt);
+            trueStart(stage, root, ta.getText(), scene);
+        });
+    }
+    
+    
     @Override public void start(Stage stage) {
         //falseStart(stage);
-        trueStart(stage);
+        Group root = new Group();
+        Scene scene = new Scene(root, 880, 800, Color.WHITE);
+        intFace(stage, root, scene);
+        
         
         
     }
@@ -44,8 +73,10 @@ public class ctrl extends Application {
     public static Scanner read = new Scanner(System.in);
     public static double offSet;
     
-    private void trueStart(Stage stage){
-        String readed = read.nextLine();
+    
+    
+    private void trueStart(Stage stage, Group root, String readed, Scene scene){
+        //String readed = read.nextLine();
         readed = readed.toLowerCase();
         
         ArrayList<caractere> chars = new ArrayList<caractere>();
@@ -62,8 +93,8 @@ public class ctrl extends Application {
         
         tela2String(chars.size(), chars);
         
-        Group root = new Group();
-        Scene scene = new Scene(root, 1920, 1080, Color.WHITE);
+        //Group root = new Group();
+        //Scene scene = new Scene(root, 1920, 1080, Color.WHITE);
         
         ctrlCam ct1 = new ctrlCam();
         ctrlCam ct2 = new ctrlCam();
@@ -79,8 +110,8 @@ public class ctrl extends Application {
         canvas1.setLayoutY(0);
         canvas2.setLayoutY(200);
         canvas3.setLayoutY(400);
-        canvas4.setLayoutY(500);
-        canvas4.setLayoutX(500);
+        canvas4.setLayoutY(600);
+        //canvas4.setLayoutX(500);
         
         GraphicsContext gc1 = canvas1.getGraphicsContext2D();
         GraphicsContext gc2 = canvas2.getGraphicsContext2D();
