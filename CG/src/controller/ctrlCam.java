@@ -119,8 +119,18 @@ public class ctrlCam {
         return vzin = new Point3D(getVzao().getX()/getIVI(), getVzao().getY()/getIVI(), getVzao().getZ()/getIVI());
     }
 
+    
+    /*
+    TALVEZ O UZIN ESTEJA ERRADO
+    TALVEZ O UZIN ESTEJA ERRADO
+    TALVEZ O UZIN ESTEJA ERRADO
+    TALVEZ O UZIN ESTEJA ERRADO
+    TALVEZ O UZIN ESTEJA ERRADO
+    TALVEZ O UZIN ESTEJA ERRADO
+    TALVEZ O UZIN ESTEJA ERRADO
+    */
     public Point3D getUzin(){
-        return uzin = new Point3D(getVzin().getY()*getNzin().getZ()-getNzin().getY()*getVzin().getZ(),
+        return uzin = new Point3D(-getVzin().getY()*getNzin().getZ()-getNzin().getY()*getVzin().getZ(),
                                   getVzin().getZ()*getNzin().getX()-getVzin().getX()*getNzin().getZ(),
                                   getVzin().getX()*getNzin().getY()-getNzin().getX()*getVzin().getY());
     }
@@ -233,5 +243,41 @@ public class ctrlCam {
         return matrizR;
     }
     
-    
+    public double[][] matrizInversa(double[][] matriz){
+        int n = matriz.length;
+        double[][] augmentedMatrix = new double[n][2*n];
+        for (int i = 0; i < n; i++) {
+            System.arraycopy(matriz[i], 0, augmentedMatrix[i], 0, n);
+            augmentedMatrix[i][n+i] = 1;
+        }
+        for (int i = 0; i < n; i++) {
+            double pivot = augmentedMatrix[i][i];
+            for(int j = i; j < 2*n; j++) {
+                augmentedMatrix[i][j] /= pivot;
+            }
+            for(int j = i+1; j < n; j++) {
+                double factor = augmentedMatrix[j][i];
+                for (int k = i; k < 2*n; k++) {
+                    augmentedMatrix[j][k] -= factor * augmentedMatrix[i][k];
+                }
+            }
+        }
+
+        for (int i = n-1; i >= 0; i--) {
+            for (int j = i-1; j >= 0; j--) {
+                double factor = augmentedMatrix[j][i];
+                for (int k = i; k < 2*n; k++) {
+                    augmentedMatrix[j][k] -= factor * augmentedMatrix[i][k];
+                }
+            }
+        }
+
+        double[][] matrizInversa = new double[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = n; j < 2*n; j++) {
+                matrizInversa[i][j-n] = augmentedMatrix[i][j];
+            }
+        }
+        return matrizInversa;
+    }   
 }
