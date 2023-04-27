@@ -70,10 +70,10 @@ public class ctrl extends Application {
         ctrlCam ct3 = new ctrlCam();
         ctrlCam ct4 = new ctrlCam();
         
-        final Canvas canvas1 = new Canvas(600, 600);
-        final Canvas canvas2 = new Canvas(600, 600);
-        final Canvas canvas3 = new Canvas(600, 600);
-        final Canvas canvas4 = new Canvas(600, 600);
+        final Canvas canvas1 = new Canvas(600, 200);
+        final Canvas canvas2 = new Canvas(600, 200);
+        final Canvas canvas3 = new Canvas(600, 200);
+        final Canvas canvas4 = new Canvas(600, 200);
 
         canvas1.setLayoutX(0);
         canvas1.setLayoutY(0);
@@ -120,6 +120,12 @@ public class ctrl extends Application {
         ctrlVRP2SRU(ct1, refactChars1, gc1, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), false);
         System.out.println("1...");
         ctrlVRP2SRU(ct4, refactChars2, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
+        
+        
+        System.out.println("Matriz Jp");
+        writMat(ct1.getMJp());
+        System.out.println("\n");
+        
         
         for(int i = 0; i < refactChars1.size(); i++){
             desenhaFiguraPorAresta(gc1, refactChars1.get(i).arestas);
@@ -169,7 +175,7 @@ public class ctrl extends Application {
             long nowLocalY = (long) event.getY();
             if(selectedChar != -1){
                 if(mouseApertado){
-                    if((nowLocalX <= canvas1.getHeight() && nowLocalX >= 0) && (nowLocalY <= canvas1.getWidth() && nowLocalY >= 0))
+                    if((nowLocalX <= canvas1.getWidth() && nowLocalX >= 0) && (nowLocalY <= canvas1.getHeight() && nowLocalY >= 0))
                     {
                         localX = localX - ((long) event.getX());
                         localX *= -1;
@@ -238,7 +244,7 @@ public class ctrl extends Application {
             long nowLocalY = (long) event.getY();
             if(selectedChar != -1){
                 if(mouseApertado){
-                    if((nowLocalX <= canvas2.getHeight() && nowLocalX >= 0) && (nowLocalY <= canvas2.getWidth() && nowLocalY >= 0))
+                    if((nowLocalX <= canvas2.getWidth() && nowLocalX >= 0) && (nowLocalY <= canvas2.getHeight() && nowLocalY >= 0))
                     {
                         localX = localX - ((long) event.getX());
                         localX *= -1;
@@ -306,7 +312,7 @@ public class ctrl extends Application {
             long nowLocalY = (long) event.getY();
             if(selectedChar != -1){
                 if(mouseApertado){
-                    if((nowLocalX <= canvas3.getHeight() && nowLocalX >= 0) && (nowLocalY <= canvas3.getWidth() && nowLocalY >= 0))
+                    if((nowLocalX <= canvas3.getWidth() && nowLocalX >= 0) && (nowLocalY <= canvas3.getHeight() && nowLocalY >= 0))
                     {
                         localX = localX - ((long) event.getX());
                         localX *= -1;
@@ -481,7 +487,7 @@ public class ctrl extends Application {
         ct.setP(P.getX(), P.getY(), P.getZ());
         ct.setYc(Y.getX(), Y.getY(), Y.getZ());
         ct.setDp(21);
-        ct.setViewport(0, 0, 80*refactChars.size(), 200);
+        ct.setViewport(0, 0, 80*refactChars.size(), 199);
         ct.setWindow(-2*refactChars.size()-2, -2-1, 2*refactChars.size()+2, 2+1);
         
         if(!projecao){
