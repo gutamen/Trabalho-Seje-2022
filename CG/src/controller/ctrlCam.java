@@ -130,7 +130,7 @@ public class ctrlCam {
     TALVEZ O UZIN ESTEJA ERRADO
     */
     public Point3D getUzin(){
-        return uzin = new Point3D(-getVzin().getY()*getNzin().getZ()-getNzin().getY()*getVzin().getZ(),
+        return uzin = new Point3D(getVzin().getY()*getNzin().getZ()-getNzin().getY()*getVzin().getZ(),
                                   getVzin().getZ()*getNzin().getX()-getVzin().getX()*getNzin().getZ(),
                                   getVzin().getX()*getNzin().getY()-getNzin().getX()*getVzin().getY());
     }

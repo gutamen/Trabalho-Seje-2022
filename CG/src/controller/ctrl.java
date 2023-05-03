@@ -150,7 +150,7 @@ public class ctrl extends Application {
         System.out.println("0...");
         ctrlVRP2SRU(ct1, refactChars1, gc1, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), false);
         System.out.println("1...");
-        ctrlVRP2SRU(ct4, refactChars2, gc2, new Point3D(0, 0, -19), new Point3D(0, 0, 2), new Point3D(0, 1, 0), true);
+        ctrlVRP2SRU(ct4, refactChars2, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
         
         
         /*System.out.println("Matriz Jp");
@@ -229,7 +229,7 @@ public class ctrl extends Application {
                         caractere perspectiva = refactChars2.get(selectedChar);
                         invertChar(mudanssa, ct1,universo);
                         copiaVertices(perspectiva,universo);
-                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars2, gc2, new Point3D(0, 0, -19), new Point3D(0, 0, 2), new Point3D(0, 1, 0), true);
+                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars2, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
                         
                         
                         canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
@@ -307,7 +307,7 @@ public class ctrl extends Application {
                         caractere perspectiva = refactChars2.get(selectedChar);
                         invertChar(mudanssa, ct1,universo);
                         copiaVertices(perspectiva,universo);
-                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars2, gc2, new Point3D(0, 0, -19), new Point3D(0, 0, 2), new Point3D(0, 1, 0), true);
+                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars2, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
                         
                         
                         canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
@@ -384,7 +384,7 @@ public class ctrl extends Application {
                         caractere perspectiva = refactChars2.get(selectedChar);
                         invertChar(mudanssa, ct1,universo);
                         copiaVertices(perspectiva,universo);
-                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars2, gc2, new Point3D(0, 0, -19), new Point3D(0, 0, 2), new Point3D(0, 1, 0), true);
+                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars2, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
                         
                         
                         canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
