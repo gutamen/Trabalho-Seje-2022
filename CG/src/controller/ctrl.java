@@ -7,6 +7,8 @@ package controller;
 
 import estrutura.aresta;
 import estrutura.vertice;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javafx.application.Application;
@@ -38,6 +40,7 @@ public class ctrl extends Application {
     boolean mouseApertado;
     
     public void intFace(Stage stage, Group root, Scene scene){        
+        
         Button bt = new Button("OK");
         TextArea ta = new TextArea();
         ta.setLayoutX(620);
@@ -90,6 +93,7 @@ public class ctrl extends Application {
                 chars.get(i).vertices.get(j).setZ(1);
             }
         }
+        salvaString(chars);
         
         tela2String(chars.size(), chars);
         
@@ -690,4 +694,31 @@ public class ctrl extends Application {
         }
         return matrizR;
     }
+    
+    public void salvaString(ArrayList<caractere> caracteres){
+        try {
+            File arquivo = new File("cu.txt");
+            if (!arquivo.exists()) {
+                arquivo.createNewFile();
+            }
+            
+            FileWriter escritor = new FileWriter(arquivo);
+            
+            for(int i = 0; i < caracteres.size(); i++){
+                escritor.write(i + "\n" + caracteres.get(i).letra + "\n");
+                for(int k = 0; k < caracteres.get(i).vertices.size(); k++){
+                    escritor.write(caracteres.get(i).vertices.get(i).ponto.toString() + "\n");
+                }
+                escritor.write("\n");
+            }           
+            escritor.close();
+            System.out.println("Dados salvos no arquivo com sucesso!");
+            
+        } catch (Exception e) {
+            System.out.println("Erro ao salvar dados no arquivo: " + e.getMessage());
+        }
+    }
+    
+    
 }
+
