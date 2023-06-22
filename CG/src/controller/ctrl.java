@@ -707,7 +707,7 @@ public class ctrl extends Application {
             for(int i = 0; i < caracteres.size(); i++){
                 escritor.write(i + "\n" + caracteres.get(i).letra + "\n");
                 for(int k = 0; k < caracteres.get(i).vertices.size(); k++){
-                    escritor.write(caracteres.get(i).vertices.get(i).ponto.toString() + "\n");
+                    escritor.write(caracteres.get(i).vertices.get(k).ponto.toString() + "\n");
                 }
                 escritor.write("\n");
             }           
