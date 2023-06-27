@@ -1158,6 +1158,30 @@ public class caractere {
         arestas.add(new aresta("I_IT", vertices.get(8), vertices.get(18), null, null, null, null, null, null));      
         arestas.add(new aresta("J_JT", vertices.get(9), vertices.get(19), null, null, null, null, null, null));
         
+         //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("I_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("J_I")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("A_J")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("I_IT")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
+        
+        
+        
     }
     
     private void createG(){
@@ -1231,6 +1255,33 @@ public class caractere {
         arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(22), null, null, null, null, null, null));
         arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(23), null, null, null, null, null, null));
         
+         //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("I_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("J_I")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("K_J")));
+        vertices.get(encontraVertice("K")).setArestaVertice(arestas.get(encontraAresta("L_K")));
+        vertices.get(encontraVertice("L")).setArestaVertice(arestas.get(encontraAresta("A_L")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("I_IT")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
+        vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("K_KT")));
+        vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("L_LT")));
+        
+        
     }
     
     private void createH(){
@@ -1303,6 +1354,33 @@ public class caractere {
         arestas.add(new aresta("J_JT", vertices.get(9),  vertices.get(21), null, null, null, null, null, null));
         arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(22), null, null, null, null, null, null));
         arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(23), null, null, null, null, null, null));
+        
+         //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("I_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("J_I")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("K_J")));
+        vertices.get(encontraVertice("K")).setArestaVertice(arestas.get(encontraAresta("L_K")));
+        vertices.get(encontraVertice("L")).setArestaVertice(arestas.get(encontraAresta("A_L")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("I_IT")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
+        vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("K_KT")));
+        vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("L_LT")));
+        
     }
     
     private void createI(){
@@ -1335,6 +1413,18 @@ public class caractere {
         arestas.add(new aresta("B_BT", vertices.get(1), vertices.get(5), null, null, null, null, null, null));
         arestas.add(new aresta("C_CT", vertices.get(2), vertices.get(6), null, null, null, null, null, null));
         arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(7), null, null, null, null, null, null));
+        
+        
+         //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("A_D")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        
     }
     
     private void createJ(){
@@ -1397,6 +1487,29 @@ public class caractere {
         arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(17), null, null, null, null, null, null));
         arestas.add(new aresta("I_IT", vertices.get(8), vertices.get(18), null, null, null, null, null, null));      
         arestas.add(new aresta("J_JT", vertices.get(9), vertices.get(19), null, null, null, null, null, null));
+        
+         //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("I_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("J_I")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("A_J")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("I_IT")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
+        
     }
     
     private void createK(){
@@ -1469,6 +1582,33 @@ public class caractere {
         arestas.add(new aresta("J_JT", vertices.get(9),  vertices.get(21), null, null, null, null, null, null));
         arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(22), null, null, null, null, null, null));
         arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(23), null, null, null, null, null, null));
+        
+         //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("I_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("J_I")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("K_J")));
+        vertices.get(encontraVertice("K")).setArestaVertice(arestas.get(encontraAresta("L_K")));
+        vertices.get(encontraVertice("L")).setArestaVertice(arestas.get(encontraAresta("A_L")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("I_IT")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
+        vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("K_KT")));
+        vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("L_LT")));
+        
     }
     
     private void createL(){
@@ -1511,6 +1651,21 @@ public class caractere {
         arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(9), null, null, null, null, null, null));
         arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(10), null, null, null, null, null, null));
         arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(11), null, null, null, null, null, null));
+        
+         //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("A_F")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        
         
     }
     
@@ -1589,6 +1744,34 @@ public class caractere {
         arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(23), null, null, null, null, null, null));
         arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(24), null, null, null, null, null, null));
         arestas.add(new aresta("M_MT", vertices.get(12), vertices.get(25), null, null, null, null, null, null));
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("I_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("J_I")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("K_J")));
+        vertices.get(encontraVertice("K")).setArestaVertice(arestas.get(encontraAresta("L_K")));
+        vertices.get(encontraVertice("L")).setArestaVertice(arestas.get(encontraAresta("M_L")));
+        vertices.get(encontraVertice("M")).setArestaVertice(arestas.get(encontraAresta("A_M")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("I_IT")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
+        vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("K_KT")));
+        vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("L_LT")));
+        vertices.get(encontraVertice("MT")).setArestaVertice(arestas.get(encontraAresta("M_MT")));
     }
     
     private void createN(){
@@ -1651,6 +1834,28 @@ public class caractere {
         arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(17), null, null, null, null, null, null));
         arestas.add(new aresta("I_IT", vertices.get(8), vertices.get(18), null, null, null, null, null, null));      
         arestas.add(new aresta("J_JT", vertices.get(9), vertices.get(19), null, null, null, null, null, null));
+        
+         //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("I_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("J_I")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("A_J")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("I_IT")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
     }
     
     private void createO(){
@@ -1709,6 +1914,24 @@ public class caractere {
         arestas.add(new aresta("FT_F", vertices.get(13), vertices.get(5), null, null, null, null, null, null));
         arestas.add(new aresta("GT_G", vertices.get(14), vertices.get(6), null, null, null, null, null, null));
         arestas.add(new aresta("HT_H", vertices.get(15), vertices.get(7), null, null, null, null, null, null));
+        
+         //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("A_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("E_F")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("F_G")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("G_H")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("H_E")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("ET_E")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("FT_F")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("GT_G")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("HT_H")));
     
     }
     
@@ -1779,6 +2002,28 @@ public class caractere {
         arestas.add(new aresta("HT_H", vertices.get(17),  vertices.get(7), null, null, null, null, null, null));      
         arestas.add(new aresta("IT_I", vertices.get(18),  vertices.get(8), null, null, null, null, null, null));
         arestas.add(new aresta("JT_J", vertices.get(19),  vertices.get(9), null, null, null, null, null, null));
+        
+         //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("A_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("G_H")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("H_I")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("I_J")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("J_G")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("GT_G")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("HT_H")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("IT_I")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("JT_J")));
     }
     
     private void createQ(){
@@ -1877,6 +2122,40 @@ public class caractere {
         arestas.add(new aresta("NT_N", vertices.get(29), vertices.get(13), null, null, null, null, null, null));
         arestas.add(new aresta("OT_O", vertices.get(30), vertices.get(14), null, null, null, null, null, null));
         arestas.add(new aresta("PT_P", vertices.get(31), vertices.get(15), null, null, null, null, null, null));
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("A_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("I_J")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("J_K")));
+        vertices.get(encontraVertice("K")).setArestaVertice(arestas.get(encontraAresta("K_L")));
+        vertices.get(encontraVertice("L")).setArestaVertice(arestas.get(encontraAresta("L_M")));
+        vertices.get(encontraVertice("M")).setArestaVertice(arestas.get(encontraAresta("M_N")));
+        vertices.get(encontraVertice("N")).setArestaVertice(arestas.get(encontraAresta("N_O")));
+        vertices.get(encontraVertice("O")).setArestaVertice(arestas.get(encontraAresta("O_P")));
+        vertices.get(encontraVertice("P")).setArestaVertice(arestas.get(encontraAresta("P_I")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("IT_I")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("JT_J")));
+        vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("KT_K")));
+        vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("LT_L")));
+        vertices.get(encontraVertice("MT")).setArestaVertice(arestas.get(encontraAresta("MT_M")));
+        vertices.get(encontraVertice("NT")).setArestaVertice(arestas.get(encontraAresta("NT_N")));
+        vertices.get(encontraVertice("OT")).setArestaVertice(arestas.get(encontraAresta("OT_O")));
+        vertices.get(encontraVertice("PT")).setArestaVertice(arestas.get(encontraAresta("PT_P")));
     }
     
     private void createR(){
@@ -1965,6 +2244,36 @@ public class caractere {
         arestas.add(new aresta("LT_L", vertices.get(25), vertices.get(11), null, null, null, null, null, null));
         arestas.add(new aresta("MT_M", vertices.get(26), vertices.get(12), null, null, null, null, null, null));
         arestas.add(new aresta("NT_N", vertices.get(27), vertices.get(13), null, null, null, null, null, null));
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("I_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("J_I")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("A_J")));
+        vertices.get(encontraVertice("K")).setArestaVertice(arestas.get(encontraAresta("K_L")));
+        vertices.get(encontraVertice("L")).setArestaVertice(arestas.get(encontraAresta("L_M")));
+        vertices.get(encontraVertice("M")).setArestaVertice(arestas.get(encontraAresta("M_N")));
+        vertices.get(encontraVertice("N")).setArestaVertice(arestas.get(encontraAresta("N_K")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("I_IT")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
+        vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("KT_K")));
+        vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("LT_L")));
+        vertices.get(encontraVertice("MT")).setArestaVertice(arestas.get(encontraAresta("MT_M")));
+        vertices.get(encontraVertice("NT")).setArestaVertice(arestas.get(encontraAresta("NT_N")));
     }
     
     private void createS(){
@@ -2038,6 +2347,31 @@ public class caractere {
         arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(22), null, null, null, null, null, null));
         arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(23), null, null, null, null, null, null));
         
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("I_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("J_I")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("K_J")));
+        vertices.get(encontraVertice("K")).setArestaVertice(arestas.get(encontraAresta("L_K")));
+        vertices.get(encontraVertice("L")).setArestaVertice(arestas.get(encontraAresta("A_L")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("I_IT")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
+        vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("K_KT")));
+        vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("L_LT")));
         
     }
     
@@ -2091,6 +2425,24 @@ public class caractere {
         arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(13), null, null, null, null, null, null));
         arestas.add(new aresta("G_GT", vertices.get(6), vertices.get(14), null, null, null, null, null, null));
         arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(15), null, null, null, null, null, null));  
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("A_H")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
     }
     
     private void createU(){
@@ -2143,6 +2495,24 @@ public class caractere {
         arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(13), null, null, null, null, null, null));
         arestas.add(new aresta("G_GT", vertices.get(6), vertices.get(14), null, null, null, null, null, null));
         arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(15), null, null, null, null, null, null));  
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("A_H")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
     }
     
     private void createV(){
@@ -2195,6 +2565,24 @@ public class caractere {
         arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(13), null, null, null, null, null, null));
         arestas.add(new aresta("G_GT", vertices.get(6), vertices.get(14), null, null, null, null, null, null));
         arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(15), null, null, null, null, null, null));  
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("A_H")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
     }
     
     private void createW(){
@@ -2287,6 +2675,40 @@ public class caractere {
         arestas.add(new aresta("N_NT", vertices.get(13), vertices.get(29), null, null, null, null, null, null));
         arestas.add(new aresta("O_OT", vertices.get(14), vertices.get(30), null, null, null, null, null, null));
         arestas.add(new aresta("P_PT", vertices.get(15), vertices.get(31), null, null, null, null, null, null));
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("I_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("J_I")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("K_J")));
+        vertices.get(encontraVertice("K")).setArestaVertice(arestas.get(encontraAresta("L_K")));
+        vertices.get(encontraVertice("L")).setArestaVertice(arestas.get(encontraAresta("M_L")));
+        vertices.get(encontraVertice("M")).setArestaVertice(arestas.get(encontraAresta("N_M")));
+        vertices.get(encontraVertice("N")).setArestaVertice(arestas.get(encontraAresta("O_N")));
+        vertices.get(encontraVertice("O")).setArestaVertice(arestas.get(encontraAresta("P_O")));
+        vertices.get(encontraVertice("P")).setArestaVertice(arestas.get(encontraAresta("A_P")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("I_IT")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
+        vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("K_KT")));
+        vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("L_LT")));
+        vertices.get(encontraVertice("MT")).setArestaVertice(arestas.get(encontraAresta("M_MT")));
+        vertices.get(encontraVertice("NT")).setArestaVertice(arestas.get(encontraAresta("N_NT")));
+        vertices.get(encontraVertice("OT")).setArestaVertice(arestas.get(encontraAresta("O_OT")));
+        vertices.get(encontraVertice("PT")).setArestaVertice(arestas.get(encontraAresta("P_PT")));
     }
     
     private void createX(){
@@ -2369,6 +2791,36 @@ public class caractere {
         arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(25), null, null, null, null, null, null));
         arestas.add(new aresta("M_MT", vertices.get(12), vertices.get(26), null, null, null, null, null, null));
         arestas.add(new aresta("N_NT", vertices.get(13), vertices.get(27), null, null, null, null, null, null));
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("I_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("J_I")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("K_J")));
+        vertices.get(encontraVertice("K")).setArestaVertice(arestas.get(encontraAresta("L_K")));
+        vertices.get(encontraVertice("L")).setArestaVertice(arestas.get(encontraAresta("M_L")));
+        vertices.get(encontraVertice("M")).setArestaVertice(arestas.get(encontraAresta("N_M")));
+        vertices.get(encontraVertice("N")).setArestaVertice(arestas.get(encontraAresta("A_N")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("I_IT")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
+        vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("K_KT")));
+        vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("L_LT")));
+        vertices.get(encontraVertice("MT")).setArestaVertice(arestas.get(encontraAresta("M_MT")));
+        vertices.get(encontraVertice("NT")).setArestaVertice(arestas.get(encontraAresta("N_NT")));
     }
     
     private void createY(){
@@ -2432,6 +2884,27 @@ public class caractere {
         arestas.add(new aresta("I_IT", vertices.get(8), vertices.get(18), null, null, null, null, null, null));      
         arestas.add(new aresta("J_JT", vertices.get(9), vertices.get(19), null, null, null, null, null, null));
         
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("I_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("J_I")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("A_J")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("I_IT")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
     }
     
     private void createZ(){
@@ -2494,6 +2967,28 @@ public class caractere {
         arestas.add(new aresta("H_HT", vertices.get(7), vertices.get(17), null, null, null, null, null, null));
         arestas.add(new aresta("I_IT", vertices.get(8), vertices.get(18), null, null, null, null, null, null));      
         arestas.add(new aresta("J_JT", vertices.get(9), vertices.get(19), null, null, null, null, null, null));
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("I_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("J_I")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("A_J")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("I_IT")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
     }
     
     private void create0(){
@@ -2552,6 +3047,24 @@ public class caractere {
         arestas.add(new aresta("FT_F", vertices.get(13), vertices.get(5), null, null, null, null, null, null));
         arestas.add(new aresta("GT_G", vertices.get(14), vertices.get(6), null, null, null, null, null, null));
         arestas.add(new aresta("HT_H", vertices.get(15), vertices.get(7), null, null, null, null, null, null));
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("A_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("E_F")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("F_G")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("G_H")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("H_E")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("ET_E")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("FT_F")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("GT_G")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("HT_H")));
     }
     
     private void create1(){
@@ -2594,6 +3107,20 @@ public class caractere {
         arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(9), null, null, null, null, null, null));
         arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(10), null, null, null, null, null, null));
         arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(11), null, null, null, null, null, null));                                
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("A_F")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
         
     }
     
@@ -2678,6 +3205,35 @@ public class caractere {
         arestas.add(new aresta("M_MT", vertices.get(12), vertices.get(26), null, null, null, null, null, null));
         arestas.add(new aresta("N_NT", vertices.get(13), vertices.get(27), null, null, null, null, null, null));
         
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("I_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("J_I")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("K_J")));
+        vertices.get(encontraVertice("K")).setArestaVertice(arestas.get(encontraAresta("L_K")));
+        vertices.get(encontraVertice("L")).setArestaVertice(arestas.get(encontraAresta("M_L")));
+        vertices.get(encontraVertice("M")).setArestaVertice(arestas.get(encontraAresta("N_M")));
+        vertices.get(encontraVertice("N")).setArestaVertice(arestas.get(encontraAresta("A_N")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("I_IT")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
+        vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("K_KT")));
+        vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("L_LT")));
+        vertices.get(encontraVertice("MT")).setArestaVertice(arestas.get(encontraAresta("M_MT")));
+        vertices.get(encontraVertice("NT")).setArestaVertice(arestas.get(encontraAresta("N_NT")));
     }
     
     private void create3(){
@@ -2750,6 +3306,32 @@ public class caractere {
         arestas.add(new aresta("J_JT", vertices.get(9),  vertices.get(21), null, null, null, null, null, null));
         arestas.add(new aresta("K_KT", vertices.get(10), vertices.get(22), null, null, null, null, null, null));
         arestas.add(new aresta("L_LT", vertices.get(11), vertices.get(23), null, null, null, null, null, null));
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("I_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("J_I")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("K_J")));
+        vertices.get(encontraVertice("K")).setArestaVertice(arestas.get(encontraAresta("L_K")));
+        vertices.get(encontraVertice("L")).setArestaVertice(arestas.get(encontraAresta("A_L")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("I_IT")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
+        vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("K_KT")));
+        vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("L_LT")));
     }
     
     private void create4(){
@@ -2818,6 +3400,28 @@ public class caractere {
         arestas.add(new aresta("HT_H", vertices.get(17), vertices.get(7), null, null, null, null, null, null));
         arestas.add(new aresta("IT_I", vertices.get(18), vertices.get(8), null, null, null, null, null, null));      
         arestas.add(new aresta("JT_J", vertices.get(19), vertices.get(9), null, null, null, null, null, null));
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("A_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("G_H")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("H_I")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("I_J")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("J_G")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("GT_G")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("HT_H")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("IT_I")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("JT_J")));
     }
     
     private void create5(){
@@ -2890,6 +3494,32 @@ public class caractere {
         arestas.add(new aresta("J_JT", vertices.get(9), vertices.get(21), null, null, null, null, null, null));
         arestas.add(new aresta("K_KT", vertices.get(10),vertices.get(22), null, null, null, null, null, null));
         arestas.add(new aresta("L_LT", vertices.get(11),vertices.get(23), null, null, null, null, null, null));
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("I_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("J_I")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("K_J")));
+        vertices.get(encontraVertice("K")).setArestaVertice(arestas.get(encontraAresta("L_K")));
+        vertices.get(encontraVertice("L")).setArestaVertice(arestas.get(encontraAresta("A_L")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("I_IT")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
+        vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("K_KT")));
+        vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("L_LT")));
     }
     
     private void create6(){
@@ -2969,7 +3599,31 @@ public class caractere {
         arestas.add(new aresta("KT_K", vertices.get(22), vertices.get(10), null, null, null, null, null, null));
         arestas.add(new aresta("LT_L", vertices.get(23), vertices.get(11), null, null, null, null, null, null));
         
-        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("G_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("H_G")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("A_H")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("I_J")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("J_K")));
+        vertices.get(encontraVertice("K")).setArestaVertice(arestas.get(encontraAresta("K_L")));
+        vertices.get(encontraVertice("L")).setArestaVertice(arestas.get(encontraAresta("L_I")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("G_GT")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("H_HT")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("IT_I")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("JT_J")));
+        vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("KT_K")));
+        vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("LT_L")));
     }
     
     private void create7(){
@@ -3012,6 +3666,20 @@ public class caractere {
         arestas.add(new aresta("D_DT", vertices.get(3), vertices.get(9), null, null, null, null, null, null));
         arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(10), null, null, null, null, null, null));
         arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(11), null, null, null, null, null, null));  
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("A_F")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
     }
     
     private void create8(){
@@ -3090,6 +3758,32 @@ public class caractere {
         arestas.add(new aresta("JT_J", vertices.get(21),  vertices.get(9), null, null, null, null, null, null));
         arestas.add(new aresta("KT_K", vertices.get(22), vertices.get(10), null, null, null, null, null, null));
         arestas.add(new aresta("LT_L", vertices.get(23), vertices.get(11), null, null, null, null, null, null));
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("A_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("E_F")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("F_G")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("G_H")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("H_E")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("I_J")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("J_K")));
+        vertices.get(encontraVertice("K")).setArestaVertice(arestas.get(encontraAresta("K_L")));
+        vertices.get(encontraVertice("L")).setArestaVertice(arestas.get(encontraAresta("L_I")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("ET_E")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("FT_F")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("GT_G")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("HT_H")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("IT_I")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("JT_J")));
+        vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("KT_K")));
+        vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("LT_L")));
     }
     
     private void create9(){
@@ -3158,6 +3852,28 @@ public class caractere {
         arestas.add(new aresta("HT_H", vertices.get(17), vertices.get(7), null, null, null, null, null, null));  
         arestas.add(new aresta("IT_I", vertices.get(18), vertices.get(8), null, null, null, null, null, null));      
         arestas.add(new aresta("JT_J", vertices.get(19), vertices.get(9), null, null, null, null, null, null));
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("A_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("G_H")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("H_I")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("I_J")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("J_G")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("GT_G")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("HT_H")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("IT_I")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("JT_J")));
     }
     
     private int encontraVertice(String S){
