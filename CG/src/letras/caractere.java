@@ -979,7 +979,50 @@ public class caractere {
         arestas.add(new aresta("JT_J", vertices.get(21), vertices.get(9), null, null, null, null, null, null)); 
         arestas.add(new aresta("KT_K", vertices.get(22), vertices.get(10), null, null, null, null, null, null)); 
         arestas.add(new aresta("LT_L", vertices.get(23), vertices.get(11), null, null, null, null, null, null)); 
-             
+        
+        
+        //Adicionando aresta na vértice
+        vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
+        vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
+        vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
+        vertices.get(encontraVertice("D")).setArestaVertice(arestas.get(encontraAresta("E_D")));
+        vertices.get(encontraVertice("E")).setArestaVertice(arestas.get(encontraAresta("F_E")));
+        vertices.get(encontraVertice("F")).setArestaVertice(arestas.get(encontraAresta("A_F")));
+        vertices.get(encontraVertice("G")).setArestaVertice(arestas.get(encontraAresta("G_H")));
+        vertices.get(encontraVertice("H")).setArestaVertice(arestas.get(encontraAresta("H_I")));
+        vertices.get(encontraVertice("I")).setArestaVertice(arestas.get(encontraAresta("I_J")));
+        vertices.get(encontraVertice("J")).setArestaVertice(arestas.get(encontraAresta("J_K")));
+        vertices.get(encontraVertice("K")).setArestaVertice(arestas.get(encontraAresta("K_L")));
+        vertices.get(encontraVertice("L")).setArestaVertice(arestas.get(encontraAresta("L_G")));
+        vertices.get(encontraVertice("AT")).setArestaVertice(arestas.get(encontraAresta("A_AT")));
+        vertices.get(encontraVertice("BT")).setArestaVertice(arestas.get(encontraAresta("B_BT")));
+        vertices.get(encontraVertice("CT")).setArestaVertice(arestas.get(encontraAresta("C_CT")));
+        vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
+        vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
+        vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        vertices.get(encontraVertice("GT")).setArestaVertice(arestas.get(encontraAresta("GT_G")));
+        vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("HT_H")));
+        vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("IT_I")));
+        vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("JT_J")));
+        vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("KT_K")));
+        vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("LT_L")));
+        
+        // Criação das faces
+        /*faces.add(new face("F_E_D_C_B_A"                      , arestas.get(encontraAresta("B_A"))));
+        faces.add(new face("FT_ET_DT_CT_BT_AT"                  , arestas.get(encontraAresta("AT_BT"))));
+        faces.add(new face("A_B_BT_AT"                          , arestas.get(encontraAresta("B_BT"))));
+        faces.add(new face("B_C_CT_BT"                          , arestas.get(encontraAresta("C_CT"))));
+        faces.add(new face("C_D_DT_CT"                          , arestas.get(encontraAresta("D_DT"))));
+        faces.add(new face("D_E_ET_DT"                          , arestas.get(encontraAresta("E_ET"))));
+        faces.add(new face("E_F_FT_ET"                          , arestas.get(encontraAresta("F_FT"))));   
+        faces.add(new face("F_A_AT_FT"                          , arestas.get(encontraAresta("A_AT"))));   
+        
+        faces.add(new face("H_G_GT_HT"                          , arestas.get(encontraAresta("GT_G"))));
+        faces.add(new face("G_H_HT_GT"                          , arestas.get(encontraAresta("HT_H"))));
+        faces.add(new face("H_I_IT_HT"                          , arestas.get(encontraAresta("IT_I"))));
+        faces.add(new face("I_J_JT_IT"                          , arestas.get(encontraAresta("JT_J"))));
+        faces.add(new face("J_K_KT_JT"                          , arestas.get(encontraAresta("KT_K"))));
+        faces.add(new face("K_L_LT_KT"                          , arestas.get(encontraAresta("LT_L"))));*/
     
     }
     
