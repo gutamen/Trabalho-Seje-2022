@@ -3972,6 +3972,22 @@ public class caractere {
         vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("J_JT")));
         vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("K_KT")));
         vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("L_LT")));
+        
+        // Criação das faces
+        faces.add(new face("B_A_L_K_J_I_H_G_F_E_D_C"                , arestas.get(encontraAresta("B_A"))));
+        faces.add(new face("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT_KT_LT"    , arestas.get(encontraAresta("AT_BT"))));
+        faces.add(new face("A_B_BT_AT"                              , arestas.get(encontraAresta("B_BT"))));
+        faces.add(new face("B_C_CT_BT"                              , arestas.get(encontraAresta("C_CT"))));
+        faces.add(new face("C_D_DT_CT"                              , arestas.get(encontraAresta("D_DT"))));
+        faces.add(new face("D_E_ET_DT"                              , arestas.get(encontraAresta("E_ET"))));
+        faces.add(new face("E_F_FT_ET"                              , arestas.get(encontraAresta("F_FT"))));
+        faces.add(new face("F_G_GT_FT"                              , arestas.get(encontraAresta("G_GT"))));
+        faces.add(new face("G_H_HT_GT"                              , arestas.get(encontraAresta("H_HT"))));
+        faces.add(new face("H_I_IT_HT"                              , arestas.get(encontraAresta("I_IT"))));
+        faces.add(new face("I_J_JT_IT"                              , arestas.get(encontraAresta("J_JT"))));
+        faces.add(new face("J_K_KT_JT"                              , arestas.get(encontraAresta("K_KT"))));
+        faces.add(new face("K_L_LT_KT"                              , arestas.get(encontraAresta("L_LT"))));
+        faces.add(new face("L_A_AT_LT"                              , arestas.get(encontraAresta("A_AT"))));
     }
     
     private void create6(){
@@ -4051,7 +4067,7 @@ public class caractere {
         arestas.add(new aresta("KT_K", vertices.get(22), vertices.get(10), null, null, null, null, null, null));
         arestas.add(new aresta("LT_L", vertices.get(23), vertices.get(11), null, null, null, null, null, null));
         
-        //Adicionando aresta na vértice
+        // Adicionando aresta na vértice
         vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
         vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
         vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
@@ -4076,6 +4092,24 @@ public class caractere {
         vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("JT_J")));
         vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("KT_K")));
         vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("LT_L")));
+        
+        // Criação das faces
+        faces.add(new face("B_A_H_G_F_E_D_C"            , arestas.get(encontraAresta("B_A"))));
+        faces.add(new face("AT_BT_CT_DT_ET_FT_GT_HT"    , arestas.get(encontraAresta("AT_BT"))));
+        faces.add(new face("A_B_BT_AT"                  , arestas.get(encontraAresta("B_BT"))));
+        faces.add(new face("B_C_CT_BT"                  , arestas.get(encontraAresta("C_CT"))));
+        faces.add(new face("C_D_DT_CT"                  , arestas.get(encontraAresta("D_DT"))));
+        faces.add(new face("D_E_ET_DT"                  , arestas.get(encontraAresta("E_ET"))));
+        faces.add(new face("E_F_FT_ET"                  , arestas.get(encontraAresta("F_FT"))));
+        faces.add(new face("F_G_GT_FT"                  , arestas.get(encontraAresta("G_GT"))));
+        faces.add(new face("G_H_HT_GT"                  , arestas.get(encontraAresta("H_HT"))));
+        faces.add(new face("H_A_AT_HT"                  , arestas.get(encontraAresta("A_AT"))));
+        
+        // Faces Internas
+        faces.add(new face("I_J_JT_IT"                  , arestas.get(encontraAresta("JT_IT"))));
+        faces.add(new face("J_K_KT_JT"                  , arestas.get(encontraAresta("KT_JT"))));
+        faces.add(new face("K_L_LT_KT"                  , arestas.get(encontraAresta("LT_KT"))));
+        faces.add(new face("L_I_IT_LT"                  , arestas.get(encontraAresta("IT_LT"))));
     }
     
     private void create7(){
@@ -4119,7 +4153,7 @@ public class caractere {
         arestas.add(new aresta("E_ET", vertices.get(4), vertices.get(10), null, null, null, null, null, null));
         arestas.add(new aresta("F_FT", vertices.get(5), vertices.get(11), null, null, null, null, null, null));  
         
-        //Adicionando aresta na vértice
+        // Adicionando aresta na vértice
         vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
         vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
         vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
@@ -4132,6 +4166,16 @@ public class caractere {
         vertices.get(encontraVertice("DT")).setArestaVertice(arestas.get(encontraAresta("D_DT")));
         vertices.get(encontraVertice("ET")).setArestaVertice(arestas.get(encontraAresta("E_ET")));
         vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
+        
+        // Criação das faces
+        faces.add(new face("B_A_F_E_D_C"        , arestas.get(encontraAresta("B_A"))));
+        faces.add(new face("AT_BT_CT_DT_ET_FT"  , arestas.get(encontraAresta("AT_BT"))));
+        faces.add(new face("A_B_BT_AT"          , arestas.get(encontraAresta("B_BT"))));
+        faces.add(new face("B_C_CT_BT"          , arestas.get(encontraAresta("C_CT"))));
+        faces.add(new face("C_D_DT_CT"          , arestas.get(encontraAresta("D_DT"))));
+        faces.add(new face("D_E_ET_DT"          , arestas.get(encontraAresta("E_ET"))));
+        faces.add(new face("E_F_FT_ET"          , arestas.get(encontraAresta("F_FT"))));
+        faces.add(new face("F_A_AT_FT"          , arestas.get(encontraAresta("A_AT"))));
     }
     
     private void create8(){
@@ -4211,7 +4255,7 @@ public class caractere {
         arestas.add(new aresta("KT_K", vertices.get(22), vertices.get(10), null, null, null, null, null, null));
         arestas.add(new aresta("LT_L", vertices.get(23), vertices.get(11), null, null, null, null, null, null));
         
-        //Adicionando aresta na vértice
+        // Adicionando aresta na vértice
         vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
         vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
         vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
@@ -4236,6 +4280,24 @@ public class caractere {
         vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("JT_J")));
         vertices.get(encontraVertice("KT")).setArestaVertice(arestas.get(encontraAresta("KT_K")));
         vertices.get(encontraVertice("LT")).setArestaVertice(arestas.get(encontraAresta("LT_L")));
+        
+        // Criação das faces
+        faces.add(new face("B_A_D_C"        , arestas.get(encontraAresta("B_A"))));
+        faces.add(new face("AT_BT_CT_DT"    , arestas.get(encontraAresta("AT_BT"))));
+        faces.add(new face("A_B_BT_AT"      , arestas.get(encontraAresta("B_BT"))));
+        faces.add(new face("B_C_CT_BT"      , arestas.get(encontraAresta("C_CT"))));
+        faces.add(new face("C_D_DT_CT"      , arestas.get(encontraAresta("D_DT"))));
+        faces.add(new face("D_A_AT_DT"      , arestas.get(encontraAresta("A_AT"))));
+        
+        // Faces Internas 
+        faces.add(new face("E_F_FT_ET"      , arestas.get(encontraAresta("FT_ET"))));
+        faces.add(new face("F_G_GT_FT"      , arestas.get(encontraAresta("GT_FT"))));
+        faces.add(new face("G_H_HT_GT"      , arestas.get(encontraAresta("HT_GT"))));
+        faces.add(new face("H_E_ET_HT"      , arestas.get(encontraAresta("ET_HT"))));
+        faces.add(new face("I_J_JT_IT"      , arestas.get(encontraAresta("JT_IT"))));
+        faces.add(new face("J_K_KT_JT"      , arestas.get(encontraAresta("KT_JT"))));
+        faces.add(new face("K_L_LT_KT"      , arestas.get(encontraAresta("LT_KT"))));
+        faces.add(new face("L_I_IT_LT"      , arestas.get(encontraAresta("IT_LT"))));
     }
     
     private void create9(){
@@ -4305,7 +4367,7 @@ public class caractere {
         arestas.add(new aresta("IT_I", vertices.get(18), vertices.get(8), null, null, null, null, null, null));      
         arestas.add(new aresta("JT_J", vertices.get(19), vertices.get(9), null, null, null, null, null, null));
         
-        //Adicionando aresta na vértice
+        // Adicionando aresta na vértice
         vertices.get(encontraVertice("A")).setArestaVertice(arestas.get(encontraAresta("B_A")));
         vertices.get(encontraVertice("B")).setArestaVertice(arestas.get(encontraAresta("C_B")));
         vertices.get(encontraVertice("C")).setArestaVertice(arestas.get(encontraAresta("D_C")));
@@ -4326,6 +4388,21 @@ public class caractere {
         vertices.get(encontraVertice("HT")).setArestaVertice(arestas.get(encontraAresta("HT_H")));
         vertices.get(encontraVertice("IT")).setArestaVertice(arestas.get(encontraAresta("IT_I")));
         vertices.get(encontraVertice("JT")).setArestaVertice(arestas.get(encontraAresta("JT_J")));
+        
+        // Criação das faces
+        faces.add(new face("B_A_L_K_J_I_H_G_F_E_D_C"                , arestas.get(encontraAresta("B_A"))));
+        faces.add(new face("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT_KT_LT"    , arestas.get(encontraAresta("AT_BT"))));
+        faces.add(new face("A_B_BT_AT"                              , arestas.get(encontraAresta("B_BT"))));
+        faces.add(new face("B_C_CT_BT"                              , arestas.get(encontraAresta("C_CT"))));
+        faces.add(new face("C_D_DT_CT"                              , arestas.get(encontraAresta("D_DT"))));
+        faces.add(new face("D_E_ET_DT"                              , arestas.get(encontraAresta("E_ET"))));
+        faces.add(new face("E_F_FT_ET"                              , arestas.get(encontraAresta("F_FT"))));
+        faces.add(new face("F_A_AT_FT"                              , arestas.get(encontraAresta("A_AT"))));
+        
+        faces.add(new face("G_H_HT_GT"                              , arestas.get(encontraAresta("HT_GT"))));
+        faces.add(new face("H_I_IT_HT"                              , arestas.get(encontraAresta("IT_HT"))));
+        faces.add(new face("I_J_JT_IT"                              , arestas.get(encontraAresta("JT_IT"))));
+        faces.add(new face("J_G_GT_JT"                              , arestas.get(encontraAresta("GT_JT"))));
     }
     
     private int encontraVertice(String S){
