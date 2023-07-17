@@ -184,10 +184,16 @@ public class caractere {
         faces.add(new face("G_H_HT_GT"                  , arestas.get(encontraAresta("H_HT"))));
         faces.add(new face("E_F_FT_ET"                  , arestas.get(encontraAresta("F_FT"))));
         faces.add(new face("F_G_GT_FT"                  , arestas.get(encontraAresta("G_GT"))));
-        faces.add(new face("J_I_IT_JT"                  , arestas.get(encontraAresta("IT_I"))));
+        
+        /*faces.add(new face("J_I_IT_JT"                  , arestas.get(encontraAresta("IT_I"))));
         faces.add(new face("L_K_KT_LT"                  , arestas.get(encontraAresta("KT_K"))));
         faces.add(new face("K_J_JT_KT"                  , arestas.get(encontraAresta("JT_J"))));
-        faces.add(new face("I_L_LT_IT"                  , arestas.get(encontraAresta("LT_L"))));
+        faces.add(new face("I_L_LT_IT"                  , arestas.get(encontraAresta("LT_L"))));*/
+        
+        faces.add(new face("I_J_JT_IT"                  , arestas.get(encontraAresta("JT_IT"))));
+        faces.add(new face("K_L_LT_KT"                  , arestas.get(encontraAresta("LT_KT"))));
+        faces.add(new face("J_K_KT_JT"                  , arestas.get(encontraAresta("KT_JT"))));
+        faces.add(new face("L_I_IT_LT"                  , arestas.get(encontraAresta("IT_LT"))));
         
         // Colocar faces nas arestas
         arestas.get(encontraAresta("B_A")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("A_B_BT_AT")));
@@ -198,10 +204,10 @@ public class caractere {
         arestas.get(encontraAresta("G_F")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("F_G_GT_FT")));
         arestas.get(encontraAresta("H_G")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("G_H_HT_GT")));
         arestas.get(encontraAresta("A_H")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("H_A_AT_HT")));
-        arestas.get(encontraAresta("I_J")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("J_I_IT_JT")));
-        arestas.get(encontraAresta("J_K")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("K_J_JT_KT")));
-        arestas.get(encontraAresta("K_L")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("L_K_KT_LT")));
-        arestas.get(encontraAresta("L_I")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("I_L_LT_IT")));
+        arestas.get(encontraAresta("I_J")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("I_J_JT_IT")));
+        arestas.get(encontraAresta("J_K")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("J_K_KT_JT")));
+        arestas.get(encontraAresta("K_L")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("K_L_LT_KT")));
+        arestas.get(encontraAresta("L_I")).setFaces(faces.get(encontraFace("A_H_G_F_E_D_C_B")), faces.get(encontraFace("L_I_IT_LT")));
         
         arestas.get(encontraAresta("AT_BT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")), faces.get(encontraFace("A_B_BT_AT")));
         arestas.get(encontraAresta("BT_CT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")), faces.get(encontraFace("B_C_CT_BT")));
@@ -211,10 +217,10 @@ public class caractere {
         arestas.get(encontraAresta("FT_GT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")), faces.get(encontraFace("F_G_GT_FT")));
         arestas.get(encontraAresta("GT_HT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")), faces.get(encontraFace("G_H_HT_GT")));
         arestas.get(encontraAresta("HT_AT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")), faces.get(encontraFace("H_A_AT_HT")));
-        arestas.get(encontraAresta("JT_IT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")), faces.get(encontraFace("J_I_IT_JT")));
-        arestas.get(encontraAresta("KT_JT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")), faces.get(encontraFace("K_J_JT_KT")));
-        arestas.get(encontraAresta("LT_KT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")), faces.get(encontraFace("L_K_KT_LT")));
-        arestas.get(encontraAresta("IT_LT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")), faces.get(encontraFace("I_L_LT_IT")));
+        arestas.get(encontraAresta("JT_IT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")), faces.get(encontraFace("I_J_JT_IT")));
+        arestas.get(encontraAresta("KT_JT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")), faces.get(encontraFace("J_K_KT_JT")));
+        arestas.get(encontraAresta("LT_KT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")), faces.get(encontraFace("K_L_LT_KT")));
+        arestas.get(encontraAresta("IT_LT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT")), faces.get(encontraFace("L_I_IT_LT")));
         
         
         arestas.get(encontraAresta("A_AT")).setFaces(faces.get(encontraFace("H_A_AT_HT")), faces.get(encontraFace("A_B_BT_AT")));
@@ -225,10 +231,10 @@ public class caractere {
         arestas.get(encontraAresta("F_FT")).setFaces(faces.get(encontraFace("E_F_FT_ET")), faces.get(encontraFace("F_G_GT_FT")));
         arestas.get(encontraAresta("G_GT")).setFaces(faces.get(encontraFace("F_G_GT_FT")), faces.get(encontraFace("G_H_HT_GT")));
         arestas.get(encontraAresta("H_HT")).setFaces(faces.get(encontraFace("G_H_HT_GT")), faces.get(encontraFace("H_A_AT_HT")));
-        arestas.get(encontraAresta("IT_I")).setFaces(faces.get(encontraFace("I_L_LT_IT")), faces.get(encontraFace("J_I_IT_JT")));
-        arestas.get(encontraAresta("JT_J")).setFaces(faces.get(encontraFace("J_I_IT_JT")), faces.get(encontraFace("K_J_JT_KT")));
-        arestas.get(encontraAresta("KT_K")).setFaces(faces.get(encontraFace("K_J_JT_KT")), faces.get(encontraFace("L_K_KT_LT")));
-        arestas.get(encontraAresta("LT_L")).setFaces(faces.get(encontraFace("L_K_KT_LT")), faces.get(encontraFace("I_L_LT_IT")));
+        arestas.get(encontraAresta("IT_I")).setFaces(faces.get(encontraFace("L_I_IT_LT")), faces.get(encontraFace("I_J_JT_IT")));
+        arestas.get(encontraAresta("JT_J")).setFaces(faces.get(encontraFace("I_J_JT_IT")), faces.get(encontraFace("J_K_KT_JT")));
+        arestas.get(encontraAresta("KT_K")).setFaces(faces.get(encontraFace("J_K_KT_JT")), faces.get(encontraFace("K_L_LT_KT")));
+        arestas.get(encontraAresta("LT_L")).setFaces(faces.get(encontraFace("K_L_LT_KT")), faces.get(encontraFace("L_I_IT_LT")));
         
         
         //Colocar arestas nas arestas
@@ -508,14 +514,14 @@ public class caractere {
         faces.add(new face("H_I_IT_HT"                      ,arestas.get(encontraAresta("I_IT"))));
         faces.add(new face("I_J_JT_IT"                      ,arestas.get(encontraAresta("J_JT"))));
         faces.add(new face("J_A_AT_JT"                      ,arestas.get(encontraAresta("A_AT"))));
-        faces.add(new face("L_K_KT_LT"                      ,arestas.get(encontraAresta("KT_K"))));
-        faces.add(new face("M_L_LT_MT"                      ,arestas.get(encontraAresta("LT_L"))));
-        faces.add(new face("N_M_MT_NT"                      ,arestas.get(encontraAresta("MT_M"))));
-        faces.add(new face("K_N_NT_KT"                      ,arestas.get(encontraAresta("NT_N"))));
-        faces.add(new face("P_O_OT_PT"                      ,arestas.get(encontraAresta("OT_O"))));
-        faces.add(new face("Q_P_PT_QT"                      ,arestas.get(encontraAresta("PT_P"))));
-        faces.add(new face("R_Q_QT_RT"                      ,arestas.get(encontraAresta("QT_Q"))));
-        faces.add(new face("O_R_RT_OT"                      ,arestas.get(encontraAresta("RT_R"))));
+        faces.add(new face("K_L_LT_KT"                      ,arestas.get(encontraAresta("LT_KT"))));
+        faces.add(new face("L_M_MT_LT"                      ,arestas.get(encontraAresta("MT_LT"))));
+        faces.add(new face("M_N_NT_MT"                      ,arestas.get(encontraAresta("NT_MT"))));
+        faces.add(new face("N_K_KT_NT"                      ,arestas.get(encontraAresta("KT_NT"))));
+        faces.add(new face("O_P_PT_OT"                      ,arestas.get(encontraAresta("PT_OT"))));
+        faces.add(new face("P_Q_QT_PT"                      ,arestas.get(encontraAresta("QT_PT"))));
+        faces.add(new face("Q_R_RT_QT"                      ,arestas.get(encontraAresta("RT_QT"))));
+        faces.add(new face("R_O_OT_RT"                      ,arestas.get(encontraAresta("OT_RT"))));
    
         // Colocar faces nas arestas
         arestas.get(encontraAresta("B_A")).setFaces(faces.get(encontraFace("A_J_I_H_G_F_E_D_C_B")), faces.get(encontraFace("A_B_BT_AT")));
@@ -538,22 +544,22 @@ public class caractere {
         arestas.get(encontraAresta("HT_IT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("H_I_IT_HT")));
         arestas.get(encontraAresta("IT_JT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("I_J_JT_IT")));
         arestas.get(encontraAresta("JT_AT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("J_A_AT_JT")));
-        arestas.get(encontraAresta("K_L")).setFaces(faces.get(encontraFace("A_J_I_H_G_F_E_D_C_B")), faces.get(encontraFace("L_K_KT_LT")));
-        arestas.get(encontraAresta("L_M")).setFaces(faces.get(encontraFace("A_J_I_H_G_F_E_D_C_B")), faces.get(encontraFace("M_L_LT_MT")));
-        arestas.get(encontraAresta("M_N")).setFaces(faces.get(encontraFace("A_J_I_H_G_F_E_D_C_B")), faces.get(encontraFace("N_M_MT_NT")));
-        arestas.get(encontraAresta("N_K")).setFaces(faces.get(encontraFace("A_J_I_H_G_F_E_D_C_B")), faces.get(encontraFace("K_N_NT_KT")));
-        arestas.get(encontraAresta("O_P")).setFaces(faces.get(encontraFace("A_J_I_H_G_F_E_D_C_B")), faces.get(encontraFace("P_O_OT_PT")));
-        arestas.get(encontraAresta("P_Q")).setFaces(faces.get(encontraFace("A_J_I_H_G_F_E_D_C_B")), faces.get(encontraFace("Q_P_PT_QT")));
-        arestas.get(encontraAresta("Q_R")).setFaces(faces.get(encontraFace("A_J_I_H_G_F_E_D_C_B")), faces.get(encontraFace("R_Q_QT_RT")));
-        arestas.get(encontraAresta("R_O")).setFaces(faces.get(encontraFace("A_J_I_H_G_F_E_D_C_B")), faces.get(encontraFace("O_R_RT_OT")));
-        arestas.get(encontraAresta("LT_KT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("L_K_KT_LT")));
-        arestas.get(encontraAresta("MT_LT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("M_L_LT_MT")));
-        arestas.get(encontraAresta("NT_MT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("N_M_MT_NT")));
-        arestas.get(encontraAresta("KT_NT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("K_N_NT_KT")));
-        arestas.get(encontraAresta("PT_OT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("P_O_OT_PT")));
-        arestas.get(encontraAresta("QT_PT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("Q_P_PT_QT")));
-        arestas.get(encontraAresta("RT_QT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("R_Q_QT_RT")));
-        arestas.get(encontraAresta("OT_RT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("O_R_RT_OT")));
+        arestas.get(encontraAresta("K_L")).setFaces(faces.get(encontraFace("A_J_I_H_G_F_E_D_C_B")), faces.get(encontraFace("K_L_LT_KT")));
+        arestas.get(encontraAresta("L_M")).setFaces(faces.get(encontraFace("A_J_I_H_G_F_E_D_C_B")), faces.get(encontraFace("L_M_MT_LT")));
+        arestas.get(encontraAresta("M_N")).setFaces(faces.get(encontraFace("A_J_I_H_G_F_E_D_C_B")), faces.get(encontraFace("M_N_NT_MT")));
+        arestas.get(encontraAresta("N_K")).setFaces(faces.get(encontraFace("A_J_I_H_G_F_E_D_C_B")), faces.get(encontraFace("N_K_KT_NT")));
+        arestas.get(encontraAresta("O_P")).setFaces(faces.get(encontraFace("A_J_I_H_G_F_E_D_C_B")), faces.get(encontraFace("O_P_PT_OT")));
+        arestas.get(encontraAresta("P_Q")).setFaces(faces.get(encontraFace("A_J_I_H_G_F_E_D_C_B")), faces.get(encontraFace("P_Q_QT_PT")));
+        arestas.get(encontraAresta("Q_R")).setFaces(faces.get(encontraFace("A_J_I_H_G_F_E_D_C_B")), faces.get(encontraFace("Q_R_RT_QT")));
+        arestas.get(encontraAresta("R_O")).setFaces(faces.get(encontraFace("A_J_I_H_G_F_E_D_C_B")), faces.get(encontraFace("R_O_OT_RT")));
+        arestas.get(encontraAresta("LT_KT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("K_L_LT_KT")));
+        arestas.get(encontraAresta("MT_LT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("L_M_MT_LT")));
+        arestas.get(encontraAresta("NT_MT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("M_N_NT_MT")));
+        arestas.get(encontraAresta("KT_NT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("N_K_KT_NT")));
+        arestas.get(encontraAresta("PT_OT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("O_P_PT_OT")));
+        arestas.get(encontraAresta("QT_PT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("P_Q_QT_PT")));
+        arestas.get(encontraAresta("RT_QT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("Q_R_RT_QT")));
+        arestas.get(encontraAresta("OT_RT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT")), faces.get(encontraFace("R_O_OT_RT")));
         arestas.get(encontraAresta("A_AT")).setFaces(faces.get(encontraFace("J_A_AT_JT")), faces.get(encontraFace("A_B_BT_AT")));
         arestas.get(encontraAresta("B_BT")).setFaces(faces.get(encontraFace("A_B_BT_AT")), faces.get(encontraFace("B_C_CT_BT")));
         arestas.get(encontraAresta("C_CT")).setFaces(faces.get(encontraFace("B_C_CT_BT")), faces.get(encontraFace("C_D_DT_CT")));
@@ -564,14 +570,14 @@ public class caractere {
         arestas.get(encontraAresta("H_HT")).setFaces(faces.get(encontraFace("G_H_HT_GT")), faces.get(encontraFace("H_I_IT_HT")));
         arestas.get(encontraAresta("I_IT")).setFaces(faces.get(encontraFace("H_I_IT_HT")), faces.get(encontraFace("I_J_JT_IT")));
         arestas.get(encontraAresta("J_JT")).setFaces(faces.get(encontraFace("I_J_JT_IT")), faces.get(encontraFace("J_A_AT_JT")));        
-        arestas.get(encontraAresta("KT_K")).setFaces(faces.get(encontraFace("K_N_NT_KT")), faces.get(encontraFace("L_K_KT_LT")));
-        arestas.get(encontraAresta("LT_L")).setFaces(faces.get(encontraFace("L_K_KT_LT")), faces.get(encontraFace("M_L_LT_MT")));
-        arestas.get(encontraAresta("MT_M")).setFaces(faces.get(encontraFace("M_L_LT_MT")), faces.get(encontraFace("N_M_MT_NT")));
-        arestas.get(encontraAresta("NT_N")).setFaces(faces.get(encontraFace("N_M_MT_NT")), faces.get(encontraFace("K_N_NT_KT")));
-        arestas.get(encontraAresta("OT_O")).setFaces(faces.get(encontraFace("O_R_RT_OT")), faces.get(encontraFace("P_O_OT_PT")));
-        arestas.get(encontraAresta("PT_P")).setFaces(faces.get(encontraFace("P_O_OT_PT")), faces.get(encontraFace("Q_P_PT_QT")));
-        arestas.get(encontraAresta("QT_Q")).setFaces(faces.get(encontraFace("Q_P_PT_QT")), faces.get(encontraFace("R_Q_QT_RT")));
-        arestas.get(encontraAresta("RT_R")).setFaces(faces.get(encontraFace("R_Q_QT_RT")), faces.get(encontraFace("O_R_RT_OT")));
+        arestas.get(encontraAresta("KT_K")).setFaces(faces.get(encontraFace("N_K_KT_NT")), faces.get(encontraFace("K_L_LT_KT")));
+        arestas.get(encontraAresta("LT_L")).setFaces(faces.get(encontraFace("K_L_LT_KT")), faces.get(encontraFace("L_M_MT_LT")));
+        arestas.get(encontraAresta("MT_M")).setFaces(faces.get(encontraFace("L_M_MT_LT")), faces.get(encontraFace("M_N_NT_MT")));
+        arestas.get(encontraAresta("NT_N")).setFaces(faces.get(encontraFace("M_N_NT_MT")), faces.get(encontraFace("N_K_KT_NT")));
+        arestas.get(encontraAresta("OT_O")).setFaces(faces.get(encontraFace("R_O_OT_RT")), faces.get(encontraFace("O_P_PT_OT")));
+        arestas.get(encontraAresta("PT_P")).setFaces(faces.get(encontraFace("O_P_PT_OT")), faces.get(encontraFace("P_Q_QT_PT")));
+        arestas.get(encontraAresta("QT_Q")).setFaces(faces.get(encontraFace("P_Q_QT_PT")), faces.get(encontraFace("Q_R_RT_QT")));
+        arestas.get(encontraAresta("RT_R")).setFaces(faces.get(encontraFace("Q_R_RT_QT")), faces.get(encontraFace("R_O_OT_RT")));
         //arestas.get(encontraAresta("")).setFaces(faces.get(encontraFace("")), faces.get(encontraFace("")));
         
         //Unir arestas
