@@ -12,6 +12,15 @@ public class face {
     private aresta arestaFace;
     private boolean interna = false;
     private boolean visivel = true;
+
+    public boolean isInterna() {
+        return interna;
+    }
+
+    public void setInterna(boolean interna) {
+        this.interna = interna;
+    }
+    
     
     public boolean isVisivel() {
         return visivel;
