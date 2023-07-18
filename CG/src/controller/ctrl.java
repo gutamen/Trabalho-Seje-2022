@@ -51,7 +51,9 @@ public class ctrl extends Application {
         bt.setMaxSize(200, 30);
         bt.setLayoutX(830);
         bt.setLayoutY(40);
-        trueStart(stage, root, ta.getText(), scene);
+        //trueStart(stage, root, ta.getText(), scene);
+        stage.setScene(scene);
+        stage.show();
         root.getChildren().add(ta);
         root.getChildren().add(bt);
         bt.setOnAction((ActionEvent evento) -> {
@@ -69,8 +71,6 @@ public class ctrl extends Application {
         Scene scene = new Scene(root, 880, 800, Color.WHITE);
         intFace(stage, root, scene);
         
-        
-        
     }
         
     public static Scanner read = new Scanner(System.in);
@@ -84,15 +84,18 @@ public class ctrl extends Application {
         
         ArrayList<caractere> chars = new ArrayList<caractere>();
         
+        
+        //gambiarra para o Z aparecer
         for(int i = 0; i < readed.length(); i++){
             chars.add(new caractere(readed.substring(i, i+1)));
-            for(int j = chars.get(i).vertices.size()/2; j < chars.get(i).vertices.size(); j++){
+            /*for(int j = chars.get(i).vertices.size()/2; j < chars.get(i).vertices.size(); j++){
                 chars.get(i).vertices.get(j).setZ(2);
             }
             for(int j = 0; j < chars.get(i).vertices.size()/2; j++){
                 chars.get(i).vertices.get(j).setZ(1);
-            }
+            }*/
         }
+        
         salvaString(chars);
         
         tela2String(chars.size(), chars);
@@ -132,29 +135,47 @@ public class ctrl extends Application {
         
         ArrayList<caractere> refactChars1 = new ArrayList<caractere>();
         ArrayList<caractere> refactChars2 = new ArrayList<caractere>();
+        ArrayList<caractere> refactChars3 = new ArrayList<caractere>();
+        ArrayList<caractere> refactChars4 = new ArrayList<caractere>();
         
         
         for(int i = 0; i < readed.length(); i++){
             refactChars1.add(new caractere(readed.substring(i, i+1)));
             refactChars2.add(new caractere(readed.substring(i, i+1)));
+            refactChars3.add(new caractere(readed.substring(i, i+1)));
+            refactChars4.add(new caractere(readed.substring(i, i+1)));
+            
             for(int j = refactChars1.get(i).vertices.size()/2; j < refactChars1.get(i).vertices.size(); j++){
                 refactChars1.get(i).vertices.get(j).setZ(15);
                 refactChars2.get(i).vertices.get(j).setZ(15);
+                refactChars3.get(i).vertices.get(j).setZ(15);
+                refactChars4.get(i).vertices.get(j).setZ(15);
             }
             for(int j = 0; j < refactChars1.get(i).vertices.size()/2; j++){
                 refactChars1.get(i).vertices.get(j).setZ(1);
                 refactChars2.get(i).vertices.get(j).setZ(1);
+                refactChars3.get(i).vertices.get(j).setZ(1);
+                refactChars4.get(i).vertices.get(j).setZ(1);
             }
         }
         
         tela2String(chars.size(), refactChars1);
         tela2String(chars.size(), refactChars2);
-       
+        tela2String(chars.size(), refactChars3);
+        tela2String(chars.size(), refactChars4);
+        
+        //função teste de visibilidade de face
+        //faceTestVisibilit(refactChars1, chars);
+        
         //VRP, P, Y, booelan projecao
         System.out.println("0...");
         ctrlVRP2SRU(ct1, refactChars1, gc1, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), false);
         System.out.println("1...");
-        ctrlVRP2SRU(ct4, refactChars2, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
+        ctrlVRP2SRU(ct2, refactChars2, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), false);
+        System.out.println("2...");
+        ctrlVRP2SRU(ct3, refactChars3, gc3, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), false);
+        System.out.println("3...");
+        ctrlVRP2SRU(ct4, refactChars4, gc4, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
         
         
         /*System.out.println("Matriz Jp");
@@ -166,12 +187,12 @@ public class ctrl extends Application {
         
         for(int i = 0; i < refactChars1.size(); i++){
             desenhaFiguraPorAresta(gc1, refactChars1.get(i).arestas);
-            desenhaFiguraPorArestaTopo(gc2, refactChars1.get(i).arestas);
-            desenhaFiguraPorArestaLateral(gc3, refactChars1.get(i).arestas);
-            desenhaFiguraPorAresta(gc4, refactChars2.get(i).arestas);
+            desenhaFiguraPorArestaTopo(gc2, refactChars2.get(i).arestas);
+            desenhaFiguraPorArestaLateral(gc3, refactChars3.get(i).arestas);
+            desenhaFiguraPorAresta(gc4, refactChars4.get(i).arestas);
         }
         
-        
+        //carniça do martini
         canvas1.addEventHandler(MouseEvent.MOUSE_PRESSED, e->{
             localX = (long) e.getX();
             localY = (long) e.getY();
@@ -219,21 +240,22 @@ public class ctrl extends Application {
                         localY = localY - ((long) event.getY());
                         localY *= -1;
                         caractere mudanssa = refactChars1.get(selectedChar);                       
-                        
-                        
+                        caractere mudanssa1 = refactChars2.get(selectedChar);  
+                        caractere mudanssa2 = refactChars3.get(selectedChar);  
                         
                         //writMat(getMatPts(universo));
                         
                         for(int k = 0; k < mudanssa.vertices.size(); k++){
                             mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(localX, localY, 0);
-                            
+                            mudanssa1.vertices.get(k).ponto = mudanssa1.vertices.get(k).ponto.add(localX, localY, 0);
+                            mudanssa2.vertices.get(k).ponto = mudanssa2.vertices.get(k).ponto.add(localX, localY, 0);
                         }
                         
                         caractere universo = chars.get(selectedChar);
-                        caractere perspectiva = refactChars2.get(selectedChar);
+                        caractere perspectiva = refactChars4.get(selectedChar);
                         invertChar(mudanssa, ct1,universo);
                         copiaVertices(perspectiva,universo);
-                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars2, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
+                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
                         
                         
                         canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
@@ -242,9 +264,9 @@ public class ctrl extends Application {
                         canvas4.getGraphicsContext2D().clearRect(0, 0, canvas4.getWidth(), canvas4.getHeight());
                         for(int k = 0; k < refactChars1.size(); k++){
                             desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k).arestas);
-                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars1.get(k).arestas);
-                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars1.get(k).arestas);
-                            desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars2.get(k).arestas);
+                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars2.get(k).arestas);
+                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k).arestas);
+                            desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k).arestas);
                         }
                     }
                     localX = nowLocalX;
@@ -254,8 +276,6 @@ public class ctrl extends Application {
                 }
             }
         });
-        
-        
         
         canvas2.addEventHandler(MouseEvent.MOUSE_PRESSED, e->{
             localX = (long) e.getX();
@@ -304,14 +324,20 @@ public class ctrl extends Application {
                         localY = localY - ((long) event.getY());
                         localY *= -1;
                         caractere mudanssa = refactChars1.get(selectedChar);
+                        caractere mudanssa1 = refactChars2.get(selectedChar);
+                        caractere mudanssa2 = refactChars3.get(selectedChar);
+                        
                         for(int k = 0; k < mudanssa.vertices.size(); k++){
                             mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(localX, 0, localY);
+                            mudanssa1.vertices.get(k).ponto = mudanssa1.vertices.get(k).ponto.add(localX, 0, localY);
+                            mudanssa2.vertices.get(k).ponto = mudanssa2.vertices.get(k).ponto.add(localX, 0, localY);
+                        
                         }
                         caractere universo = chars.get(selectedChar);
-                        caractere perspectiva = refactChars2.get(selectedChar);
+                        caractere perspectiva = refactChars4.get(selectedChar);
                         invertChar(mudanssa, ct1,universo);
                         copiaVertices(perspectiva,universo);
-                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars2, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
+                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc4, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
                         
                         
                         canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
@@ -320,9 +346,9 @@ public class ctrl extends Application {
                         canvas4.getGraphicsContext2D().clearRect(0, 0, canvas4.getWidth(), canvas4.getHeight());
                         for(int k = 0; k < refactChars1.size(); k++){
                             desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k).arestas);
-                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars1.get(k).arestas);
-                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars1.get(k).arestas);
-                            desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars2.get(k).arestas);
+                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars2.get(k).arestas);
+                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k).arestas);
+                            desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k).arestas);
                         }
                     }
                     localX = nowLocalX;
@@ -381,14 +407,18 @@ public class ctrl extends Application {
                         localY = localY - ((long) event.getY());
                         localY *= -1;
                         caractere mudanssa = refactChars1.get(selectedChar);
+                        caractere mudanssa1 = refactChars2.get(selectedChar);
+                        caractere mudanssa2 = refactChars3.get(selectedChar);
                         for(int k = 0; k < mudanssa.vertices.size(); k++){
                             mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(0, localY, localX);
+                            mudanssa1.vertices.get(k).ponto = mudanssa1.vertices.get(k).ponto.add(0, localY, localX);
+                            mudanssa2.vertices.get(k).ponto = mudanssa2.vertices.get(k).ponto.add(0, localY, localX);
                         }
                         caractere universo = chars.get(selectedChar);
-                        caractere perspectiva = refactChars2.get(selectedChar);
+                        caractere perspectiva = refactChars4.get(selectedChar);
                         invertChar(mudanssa, ct1,universo);
                         copiaVertices(perspectiva,universo);
-                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars2, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
+                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
                         
                         
                         canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
@@ -397,9 +427,9 @@ public class ctrl extends Application {
                         canvas4.getGraphicsContext2D().clearRect(0, 0, canvas4.getWidth(), canvas4.getHeight());
                         for(int k = 0; k < refactChars1.size(); k++){
                             desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k).arestas);
-                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars1.get(k).arestas);
-                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars1.get(k).arestas);
-                            desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars2.get(k).arestas);
+                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars2.get(k).arestas);
+                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k).arestas);
+                            desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k).arestas);
                         }
                     }
                     localX = nowLocalX;
@@ -417,9 +447,7 @@ public class ctrl extends Application {
         root.getChildren().add(canvas3);
         root.getChildren().add(canvas4);
         
-        stage.setScene(scene);
-        
-        stage.show();
+      
         
         /*stage.addEventHandler(KeyEvent.KEY_PRESSED,  (event) -> {
             System.out.println("Key pressed: " + event.toString());
@@ -441,13 +469,42 @@ public class ctrl extends Application {
            
             
         });*/
-
-        
-        
-        
-        
     }
         
+    private void faceTestVisibilit(ArrayList<caractere> refactChars, ArrayList<caractere> chars){
+        ArrayList<vertice> vertList = new ArrayList<vertice>();
+        
+        for(int i = 0; i < chars.size(); i++){
+            for(int j = 0; j < chars.get(i).faces.size(); j ++){
+                aresta k = chars.get(i).faces.get(j).getArestaFace();
+                int o = 0;
+                
+                if(!chars.get(i).faces.get(j).isInterna()){
+                    for(aresta p = chars.get(i).faces.get(j).getArestaFace().getArestaEsquerdaSuc();
+                        !k.getInicio().getNomeVertice().equals(p.getInicio().getNomeVertice()); o++){
+                        if(o >= 1){
+                            p = p.getArestaEsquerdaSuc();
+                        }
+                        vertList.add(chars.get(i).faces.get(j).getArestaFace().getInicio());
+                        System.out.println("k = "+k.getInicio().getNomeVertice());
+                        System.out.println("p = "+p.getInicio().getNomeVertice());
+                    }
+                }else{
+                    
+                    /*for(aresta p = chars.get(i).faces.get(j).getArestaFace().getArestaEsquerdaSuc();
+                        !k.getInicio().getNomeVertice().equals(p.getInicio().getNomeVertice()); o++){
+                        if(o >= 1){
+                            p = p.getArestaEsquerdaSuc();
+                        }
+                        vertList.add(chars.get(i).faces.get(j).getArestaFace().getInicio());
+                        System.out.println("k = "+k.getInicio().getNomeVertice());
+                        System.out.println("p = "+p.getInicio().getNomeVertice());
+                    }*/
+                }
+            }
+        }
+    }
+    
     private void refact(caractere pts, ctrlCam ct){
         for(int i = 0; i < pts.vertices.size(); i++){
             pts.vertices.get(i).setVertice(ct.getNmPPLxMT()[0][i], ct.getNmPPLxMT()[1][i], ct.getNmPPLxMT()[2][i]);
