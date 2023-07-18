@@ -8,12 +8,30 @@ package estrutura;
  * @author gustavo
  */
 public class face {
-    String nomeFace;
-    aresta arestaFace;
+    private String nomeFace;
+    private aresta arestaFace;
+    private boolean interna = false;
+    private boolean visivel = true;
+    
+    public boolean isVisivel() {
+        return visivel;
+    }
+
+    public void setVisivel(boolean visivel) {
+        this.visivel = visivel;
+    }
+    
+    
 
     public face(String nomeFace, aresta arestaFace) {
         this.nomeFace = nomeFace;
         this.arestaFace = arestaFace;
+    }
+    
+    public face(String nomeFace, aresta arestaFace, boolean interna) {
+        this.nomeFace = nomeFace;
+        this.arestaFace = arestaFace;
+        this.interna = interna;
     }
 
     public String getNomeFace() {
