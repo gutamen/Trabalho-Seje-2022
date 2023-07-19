@@ -10,7 +10,6 @@ import estrutura.vertice;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javafx.application.Application;
 import javafx.geometry.Point3D;
 import javafx.scene.Group;
@@ -24,9 +23,12 @@ import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Spinner;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
 
 
@@ -38,30 +40,102 @@ public class ctrl extends Application {
     int selectedChar;
     long localX, localY;
     boolean mouseApertado;
+    Button btConfirm;
+    Button save;
+    Button load;        
+    CheckBox setFaceOcult;
+    ChoiceBox choice;
+    TextArea txConfirmString;
+    Spinner<Integer> setZ;
+    Text txZ;
     
     public void intFace(Stage stage, Group root, Scene scene){        
         
-        Button bt = new Button("OK");
-        TextArea ta = new TextArea();
-        ta.setLayoutX(620);
-        ta.setLayoutY(40);
-        ta.setMinSize(0, 0);
-        ta.setMaxSize(200, 28);
-        bt.setMinSize(0, 0);
-        bt.setMaxSize(200, 30);
-        bt.setLayoutX(830);
-        bt.setLayoutY(40);
+        btConfirm = new Button("OK");
+        save = new Button("SAVE");
+        load = new Button("LOAD");
+        setFaceOcult = new CheckBox("Ocutacao de face");
+        choice = new ChoiceBox();
+        choice.setValue("WireFrame");
+        choice.getItems().addAll("WireFrame", "Pintor", "Guro", "Phong");
+        txConfirmString = new TextArea();
+        //escala para 1 para 0.2
+        setZ = new Spinner(1, 50, 1);
+        txZ = new Text("profundidadeZ");
+        
+        txZ.setLayoutX(765);
+        txZ.setLayoutY(115);
+        
+        setFaceOcult.setMinSize(0, 0);
+        setFaceOcult.setMaxSize(200, 50);
+        setFaceOcult.setLayoutX(720);
+        setFaceOcult.setLayoutY(150);
+        
+        choice.setMinSize(0, 0);
+        choice.setMaxSize(100, 50);
+        choice.setLayoutX(720);
+        choice.setLayoutY(190);
+        
+        txConfirmString.setLayoutX(660);
+        txConfirmString.setLayoutY(40);
+        txConfirmString.setMinSize(0, 0);
+        txConfirmString.setMaxSize(200, 28);
+        
+        btConfirm.setMinSize(0, 0);
+        btConfirm.setMaxSize(200, 30);
+        btConfirm.setLayoutX(760);
+        btConfirm.setLayoutY(460);
+        
+        
+        setZ.setMinSize(0, 0);
+        setZ.setMaxSize(60, 50);
+        setZ.setLayoutX(700);
+        setZ.setLayoutY(100);
+        
+        save.setMinSize(0, 0);
+        save.setMaxSize(200, 30);
+        save.setLayoutX(780);
+        save.setLayoutY(500);
+       
+        load.setMinSize(0, 0);
+        load.setMaxSize(200, 30);
+        load.setLayoutX(720);
+        load.setLayoutY(500);
+       
         //trueStart(stage, root, ta.getText(), scene);
         stage.setScene(scene);
         stage.show();
-        root.getChildren().add(ta);
-        root.getChildren().add(bt);
-        bt.setOnAction((ActionEvent evento) -> {
+        
+        root.getChildren().add(txConfirmString);
+        root.getChildren().add(btConfirm);
+        root.getChildren().add(save);
+        root.getChildren().add(load);
+        root.getChildren().add(setZ);
+        root.getChildren().add(setFaceOcult);
+        root.getChildren().add(choice);
+        root.getChildren().add(txZ);
+        
+        btConfirm.setOnAction((ActionEvent evento) -> {
             root.getChildren().clear();
-            root.getChildren().add(ta);
-            root.getChildren().add(bt);
-            trueStart(stage, root, ta.getText(), scene);
+            root.getChildren().add(txConfirmString);
+            root.getChildren().add(btConfirm);
+            root.getChildren().add(save);
+            root.getChildren().add(load);
+            root.getChildren().add(setZ);
+            root.getChildren().add(setFaceOcult);
+            root.getChildren().add(choice);
+            root.getChildren().add(txZ);
+            trueStart(stage, root, txConfirmString.getText(), scene, choice.getValue().toString(), setFaceOcult.selectedProperty().get(), setZ.getValue()*0.2);
         });
+        
+        save.setOnAction((ActionEvent evento) -> {
+            System.out.println("save");
+        });
+    
+        load.setOnAction((ActionEvent evento) -> {
+            System.out.println("load");
+        });
+    
     }
     
     
@@ -78,7 +152,7 @@ public class ctrl extends Application {
     
     
     
-    private void trueStart(Stage stage, Group root, String readed, Scene scene){
+    private void trueStart(Stage stage, Group root, String readed, Scene scene, String metodChoice, Boolean faceOcult, Double scaleZ){
         //String readed = read.nextLine();
         readed = readed.toLowerCase();
         
@@ -146,10 +220,10 @@ public class ctrl extends Application {
             refactChars4.add(new caractere(readed.substring(i, i+1)));
             
             for(int j = refactChars1.get(i).vertices.size()/2; j < refactChars1.get(i).vertices.size(); j++){
-                refactChars1.get(i).vertices.get(j).setZ(15);
-                refactChars2.get(i).vertices.get(j).setZ(15);
-                refactChars3.get(i).vertices.get(j).setZ(15);
-                refactChars4.get(i).vertices.get(j).setZ(15);
+                refactChars1.get(i).vertices.get(j).setZ(scaleZ);
+                refactChars2.get(i).vertices.get(j).setZ(scaleZ);
+                refactChars3.get(i).vertices.get(j).setZ(scaleZ);
+                refactChars4.get(i).vertices.get(j).setZ(scaleZ);
             }
             for(int j = 0; j < refactChars1.get(i).vertices.size()/2; j++){
                 refactChars1.get(i).vertices.get(j).setZ(1);
@@ -485,9 +559,12 @@ public class ctrl extends Application {
                         if(o >= 1){
                             p = p.getArestaEsquerdaSuc();
                         }
-                        vertList.add(chars.get(i).faces.get(j).getArestaFace().getInicio());
+                        vertList.add(p.getInicio());
                         System.out.println("k = "+k.getInicio().getNomeVertice());
                         System.out.println("p = "+p.getInicio().getNomeVertice());
+                    }
+                    for(int l = 0; l < vertList.size(); l++){
+                        System.out.println(vertList.get(l).ponto);
                     }
                 }else{
                     
