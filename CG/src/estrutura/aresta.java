@@ -67,6 +67,11 @@ public class aresta {
         this.esquerda = esquerda;
     }
     
+    public void setFacesInvertido(face direita, face esquerda){
+        this.direita = direita;
+        this.esquerda = esquerda;
+    }
+    
     public void setArestasDireita(aresta pred, aresta suc){
         this.arestaDireitaPred = pred;
         this.arestaDireitaSuc = suc;
