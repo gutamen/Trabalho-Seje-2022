@@ -125,7 +125,7 @@ public class ctrl extends Application {
             root.getChildren().add(setFaceOcult);
             root.getChildren().add(choice);
             root.getChildren().add(txZ);
-            trueStart(stage, root, txConfirmString.getText(), scene, choice.getValue().toString(), setFaceOcult.selectedProperty().get(), setZ.getValue()*0.2);
+            trueStart(stage, root, txConfirmString.getText(), scene, choice.getValue().toString(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
         });
         
         save.setOnAction((ActionEvent evento) -> {
@@ -239,7 +239,9 @@ public class ctrl extends Application {
         tela2String(chars.size(), refactChars4);
         
         //função teste de visibilidade de face
-        //faceTestVisibilit(refactChars1, chars);
+        if(faceOcult){
+            faceTestVisibilit(refactChars1, chars);
+        }
         
         //VRP, P, Y, booelan projecao
         System.out.println("0...");
@@ -545,6 +547,45 @@ public class ctrl extends Application {
         });*/
     }
         
+    
+    public Point3D makeCentroid(ArrayList<vertice> entry, String opc){
+        double minX, minY, minZ;
+        double maxX, maxY, maxZ;
+        minX = entry.get(0).ponto.getX();
+        minY = entry.get(0).ponto.getY();
+        minZ = entry.get(0).ponto.getZ();
+        maxX = entry.get(0).ponto.getX();
+        maxY = entry.get(0).ponto.getY();
+        maxZ = entry.get(0).ponto.getZ();
+            
+        for(int i = 1; i < entry.size(); i++){
+            if(minX > entry.get(i).getX()){
+                minX = entry.get(i).getX();
+            }
+            if(maxX < entry.get(i).getX()){
+                maxX = entry.get(i).getX();    
+            }
+            if(minY > entry.get(i).getY()){
+                minY = entry.get(i).getY();
+            }
+            if(maxY < entry.get(i).getY()){
+                maxY = entry.get(i).getY();    
+            }
+            if(minZ > entry.get(i).getZ()){
+                minZ = entry.get(i).getZ();
+            }
+            if(maxZ < entry.get(i).getZ()){
+                maxZ = entry.get(i).getZ();    
+            }
+        }
+        if(opc.equals("min")){
+            return new Point3D(minX, minY, minZ);
+        }else if(opc.equals("max")){
+            return new Point3D(maxX, maxY, maxZ);
+        }
+        return null;
+    }
+    
     private void faceTestVisibilit(ArrayList<caractere> refactChars, ArrayList<caractere> chars){
         ArrayList<vertice> vertList = new ArrayList<vertice>();
         
@@ -560,12 +601,23 @@ public class ctrl extends Application {
                             p = p.getArestaEsquerdaSuc();
                         }
                         vertList.add(p.getInicio());
-                        System.out.println("k = "+k.getInicio().getNomeVertice());
-                        System.out.println("p = "+p.getInicio().getNomeVertice());
+                        
                     }
+                    
                     for(int l = 0; l < vertList.size(); l++){
                         System.out.println(vertList.get(l).ponto);
                     }
+                    
+                    double xc, yc, zc;
+                    xc = (makeCentroid(vertList, "min").getX()+makeCentroid(vertList, "max").getX())/2;
+                    yc = (makeCentroid(vertList, "min").getY()+makeCentroid(vertList, "max").getY())/2;
+                    zc = (makeCentroid(vertList, "min").getZ()+makeCentroid(vertList, "max").getZ())/2;
+
+                    Point3D centroidFace = new Point3D(xc, yc, zc);
+
+                    System.out.println("centr = "+centroidFace);
+
+                   
                 }else{
                     
                     /*for(aresta p = chars.get(i).faces.get(j).getArestaFace().getArestaEsquerdaSuc();
