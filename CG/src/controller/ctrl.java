@@ -240,7 +240,7 @@ public class ctrl extends Application {
         
         //função teste de visibilidade de face
         if(faceOcult){
-            faceTestVisibilit(refactChars1, chars);
+            faceTestVisibilit(refactChars1, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
         }
         
         //VRP, P, Y, booelan projecao
@@ -586,7 +586,7 @@ public class ctrl extends Application {
         return null;
     }
     
-    private void faceTestVisibilit(ArrayList<caractere> refactChars, ArrayList<caractere> chars){
+    private void faceTestVisibilit(ArrayList<caractere> refactChars, ArrayList<caractere> chars, Point3D vrp1, Point3D vrp2, Point3D vrp3, Point3D vrp4){
         ArrayList<vertice> vertList = new ArrayList<vertice>();
         
         for(int i = 0; i < chars.size(); i++){
@@ -603,21 +603,6 @@ public class ctrl extends Application {
                         vertList.add(p.getInicio());
                         
                     }
-                    
-                    for(int l = 0; l < vertList.size(); l++){
-                        System.out.println(vertList.get(l).ponto);
-                    }
-                    
-                    double xc, yc, zc;
-                    xc = (makeCentroid(vertList, "min").getX()+makeCentroid(vertList, "max").getX())/2;
-                    yc = (makeCentroid(vertList, "min").getY()+makeCentroid(vertList, "max").getY())/2;
-                    zc = (makeCentroid(vertList, "min").getZ()+makeCentroid(vertList, "max").getZ())/2;
-
-                    Point3D centroidFace = new Point3D(xc, yc, zc);
-
-                    System.out.println("centr = "+centroidFace);
-
-                   
                 }else{
                     
                     /*for(aresta p = chars.get(i).faces.get(j).getArestaFace().getArestaEsquerdaSuc();
@@ -630,8 +615,80 @@ public class ctrl extends Application {
                         System.out.println("p = "+p.getInicio().getNomeVertice());
                     }*/
                 }
+                
+                for(int l = 0; l < vertList.size(); l++){
+                    System.out.println(vertList.get(l).ponto);
+                }
+
+                double xc, yc, zc;
+                xc = (makeCentroid(vertList, "min").getX()+makeCentroid(vertList, "max").getX())/2;
+                yc = (makeCentroid(vertList, "min").getY()+makeCentroid(vertList, "max").getY())/2;
+                zc = (makeCentroid(vertList, "min").getZ()+makeCentroid(vertList, "max").getZ())/2;
+
+                Point3D centroidFace = new Point3D(xc, yc, zc);
+                
+                double dVRPtoFaceView1 = Math.sqrt(Math.pow(vrp1.getX()-centroidFace.getX(), 2)+
+                                                   Math.pow(vrp1.getY()-centroidFace.getY(), 2)+
+                                                   Math.pow(vrp1.getZ()-centroidFace.getZ(), 2));
+                
+                double dVRPtoFaceView2 = Math.sqrt(Math.pow(vrp2.getX()-centroidFace.getX(), 2)+
+                                                   Math.pow(vrp2.getY()-centroidFace.getY(), 2)+
+                                                   Math.pow(vrp2.getZ()-centroidFace.getZ(), 2));
+                
+                double dVRPtoFaceView3 = Math.sqrt(Math.pow(vrp3.getX()-centroidFace.getX(), 2)+
+                                                   Math.pow(vrp3.getY()-centroidFace.getY(), 2)+
+                                                   Math.pow(vrp3.getZ()-centroidFace.getZ(), 2));
+                
+                
+                double dVRPtoFaceView4 = Math.sqrt(Math.pow(vrp4.getX()-centroidFace.getX(), 2)+
+                                                   Math.pow(vrp4.getY()-centroidFace.getY(), 2)+
+                                                   Math.pow(vrp4.getZ()-centroidFace.getZ(), 2));
+                
+                Point3D vectO1 = vrp1.subtract(centroidFace);
+                Point3D vectO2 = vrp2.subtract(centroidFace);
+                Point3D vectO3 = vrp3.subtract(centroidFace);
+                Point3D vectO4 = vrp4.subtract(centroidFace);
+                
+                double vect1ll = Math.sqrt(Math.pow(vectO1.getX(), 2)+Math.pow(vectO1.getY(), 2)+Math.pow(vectO1.getZ(), 2));
+                double vect2ll = Math.sqrt(Math.pow(vectO2.getX(), 2)+Math.pow(vectO2.getY(), 2)+Math.pow(vectO2.getZ(), 2));
+                double vect3ll = Math.sqrt(Math.pow(vectO3.getX(), 2)+Math.pow(vectO3.getY(), 2)+Math.pow(vectO3.getZ(), 2));
+                double vect4ll = Math.sqrt(Math.pow(vectO4.getX(), 2)+Math.pow(vectO4.getY(), 2)+Math.pow(vectO4.getZ(), 2));
+                
+                Point3D vectOnormal1 = new Point3D(vectO1.getX()/vect1ll, vectO1.getY()/vect1ll, vectO1.getZ()/vect1ll);
+                Point3D vectOnormal2 = new Point3D(vectO2.getX()/vect2ll, vectO2.getY()/vect2ll, vectO2.getZ()/vect2ll);
+                Point3D vectOnormal3 = new Point3D(vectO3.getX()/vect3ll, vectO3.getY()/vect3ll, vectO3.getZ()/vect3ll);
+                Point3D vectOnormal4 = new Point3D(vectO4.getX()/vect4ll, vectO4.getY()/vect4ll, vectO4.getZ()/vect4ll);
+                
+                ArrayList<Point3D> listOfVects = new ArrayList<Point3D>();
+                
+                for(int po = 0; po < vertList.size(); po+=2){
+                    listOfVects.add(vertList.get(po).ponto.subtract(vertList.get(po+1).ponto));
+                }
+                /*
+                if(vectOnormal1 > 0){
+                    refactChars.get(i).faces.i
+                }
+                */
+                /*
+                System.out.println("centr = "+centroidFace);
+
+                System.out.println("minX = "+makeCentroid(vertList, "min").getX());
+                System.out.println("maxX = "+makeCentroid(vertList, "max").getX());
+
+                System.out.println("minY = "+makeCentroid(vertList, "min").getY());
+                System.out.println("maxY = "+makeCentroid(vertList, "max").getY());
+
+                System.out.println("minZ = "+makeCentroid(vertList, "min").getZ());
+                System.out.println("maxZ = "+makeCentroid(vertList, "max").getZ());
+                */
+                
+                vertList.clear();
             }
         }
+    }
+    
+    private void nScalar(ArrayList<vertice> vertList){
+        
     }
     
     private void refact(caractere pts, ctrlCam ct){
