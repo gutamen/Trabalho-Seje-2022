@@ -49,6 +49,17 @@ public class ctrl extends Application {
     Spinner<Integer> setZ;
     Text txZ;
     
+    public static Scanner read = new Scanner(System.in);
+    public static double offSet;
+    
+    @Override public void start(Stage stage) {
+        //falseStart(stage);
+        Group root = new Group();
+        Scene scene = new Scene(root, 880, 800, Color.WHITE);
+        intFace(stage, root, scene);
+        
+    }
+    
     public void intFace(Stage stage, Group root, Scene scene){        
         
         btConfirm = new Button("OK");
@@ -101,7 +112,7 @@ public class ctrl extends Application {
         load.setMaxSize(200, 30);
         load.setLayoutX(720);
         load.setLayoutY(500);
-       
+        
         //trueStart(stage, root, ta.getText(), scene);
         stage.setScene(scene);
         stage.show();
@@ -114,6 +125,20 @@ public class ctrl extends Application {
         root.getChildren().add(setFaceOcult);
         root.getChildren().add(choice);
         root.getChildren().add(txZ);
+        
+        
+        choice.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent evento) {
+                if(!"WireFrame".equals(choice.getValue().toString())){
+                    setFaceOcult.setSelected(true);
+                    setFaceOcult.setDisable(true);
+                }else{
+                    setFaceOcult.setSelected(false);
+                    setFaceOcult.setDisable(false);;
+                }
+            }
+        });
         
         btConfirm.setOnAction((ActionEvent evento) -> {
             root.getChildren().clear();
@@ -137,20 +162,6 @@ public class ctrl extends Application {
         });
     
     }
-    
-    
-    @Override public void start(Stage stage) {
-        //falseStart(stage);
-        Group root = new Group();
-        Scene scene = new Scene(root, 880, 800, Color.WHITE);
-        intFace(stage, root, scene);
-        
-    }
-        
-    public static Scanner read = new Scanner(System.in);
-    public static double offSet;
-    
-    
     
     private void trueStart(Stage stage, Group root, String readed, Scene scene, String metodChoice, Boolean faceOcult, Double scaleZ){
         //String readed = read.nextLine();
@@ -659,11 +670,11 @@ public class ctrl extends Application {
                 Point3D vectOnormal3 = new Point3D(vectO3.getX()/vect3ll, vectO3.getY()/vect3ll, vectO3.getZ()/vect3ll);
                 Point3D vectOnormal4 = new Point3D(vectO4.getX()/vect4ll, vectO4.getY()/vect4ll, vectO4.getZ()/vect4ll);
                 
-                ArrayList<Point3D> listOfVects = new ArrayList<Point3D>();
+                Point3D vect1 = vertList.get(0).ponto.subtract(vertList.get(1).ponto);
+                Point3D vect2 = vertList.get(0).ponto.subtract(vertList.get(vertList.size()).ponto);
                 
-                for(int po = 0; po < vertList.size(); po+=2){
-                    listOfVects.add(vertList.get(po).ponto.subtract(vertList.get(po+1).ponto));
-                }
+                
+                
                 /*
                 if(vectOnormal1 > 0){
                     refactChars.get(i).faces.i
