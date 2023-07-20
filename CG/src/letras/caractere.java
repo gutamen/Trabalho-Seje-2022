@@ -8,6 +8,7 @@ import estrutura.face;
 import estrutura.aresta;
 import estrutura.vertice;
 import java.util.ArrayList;
+import javafx.geometry.Point3D;
 
 /**
  *
@@ -9056,4 +9057,16 @@ public class caractere {
         return -1;
     }
     
+    
+    private caractere copia(){
+        caractere novo = new caractere(String.valueOf(this.letra));
+        
+        for(int i = 0; i < novo.vertices.size(); i++){
+            novo.vertices.get(i).ponto = this.vertices.get(i).ponto.add(Point3D.ZERO);
+        }
+        return novo;    
+    }
+    
+    
 }
+
