@@ -10,6 +10,7 @@ import estrutura.vertice;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import javafx.application.Application;
 import javafx.geometry.Point3D;
 import javafx.scene.Group;
@@ -563,6 +564,30 @@ public class ctrl extends Application {
         });*/
     }
         
+    public void painter(ArrayList<ArrayList<caractere>> refactChars){
+        for(int i = 0; i < refactChars.size(); i ++){
+            LinkedHashMap<ArrayList<caractere>, Double> listHash = new LinkedHashMap<ArrayList<caractere>, Double>();
+            double zTest = Double.MIN_VALUE;
+            
+            for(int j = 0; j < refactChars.get(i).size(); j++){
+                for(int k = 0; k < refactChars.get(i).get(j).faces.size(); k++){
+                    if(refactChars.get(i).get(j).faces.get(k).getArestaFace().getInicio().ponto.getZ() > zTest){
+                        zTest = refactChars.get(i).get(j).faces.get(k).getArestaFace().getInicio().ponto.getZ();
+                    }
+                }
+                listHash.put(refactChars.get(i), zTest);
+                zTest = Double.MIN_VALUE;
+            }
+            
+            for(int l = 0; l < refactChars.get(i).size()-1; l++){
+                double frt = listHash.get(l);
+                double nxt = listHash.get(l+1);
+                if(frt < nxt){
+                    //listHash.put(listHash.get(l), )
+                }
+            }
+        }
+    }
     
     public Point3D makeCentroid(ArrayList<vertice> entry, String opc){
         double minX, minY, minZ;
