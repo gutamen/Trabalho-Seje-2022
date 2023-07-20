@@ -4,7 +4,6 @@
  */
 package estrutura;
 
-import java.util.ArrayList;
 
 /**
  *
@@ -16,13 +15,7 @@ public class face {
     private boolean interna = false;
     private boolean visivel = true;
     private boolean temBuraco = false;
-    private ArrayList<face> hole;
-    
-    private void insertHole(ArrayList<face> holeRecived){
-        this.hole = holeRecived;
-        
-    }
-    
+   
     public boolean haveBuraco() {
         return temBuraco;
     }
