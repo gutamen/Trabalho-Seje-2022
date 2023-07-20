@@ -21,6 +21,10 @@ public class aresta {
         this.arestaEsquerdaSuc = arestaEsquerdaSuc;
         this.arestaDireitaSuc = arestaDireitaSuc;
     }
+    
+    public aresta(String nomeAresta) {
+        this.nomeAresta = nomeAresta;
+    }
 
     public String getNomeAresta() {
         return nomeAresta;

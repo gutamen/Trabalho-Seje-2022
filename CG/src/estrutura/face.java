@@ -12,15 +12,15 @@ public class face {
     private aresta arestaFace;
     private boolean interna = false;
     private boolean visivel = true;
+    private boolean temBuraco = false;
+    
+    public boolean haveBuraco() {
+        return temBuraco;
+    }
 
     public boolean isInterna() {
         return interna;
     }
-
-    public void setInterna(boolean interna) {
-        this.interna = interna;
-    }
-    
     
     public boolean isVisivel() {
         return visivel;
@@ -41,6 +41,13 @@ public class face {
         this.nomeFace = nomeFace;
         this.arestaFace = arestaFace;
         this.interna = interna;
+    }
+    
+    public face(String nomeFace, aresta arestaFace, boolean interna, boolean buraco) {
+        this.nomeFace = nomeFace;
+        this.arestaFace = arestaFace;
+        this.interna = interna;
+        this.temBuraco = buraco;
     }
 
     public String getNomeFace() {
