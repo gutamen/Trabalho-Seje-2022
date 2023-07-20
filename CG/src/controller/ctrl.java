@@ -72,7 +72,7 @@ public class ctrl extends Application {
         txConfirmString = new TextArea();
         //escala para 1 para 0.2
         setZ = new Spinner(1, 50, 1);
-        txZ = new Text("profundidadeZ");
+        txZ = new Text("profundidade Z");
         
         txZ.setLayoutX(765);
         txZ.setLayoutY(115);
@@ -173,12 +173,12 @@ public class ctrl extends Application {
         //gambiarra para o Z aparecer
         for(int i = 0; i < readed.length(); i++){
             chars.add(new caractere(readed.substring(i, i+1)));
-            /*for(int j = chars.get(i).vertices.size()/2; j < chars.get(i).vertices.size(); j++){
-                chars.get(i).vertices.get(j).setZ(2);
+            for(int j = chars.get(i).vertices.size()/2; j < chars.get(i).vertices.size(); j++){
+                chars.get(i).vertices.get(j).setZ(scaleZ);
             }
             for(int j = 0; j < chars.get(i).vertices.size()/2; j++){
                 chars.get(i).vertices.get(j).setZ(1);
-            }*/
+            }
         }
         
         salvaString(chars);
@@ -249,9 +249,14 @@ public class ctrl extends Application {
         tela2String(chars.size(), refactChars3);
         tela2String(chars.size(), refactChars4);
         
+        ArrayList<ArrayList<caractere>> refactCharsAll = new  ArrayList<ArrayList<caractere>>();
+        refactCharsAll.add(refactChars1);
+        refactCharsAll.add(refactChars2);
+        refactCharsAll.add(refactChars3);
+        refactCharsAll.add(refactChars4);
         //função teste de visibilidade de face
         if(faceOcult){
-            faceTestVisibilit(refactChars1, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
+            faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
         }
         
         //VRP, P, Y, booelan projecao
@@ -273,10 +278,10 @@ public class ctrl extends Application {
         
         
         for(int i = 0; i < refactChars1.size(); i++){
-            desenhaFiguraPorAresta(gc1, refactChars1.get(i).arestas);
-            desenhaFiguraPorArestaTopo(gc2, refactChars2.get(i).arestas);
-            desenhaFiguraPorArestaLateral(gc3, refactChars3.get(i).arestas);
-            desenhaFiguraPorAresta(gc4, refactChars4.get(i).arestas);
+            desenhaFiguraPorAresta(gc1, refactChars1.get(i));
+            desenhaFiguraPorArestaTopo(gc2, refactChars2.get(i));
+            desenhaFiguraPorArestaLateral(gc3, refactChars3.get(i));
+            desenhaFiguraPorAresta(gc4, refactChars4.get(i));
         }
         
         //carniça do martini
@@ -350,10 +355,10 @@ public class ctrl extends Application {
                         canvas3.getGraphicsContext2D().clearRect(0, 0, canvas3.getWidth(), canvas3.getHeight());
                         canvas4.getGraphicsContext2D().clearRect(0, 0, canvas4.getWidth(), canvas4.getHeight());
                         for(int k = 0; k < refactChars1.size(); k++){
-                            desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k).arestas);
-                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars2.get(k).arestas);
-                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k).arestas);
-                            desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k).arestas);
+                            desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k));
+                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars2.get(k));
+                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k));
+                            desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k));
                         }
                     }
                     localX = nowLocalX;
@@ -432,10 +437,10 @@ public class ctrl extends Application {
                         canvas3.getGraphicsContext2D().clearRect(0, 0, canvas3.getWidth(), canvas3.getHeight());
                         canvas4.getGraphicsContext2D().clearRect(0, 0, canvas4.getWidth(), canvas4.getHeight());
                         for(int k = 0; k < refactChars1.size(); k++){
-                            desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k).arestas);
-                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars2.get(k).arestas);
-                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k).arestas);
-                            desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k).arestas);
+                            desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k));
+                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars2.get(k));
+                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k));
+                            desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k));
                         }
                     }
                     localX = nowLocalX;
@@ -513,10 +518,10 @@ public class ctrl extends Application {
                         canvas3.getGraphicsContext2D().clearRect(0, 0, canvas3.getWidth(), canvas3.getHeight());
                         canvas4.getGraphicsContext2D().clearRect(0, 0, canvas4.getWidth(), canvas4.getHeight());
                         for(int k = 0; k < refactChars1.size(); k++){
-                            desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k).arestas);
-                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars2.get(k).arestas);
-                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k).arestas);
-                            desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k).arestas);
+                            desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k));
+                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars2.get(k));
+                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k));
+                            desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k));
                         }
                     }
                     localX = nowLocalX;
@@ -597,7 +602,7 @@ public class ctrl extends Application {
         return null;
     }
     
-    private void faceTestVisibilit(ArrayList<caractere> refactChars, ArrayList<caractere> chars, Point3D vrp1, Point3D vrp2, Point3D vrp3, Point3D vrp4){
+    private void faceTestVisibilit(ArrayList<ArrayList<caractere>> refactChars, ArrayList<caractere> chars, Point3D vrp1, Point3D vrp2, Point3D vrp3, Point3D vrp4){
         ArrayList<vertice> vertList = new ArrayList<vertice>();
         
         for(int i = 0; i < chars.size(); i++){
@@ -605,101 +610,162 @@ public class ctrl extends Application {
                 aresta k = chars.get(i).faces.get(j).getArestaFace();
                 int o = 0;
                 
-                if(!chars.get(i).faces.get(j).isInterna()){
-                    for(aresta p = chars.get(i).faces.get(j).getArestaFace().getArestaEsquerdaSuc();
+                if(true){
+                    System.out.println("j = "+j);
+                    boolean rigth = false;
+                    for(aresta p = new aresta("null");
+                        !k.getNomeAresta().equals(p.getNomeAresta()); o++){
+                        if(o < 1){
+                            p = k;
+                        }
+                        
+                        if(rigth){
+                            vertList.add(p.getFim());
+                        }else{
+                            vertList.add(p.getInicio());    
+                        }
+                        
+                        System.out.println(p.getNomeAresta());
+                        System.out.println(chars.get(i).faces.get(j).getNomeFace());
+                        if(p.getDireita().getNomeFace().equals(chars.get(i).faces.get(j).getNomeFace())){
+                            p = p.getArestaDireitaSuc();
+                            rigth = true;
+                        }else{
+                            p = p.getArestaEsquerdaSuc();
+                            rigth = false;
+                        }
+                    }
+                    
+                    System.out.println(" entro aqui");
+                    allInOne(refactChars, vertList, vrp1, vrp2, vrp3, vrp4, i, j, "notinterna");
+                }/*else{
+                    for(aresta p = chars.get(i).faces.get(j).getArestaFace().getArestaDireitaSuc();
                         !k.getInicio().getNomeVertice().equals(p.getInicio().getNomeVertice()); o++){
                         if(o >= 1){
-                            p = p.getArestaEsquerdaSuc();
+                            p = p.getArestaDireitaSuc();
                         }
                         vertList.add(p.getInicio());
-                        
                     }
-                }else{
-                    
-                    /*for(aresta p = chars.get(i).faces.get(j).getArestaFace().getArestaEsquerdaSuc();
-                        !k.getInicio().getNomeVertice().equals(p.getInicio().getNomeVertice()); o++){
-                        if(o >= 1){
-                            p = p.getArestaEsquerdaSuc();
-                        }
-                        vertList.add(chars.get(i).faces.get(j).getArestaFace().getInicio());
-                        System.out.println("k = "+k.getInicio().getNomeVertice());
-                        System.out.println("p = "+p.getInicio().getNomeVertice());
-                    }*/
-                }
+                    System.out.println("entro aqui outro");
+                    allInOne(refactChars, vertList, vrp1, vrp2, vrp3, vrp4, i, j, "interna");
+                }*/
                 
-                for(int l = 0; l < vertList.size(); l++){
-                    System.out.println(vertList.get(l).ponto);
-                }
-
-                double xc, yc, zc;
-                xc = (makeCentroid(vertList, "min").getX()+makeCentroid(vertList, "max").getX())/2;
-                yc = (makeCentroid(vertList, "min").getY()+makeCentroid(vertList, "max").getY())/2;
-                zc = (makeCentroid(vertList, "min").getZ()+makeCentroid(vertList, "max").getZ())/2;
-
-                Point3D centroidFace = new Point3D(xc, yc, zc);
-                
-                double dVRPtoFaceView1 = Math.sqrt(Math.pow(vrp1.getX()-centroidFace.getX(), 2)+
-                                                   Math.pow(vrp1.getY()-centroidFace.getY(), 2)+
-                                                   Math.pow(vrp1.getZ()-centroidFace.getZ(), 2));
-                
-                double dVRPtoFaceView2 = Math.sqrt(Math.pow(vrp2.getX()-centroidFace.getX(), 2)+
-                                                   Math.pow(vrp2.getY()-centroidFace.getY(), 2)+
-                                                   Math.pow(vrp2.getZ()-centroidFace.getZ(), 2));
-                
-                double dVRPtoFaceView3 = Math.sqrt(Math.pow(vrp3.getX()-centroidFace.getX(), 2)+
-                                                   Math.pow(vrp3.getY()-centroidFace.getY(), 2)+
-                                                   Math.pow(vrp3.getZ()-centroidFace.getZ(), 2));
-                
-                
-                double dVRPtoFaceView4 = Math.sqrt(Math.pow(vrp4.getX()-centroidFace.getX(), 2)+
-                                                   Math.pow(vrp4.getY()-centroidFace.getY(), 2)+
-                                                   Math.pow(vrp4.getZ()-centroidFace.getZ(), 2));
-                
-                Point3D vectO1 = vrp1.subtract(centroidFace);
-                Point3D vectO2 = vrp2.subtract(centroidFace);
-                Point3D vectO3 = vrp3.subtract(centroidFace);
-                Point3D vectO4 = vrp4.subtract(centroidFace);
-                
-                double vect1ll = Math.sqrt(Math.pow(vectO1.getX(), 2)+Math.pow(vectO1.getY(), 2)+Math.pow(vectO1.getZ(), 2));
-                double vect2ll = Math.sqrt(Math.pow(vectO2.getX(), 2)+Math.pow(vectO2.getY(), 2)+Math.pow(vectO2.getZ(), 2));
-                double vect3ll = Math.sqrt(Math.pow(vectO3.getX(), 2)+Math.pow(vectO3.getY(), 2)+Math.pow(vectO3.getZ(), 2));
-                double vect4ll = Math.sqrt(Math.pow(vectO4.getX(), 2)+Math.pow(vectO4.getY(), 2)+Math.pow(vectO4.getZ(), 2));
-                
-                Point3D vectOnormal1 = new Point3D(vectO1.getX()/vect1ll, vectO1.getY()/vect1ll, vectO1.getZ()/vect1ll);
-                Point3D vectOnormal2 = new Point3D(vectO2.getX()/vect2ll, vectO2.getY()/vect2ll, vectO2.getZ()/vect2ll);
-                Point3D vectOnormal3 = new Point3D(vectO3.getX()/vect3ll, vectO3.getY()/vect3ll, vectO3.getZ()/vect3ll);
-                Point3D vectOnormal4 = new Point3D(vectO4.getX()/vect4ll, vectO4.getY()/vect4ll, vectO4.getZ()/vect4ll);
-                
-                Point3D vect1 = vertList.get(0).ponto.subtract(vertList.get(1).ponto);
-                Point3D vect2 = vertList.get(0).ponto.subtract(vertList.get(vertList.size()).ponto);
-                
-                
-                
-                /*
-                if(vectOnormal1 > 0){
-                    refactChars.get(i).faces.i
-                }
-                */
-                /*
-                System.out.println("centr = "+centroidFace);
-
-                System.out.println("minX = "+makeCentroid(vertList, "min").getX());
-                System.out.println("maxX = "+makeCentroid(vertList, "max").getX());
-
-                System.out.println("minY = "+makeCentroid(vertList, "min").getY());
-                System.out.println("maxY = "+makeCentroid(vertList, "max").getY());
-
-                System.out.println("minZ = "+makeCentroid(vertList, "min").getZ());
-                System.out.println("maxZ = "+makeCentroid(vertList, "max").getZ());
-                */
-                
-                vertList.clear();
             }
         }
     }
     
-    private void nScalar(ArrayList<vertice> vertList){
+    private void allInOne(ArrayList<ArrayList<caractere>> refactChars, ArrayList<vertice> vertList, Point3D vrp1, Point3D vrp2, Point3D vrp3, Point3D vrp4, int i, int j, String type){
+        for(int l = 0; l < vertList.size(); l++){
+            System.out.println(vertList.get(l).ponto);
+        }
+
+        double xc, yc, zc;
+        System.out.println("vertice tam = "+vertList.size());
+        xc = (makeCentroid(vertList, "min").getX()+makeCentroid(vertList, "max").getX())/2;
+        yc = (makeCentroid(vertList, "min").getY()+makeCentroid(vertList, "max").getY())/2;
+        zc = (makeCentroid(vertList, "min").getZ()+makeCentroid(vertList, "max").getZ())/2;
         
+        System.out.println("xc = "+xc);
+        System.out.println("yc = "+yc);
+        System.out.println("zc = "+zc);
+        
+        Point3D centroidFace = new Point3D(xc, yc, zc);
+        
+        double dVRPtoFaceView1 = Math.sqrt(Math.pow(vrp1.getX()-centroidFace.getX(), 2)+
+                                           Math.pow(vrp1.getY()-centroidFace.getY(), 2)+
+                                           Math.pow(vrp1.getZ()-centroidFace.getZ(), 2));
+
+        double dVRPtoFaceView2 = Math.sqrt(Math.pow(vrp2.getX()-centroidFace.getX(), 2)+
+                                           Math.pow(vrp2.getY()-centroidFace.getY(), 2)+
+                                           Math.pow(vrp2.getZ()-centroidFace.getZ(), 2));
+
+        double dVRPtoFaceView3 = Math.sqrt(Math.pow(vrp3.getX()-centroidFace.getX(), 2)+
+                                           Math.pow(vrp3.getY()-centroidFace.getY(), 2)+
+                                           Math.pow(vrp3.getZ()-centroidFace.getZ(), 2));
+
+
+        double dVRPtoFaceView4 = Math.sqrt(Math.pow(vrp4.getX()-centroidFace.getX(), 2)+
+                                           Math.pow(vrp4.getY()-centroidFace.getY(), 2)+
+                                           Math.pow(vrp4.getZ()-centroidFace.getZ(), 2));
+
+        Point3D vectO1 = vrp1.subtract(centroidFace);
+        Point3D vectO2 = vrp2.subtract(centroidFace);
+        Point3D vectO3 = vrp3.subtract(centroidFace);
+        Point3D vectO4 = vrp4.subtract(centroidFace);
+
+        Point3D vectOnormal1 = vectO1.normalize();
+        Point3D vectOnormal2 = vectO2.normalize();
+        Point3D vectOnormal3 = vectO3.normalize();
+        Point3D vectOnormal4 = vectO4.normalize();
+
+        Point3D vect1 = vertList.get(0).ponto.subtract(vertList.get(1).ponto);
+        Point3D vect2 = vertList.get(0).ponto.subtract(vertList.get(vertList.size()-1).ponto);
+
+        System.out.println("vect1 = "+vect1);
+        System.out.println("vect2 = "+vect2);
+        /*
+        i   j  k  
+        u1 u2 u3  
+        v1 v2 v3
+        */
+        Point3D vectN = null;
+        if("notinterna".equals(type)){
+            vectN = vectN = vect1.crossProduct(vect2);
+        }else if("interna".contains(type)){
+            vectN = vectN = vect2.crossProduct(vect1); 
+        }
+        
+        System.out.println("vectN = "+vectN);
+        
+        Point3D normN = vectN.normalize();
+
+        System.out.println("normN = "+normN);
+
+        double normOxnormN1 = vectOnormal1.dotProduct(normN);
+        double normOxnormN2 = vectOnormal2.dotProduct(normN);
+        double normOxnormN3 = vectOnormal3.dotProduct(normN);
+        double normOxnormN4 = vectOnormal4.dotProduct(normN);
+        
+        System.out.println("normOxnormN1 = "+normOxnormN1);
+        System.out.println("normOxnormN2 = "+normOxnormN2);
+        System.out.println("normOxnormN3 = "+normOxnormN3);
+        System.out.println("normOxnormN4 = "+normOxnormN4);
+
+        ArrayList norms = new ArrayList();
+        norms.add(normOxnormN1);
+        norms.add(normOxnormN2);
+        norms.add(normOxnormN3);
+        norms.add(normOxnormN4);
+
+        System.out.println("j = "+j);
+        System.out.println("i = "+i);
+        System.out.println("centr = "+centroidFace);
+
+        for(int fg = 0; fg < refactChars.size(); fg++){
+            System.out.println("norms = "+(double)norms.get(fg));
+            if((double)norms.get(fg) > 0){
+                refactChars.get(fg).get(i).faces.get(j).setVisivel(true);
+                System.out.println("visivel");
+            }else{
+                refactChars.get(fg).get(i).faces.get(j).setVisivel(false);
+                System.out.println("off vizbl ---------");
+            }
+        }
+
+
+
+        /*
+        System.out.println("minX = "+makeCentroid(vertList, "min").getX());
+        System.out.println("maxX = "+makeCentroid(vertList, "max").getX());
+
+        System.out.println("minY = "+makeCentroid(vertList, "min").getY());
+        System.out.println("maxY = "+makeCentroid(vertList, "max").getY());
+
+        System.out.println("minZ = "+makeCentroid(vertList, "min").getZ());
+        System.out.println("maxZ = "+makeCentroid(vertList, "max").getZ());
+        */
+
+        vertList.clear();
     }
     
     private void refact(caractere pts, ctrlCam ct){
@@ -735,21 +801,45 @@ public class ctrl extends Application {
         return max-min;
     }
     
-    private void desenhaFiguraPorAresta(GraphicsContext gc, ArrayList<aresta> arestas) {    
+    private void desenhaFiguraPorAresta(GraphicsContext gc, caractere cart) {    
         double[] xpoints = new double[2];
         double[] ypoints = new double[2];
        
-        
-        for(int i = 0; arestas.size() > i; i++){
-            
-            
-            xpoints[0]=(arestas.get(i).getInicio().getX());
-            ypoints[0]=((arestas.get(i).getInicio().getY()));
-           
-            xpoints[1]=(arestas.get(i).getFim().getX());
-            ypoints[1]=((arestas.get(i).getFim().getY()));
-            gc.strokePolyline(xpoints, ypoints, 2);
-            
+        for(int k = 0; k < cart.faces.size(); k++){
+            if(cart.faces.get(k).isVisivel()){
+                boolean aux = true;
+                aresta j = new aresta("null");
+                for(aresta i = cart.faces.get(k).getArestaFace(); !i.getNomeAresta().equals(j.getNomeAresta());){
+                    System.out.println(j.getNomeAresta());
+                    if(aux){
+                        j = i;
+                        aux = false;
+                    }
+                    if(j.getDireita().getNomeFace().equals(cart.faces.get(k).getNomeFace())){
+                        j = j.getArestaDireitaSuc();
+                    }else{
+                        j = j.getArestaEsquerdaSuc();
+                    }
+                    xpoints[0]=(j.getInicio().getX());
+                    ypoints[0]=((j.getInicio().getY()));
+
+                    xpoints[1]=(j.getFim().getX());
+                    ypoints[1]=((j.getFim().getY()));
+                    gc.strokePolyline(xpoints, ypoints, 2);
+                }
+                
+                /*
+                for(int h = 0; h < cart.arestas.size(); h++){
+                    if(cart.arestas.get(h).getEsquerda().equals(cart.faces.get(k).getNomeFace())){
+                        xpoints[0]=(cart.arestas.get(h).getInicio().getX());
+                        ypoints[0]=((cart.arestas.get(h).getInicio().getY()));
+
+                        xpoints[1]=(cart.arestas.get(h).getFim().getX());
+                        ypoints[1]=((cart.arestas.get(h).getFim().getY()));
+                        gc.strokePolyline(xpoints, ypoints, 2);
+                    }
+                }*/
+            }
         }
         //System.out.println(Arrays.toString(xpoints));
         //System.out.println(Arrays.toString(ypoints));
@@ -759,21 +849,21 @@ public class ctrl extends Application {
         
     }
     
-    private void desenhaFiguraPorArestaTopo(GraphicsContext gc, ArrayList<aresta> arestas) {    
+    private void desenhaFiguraPorArestaTopo(GraphicsContext gc, caractere cart) {    
         double[] xpoints = new double[2];
         double[] ypoints = new double[2];
        
-        
-        for(int i = 0; arestas.size() > i; i++){
-            
-            
-            xpoints[0]=(arestas.get(i).getInicio().getX());
-            ypoints[0]=((arestas.get(i).getInicio().getZ()));
-           
-            xpoints[1]=(arestas.get(i).getFim().getX());
-            ypoints[1]=((arestas.get(i).getFim().getZ()));
-            gc.strokePolyline(xpoints, ypoints, 2);
-            
+        for(int k = 0; k < cart.faces.size(); k++){
+            if(cart.faces.get(k).isVisivel()){
+                for(int i = 0; i < cart.arestas.size(); i++){
+                    xpoints[0]=(cart.arestas.get(i).getInicio().getX());
+                    ypoints[0]=((cart.arestas.get(i).getInicio().getZ()));
+
+                    xpoints[1]=(cart.arestas.get(i).getFim().getX());
+                    ypoints[1]=((cart.arestas.get(i).getFim().getZ()));
+                    gc.strokePolyline(xpoints, ypoints, 2);
+                }
+            }
         }
         //System.out.println(Arrays.toString(xpoints));
         //System.out.println(Arrays.toString(ypoints));
@@ -783,21 +873,21 @@ public class ctrl extends Application {
         
     }
     
-    private void desenhaFiguraPorArestaLateral(GraphicsContext gc, ArrayList<aresta> arestas) {    
+    private void desenhaFiguraPorArestaLateral(GraphicsContext gc, caractere cart) {    
         double[] xpoints = new double[2];
         double[] ypoints = new double[2];
        
-        
-        for(int i = 0; arestas.size() > i; i++){
-            
-            
-            xpoints[0]=(arestas.get(i).getInicio().getZ());
-            ypoints[0]=((arestas.get(i).getInicio().getY()));
-           
-            xpoints[1]=(arestas.get(i).getFim().getZ());
-            ypoints[1]=((arestas.get(i).getFim().getY()));
-            gc.strokePolyline(xpoints, ypoints, 2);
-            
+        for(int k = 0; k < cart.faces.size(); k++){
+            if(cart.faces.get(k).isVisivel()){
+                for(int i = 0; i < cart.arestas.size(); i++){
+                    xpoints[0]=(cart.arestas.get(i).getInicio().getZ());
+                    ypoints[0]=((cart.arestas.get(i).getInicio().getY()));
+
+                    xpoints[1]=(cart.arestas.get(i).getFim().getZ());
+                    ypoints[1]=((cart.arestas.get(i).getFim().getY()));
+                    gc.strokePolyline(xpoints, ypoints, 2);
+                }
+            }
         }
         //System.out.println(Arrays.toString(xpoints));
         //System.out.println(Arrays.toString(ypoints));
