@@ -261,13 +261,13 @@ public class ctrl extends Application {
         
         //VRP, P, Y, booelan projecao
         System.out.println("0...");
-        ctrlVRP2SRU(ct1, refactChars1, gc1, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), false);
+        ctrlVRP2SRU(ct1, refactChars1, gc1, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 1);
         System.out.println("1...");
-        ctrlVRP2SRU(ct2, refactChars2, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), false);
+        ctrlVRP2SRU(ct2, refactChars2, gc2, new Point3D(0, 19, 0), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 2);
         System.out.println("2...");
-        ctrlVRP2SRU(ct3, refactChars3, gc3, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), false);
+        ctrlVRP2SRU(ct3, refactChars3, gc3, new Point3D(19, 0, 0), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 3);
         System.out.println("3...");
-        ctrlVRP2SRU(ct4, refactChars4, gc4, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
+        ctrlVRP2SRU(ct4, refactChars4, gc4, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
         
         
         /*System.out.println("Matriz Jp");
@@ -347,7 +347,7 @@ public class ctrl extends Application {
                         caractere perspectiva = refactChars4.get(selectedChar);
                         invertChar(mudanssa, ct1,universo);
                         copiaVertices(perspectiva,universo);
-                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
+                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
                         
                         
                         canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
@@ -429,7 +429,7 @@ public class ctrl extends Application {
                         caractere perspectiva = refactChars4.get(selectedChar);
                         invertChar(mudanssa, ct1,universo);
                         copiaVertices(perspectiva,universo);
-                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc4, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
+                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc4, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
                         
                         
                         canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
@@ -510,7 +510,7 @@ public class ctrl extends Application {
                         caractere perspectiva = refactChars4.get(selectedChar);
                         invertChar(mudanssa, ct1,universo);
                         copiaVertices(perspectiva,universo);
-                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), true);
+                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
                         
                         
                         canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
@@ -709,11 +709,13 @@ public class ctrl extends Application {
         v1 v2 v3
         */
         Point3D vectN = null;
+        /*
         if("notinterna".equals(type)){
             vectN = vectN = vect1.crossProduct(vect2);
         }else if("interna".contains(type)){
             vectN = vectN = vect2.crossProduct(vect1); 
-        }
+        }*/
+        vectN = vectN = vect1.crossProduct(vect2);
         
         System.out.println("vectN = "+vectN);
         
@@ -731,7 +733,7 @@ public class ctrl extends Application {
         System.out.println("normOxnormN3 = "+normOxnormN3);
         System.out.println("normOxnormN4 = "+normOxnormN4);
 
-        ArrayList norms = new ArrayList();
+        ArrayList<Double> norms = new ArrayList();
         norms.add(normOxnormN1);
         norms.add(normOxnormN2);
         norms.add(normOxnormN3);
@@ -742,8 +744,8 @@ public class ctrl extends Application {
         System.out.println("centr = "+centroidFace);
 
         for(int fg = 0; fg < refactChars.size(); fg++){
-            System.out.println("norms = "+(double)norms.get(fg));
-            if((double)norms.get(fg) > 0){
+            System.out.println("norms = "+norms.get(fg));
+            if(norms.get(fg) > 0.06){
                 refactChars.get(fg).get(i).faces.get(j).setVisivel(true);
                 System.out.println("visivel");
             }else{
@@ -855,14 +857,38 @@ public class ctrl extends Application {
        
         for(int k = 0; k < cart.faces.size(); k++){
             if(cart.faces.get(k).isVisivel()){
-                for(int i = 0; i < cart.arestas.size(); i++){
-                    xpoints[0]=(cart.arestas.get(i).getInicio().getX());
-                    ypoints[0]=((cart.arestas.get(i).getInicio().getZ()));
+                boolean aux = true;
+                aresta j = new aresta("null");
+                for(aresta i = cart.faces.get(k).getArestaFace(); !i.getNomeAresta().equals(j.getNomeAresta());){
+                    System.out.println(j.getNomeAresta());
+                    if(aux){
+                        j = i;
+                        aux = false;
+                    }
+                    if(j.getDireita().getNomeFace().equals(cart.faces.get(k).getNomeFace())){
+                        j = j.getArestaDireitaSuc();
+                    }else{
+                        j = j.getArestaEsquerdaSuc();
+                    }
+                    xpoints[0]=(j.getInicio().getX());
+                    ypoints[0]=((j.getInicio().getZ()));
 
-                    xpoints[1]=(cart.arestas.get(i).getFim().getX());
-                    ypoints[1]=((cart.arestas.get(i).getFim().getZ()));
+                    xpoints[1]=(j.getFim().getX());
+                    ypoints[1]=((j.getFim().getZ()));
                     gc.strokePolyline(xpoints, ypoints, 2);
                 }
+                
+                /*
+                for(int h = 0; h < cart.arestas.size(); h++){
+                    if(cart.arestas.get(h).getEsquerda().equals(cart.faces.get(k).getNomeFace())){
+                        xpoints[0]=(cart.arestas.get(h).getInicio().getX());
+                        ypoints[0]=((cart.arestas.get(h).getInicio().getY()));
+
+                        xpoints[1]=(cart.arestas.get(h).getFim().getX());
+                        ypoints[1]=((cart.arestas.get(h).getFim().getY()));
+                        gc.strokePolyline(xpoints, ypoints, 2);
+                    }
+                }*/
             }
         }
         //System.out.println(Arrays.toString(xpoints));
@@ -870,7 +896,6 @@ public class ctrl extends Application {
         
         
         gc.restore();
-        
     }
     
     private void desenhaFiguraPorArestaLateral(GraphicsContext gc, caractere cart) {    
@@ -879,14 +904,38 @@ public class ctrl extends Application {
        
         for(int k = 0; k < cart.faces.size(); k++){
             if(cart.faces.get(k).isVisivel()){
-                for(int i = 0; i < cart.arestas.size(); i++){
-                    xpoints[0]=(cart.arestas.get(i).getInicio().getZ());
-                    ypoints[0]=((cart.arestas.get(i).getInicio().getY()));
+                boolean aux = true;
+                aresta j = new aresta("null");
+                for(aresta i = cart.faces.get(k).getArestaFace(); !i.getNomeAresta().equals(j.getNomeAresta());){
+                    System.out.println(j.getNomeAresta());
+                    if(aux){
+                        j = i;
+                        aux = false;
+                    }
+                    if(j.getDireita().getNomeFace().equals(cart.faces.get(k).getNomeFace())){
+                        j = j.getArestaDireitaSuc();
+                    }else{
+                        j = j.getArestaEsquerdaSuc();
+                    }
+                    xpoints[0]=(j.getInicio().getZ());
+                    ypoints[0]=((j.getInicio().getY()));
 
-                    xpoints[1]=(cart.arestas.get(i).getFim().getZ());
-                    ypoints[1]=((cart.arestas.get(i).getFim().getY()));
+                    xpoints[1]=(j.getFim().getZ());
+                    ypoints[1]=((j.getFim().getY()));
                     gc.strokePolyline(xpoints, ypoints, 2);
                 }
+                
+                /*
+                for(int h = 0; h < cart.arestas.size(); h++){
+                    if(cart.arestas.get(h).getEsquerda().equals(cart.faces.get(k).getNomeFace())){
+                        xpoints[0]=(cart.arestas.get(h).getInicio().getX());
+                        ypoints[0]=((cart.arestas.get(h).getInicio().getY()));
+
+                        xpoints[1]=(cart.arestas.get(h).getFim().getX());
+                        ypoints[1]=((cart.arestas.get(h).getFim().getY()));
+                        gc.strokePolyline(xpoints, ypoints, 2);
+                    }
+                }*/
             }
         }
         //System.out.println(Arrays.toString(xpoints));
@@ -894,10 +943,9 @@ public class ctrl extends Application {
         
         
         gc.restore();
-        
     }
 
-    private void ctrlVRP2SRU(ctrlCam ct, ArrayList<caractere> refactChars, GraphicsContext gc, Point3D VRP, Point3D P, Point3D Y, boolean projecao){
+    private void ctrlVRP2SRU(ctrlCam ct, ArrayList<caractere> refactChars, GraphicsContext gc, Point3D VRP, Point3D P, Point3D Y, int projecao){
         ct.setVRP(VRP.getX(), VRP.getY(), VRP.getZ());
         ct.setP(P.getX(), P.getY(), P.getZ());
         ct.setYc(Y.getX(), Y.getY(), Y.getZ());
@@ -905,12 +953,22 @@ public class ctrl extends Application {
         ct.setViewport(0, 0, 80*refactChars.size(), 199);
         ct.setWindow(-2*refactChars.size()-2, -2-1, 2*refactChars.size()+2, 2+1);
         
-        if(!projecao){
+        if(projecao == 1){
             for(int i = 0; i < refactChars.size(); i++){
                 ct.setPPLxMT(ct.getPipeline_SRU2SRTNormal(), getMatPts(refactChars.get(i)));
                 refact(refactChars.get(i), ct);
             }
-        }else{
+        }else if(projecao == 2){
+            for(int i = 0; i < refactChars.size(); i++){
+                ct.setPPLxMT(ct.getPipeline_SRU2SRTNormalTop(), getMatPts(refactChars.get(i)));
+                refact(refactChars.get(i), ct);
+            }
+        }else if(projecao == 3){
+            for(int i = 0; i < refactChars.size(); i++){
+                ct.setPPLxMT(ct.getPipeline_SRU2SRTNormalSide(), getMatPts(refactChars.get(i)));
+                refact(refactChars.get(i), ct);
+            }
+        }else if(projecao == 4){
             for(int i = 0; i < refactChars.size(); i++){
                 ct.setPPLxMT(ct.getPipeline_SRU2SRT(), getMatPts(refactChars.get(i)));
                 refact(refactChars.get(i), ct);
@@ -962,7 +1020,7 @@ public class ctrl extends Application {
         writMat(ct.getNmPPLxMT());*/
     }
     
-    private void ctrlVRP2SRUParaUmCaractere(caractere modificado, ctrlCam ct, ArrayList<caractere> refactChars, GraphicsContext gc, Point3D VRP, Point3D P, Point3D Y, boolean projecao){
+    private void ctrlVRP2SRUParaUmCaractere(caractere modificado, ctrlCam ct, ArrayList<caractere> refactChars, GraphicsContext gc, Point3D VRP, Point3D P, Point3D Y, int projecao){
         ct.setVRP(VRP.getX(), VRP.getY(), VRP.getZ());
         ct.setP(P.getX(), P.getY(), P.getZ());
         ct.setYc(Y.getX(), Y.getY(), Y.getZ());
@@ -970,10 +1028,16 @@ public class ctrl extends Application {
         ct.setViewport(0, 0, 80*refactChars.size(), 199);
         ct.setWindow(-2*refactChars.size()-2, -2-1, 2*refactChars.size()+2, 2+1);
         
-        if(!projecao){
+        if(projecao == 1){
             ct.setPPLxMT(ct.getPipeline_SRU2SRTNormal(), getMatPts(modificado));
             refact(modificado, ct);
-        }else{
+        }else if(projecao == 2){
+            ct.setPPLxMT(ct.getPipeline_SRU2SRTNormalTop(), getMatPts(modificado));
+            refact(modificado, ct);
+        }else if(projecao == 3){
+            ct.setPPLxMT(ct.getPipeline_SRU2SRTNormalSide(), getMatPts(modificado));
+            refact(modificado, ct);
+        }else if(projecao == 4){
             ct.setPPLxMT(ct.getPipeline_SRU2SRT(), getMatPts(modificado));
             refact(modificado, ct);
         }

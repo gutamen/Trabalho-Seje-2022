@@ -198,6 +198,27 @@ public class ctrlCam {
             {0, 0, 1, 0},
             {0, 0, 0, 1}};
     }
+    
+    public double[][] getMJpTop() {
+        return MJp = new double[][]{
+            {(getViewport().getXmax()-getViewport().getXmin())/(getWindow().getXmax()-getWindow().getXmin()), 
+                0, 0, -getWindow().getXmin()*((getViewport().getXmax()-getViewport().getXmin())/(getWindow().getXmax()-getWindow().getXmin()))+getViewport().getXmin()},
+            {0, 1, 0, 0},
+            {0, 0, (getViewport().getYmin()-getViewport().getYmax())/(getWindow().getYmax()-getWindow().getYmin()), 
+            -getWindow().getYmin()*((getViewport().getYmax()-getViewport().getYmin())/(getWindow().getYmax()-getWindow().getYmin()))+getViewport().getYmin()},
+            {0, 0, 0, 1}};
+    }
+
+    public double[][] getMJpSide() {
+        return MJp = new double[][]{
+            {1, 0, 0, 0},
+            {0, (getViewport().getYmin()-getViewport().getYmax())/(getWindow().getYmax()-getWindow().getYmin()),
+                0, -getWindow().getYmin()*((getViewport().getYmax()-getViewport().getYmin())/(getWindow().getYmax()-getWindow().getYmin()))+getViewport().getYmin()},
+            {0, 0, (getViewport().getXmax()-getViewport().getXmin())/(getWindow().getXmax()-getWindow().getXmin()), 
+            -getWindow().getXmin()*((getViewport().getXmax()-getViewport().getXmin())/(getWindow().getXmax()-getWindow().getXmin()))+getViewport().getXmin()},
+            {0, 0, 0, 1}};
+    }
+    
 
     public double[][] getPipeline_SRU2SRT() {
         return Pipeline_SRU2SRT = mulM1M2(getMJp(), mulM1M2(getMProj(), getM_SRU2SRC()));
@@ -205,6 +226,14 @@ public class ctrlCam {
     
     public double[][] getPipeline_SRU2SRTNormal() {
         return Pipeline_SRU2SRT = mulM1M2(getMJp(), getMProjNormal());
+    }
+    
+    public double[][] getPipeline_SRU2SRTNormalTop() {
+        return Pipeline_SRU2SRT = mulM1M2(getMJpTop(), getMProjNormal());
+    }
+    
+    public double[][] getPipeline_SRU2SRTNormalSide() {
+        return Pipeline_SRU2SRT = mulM1M2(getMJpSide(), getMProjNormal());
     }
     
     public double[][] getPPLxMT() {

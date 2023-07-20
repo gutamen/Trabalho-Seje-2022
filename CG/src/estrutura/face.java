@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package estrutura;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author gustavo
@@ -13,6 +16,12 @@ public class face {
     private boolean interna = false;
     private boolean visivel = true;
     private boolean temBuraco = false;
+    private ArrayList<face> hole;
+    
+    private void insertHole(ArrayList<face> holeRecived){
+        this.hole = holeRecived;
+        
+    }
     
     public boolean haveBuraco() {
         return temBuraco;
