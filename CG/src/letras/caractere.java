@@ -1196,14 +1196,14 @@ public class caractere {
         arestas.get(encontraAresta("IT_I")).setArestasEsquerda(arestas.get(encontraAresta("IT_HT")), arestas.get(encontraAresta("H_I")));
         arestas.get(encontraAresta("IT_I")).setArestasDireita(arestas.get(encontraAresta("I_J")), arestas.get(encontraAresta("JT_IT")));
        
-        arestas.get(encontraAresta("JT_J")).setArestasEsquerda(arestas.get(encontraAresta("I_J")), arestas.get(encontraAresta("JT_IT")));
-        arestas.get(encontraAresta("JT_J")).setArestasDireita(arestas.get(encontraAresta("KT_JT")), arestas.get(encontraAresta("J_K")));
+        arestas.get(encontraAresta("JT_J")).setArestasEsquerda(arestas.get(encontraAresta("JT_IT")), arestas.get(encontraAresta("I_J")));
+        arestas.get(encontraAresta("JT_J")).setArestasDireita(arestas.get(encontraAresta("J_K")), arestas.get(encontraAresta("KT_JT")));
         
-        arestas.get(encontraAresta("KT_K")).setArestasEsquerda(arestas.get(encontraAresta("J_K")), arestas.get(encontraAresta("KT_JT")));
-        arestas.get(encontraAresta("KT_K")).setArestasDireita(arestas.get(encontraAresta("LT_KT")), arestas.get(encontraAresta("K_L")));
+        arestas.get(encontraAresta("KT_K")).setArestasEsquerda(arestas.get(encontraAresta("KT_JT")), arestas.get(encontraAresta("J_K")));
+        arestas.get(encontraAresta("KT_K")).setArestasDireita(arestas.get(encontraAresta("K_L")), arestas.get(encontraAresta("LT_KT")));
         
-        arestas.get(encontraAresta("LT_L")).setArestasEsquerda(arestas.get(encontraAresta("K_L")), arestas.get(encontraAresta("LT_KT")));
-        arestas.get(encontraAresta("LT_L")).setArestasDireita(arestas.get(encontraAresta("GT_LT")), arestas.get(encontraAresta("L_G")));
+        arestas.get(encontraAresta("LT_L")).setArestasEsquerda(arestas.get(encontraAresta("LT_KT")), arestas.get(encontraAresta("K_L")));
+        arestas.get(encontraAresta("LT_L")).setArestasDireita(arestas.get(encontraAresta("L_G")), arestas.get(encontraAresta("GT_LT")));
         
         
         
@@ -3920,7 +3920,7 @@ public class caractere {
         arestas.get(encontraAresta("IT_I")).setArestasEsquerda(arestas.get(encontraAresta("IT_HT")), arestas.get(encontraAresta("H_I")));
         arestas.get(encontraAresta("IT_I")).setArestasDireita(arestas.get(encontraAresta("I_J")), arestas.get(encontraAresta("JT_IT")));
         
-        arestas.get(encontraAresta("JT_J")).setArestasEsquerda(arestas.get(encontraAresta("I_J")), arestas.get(encontraAresta("JT_IT")));
+        arestas.get(encontraAresta("JT_J")).setArestasEsquerda(arestas.get(encontraAresta("JT_IT")), arestas.get(encontraAresta("I_J")));
         arestas.get(encontraAresta("JT_J")).setArestasDireita(arestas.get(encontraAresta("J_G")), arestas.get(encontraAresta("GT_JT")));
       
     }
@@ -5868,8 +5868,8 @@ public class caractere {
         vertices.get(encontraVertice("NT")).setArestaVertice(arestas.get(encontraAresta("N_NT")));
         
         // Criação das faces
-        faces.add(new face("B_A_N_M_L_K_J_I_H_G_F_E_D_C"                , arestas.get(encontraAresta("B_A"))));
-        faces.add(new face("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT_KT_LT_MT_NT"  , arestas.get(encontraAresta("AT_BT"))));
+        faces.add(new face("B_A_N_M_L_K_J_I_H_G_F_E_D_C"                , arestas.get(encontraAresta("A_N"))));
+        faces.add(new face("AT_BT_CT_DT_ET_FT_GT_HT_IT_JT_KT_LT_MT_NT"  , arestas.get(encontraAresta("NT_AT"))));
         faces.add(new face("A_B_BT_AT"                                  , arestas.get(encontraAresta("B_BT"))));
         faces.add(new face("B_C_CT_BT"                                  , arestas.get(encontraAresta("C_CT"))));
         faces.add(new face("C_D_DT_CT"                                  , arestas.get(encontraAresta("D_DT"))));
@@ -6696,7 +6696,7 @@ public class caractere {
         arestas.get(encontraAresta("GT_G")).setArestasDireita(arestas.get(encontraAresta("G_H")), arestas.get(encontraAresta("HT_GT")));
         
         arestas.get(encontraAresta("HT_H")).setArestasEsquerda(arestas.get(encontraAresta("HT_GT")), arestas.get(encontraAresta("G_H")));
-        arestas.get(encontraAresta("HT_H")).setArestasDireita(arestas.get(encontraAresta("ET_HT")), arestas.get(encontraAresta("H_E")));
+        arestas.get(encontraAresta("HT_H")).setArestasDireita(arestas.get(encontraAresta("H_E")), arestas.get(encontraAresta("ET_HT")));
     }
     
     private void create1(){
@@ -6755,8 +6755,8 @@ public class caractere {
         vertices.get(encontraVertice("FT")).setArestaVertice(arestas.get(encontraAresta("F_FT")));
         
         // Criação das faces
-        faces.add(new face("B_A_F_E_D_C"        , arestas.get(encontraAresta("B_A"))));
-        faces.add(new face("AT_BT_CT_DT_ET_FT"  , arestas.get(encontraAresta("AT_BT"))));
+        faces.add(new face("B_A_F_E_D_C"        , arestas.get(encontraAresta("A_F"))));
+        faces.add(new face("AT_BT_CT_DT_ET_FT"  , arestas.get(encontraAresta("FT_AT"))));
         faces.add(new face("A_B_BT_AT"          , arestas.get(encontraAresta("B_BT"))));
         faces.add(new face("B_C_CT_BT"          , arestas.get(encontraAresta("C_CT"))));
         faces.add(new face("C_D_DT_CT"          , arestas.get(encontraAresta("D_DT"))));
@@ -7548,10 +7548,10 @@ public class caractere {
         arestas.get(encontraAresta("E_ET")).setFaces(faces.get(encontraFace("D_E_ET_DT")), faces.get(encontraFace("E_F_FT_ET")));
         arestas.get(encontraAresta("F_FT")).setFaces(faces.get(encontraFace("E_F_FT_ET")), faces.get(encontraFace("F_A_AT_FT")));
         
-        arestas.get(encontraAresta("GT_G")).setFaces(faces.get(encontraFace("G_H_HT_GT")), faces.get(encontraFace("J_G_GT_JT")));
-        arestas.get(encontraAresta("HT_H")).setFaces(faces.get(encontraFace("H_I_IT_HT")), faces.get(encontraFace("G_H_HT_GT")));
-        arestas.get(encontraAresta("IT_I")).setFaces(faces.get(encontraFace("I_J_JT_IT")), faces.get(encontraFace("H_I_IT_HT")));
-        arestas.get(encontraAresta("JT_J")).setFaces(faces.get(encontraFace("J_G_GT_JT")), faces.get(encontraFace("I_J_JT_IT")));
+        arestas.get(encontraAresta("GT_G")).setFacesInvertido(faces.get(encontraFace("G_H_HT_GT")), faces.get(encontraFace("J_G_GT_JT")));
+        arestas.get(encontraAresta("HT_H")).setFacesInvertido(faces.get(encontraFace("H_I_IT_HT")), faces.get(encontraFace("G_H_HT_GT")));
+        arestas.get(encontraAresta("IT_I")).setFacesInvertido(faces.get(encontraFace("I_J_JT_IT")), faces.get(encontraFace("H_I_IT_HT")));
+        arestas.get(encontraAresta("JT_J")).setFacesInvertido(faces.get(encontraFace("J_G_GT_JT")), faces.get(encontraFace("I_J_JT_IT")));
       
         // Colocar arestas nas arestas
         arestas.get(encontraAresta("B_A")).setArestasDireita(arestas.get(encontraAresta("A_AT")), arestas.get(encontraAresta("B_BT")));
@@ -7641,8 +7641,9 @@ public class caractere {
         arestas.get(encontraAresta("IT_I")).setArestasEsquerda(arestas.get(encontraAresta("IT_HT")), arestas.get(encontraAresta("H_I")));
         arestas.get(encontraAresta("IT_I")).setArestasDireita(arestas.get(encontraAresta("I_J")), arestas.get(encontraAresta("JT_IT")));
         
-        arestas.get(encontraAresta("JT_J")).setArestasEsquerda(arestas.get(encontraAresta("I_J")), arestas.get(encontraAresta("JT_IT")));
+        arestas.get(encontraAresta("JT_J")).setArestasEsquerda(arestas.get(encontraAresta("JT_IT")), arestas.get(encontraAresta("I_J")));
         arestas.get(encontraAresta("JT_J")).setArestasDireita(arestas.get(encontraAresta("J_G")), arestas.get(encontraAresta("GT_JT")));
+      
     }
     
     private void create5(){
@@ -8539,7 +8540,7 @@ public class caractere {
         arestas.get(encontraAresta("DT_AT")).setArestasEsquerda(arestas.get(encontraAresta("CT_DT")), arestas.get(encontraAresta("AT_BT")));
         arestas.get(encontraAresta("DT_AT")).setArestasDireita(arestas.get(encontraAresta("A_AT")), arestas.get(encontraAresta("D_DT")));
         
-        arestas.get(encontraAresta("FT_ET")).setArestasEsquerda(arestas.get(encontraAresta("ET_HT")), arestas.get(encontraAresta("GT_FT")));
+        arestas.get(encontraAresta("FT_ET")).setArestasEsquerda(arestas.get(encontraAresta("FT_ET")), arestas.get(encontraAresta("ET_HT")));
         arestas.get(encontraAresta("FT_ET")).setArestasDireita(arestas.get(encontraAresta("ET_E")), arestas.get(encontraAresta("FT_F")));
         
         arestas.get(encontraAresta("GT_FT")).setArestasEsquerda(arestas.get(encontraAresta("HT_GT")), arestas.get(encontraAresta("FT_ET")));
@@ -8585,7 +8586,7 @@ public class caractere {
         arestas.get(encontraAresta("GT_G")).setArestasDireita(arestas.get(encontraAresta("G_H")), arestas.get(encontraAresta("HT_GT")));
         
         arestas.get(encontraAresta("HT_H")).setArestasEsquerda(arestas.get(encontraAresta("HT_GT")), arestas.get(encontraAresta("G_H")));
-        arestas.get(encontraAresta("HT_H")).setArestasDireita(arestas.get(encontraAresta("ET_HT")), arestas.get(encontraAresta("H_E")));
+        arestas.get(encontraAresta("HT_H")).setArestasDireita(arestas.get(encontraAresta("H_E")), arestas.get(encontraAresta("ET_HT")));
         
         arestas.get(encontraAresta("IT_I")).setArestasEsquerda(arestas.get(encontraAresta("IT_LT")), arestas.get(encontraAresta("L_I")));
         arestas.get(encontraAresta("IT_I")).setArestasDireita(arestas.get(encontraAresta("I_J")), arestas.get(encontraAresta("JT_IT")));
@@ -8831,7 +8832,7 @@ public class caractere {
         arestas.get(encontraAresta("IT_I")).setArestasEsquerda(arestas.get(encontraAresta("IT_HT")), arestas.get(encontraAresta("H_I")));
         arestas.get(encontraAresta("IT_I")).setArestasDireita(arestas.get(encontraAresta("I_J")), arestas.get(encontraAresta("JT_IT")));
         
-        arestas.get(encontraAresta("JT_J")).setArestasEsquerda(arestas.get(encontraAresta("I_J")), arestas.get(encontraAresta("JT_IT")));
+        arestas.get(encontraAresta("JT_J")).setArestasEsquerda(arestas.get(encontraAresta("JT_IT")), arestas.get(encontraAresta("I_J")));
         arestas.get(encontraAresta("JT_J")).setArestasDireita(arestas.get(encontraAresta("J_G")), arestas.get(encontraAresta("GT_JT")));
       
     }

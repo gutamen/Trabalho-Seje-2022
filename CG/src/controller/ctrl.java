@@ -698,8 +698,8 @@ public class ctrl extends Application {
         Point3D vectOnormal3 = vectO3.normalize();
         Point3D vectOnormal4 = vectO4.normalize();
 
-        Point3D vect1 = vertList.get(0).ponto.subtract(vertList.get(1).ponto);
-        Point3D vect2 = vertList.get(0).ponto.subtract(vertList.get(vertList.size()-1).ponto);
+        Point3D vect1 = vertList.get(1).ponto.subtract(vertList.get(0).ponto);
+        Point3D vect2 = vertList.get(vertList.size()-1).ponto.subtract(vertList.get(0).ponto);
 
         System.out.println("vect1 = "+vect1);
         System.out.println("vect2 = "+vect2);
@@ -745,7 +745,7 @@ public class ctrl extends Application {
 
         for(int fg = 0; fg < refactChars.size(); fg++){
             System.out.println("norms = "+norms.get(fg));
-            if(norms.get(fg) > 0.06){
+            if(norms.get(fg) > 0){
                 refactChars.get(fg).get(i).faces.get(j).setVisivel(true);
                 System.out.println("visivel");
             }else{
