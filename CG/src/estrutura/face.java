@@ -4,6 +4,8 @@
  */
 package estrutura;
 
+import java.util.ArrayList;
+
 
 /**
  *
@@ -15,6 +17,7 @@ public class face {
     private boolean interna = false;
     private boolean visivel = true;
     private boolean temBuraco = false;
+    private ArrayList<aresta> arestasInternas;
    
     public boolean temBuraco() {
         return temBuraco;
@@ -32,7 +35,16 @@ public class face {
         this.visivel = visivel;
     }
     
+    public void colocaListaDeArestasInternas(ArrayList<aresta> lista){
+        this.arestasInternas = lista;
+    }
     
+    public ArrayList<aresta> listaDeArestasInternas(){
+        if(this.temBuraco)
+            return this.arestasInternas;
+        else
+            return null;
+    }
 
     public face(String nomeFace, aresta arestaFace) {
         this.nomeFace = nomeFace;
