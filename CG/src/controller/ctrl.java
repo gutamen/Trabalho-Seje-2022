@@ -502,7 +502,7 @@ public class ctrl extends Application {
         });   
         canvas3.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
             mouseApertado = false;
-            //painter(refactCharsAll);
+            painter(refactChars4);
         });
         canvas3.addEventHandler(MouseEvent.ANY, (event)->{
             long nowLocalX = (long) event.getX();
@@ -585,52 +585,51 @@ public class ctrl extends Application {
         });*/
     }
         
-    public void painter(ArrayList<ArrayList<caractere>> refactChars){
-        ArrayList<ArrayList<fakeHash>> finalArArrayListHash = new ArrayList<ArrayList<fakeHash>>();
+    public void painter(ArrayList<caractere> refactChars){
         ArrayList<fakeHash> arrayListHash = new ArrayList<fakeHash>();
-        for(int i = 0; i < refactChars.size(); i++){//qts de refactChars, size = 4
-            double zTest = Double.MIN_VALUE;
-            fakeHash listHash = new fakeHash();
-            for(int g = 0; g < refactChars.get(i).size(); g++){//qts de chars dentro do refactChars, size = qts string de entrada
-                for(int j = 0; j < refactChars.get(i).get(g).faces.size(); j ++){//qts de faces do char 
-                    
-                    aresta k = refactChars.get(i).get(g).faces.get(j).getArestaFace();
-                    int o = 0;
+        double zTest = Double.MIN_VALUE;
+        fakeHash listHash = new fakeHash();
+        for(int g = 0; g < refactChars.size(); g++){//qts de chars dentro do refactChars, size = qts string de entrada
+            for(int j = 0; j < refactChars.get(g).faces.size(); j ++){//qts de faces do char 
 
-                    System.out.println("j = "+j);
-                    boolean rigth = false;
-                    for(aresta p = new aresta("null"); !k.getNomeAresta().equals(p.getNomeAresta());){//andando nas arestas da face
-                        if(o < 1){
-                            p = k;
-                            o++;
-                        }
+                aresta k = refactChars.get(g).faces.get(j).getArestaFace();
+                int o = 0;
 
-                        if(rigth){
-                            if(zTest > p.getFim().ponto.getZ()){
-                                zTest = p.getFim().ponto.getZ();
-                            }
-                        }else{
-                            if(zTest > p.getInicio().ponto.getZ()){
-                                zTest = p.getInicio().ponto.getZ();
-                            } 
-                        }
+                //System.out.println("j = "+j);
+                boolean rigth = false;
+                for(aresta p = new aresta("null"); !k.getNomeAresta().equals(p.getNomeAresta());){//andando nas arestas da face
+                    if(o < 1){
+                        p = k;
+                        o++;
+                    }
 
-                        System.out.println(p.getNomeAresta());
-                        System.out.println(refactChars.get(i).get(g).faces.get(j).getNomeFace());
-                        
-                        if(p.getDireita().getNomeFace().equals(refactChars.get(i).get(g).faces.get(j).getNomeFace())){
-                            p = p.getArestaDireitaSuc();
-                            rigth = true;
-                        }else{
-                            p = p.getArestaEsquerdaSuc();
-                            rigth = false;
+                    if(rigth){
+                        if(zTest > p.getFim().ponto.getZ()){
+                            zTest = p.getFim().ponto.getZ();
                         }
+                    }else{
+                        if(zTest > p.getInicio().ponto.getZ()){
+                            zTest = p.getInicio().ponto.getZ();
+                        } 
+                    }
+
+                    //System.out.println(p.getNomeAresta());
+                    //System.out.println(refactChars.get(g).faces.get(j).getNomeFace());
+
+                    if(p.getDireita().getNomeFace().equals(refactChars.get(g).faces.get(j).getNomeFace())){
+                        p = p.getArestaDireitaSuc();
+                        rigth = true;
+                    }else{
+                        p = p.getArestaEsquerdaSuc();
+                        rigth = false;
                     }
                 }
-                listHash.setAll(refactChars.get(i), zTest);
-                arrayListHash.add(listHash);
-                zTest = Double.MIN_VALUE;
+                //System.out.println("z ===="+zTest);
             }
+            listHash.setAll(refactChars, zTest);
+            arrayListHash.add(listHash);
+            zTest = Double.MIN_VALUE;
+            
             for(int uu = 0; uu < arrayListHash.size(); uu++){
                 System.out.println(arrayListHash.get(uu).val);
             }
@@ -639,8 +638,6 @@ public class ctrl extends Application {
             for(int uu = 0; uu < arrayListHash.size(); uu++){
                 System.out.println(arrayListHash.get(uu).val);
             }
-            
-            finalArArrayListHash.add(arrayListHash);
         }
     }
     
@@ -666,7 +663,7 @@ public class ctrl extends Application {
                 arrayListHash.add(i, arrayListHash.get(f));
                 arrayListHash.add(f, swap);
                 i++;
-                f++;
+                f--;
             }
         }
         arrayListHash.add(init, arrayListHash.get(f));
