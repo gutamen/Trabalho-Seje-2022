@@ -135,12 +135,15 @@ public class ctrl extends Application {
         choice.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent evento) {
-                if(!"WireFrame".equals(choice.getValue().toString())){
+                if("WireFrame".equals(choice.getValue().toString())){
+                    setFaceOcult.setSelected(false);
+                    setFaceOcult.setDisable(true);;
+                }else if("Pintor".equals(choice.getValue().toString())){
+                    setFaceOcult.setSelected(false);
+                    setFaceOcult.setDisable(true);;
+                }else{
                     setFaceOcult.setSelected(true);
                     setFaceOcult.setDisable(true);
-                }else{
-                    setFaceOcult.setSelected(false);
-                    setFaceOcult.setDisable(false);;
                 }
             }
         });
@@ -282,7 +285,9 @@ public class ctrl extends Application {
         System.out.println("\n");
         writMat(ct1.matrizInversa(ct1.getMJp()));
         System.out.println("\n");*/
-        
+        if("Pintor".equals(metodChoice)){
+            painter(refactChars4, canvas4);
+        }
         
         for(int i = 0; i < refactChars1.size(); i++){
             desenhaFiguraPorAresta(gc1, refactChars1.get(i));
@@ -326,10 +331,9 @@ public class ctrl extends Application {
         });   
         canvas1.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
             mouseApertado = false;
-            //if(faceOcult){
-                //faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
-                
-            //}
+            if("Pintor".equals(metodChoice)){
+                painter(refactChars4, canvas4);
+            }
         });
         canvas1.addEventHandler(MouseEvent.ANY, (event)->{
             long nowLocalX = (long) event.getX();
@@ -418,7 +422,9 @@ public class ctrl extends Application {
         });   
         canvas2.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
             mouseApertado = false;
-            
+            if("Pintor".equals(metodChoice)){
+                painter(refactChars4, canvas4);
+            }
         });
         canvas2.addEventHandler(MouseEvent.ANY, (event)->{
             long nowLocalX = (long) event.getX();
@@ -505,7 +511,9 @@ public class ctrl extends Application {
         });   
         canvas3.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
             mouseApertado = false;
-            painter(refactChars4, canvas4);
+            if("Pintor".equals(metodChoice)){
+                painter(refactChars4, canvas4);
+            }
         });
         canvas3.addEventHandler(MouseEvent.ANY, (event)->{
             long nowLocalX = (long) event.getX();
