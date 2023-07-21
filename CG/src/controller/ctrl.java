@@ -6,6 +6,7 @@ package controller;
 
 
 import estrutura.aresta;
+import estrutura.face;
 import estrutura.fakeHash;
 import estrutura.vertice;
 import java.io.File;
@@ -30,6 +31,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 
 
@@ -502,7 +505,7 @@ public class ctrl extends Application {
         });   
         canvas3.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
             mouseApertado = false;
-            painter(refactChars4);
+            painter(refactChars4, canvas4);
         });
         canvas3.addEventHandler(MouseEvent.ANY, (event)->{
             long nowLocalX = (long) event.getX();
@@ -585,38 +588,109 @@ public class ctrl extends Application {
         });*/
     }
         
-    public void painter(ArrayList<caractere> refactChars){
+    public void painter(ArrayList<caractere> refactChars, Canvas canvas4){
         ArrayList<fakeHash> arrayListHash = new ArrayList<fakeHash>();
-        double zTest = Double.MIN_VALUE;
-        fakeHash listHash = new fakeHash();
+        double zTest = Double.MAX_VALUE;
+        fakeHash listHash;
         for(int g = 0; g < refactChars.size(); g++){//qts de chars dentro do refactChars, size = qts string de entrada
-            for(int j = 0; j < refactChars.get(g).faces.size(); j ++){//qts de faces do char 
+            for(int y = 0; y < refactChars.get(g).vertices.size(); y++){
+                if(zTest > refactChars.get(g).vertices.get(y).getZ()){
+                    zTest = refactChars.get(g).vertices.get(y).getZ();
+                }
+            }
+            listHash = new fakeHash(refactChars.get(g), zTest);
+            arrayListHash.add(listHash);
+            zTest = Double.MAX_VALUE;
+        }
+        System.out.println("under");
+        for(int u = 0; u < arrayListHash.size(); u++){
+            System.out.println(arrayListHash.get(u).chars.letra);
+            
+            System.out.println(arrayListHash.get(u).val);
+        }
+        
+        quickSort(arrayListHash, 0, arrayListHash.size()-1);
+        
+        System.out.println("after +++++");
+        for(int uu = 0; uu < arrayListHash.size(); uu++){
+            System.out.println(arrayListHash.get(uu).chars.letra);
+            System.out.println(arrayListHash.get(uu).val);
+        }
+        
+        ArrayList<fakeHash> listFace = new ArrayList<fakeHash>();
+        zTest = Double.MAX_VALUE;
+        
+        GraphicsContext poly = canvas4.getGraphicsContext2D();
 
-                aresta k = refactChars.get(g).faces.get(j).getArestaFace();
+        poly.clearRect(0, 0, canvas4.getWidth(), canvas4.getHeight());
+        
+        for(int g = 0; g < arrayListHash.size(); g++){
+            for(int j = 0; j < arrayListHash.get(g).chars.faces.size(); j ++){
+                if(arrayListHash.get(g).chars.faces.get(j).isVisivel()){
+                    aresta k = arrayListHash.get(g).chars.faces.get(j).getArestaFace();
+                    int o = 0;
+
+                    boolean rigth = false;
+                    for(aresta p = new aresta("null"); !k.getNomeAresta().equals(p.getNomeAresta()); o++){//andando nas arestas da face
+                        if(o < 1){
+                            p = k;
+                        }
+
+                        if(rigth){
+                            if(zTest > p.getFim().ponto.getZ()){
+                                zTest = p.getFim().ponto.getZ();
+                            }
+                        }else{
+                            if(zTest > p.getInicio().ponto.getZ()){
+                                zTest = p.getInicio().ponto.getZ();
+                            } 
+                        }
+
+                        if(p.getDireita().getNomeFace().equals(arrayListHash.get(g).chars.faces.get(j).getNomeFace())){
+                            p = p.getArestaDireitaSuc();
+                            rigth = true;
+                        }else{
+                            p = p.getArestaEsquerdaSuc();
+                            rigth = false;
+                        }
+                    }
+                    listHash = new fakeHash(arrayListHash.get(g).chars, arrayListHash.get(g).chars.faces.get(j), zTest);
+
+                    System.out.println("face ="+arrayListHash.get(g).chars.faces.get(j).getNomeFace()+" and ="
+                    +zTest);
+                    System.out.println("j = "+j);
+                    listFace.add(listHash);
+                    zTest = Double.MAX_VALUE;
+                }
+            }
+            quickSort(listFace, 0, listFace.size()-1);
+            
+            System.out.println("=============================");
+            System.out.println("size ="+listFace.size());
+            for(int j = 0; j < listFace.size(); j ++){
+                System.out.println("face ="+listFace.get(j).face.getNomeFace()+" and ="
+                +listFace.get(j).val+" char = "+listFace.get(j).chars.letra);
+            }
+            System.out.println("+++++++++++++++++++++++++++++++++++");
+            
+            for(int j = 0; j < listFace.size(); j ++){
+                ArrayList<vertice> faceVertice = new ArrayList<vertice>();
+                aresta k = listFace.get(j).face.getArestaFace();
                 int o = 0;
 
-                //System.out.println("j = "+j);
                 boolean rigth = false;
-                for(aresta p = new aresta("null"); !k.getNomeAresta().equals(p.getNomeAresta());){//andando nas arestas da face
+                for(aresta p = new aresta("null"); !k.getNomeAresta().equals(p.getNomeAresta()); o++){
                     if(o < 1){
                         p = k;
-                        o++;
                     }
 
                     if(rigth){
-                        if(zTest > p.getFim().ponto.getZ()){
-                            zTest = p.getFim().ponto.getZ();
-                        }
-                    }else{
-                        if(zTest > p.getInicio().ponto.getZ()){
-                            zTest = p.getInicio().ponto.getZ();
-                        } 
+                        faceVertice.add(p.getFim());
+                    }else{ 
+                        faceVertice.add(p.getInicio());
                     }
 
-                    //System.out.println(p.getNomeAresta());
-                    //System.out.println(refactChars.get(g).faces.get(j).getNomeFace());
-
-                    if(p.getDireita().getNomeFace().equals(refactChars.get(g).faces.get(j).getNomeFace())){
+                    if(p.getDireita().getNomeFace().equals(listFace.get(j).face.getNomeFace())){
                         p = p.getArestaDireitaSuc();
                         rigth = true;
                     }else{
@@ -624,21 +698,46 @@ public class ctrl extends Application {
                         rigth = false;
                     }
                 }
-                //System.out.println("z ===="+zTest);
+                System.out.println("---------------------------------");
+                double[] x = new double[faceVertice.size()];
+                double[] y = new double[faceVertice.size()];
+                for(int q = 0; q < faceVertice.toArray().length; q++){
+                    x[q] = faceVertice.get(q).getX();
+                    y[q] = faceVertice.get(q).getY();
+                }
+                poly.setFill(Color.BLACK);
+                poly.fillPolygon(x, y, faceVertice.size());
+                if(listFace.get(j).face.temBuraco()){
+                    face buraco = listFace.get(j).face;
+                    System.out.println("csuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
+                    System.out.println( buraco.quantosBuracos);
+                    for(int teste = 0; teste < buraco.quantosBuracos; teste++){
+                        ArrayList<Double> xis = new ArrayList();
+                        ArrayList<Double> yis = new ArrayList();
+                        aresta doBuraco = buraco.arestaBuraco()[teste];
+                        boolean inicializa = true;
+                        for(;!doBuraco.getArestaEsquerdaSuc().getNomeAresta().equals(buraco.arestaBuraco()[teste].getNomeAresta()); ){
+                            System.out.println(doBuraco.getNomeAresta());
+                            xis.add(doBuraco.getInicio().getX());
+                            yis.add(doBuraco.getInicio().getY());
+                            doBuraco = doBuraco.getArestaEsquerdaSuc();
+                        }
+                        double[] xs = new double[xis.size()];
+                        double[] ys = new double[yis.size()];
+                        for(int realoca = 0; realoca < xis.size(); realoca++){
+                            xs[0] = xis.get(realoca);
+                            ys[0] = yis.get(realoca);
+                        }
+                        poly.setFill(Color.WHITE);
+                        poly.fillPolygon(xs, ys, xis.size());
+                        
+                    }
+                    
+                }
             }
-            listHash.setAll(refactChars, zTest);
-            arrayListHash.add(listHash);
-            zTest = Double.MIN_VALUE;
-            
-            for(int uu = 0; uu < arrayListHash.size(); uu++){
-                System.out.println(arrayListHash.get(uu).val);
-            }
-            quickSort(arrayListHash, 0, arrayListHash.size()-1);
-            System.out.println("after +++++");
-            for(int uu = 0; uu < arrayListHash.size(); uu++){
-                System.out.println(arrayListHash.get(uu).val);
-            }
+            listFace.clear();
         }
+        poly.restore();
     }
     
     public void quickSort(ArrayList<fakeHash> arrayListHash, int init, int last){
@@ -660,14 +759,14 @@ public class ctrl extends Application {
                 f--;
             }else{
                 fakeHash swap = arrayListHash.get(i);
-                arrayListHash.add(i, arrayListHash.get(f));
-                arrayListHash.add(f, swap);
+                arrayListHash.set(i, arrayListHash.get(f));
+                arrayListHash.set(f, swap);
                 i++;
                 f--;
             }
         }
-        arrayListHash.add(init, arrayListHash.get(f));
-        arrayListHash.add(f, pivo);
+        arrayListHash.set(init, arrayListHash.get(f));
+        arrayListHash.set(f, pivo);
         return f;
     }
     

@@ -12,20 +12,51 @@ import letras.caractere;
  * @author gusta
  */
 public class fakeHash {
-    public ArrayList<caractere> refactChars;
+    public caractere chars;
     public double val;
+    public face face;
     
-    public void setAll(ArrayList<caractere> refactChars, double val){
-        this.refactChars = refactChars;
+    public fakeHash(){
+        
+    }
+    
+    public fakeHash(caractere chars, double val) {
+        this.chars = chars;
         this.val = val;
     }
 
-    public ArrayList<caractere> getRefactChars() {
-        return refactChars;
+    public fakeHash(face face, double val) {
+        this.face = face;
+        this.val = val;
+    }
+    
+    public fakeHash(caractere chars, face face, double val) {
+        this.chars = chars;
+        this.face = face;
+        this.val = val;
+    }
+    
+    public void setAll(caractere chars, face face, double val){
+        this.chars = chars;
+        this.face = face;
+        this.val = val;
+    
+    }
+    
+    public caractere getChars() {
+        return chars;
     }
 
-    public void setRefactChars(ArrayList<caractere> refactChars) {
-        this.refactChars = refactChars;
+    public face getFace() {
+        return face;
+    }
+    
+    public caractere getRefactChars() {
+        return chars;
+    }
+
+    public void setRefactChars(caractere chars) {
+        this.chars = chars;
     }
 
     public double getVal() {
