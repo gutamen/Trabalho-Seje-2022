@@ -16,7 +16,7 @@ public class face {
     private boolean visivel = true;
     private boolean temBuraco = false;
    
-    public boolean haveBuraco() {
+    public boolean temBuraco() {
         return temBuraco;
     }
 

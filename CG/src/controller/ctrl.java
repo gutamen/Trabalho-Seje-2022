@@ -323,6 +323,10 @@ public class ctrl extends Application {
         });   
         canvas1.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
             mouseApertado = false;
+            //if(faceOcult){
+                //faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
+                
+            //}
         });
         canvas1.addEventHandler(MouseEvent.ANY, (event)->{
             long nowLocalX = (long) event.getX();
@@ -353,6 +357,10 @@ public class ctrl extends Application {
                         copiaVertices(perspectiva,universo);
                         ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
                         
+                        if(faceOcult){
+                            faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
+                        }
+
                         
                         canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
                         canvas2.getGraphicsContext2D().clearRect(0, 0, canvas2.getWidth(), canvas2.getHeight());
@@ -377,8 +385,8 @@ public class ctrl extends Application {
             localX = (long) e.getX();
             localY = (long) e.getY();
             selectedChar = -1;
-            for(int i = 0; i < refactChars1.size(); i++){
-                ArrayList<vertice> vertices = refactChars1.get(i).vertices;
+            for(int i = 0; i < refactChars2.size(); i++){
+                ArrayList<vertice> vertices = refactChars2.get(i).vertices;
                 long maxX = Long.MIN_VALUE;
                 long minX = Long.MAX_VALUE;
                 long maxY = Long.MIN_VALUE;
@@ -407,6 +415,7 @@ public class ctrl extends Application {
         });   
         canvas2.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
             mouseApertado = false;
+            
         });
         canvas2.addEventHandler(MouseEvent.ANY, (event)->{
             long nowLocalX = (long) event.getX();
@@ -431,10 +440,13 @@ public class ctrl extends Application {
                         }
                         caractere universo = chars.get(selectedChar);
                         caractere perspectiva = refactChars4.get(selectedChar);
-                        invertChar(mudanssa, ct1,universo);
+                        invertChar(mudanssa, ct2,universo);
                         copiaVertices(perspectiva,universo);
                         ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc4, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
                         
+                        if(faceOcult){
+                            faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
+                        }
                         
                         canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
                         canvas2.getGraphicsContext2D().clearRect(0, 0, canvas2.getWidth(), canvas2.getHeight());
@@ -460,8 +472,8 @@ public class ctrl extends Application {
             localX = (long) e.getX();
             localY = (long) e.getY();
             selectedChar = -1;
-            for(int i = 0; i < refactChars1.size(); i++){
-                ArrayList<vertice> vertices = refactChars1.get(i).vertices;
+            for(int i = 0; i < refactChars3.size(); i++){
+                ArrayList<vertice> vertices = refactChars3.get(i).vertices;
                 long maxX = Long.MIN_VALUE;
                 long minX = Long.MAX_VALUE;
                 long maxY = Long.MIN_VALUE;
@@ -490,6 +502,7 @@ public class ctrl extends Application {
         });   
         canvas3.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
             mouseApertado = false;
+            //painter(refactCharsAll);
         });
         canvas3.addEventHandler(MouseEvent.ANY, (event)->{
             long nowLocalX = (long) event.getX();
@@ -512,10 +525,13 @@ public class ctrl extends Application {
                         }
                         caractere universo = chars.get(selectedChar);
                         caractere perspectiva = refactChars4.get(selectedChar);
-                        invertChar(mudanssa, ct1,universo);
+                        invertChar(mudanssa, ct3,universo);
                         copiaVertices(perspectiva,universo);
                         ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
                         
+                        if(faceOcult){
+                            faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
+                        }
                         
                         canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
                         canvas2.getGraphicsContext2D().clearRect(0, 0, canvas2.getWidth(), canvas2.getHeight());
@@ -527,6 +543,8 @@ public class ctrl extends Application {
                             desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k));
                             desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k));
                         }
+                        
+                        
                     }
                     localX = nowLocalX;
                     localY = nowLocalY;
@@ -641,7 +659,7 @@ public class ctrl extends Application {
         while(i <= f){
             if(arrayListHash.get(i).val <= pivo.val){
                 i++;
-            }else if(pivo.val < arrayListHash.get(i).val){
+            }else if(pivo.val < arrayListHash.get(f).val){
                 f--;
             }else{
                 fakeHash swap = arrayListHash.get(i);
@@ -919,6 +937,19 @@ public class ctrl extends Application {
                     xpoints[1]=(j.getFim().getX());
                     ypoints[1]=((j.getFim().getY()));
                     gc.strokePolyline(xpoints, ypoints, 2);
+                    
+                    if(cart.faces.get(k).temBuraco()){
+                        for(int inter = 0; inter < cart.arestasInternas.size(); inter++){
+                            if(cart.arestasInternas.get(inter).getEsquerda().getNomeFace().equals(cart.faces.get(k).getNomeFace())){                                
+                                xpoints[0]=(cart.arestasInternas.get(inter).getInicio().getX());
+                                ypoints[0]=((cart.arestasInternas.get(inter).getInicio().getY()));
+                                
+                                xpoints[1]=(cart.arestasInternas.get(inter).getFim().getX());
+                                ypoints[1]=((cart.arestasInternas.get(inter).getFim().getY()));
+                                gc.strokePolyline(xpoints, ypoints, 2);
+                            }
+                        }
+                    }
                 }
                 
                 /*
@@ -967,6 +998,19 @@ public class ctrl extends Application {
                     xpoints[1]=(j.getFim().getX());
                     ypoints[1]=((j.getFim().getZ()));
                     gc.strokePolyline(xpoints, ypoints, 2);
+                    
+                    if(cart.faces.get(k).temBuraco()){
+                        for(int inter = 0; inter < cart.arestasInternas.size(); inter++){
+                            if(cart.arestasInternas.get(inter).getEsquerda().getNomeFace().equals(cart.faces.get(k).getNomeFace())){                                
+                                xpoints[0]=(cart.arestasInternas.get(inter).getInicio().getX());
+                                ypoints[0]=((cart.arestasInternas.get(inter).getInicio().getZ()));
+                                
+                                xpoints[1]=(cart.arestasInternas.get(inter).getFim().getX());
+                                ypoints[1]=((cart.arestasInternas.get(inter).getFim().getZ()));
+                                gc.strokePolyline(xpoints, ypoints, 2);
+                            }
+                        }
+                    }
                 }
                 
                 /*
@@ -1014,6 +1058,19 @@ public class ctrl extends Application {
                     xpoints[1]=(j.getFim().getZ());
                     ypoints[1]=((j.getFim().getY()));
                     gc.strokePolyline(xpoints, ypoints, 2);
+                    
+                    if(cart.faces.get(k).temBuraco()){
+                        for(int inter = 0; inter < cart.arestasInternas.size(); inter++){
+                            if(cart.arestasInternas.get(inter).getEsquerda().getNomeFace().equals(cart.faces.get(k).getNomeFace())){                                
+                                xpoints[0]=(cart.arestasInternas.get(inter).getInicio().getZ());
+                                ypoints[0]=((cart.arestasInternas.get(inter).getInicio().getY()));
+                                
+                                xpoints[1]=(cart.arestasInternas.get(inter).getFim().getZ());
+                                ypoints[1]=((cart.arestasInternas.get(inter).getFim().getY()));
+                                gc.strokePolyline(xpoints, ypoints, 2);
+                            }
+                        }
+                    }
                 }
                 
                 /*
