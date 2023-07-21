@@ -384,7 +384,7 @@ public class caractere {
         arestas.get(encontraAresta("LT_L")).setArestasEsquerda(arestas.get(encontraAresta("LT_KT")), arestas.get(encontraAresta("K_L")));
         arestas.get(encontraAresta("LT_L")).setArestasDireita(arestas.get(encontraAresta("L_I")), arestas.get(encontraAresta("IT_LT")));
         
-        ArrayList<aresta> nova1 = new ArrayList(), nova2 = new ArrayList();
+        /*ArrayList<aresta> nova1 = new ArrayList(), nova2 = new ArrayList();
         for(int i = 0; i < arestasInternas.size(); i++){
             
             
@@ -395,7 +395,19 @@ public class caractere {
             }
         }
         faces.get(0).colocaListaDeArestasInternas(nova1);
-        faces.get(1).colocaListaDeArestasInternas(nova1);
+        faces.get(1).colocaListaDeArestasInternas(nova1);*/
+        
+        faces.get(0).quantosBuracos = 1;
+        faces.get(1).quantosBuracos = 1;
+        
+        aresta[] nova1 = new aresta[1];
+        aresta[] nova2 = new aresta[1];
+        
+        nova1[0] = arestas.get(encontraAresta("I_J"));
+        nova2[0] = arestas.get(encontraAresta("JT_IT"));
+        
+        faces.get(0).colocaArestaBuraco(nova1);
+        faces.get(1).colocaArestaBuraco(nova2);
         
     }
     
@@ -817,18 +829,19 @@ public class caractere {
         arestas.get(encontraAresta("RT_R")).setArestasDireita(arestas.get(encontraAresta("R_O")),arestas.get(encontraAresta("OT_RT")));
         arestas.get(encontraAresta("RT_R")).setArestasEsquerda(arestas.get(encontraAresta("RT_QT")),arestas.get(encontraAresta("Q_R")));
         
-        ArrayList<aresta> nova1 = new ArrayList(), nova2 = new ArrayList();
-        for(int i = 0; i < arestasInternas.size(); i++){
-            
-            
-            if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(0).getNomeFace())){
-                nova1.add(arestasInternas.get(i));
-            }else if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(1).getNomeFace())){
-                nova2.add(arestasInternas.get(i));
-            }
-        }
-        faces.get(0).colocaListaDeArestasInternas(nova1);
-        faces.get(1).colocaListaDeArestasInternas(nova1);
+        faces.get(0).quantosBuracos = 2;
+        faces.get(1).quantosBuracos = 2;
+        
+        aresta[] nova1 = new aresta[2];
+        aresta[] nova2 = new aresta[2];
+        
+        nova1[0] = arestas.get(encontraAresta("K_L"));
+        nova2[0] = arestas.get(encontraAresta("LT_KT"));
+        nova1[0] = arestas.get(encontraAresta("O_P"));
+        nova2[0] = arestas.get(encontraAresta("PT_OT"));
+        
+        faces.get(0).colocaArestaBuraco(nova1);
+        faces.get(1).colocaArestaBuraco(nova2);
         
     }
     
@@ -1313,20 +1326,18 @@ public class caractere {
         arestas.get(encontraAresta("LT_L")).setArestasEsquerda(arestas.get(encontraAresta("LT_KT")), arestas.get(encontraAresta("K_L")));
         arestas.get(encontraAresta("LT_L")).setArestasDireita(arestas.get(encontraAresta("L_G")), arestas.get(encontraAresta("GT_LT")));
         
+        faces.get(0).quantosBuracos = 1;
+        faces.get(1).quantosBuracos = 1;
         
-        ArrayList<aresta> nova1 = new ArrayList(), nova2 = new ArrayList();
-        for(int i = 0; i < arestasInternas.size(); i++){
-            
-            
-            if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(0).getNomeFace())){
-                nova1.add(arestasInternas.get(i));
-            }else if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(1).getNomeFace())){
-                nova2.add(arestasInternas.get(i));
-            }
-        }
-        faces.get(0).colocaListaDeArestasInternas(nova1);
-        faces.get(1).colocaListaDeArestasInternas(nova1);
-      
+        aresta[] nova1 = new aresta[1];
+        aresta[] nova2 = new aresta[1];
+        
+        nova1[0] = arestas.get(encontraAresta("G_H"));
+        nova2[0] = arestas.get(encontraAresta("HT_GT"));
+        
+        faces.get(0).colocaArestaBuraco(nova1);
+        faces.get(1).colocaArestaBuraco(nova2);
+        
     }
     
     private void createE(){
@@ -3816,20 +3827,18 @@ public class caractere {
         arestas.get(encontraAresta("HT_H")).setArestasEsquerda(arestas.get(encontraAresta("HT_GT")), arestas.get(encontraAresta("G_H")));
         arestas.get(encontraAresta("HT_H")).setArestasDireita(arestas.get(encontraAresta("H_E")), arestas.get(encontraAresta("ET_HT")));
         
+        faces.get(0).quantosBuracos = 1;
+        faces.get(1).quantosBuracos = 1;
         
-        ArrayList<aresta> nova1 = new ArrayList(), nova2 = new ArrayList();
-        for(int i = 0; i < arestasInternas.size(); i++){
-            
-            
-            if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(0).getNomeFace())){
-                nova1.add(arestasInternas.get(i));
-            }else if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(1).getNomeFace())){
-                nova2.add(arestasInternas.get(i));
-            }
-        }
-        faces.get(0).colocaListaDeArestasInternas(nova1);
-        faces.get(1).colocaListaDeArestasInternas(nova1);
-    
+        aresta[] nova1 = new aresta[1];
+        aresta[] nova2 = new aresta[1];
+        
+        nova1[0] = arestas.get(encontraAresta("E_F"));
+        nova2[0] = arestas.get(encontraAresta("FT_ET"));
+        
+        faces.get(0).colocaArestaBuraco(nova1);
+        faces.get(1).colocaArestaBuraco(nova2);
+        
     }
     
     
@@ -4078,19 +4087,20 @@ public class caractere {
         
         arestas.get(encontraAresta("JT_J")).setArestasEsquerda(arestas.get(encontraAresta("JT_IT")), arestas.get(encontraAresta("I_J")));
         arestas.get(encontraAresta("JT_J")).setArestasDireita(arestas.get(encontraAresta("J_G")), arestas.get(encontraAresta("GT_JT")));
+        
+        faces.get(0).quantosBuracos = 1;
+        faces.get(1).quantosBuracos = 1;
+        
+        aresta[] nova1 = new aresta[1];
+        aresta[] nova2 = new aresta[1];
+        
+        nova1[0] = arestas.get(encontraAresta("G_H"));
+        nova2[0] = arestas.get(encontraAresta("HT_GT"));
+        
+        faces.get(0).colocaArestaBuraco(nova1);
+        faces.get(1).colocaArestaBuraco(nova2);
+        
       
-        ArrayList<aresta> nova1 = new ArrayList(), nova2 = new ArrayList();
-        for(int i = 0; i < arestasInternas.size(); i++){
-            
-            
-            if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(0).getNomeFace())){
-                nova1.add(arestasInternas.get(i));
-            }else if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(1).getNomeFace())){
-                nova2.add(arestasInternas.get(i));
-            }
-        }
-        faces.get(0).colocaListaDeArestasInternas(nova1);
-        faces.get(1).colocaListaDeArestasInternas(nova1);
     }
     
     private void createQ(){
@@ -4473,18 +4483,19 @@ public class caractere {
         arestas.get(encontraAresta("PT_P")).setArestasEsquerda(arestas.get(encontraAresta("PT_OT")), arestas.get(encontraAresta("O_P")));
         arestas.get(encontraAresta("PT_P")).setArestasDireita(arestas.get(encontraAresta("P_I")), arestas.get(encontraAresta("IT_PT")));
         
-        ArrayList<aresta> nova1 = new ArrayList(), nova2 = new ArrayList();
-        for(int i = 0; i < arestasInternas.size(); i++){
-            
-            
-            if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(0).getNomeFace())){
-                nova1.add(arestasInternas.get(i));
-            }else if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(1).getNomeFace())){
-                nova2.add(arestasInternas.get(i));
-            }
-        }
-        faces.get(0).colocaListaDeArestasInternas(nova1);
-        faces.get(1).colocaListaDeArestasInternas(nova1);
+        faces.get(0).quantosBuracos = 1;
+        faces.get(1).quantosBuracos = 1;
+        
+        aresta[] nova1 = new aresta[1];
+        aresta[] nova2 = new aresta[1];
+        
+        nova1[0] = arestas.get(encontraAresta("I_J"));
+        nova2[0] = arestas.get(encontraAresta("JT_IT"));
+        
+        faces.get(0).colocaArestaBuraco(nova1);
+        faces.get(1).colocaArestaBuraco(nova2);
+        
+        
     }
     
     private void createR(){
@@ -4813,18 +4824,18 @@ public class caractere {
         arestas.get(encontraAresta("NT_N")).setArestasEsquerda(arestas.get(encontraAresta("NT_MT")), arestas.get(encontraAresta("M_N")));
         arestas.get(encontraAresta("NT_N")).setArestasDireita(arestas.get(encontraAresta("N_K")), arestas.get(encontraAresta("KT_NT")));
         
-        ArrayList<aresta> nova1 = new ArrayList(), nova2 = new ArrayList();
-        for(int i = 0; i < arestasInternas.size(); i++){
-            
-            
-            if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(0).getNomeFace())){
-                nova1.add(arestasInternas.get(i));
-            }else if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(1).getNomeFace())){
-                nova2.add(arestasInternas.get(i));
-            }
-        }
-        faces.get(0).colocaListaDeArestasInternas(nova1);
-        faces.get(1).colocaListaDeArestasInternas(nova1);
+        faces.get(0).quantosBuracos = 1;
+        faces.get(1).quantosBuracos = 1;
+        
+        aresta[] nova1 = new aresta[1];
+        aresta[] nova2 = new aresta[1];
+        
+        nova1[0] = arestas.get(encontraAresta("K_L"));
+        nova2[0] = arestas.get(encontraAresta("LT_KT"));
+        
+        faces.get(0).colocaArestaBuraco(nova1);
+        faces.get(1).colocaArestaBuraco(nova2);
+        
       
     }
     
@@ -6942,19 +6953,19 @@ public class caractere {
         
         arestas.get(encontraAresta("HT_H")).setArestasEsquerda(arestas.get(encontraAresta("HT_GT")), arestas.get(encontraAresta("G_H")));
         arestas.get(encontraAresta("HT_H")).setArestasDireita(arestas.get(encontraAresta("H_E")), arestas.get(encontraAresta("ET_HT")));
+     
+        faces.get(0).quantosBuracos = 1;
+        faces.get(1).quantosBuracos = 1;
         
-        ArrayList<aresta> nova1 = new ArrayList(), nova2 = new ArrayList();
-        for(int i = 0; i < arestasInternas.size(); i++){
-            
-            
-            if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(0).getNomeFace())){
-                nova1.add(arestasInternas.get(i));
-            }else if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(1).getNomeFace())){
-                nova2.add(arestasInternas.get(i));
-            }
-        }
-        faces.get(0).colocaListaDeArestasInternas(nova1);
-        faces.get(1).colocaListaDeArestasInternas(nova1);
+        aresta[] nova1 = new aresta[1];
+        aresta[] nova2 = new aresta[1];
+        
+        nova1[0] = arestas.get(encontraAresta("E_F"));
+        nova2[0] = arestas.get(encontraAresta("FT_ET"));
+        
+        faces.get(0).colocaArestaBuraco(nova1);
+        faces.get(1).colocaArestaBuraco(nova2);
+        
     }
     
     private void create1(){
@@ -7915,18 +7926,18 @@ public class caractere {
         arestas.get(encontraAresta("JT_J")).setArestasEsquerda(arestas.get(encontraAresta("JT_IT")), arestas.get(encontraAresta("I_J")));
         arestas.get(encontraAresta("JT_J")).setArestasDireita(arestas.get(encontraAresta("J_G")), arestas.get(encontraAresta("GT_JT")));
         
-        ArrayList<aresta> nova1 = new ArrayList(), nova2 = new ArrayList();
-        for(int i = 0; i < arestasInternas.size(); i++){
-            
-            
-            if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(0).getNomeFace())){
-                nova1.add(arestasInternas.get(i));
-            }else if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(1).getNomeFace())){
-                nova2.add(arestasInternas.get(i));
-            }
-        }
-        faces.get(0).colocaListaDeArestasInternas(nova1);
-        faces.get(1).colocaListaDeArestasInternas(nova1);
+        faces.get(0).quantosBuracos = 1;
+        faces.get(1).quantosBuracos = 1;
+        
+        aresta[] nova1 = new aresta[1];
+        aresta[] nova2 = new aresta[1];
+        
+        nova1[0] = arestas.get(encontraAresta("G_H"));
+        nova2[0] = arestas.get(encontraAresta("HT_GT"));
+        
+        faces.get(0).colocaArestaBuraco(nova1);
+        faces.get(1).colocaArestaBuraco(nova2);
+        
       
     }
     
@@ -8479,19 +8490,17 @@ public class caractere {
         arestas.get(encontraAresta("LT_L")).setArestasEsquerda(arestas.get(encontraAresta("LT_KT")), arestas.get(encontraAresta("K_L")));
         arestas.get(encontraAresta("LT_L")).setArestasDireita(arestas.get(encontraAresta("L_I")), arestas.get(encontraAresta("IT_LT")));
         
-        ArrayList<aresta> nova1 = new ArrayList(), nova2 = new ArrayList();
-        for(int i = 0; i < arestasInternas.size(); i++){
-            
-            
-            if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(0).getNomeFace())){
-                nova1.add(arestasInternas.get(i));
-            }else if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(1).getNomeFace())){
-                nova2.add(arestasInternas.get(i));
-            }
-        }
-        faces.get(0).colocaListaDeArestasInternas(nova1);
-        faces.get(1).colocaListaDeArestasInternas(nova1);
+        faces.get(0).quantosBuracos = 1;
+        faces.get(1).quantosBuracos = 1;
         
+        aresta[] nova1 = new aresta[1];
+        aresta[] nova2 = new aresta[1];
+        
+        nova1[0] = arestas.get(encontraAresta("I_J"));
+        nova2[0] = arestas.get(encontraAresta("JT_IT"));
+        
+        faces.get(0).colocaArestaBuraco(nova1);
+        faces.get(1).colocaArestaBuraco(nova2);
         
     }
     
@@ -8795,6 +8804,11 @@ public class caractere {
         arestas.get(encontraAresta("G_H")).setFaces(faces.get(encontraFace("B_A_D_C")), faces.get(encontraFace("G_H_HT_GT")));
         arestas.get(encontraAresta("H_E")).setFaces(faces.get(encontraFace("B_A_D_C")), faces.get(encontraFace("H_E_ET_HT")));
         
+        arestas.get(encontraAresta("I_J")).setFaces(faces.get(encontraFace("B_A_D_C")), faces.get(encontraFace("I_J_JT_IT")));
+        arestas.get(encontraAresta("J_K")).setFaces(faces.get(encontraFace("B_A_D_C")), faces.get(encontraFace("J_K_KT_JT")));
+        arestas.get(encontraAresta("K_L")).setFaces(faces.get(encontraFace("B_A_D_C")), faces.get(encontraFace("K_L_LT_KT")));
+        arestas.get(encontraAresta("L_I")).setFaces(faces.get(encontraFace("B_A_D_C")), faces.get(encontraFace("L_I_IT_LT")));
+               
         arestas.get(encontraAresta("AT_BT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT")), faces.get(encontraFace("A_B_BT_AT")));
         arestas.get(encontraAresta("BT_CT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT")), faces.get(encontraFace("B_C_CT_BT")));
         arestas.get(encontraAresta("CT_DT")).setFaces(faces.get(encontraFace("AT_BT_CT_DT")), faces.get(encontraFace("C_D_DT_CT")));
@@ -8934,19 +8948,19 @@ public class caractere {
         arestas.get(encontraAresta("LT_L")).setArestasEsquerda(arestas.get(encontraAresta("LT_KT")), arestas.get(encontraAresta("K_L")));
         arestas.get(encontraAresta("LT_L")).setArestasDireita(arestas.get(encontraAresta("L_I")), arestas.get(encontraAresta("IT_LT")));
         
-        ArrayList<aresta> nova1 = new ArrayList(), nova2 = new ArrayList();
-        for(int i = 0; i < arestasInternas.size(); i++){
-            
-            
-            if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(0).getNomeFace())){
-                nova1.add(arestasInternas.get(i));
-            }else if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(1).getNomeFace())){
-                nova2.add(arestasInternas.get(i));
-            }
-        }
-        faces.get(0).colocaListaDeArestasInternas(nova1);
-        faces.get(1).colocaListaDeArestasInternas(nova1);
+       faces.get(0).quantosBuracos = 2;
+        faces.get(1).quantosBuracos = 2;
         
+        aresta[] nova1 = new aresta[2];
+        aresta[] nova2 = new aresta[2];
+        
+        nova1[0] = arestas.get(encontraAresta("E_F"));
+        nova2[0] = arestas.get(encontraAresta("FT_ET"));
+        nova1[0] = arestas.get(encontraAresta("G_H"));
+        nova2[0] = arestas.get(encontraAresta("HT_GT"));
+        
+        faces.get(0).colocaArestaBuraco(nova1);
+        faces.get(1).colocaArestaBuraco(nova2);
     }
     
     private void create9(){
@@ -9194,19 +9208,18 @@ public class caractere {
         arestas.get(encontraAresta("JT_J")).setArestasEsquerda(arestas.get(encontraAresta("JT_IT")), arestas.get(encontraAresta("I_J")));
         arestas.get(encontraAresta("JT_J")).setArestasDireita(arestas.get(encontraAresta("J_G")), arestas.get(encontraAresta("GT_JT")));
         
-        ArrayList<aresta> nova1 = new ArrayList(), nova2 = new ArrayList();
-        for(int i = 0; i < arestasInternas.size(); i++){
-            
-            
-            if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(0).getNomeFace())){
-                nova1.add(arestasInternas.get(i));
-            }else if(arestasInternas.get(i).getEsquerda().getNomeFace().equals(faces.get(1).getNomeFace())){
-                nova2.add(arestasInternas.get(i));
-            }
-        }
-        faces.get(0).colocaListaDeArestasInternas(nova1);
-        faces.get(1).colocaListaDeArestasInternas(nova1);
-      
+        faces.get(0).quantosBuracos = 1;
+        faces.get(1).quantosBuracos = 1;
+        
+        aresta[] nova1 = new aresta[1];
+        aresta[] nova2 = new aresta[1];
+        
+        nova1[0] = arestas.get(encontraAresta("G_H"));
+        nova2[0] = arestas.get(encontraAresta("HT_GT"));
+        
+        faces.get(0).colocaArestaBuraco(nova1);
+        faces.get(1).colocaArestaBuraco(nova2);
+        
     }
     
     private int encontraVertice(String S){

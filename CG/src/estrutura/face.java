@@ -17,7 +17,8 @@ public class face {
     private boolean interna = false;
     private boolean visivel = true;
     private boolean temBuraco = false;
-    private ArrayList<aresta> arestasInternas;
+    public  int quantosBuracos = 0;
+    private aresta[] arestaBuraco;
    
     public boolean temBuraco() {
         return temBuraco;
@@ -30,22 +31,26 @@ public class face {
     public boolean isVisivel() {
         return visivel;
     }
-
+    
+    public int quantosBuracos(){
+        return this.quantosBuracos;
+    }
+    
+    public void colocaArestaBuraco(aresta[] buracos ){
+        this.arestaBuraco = buracos; 
+    }
+    
+    public aresta[] arestaBuraco(){
+        if(this.temBuraco)
+            return this.arestaBuraco;
+        else
+            return null;
+    }
+        
     public void setVisivel(boolean visivel) {
         this.visivel = visivel;
     }
     
-    public void colocaListaDeArestasInternas(ArrayList<aresta> lista){
-        this.arestasInternas = lista;
-    }
-    
-    public ArrayList<aresta> listaDeArestasInternas(){
-        if(this.temBuraco)
-            return this.arestasInternas;
-        else
-            return null;
-    }
-
     public face(String nomeFace, aresta arestaFace) {
         this.nomeFace = nomeFace;
         this.arestaFace = arestaFace;
