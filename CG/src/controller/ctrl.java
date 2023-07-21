@@ -6,6 +6,7 @@ package controller;
 
 
 import estrutura.aresta;
+import estrutura.fakeHash;
 import estrutura.vertice;
 import java.io.File;
 import java.io.FileWriter;
@@ -259,6 +260,8 @@ public class ctrl extends Application {
         if(faceOcult){
             faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
         }
+        
+        //painter(refactCharsAll);
         
         //VRP, P, Y, booelan projecao
         System.out.println("0...");
@@ -565,28 +568,92 @@ public class ctrl extends Application {
     }
         
     public void painter(ArrayList<ArrayList<caractere>> refactChars){
-        for(int i = 0; i < refactChars.size(); i ++){
-            LinkedHashMap<ArrayList<caractere>, Double> listHash = new LinkedHashMap<ArrayList<caractere>, Double>();
+        ArrayList<ArrayList<fakeHash>> finalArArrayListHash = new ArrayList<ArrayList<fakeHash>>();
+        ArrayList<fakeHash> arrayListHash = new ArrayList<fakeHash>();
+        for(int i = 0; i < refactChars.size(); i++){//qts de refactChars, size = 4
             double zTest = Double.MIN_VALUE;
-            
-            for(int j = 0; j < refactChars.get(i).size(); j++){
-                for(int k = 0; k < refactChars.get(i).get(j).faces.size(); k++){
-                    if(refactChars.get(i).get(j).faces.get(k).getArestaFace().getInicio().ponto.getZ() > zTest){
-                        zTest = refactChars.get(i).get(j).faces.get(k).getArestaFace().getInicio().ponto.getZ();
+            fakeHash listHash = new fakeHash();
+            for(int g = 0; g < refactChars.get(i).size(); g++){//qts de chars dentro do refactChars, size = qts string de entrada
+                for(int j = 0; j < refactChars.get(i).get(g).faces.size(); j ++){//qts de faces do char 
+                    
+                    aresta k = refactChars.get(i).get(g).faces.get(j).getArestaFace();
+                    int o = 0;
+
+                    System.out.println("j = "+j);
+                    boolean rigth = false;
+                    for(aresta p = new aresta("null"); !k.getNomeAresta().equals(p.getNomeAresta());){//andando nas arestas da face
+                        if(o < 1){
+                            p = k;
+                            o++;
+                        }
+
+                        if(rigth){
+                            if(zTest > p.getFim().ponto.getZ()){
+                                zTest = p.getFim().ponto.getZ();
+                            }
+                        }else{
+                            if(zTest > p.getInicio().ponto.getZ()){
+                                zTest = p.getInicio().ponto.getZ();
+                            } 
+                        }
+
+                        System.out.println(p.getNomeAresta());
+                        System.out.println(refactChars.get(i).get(g).faces.get(j).getNomeFace());
+                        
+                        if(p.getDireita().getNomeFace().equals(refactChars.get(i).get(g).faces.get(j).getNomeFace())){
+                            p = p.getArestaDireitaSuc();
+                            rigth = true;
+                        }else{
+                            p = p.getArestaEsquerdaSuc();
+                            rigth = false;
+                        }
                     }
                 }
-                listHash.put(refactChars.get(i), zTest);
+                listHash.setAll(refactChars.get(i), zTest);
+                arrayListHash.add(listHash);
                 zTest = Double.MIN_VALUE;
             }
+            for(int uu = 0; uu < arrayListHash.size(); uu++){
+                System.out.println(arrayListHash.get(uu).val);
+            }
+            quickSort(arrayListHash, 0, arrayListHash.size()-1);
+            System.out.println("after +++++");
+            for(int uu = 0; uu < arrayListHash.size(); uu++){
+                System.out.println(arrayListHash.get(uu).val);
+            }
             
-            for(int l = 0; l < refactChars.get(i).size()-1; l++){
-                double frt = listHash.get(l);
-                double nxt = listHash.get(l+1);
-                if(frt < nxt){
-                    //listHash.put(listHash.get(l), )
-                }
+            finalArArrayListHash.add(arrayListHash);
+        }
+    }
+    
+    public void quickSort(ArrayList<fakeHash> arrayListHash, int init, int last){
+        if(init < last){
+            int posPivo = split(arrayListHash, init, last);
+            quickSort(arrayListHash, init, posPivo - 1);
+            quickSort(arrayListHash, posPivo + 1, last);
+        }
+    }
+    
+    public int split(ArrayList<fakeHash> arrayListHash, int init, int last){
+        fakeHash pivo = arrayListHash.get(init);
+        int i = init + 1;
+        int f = last;
+        while(i <= f){
+            if(arrayListHash.get(i).val <= pivo.val){
+                i++;
+            }else if(pivo.val < arrayListHash.get(i).val){
+                f--;
+            }else{
+                fakeHash swap = arrayListHash.get(i);
+                arrayListHash.add(i, arrayListHash.get(f));
+                arrayListHash.add(f, swap);
+                i++;
+                f++;
             }
         }
+        arrayListHash.add(init, arrayListHash.get(f));
+        arrayListHash.add(f, pivo);
+        return f;
     }
     
     public Point3D makeCentroid(ArrayList<vertice> entry, String opc){
@@ -635,11 +702,10 @@ public class ctrl extends Application {
                 aresta k = chars.get(i).faces.get(j).getArestaFace();
                 int o = 0;
                 
-                if(true){
+                /*if(true){*/
                     System.out.println("j = "+j);
                     boolean rigth = false;
-                    for(aresta p = new aresta("null");
-                        !k.getNomeAresta().equals(p.getNomeAresta()); o++){
+                    for(aresta p = new aresta("null"); !k.getNomeAresta().equals(p.getNomeAresta()); o++){
                         if(o < 1){
                             p = k;
                         }
@@ -663,7 +729,7 @@ public class ctrl extends Application {
                     
                     System.out.println(" entro aqui");
                     allInOne(refactChars, vertList, vrp1, vrp2, vrp3, vrp4, i, j, "notinterna");
-                }/*else{
+                /*}else{
                     for(aresta p = chars.get(i).faces.get(j).getArestaFace().getArestaDireitaSuc();
                         !k.getInicio().getNomeVertice().equals(p.getInicio().getNomeVertice()); o++){
                         if(o >= 1){
