@@ -714,9 +714,13 @@ public class ctrl extends Application {
                     for(int teste = 0; teste < buraco.quantosBuracos; teste++){
                         ArrayList<Double> xis = new ArrayList();
                         ArrayList<Double> yis = new ArrayList();
-                        aresta doBuraco = buraco.arestaBuraco()[teste];
+                        aresta doBuraco = new aresta("null");
                         boolean inicializa = true;
-                        for(;!doBuraco.getArestaEsquerdaSuc().getNomeAresta().equals(buraco.arestaBuraco()[teste].getNomeAresta()); ){
+                        for(;!doBuraco.getNomeAresta().equals(buraco.arestaBuraco()[teste].getNomeAresta()); ){
+                            if(inicializa){
+                                inicializa = false;
+                                doBuraco = buraco.arestaBuraco()[teste];
+                            }
                             System.out.println(doBuraco.getNomeAresta());
                             xis.add(doBuraco.getInicio().getX());
                             yis.add(doBuraco.getInicio().getY());
@@ -725,8 +729,8 @@ public class ctrl extends Application {
                         double[] xs = new double[xis.size()];
                         double[] ys = new double[yis.size()];
                         for(int realoca = 0; realoca < xis.size(); realoca++){
-                            xs[0] = xis.get(realoca);
-                            ys[0] = yis.get(realoca);
+                            xs[realoca] = xis.get(realoca);
+                            ys[realoca] = yis.get(realoca);
                         }
                         poly.setFill(Color.WHITE);
                         poly.fillPolygon(xs, ys, xis.size());
