@@ -717,23 +717,24 @@ public class ctrl extends Application {
                 poly.fillPolygon(x, y, faceVertice.size());
                 if(listFace.get(j).face.temBuraco()){
                     face buraco = listFace.get(j).face;
-                    System.out.println("csuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
-                    System.out.println( buraco.quantosBuracos);
+                    
+                    
                     for(int teste = 0; teste < buraco.quantosBuracos; teste++){
                         ArrayList<Double> xis = new ArrayList();
                         ArrayList<Double> yis = new ArrayList();
                         aresta doBuraco = new aresta("null");
                         boolean inicializa = true;
-                        for(;!doBuraco.getNomeAresta().equals(buraco.arestaBuraco()[teste].getNomeAresta()); ){
+                        
+                        for(;!doBuraco.equals(buraco.arestaBuraco()[teste]); ){
                             if(inicializa){
                                 inicializa = false;
                                 doBuraco = buraco.arestaBuraco()[teste];
-                            }
-                            System.out.println(doBuraco.getNomeAresta());
+                            }                          
                             xis.add(doBuraco.getInicio().getX());
                             yis.add(doBuraco.getInicio().getY());
                             doBuraco = doBuraco.getArestaEsquerdaSuc();
                         }
+                        
                         double[] xs = new double[xis.size()];
                         double[] ys = new double[yis.size()];
                         for(int realoca = 0; realoca < xis.size(); realoca++){
@@ -1028,13 +1029,12 @@ public class ctrl extends Application {
             if(cart.faces.get(k).isVisivel()){
                 boolean aux = true;
                 aresta j = new aresta("null");
-                for(aresta i = cart.faces.get(k).getArestaFace(); !i.getNomeAresta().equals(j.getNomeAresta());){
-                    System.out.println(j.getNomeAresta());
+                for(aresta i = cart.faces.get(k).getArestaFace(); !i.equals(j);){
                     if(aux){
                         j = i;
                         aux = false;
                     }
-                    if(j.getDireita().getNomeFace().equals(cart.faces.get(k).getNomeFace())){
+                    if(j.getDireita().equals(cart.faces.get(k))){
                         j = j.getArestaDireitaSuc();
                     }else{
                         j = j.getArestaEsquerdaSuc();
@@ -1048,7 +1048,7 @@ public class ctrl extends Application {
                     
                     if(cart.faces.get(k).temBuraco()){
                         for(int inter = 0; inter < cart.arestasInternas.size(); inter++){
-                            if(cart.arestasInternas.get(inter).getEsquerda().getNomeFace().equals(cart.faces.get(k).getNomeFace())){                                
+                            if(cart.arestasInternas.get(inter).getEsquerda().equals(cart.faces.get(k))){                                
                                 xpoints[0]=(cart.arestasInternas.get(inter).getInicio().getX());
                                 ypoints[0]=((cart.arestasInternas.get(inter).getInicio().getY()));
                                 
@@ -1089,13 +1089,12 @@ public class ctrl extends Application {
             if(cart.faces.get(k).isVisivel()){
                 boolean aux = true;
                 aresta j = new aresta("null");
-                for(aresta i = cart.faces.get(k).getArestaFace(); !i.getNomeAresta().equals(j.getNomeAresta());){
-                    System.out.println(j.getNomeAresta());
+                for(aresta i = cart.faces.get(k).getArestaFace(); !i.equals(j);){
                     if(aux){
                         j = i;
                         aux = false;
                     }
-                    if(j.getDireita().getNomeFace().equals(cart.faces.get(k).getNomeFace())){
+                    if(j.getDireita().equals(cart.faces.get(k))){
                         j = j.getArestaDireitaSuc();
                     }else{
                         j = j.getArestaEsquerdaSuc();
@@ -1109,7 +1108,7 @@ public class ctrl extends Application {
                     
                     if(cart.faces.get(k).temBuraco()){
                         for(int inter = 0; inter < cart.arestasInternas.size(); inter++){
-                            if(cart.arestasInternas.get(inter).getEsquerda().getNomeFace().equals(cart.faces.get(k).getNomeFace())){                                
+                            if(cart.arestasInternas.get(inter).getEsquerda().equals(cart.faces.get(k))){                                
                                 xpoints[0]=(cart.arestasInternas.get(inter).getInicio().getX());
                                 ypoints[0]=((cart.arestasInternas.get(inter).getInicio().getZ()));
                                 
@@ -1149,13 +1148,12 @@ public class ctrl extends Application {
             if(cart.faces.get(k).isVisivel()){
                 boolean aux = true;
                 aresta j = new aresta("null");
-                for(aresta i = cart.faces.get(k).getArestaFace(); !i.getNomeAresta().equals(j.getNomeAresta());){
-                    System.out.println(j.getNomeAresta());
+                for(aresta i = cart.faces.get(k).getArestaFace(); !i.equals(j);){
                     if(aux){
                         j = i;
                         aux = false;
                     }
-                    if(j.getDireita().getNomeFace().equals(cart.faces.get(k).getNomeFace())){
+                    if(j.getDireita().equals(cart.faces.get(k))){
                         j = j.getArestaDireitaSuc();
                     }else{
                         j = j.getArestaEsquerdaSuc();
@@ -1169,7 +1167,7 @@ public class ctrl extends Application {
                     
                     if(cart.faces.get(k).temBuraco()){
                         for(int inter = 0; inter < cart.arestasInternas.size(); inter++){
-                            if(cart.arestasInternas.get(inter).getEsquerda().getNomeFace().equals(cart.faces.get(k).getNomeFace())){                                
+                            if(cart.arestasInternas.get(inter).getEsquerda().equals(cart.faces.get(k))){                                
                                 xpoints[0]=(cart.arestasInternas.get(inter).getInicio().getZ());
                                 ypoints[0]=((cart.arestasInternas.get(inter).getInicio().getY()));
                                 
