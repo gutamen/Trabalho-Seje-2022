@@ -34,24 +34,30 @@ public class iluminacao {
         this.caracteres = caracteres;
         this.canvasRelativo = tela;
         
-        pontoZbufferConstante[][] matrizTela = new pontoZbufferConstante[(int)tela.getWidth()][(int)tela.getHeight()];
+        pontoZbufferConstante[][] matrizTela = new pontoZbufferConstante[(int)this.canvasRelativo.getWidth()][(int)this.canvasRelativo.getHeight()];
         
-        for(int i = 0; i < caracteres.size(); i++){
+        for(int i = 0; i < this.caracteres.size(); i++){
             
-            ArrayList<face> tempFaces = caracteres.get(i).faces;
+            /*ArrayList<face> tempFaces = this.caracteres.get(i).faces;
             for(int j = 0; j < tempFaces.size(); j++){
                 face tempFace = tempFaces.get(j);
+                ArrayList<aresta> tempArestas = new ArrayList<>();
                 if(tempFace.isVisivel()){
-                    
-                    for(aresta avanco = new aresta("null");;){
-                        
-                    }
-                    
-                }
-                
-            }
+                    boolean inicializa = true;
+                    for(aresta avanco = new aresta("null"); !tempFace.getArestaFace().equals(avanco);){
+                        if(inicializa){
+                            inicializa = false;
+                            avanco = tempFace.getArestaFace();
+                        }         
+                        tempArestas.add(avanco);    
+                    }          
+                } 
+            }*/
             
+            ArrayList<ArrayList<aresta>> arestasPorFace = this.caracteres.get(i).arestasFacesVisiveis();
             
+            double[] pontosY = this.caracteres.get(i).extremosCoordenadaY();
+            double[] pontosX = this.caracteres.get(i).extremosCoordenadaX();
             
             
         }

@@ -9258,6 +9258,90 @@ public class caractere {
         return novo;    
     }
     
+    public ArrayList<ArrayList<aresta>> arestasFacesVisiveis(){
+        ArrayList<ArrayList<aresta>> retorno = new ArrayList<>();
+        
+        boolean inicializa = true;
+        for(int j = 0; j < this.faces.size(); j++){
+            
+            if(faces.get(j).isVisivel()){    
+                face tempFace = faces.get(j);
+                
+                ArrayList<aresta> arestasFaceAtual = new ArrayList<>();
+                for(aresta avanco = new aresta("null"); !tempFace.getArestaFace().equals(avanco); ){
+                    if(inicializa){
+                        inicializa = false;
+                        avanco = tempFace.getArestaFace();
+                    }
+
+                    arestasFaceAtual.add(avanco);
+
+                    if(tempFace.equals(avanco.getEsquerda())){
+                        avanco = avanco.getArestaEsquerdaSuc();
+                    }
+                    else
+                    {
+                        avanco = avanco.getArestaDireitaSuc();
+                    }
+                    
+
+                }
+                
+                if(tempFace.temBuraco()){
+                        
+                    for(int i = 0; i < tempFace.quantosBuracos; i++){
+                        inicializa = true;
+                        for(aresta avanco = new aresta("null"); !tempFace.arestaBuraco()[i].equals(avanco);){
+                            if(inicializa){
+                                inicializa = false;
+                                avanco = tempFace.arestaBuraco()[i];
+                            }
+                            arestasFaceAtual.add(avanco);
+                            
+                            avanco = avanco.getArestaEsquerdaSuc();
+                        }
+                    }
+
+                }
+                
+                retorno.add(arestasFaceAtual);
+            }
+        }
+        
+        
+        return retorno;
+    }
+    
+    public double[] extremosCoordenadaY(){
+        
+        double[] retorno = new double[2];
+        retorno[0] = Double.MAX_VALUE;
+        retorno[1] = Double.MIN_VALUE;
+        
+       
+        for(int i = 0; i < this.vertices.size(); i++){
+            if(this.vertices.get(i).getY() < retorno[0]) retorno[0] = this.vertices.get(i).getY();
+            if(this.vertices.get(i).getY() > retorno[1]) retorno[1] = this.vertices.get(i).getY();
+        }
+        
+        return retorno;
+    }
+    
+    public double[] extremosCoordenadaX(){
+        
+        double[] retorno = new double[2];
+        retorno[0] = Double.MAX_VALUE;
+        retorno[1] = Double.MIN_VALUE;
+        
+       
+        for(int i = 0; i < this.vertices.size(); i++){
+            if(this.vertices.get(i).getX() < retorno[0]) retorno[0] = this.vertices.get(i).getX();
+            if(this.vertices.get(i).getX() > retorno[1]) retorno[1] = this.vertices.get(i).getX();
+        }
+        
+        return retorno;
+    }
+    
     
 }
 
