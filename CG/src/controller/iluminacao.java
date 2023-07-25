@@ -33,7 +33,7 @@ public class iluminacao {
     }*/
     
     
-    public void iluminacaoConstante(Canvas tela, ArrayList<caractere> caracteresPerspectiva, ArrayList<caractere> universo, Point3D L, byte[] Il, byte[] Ila ){
+    public void iluminacaoConstante(Canvas tela, ArrayList<caractere> caracteresPerspectiva, ArrayList<caractere> universo, Point3D L, int[] Il, int[] Ila, double n, Point3D VRP ){
         this.pixels = tela.getGraphicsContext2D().getPixelWriter();
         this.caracteres = caracteresPerspectiva;
         this.canvasRelativo = tela;
@@ -42,21 +42,12 @@ public class iluminacao {
         
         for(int i = 0; i < this.caracteres.size(); i++){
             
-            /*ArrayList<face> tempFaces = this.caracteres.get(i).faces;
-            for(int j = 0; j < tempFaces.size(); j++){
-                face tempFace = tempFaces.get(j);
-                ArrayList<aresta> tempArestas = new ArrayList<>();
-                if(tempFace.isVisivel()){
-                    boolean inicializa = true;
-                    for(aresta avanco = new aresta("null"); !tempFace.getArestaFace().equals(avanco);){
-                        if(inicializa){
-                            inicializa = false;
-                            avanco = tempFace.getArestaFace();
-                        }         
-                        tempArestas.add(avanco);    
-                    }          
-                } 
-            }*/
+            
+            double[] It = new double[3];
+            
+            It[0] = this.caracteres.get(i).Ka.getX() * Il[0];
+            It[1] = this.caracteres.get(i).Ka.getY() * Il[1];
+            It[2] = this.caracteres.get(i).Ka.getZ() * Il[2];
             
             ArrayList<ArrayList<aresta>> arestasPorFace = this.caracteres.get(i).arestasFacesVisiveis();
             
@@ -70,9 +61,57 @@ public class iluminacao {
                 
                 Point3D vetorIluminacao = L.subtract(centroide);
                 vetorIluminacao = vetorIluminacao.normalize();
+                double LN = normalFace.dotProduct(vetorIluminacao);
+                if(LN > 0){
+                    
+                    It[0] += this.caracteres.get(i).Kd.getX()*  Il[0] * LN;
+                    It[1] += this.caracteres.get(i).Kd.getY()*  Il[1] * LN;
+                    It[2] += this.caracteres.get(i).Kd.getZ()*  Il[2] * LN;
                 
-                double[] Id = new double[3];
-                Id[0] = this.caracteres.get(i).Kd.getX()* (int) Il[0] * normalFace.dotProduct(vetorIluminacao);
+                    Point3D R = normalFace.multiply(2 * LN).subtract(L);
+                    Point3D S = VRP.subtract(centroide).normalize();
+                    double RS = R.dotProduct(S);
+                    if(RS > 0){
+                        RS = Math.pow(RS, n);
+                        
+                        It[0] += this.caracteres.get(i).Ks.getX()* Il[0] * RS;
+                        It[1] += this.caracteres.get(i).Ks.getY()* Il[1] * RS;
+                        It[2] += this.caracteres.get(i).Ks.getZ()* Il[2] * RS;
+                        
+                    }
+                    
+                
+                }
+                
+                ArrayList<aresta> arestas = arestasPorFace.get(j);
+                for(int k = 0; arestas.size() > k; k++){
+                    if((int)arestas.get(k).getFim().getY() == (int)arestas.get(k).getInicio().getY()){
+                        
+                    }
+                    else if((int)arestas.get(k).getFim().getY() > (int)arestas.get(k).getInicio().getY()){
+                        double taxaX = (arestas.get(k).getFim().getX() - arestas.get(k).getInicio().getX())/((int)arestas.get(k).getFim().getY() - (int)arestas.get(k).getInicio().getY());
+                        double taxaZ = (arestas.get(k).getFim().getZ() - arestas.get(k).getInicio().getZ())/((int)arestas.get(k).getFim().getY() - (int)arestas.get(k).getInicio().getY());
+                        
+                        if(matrizTela[(int)(arestas.get(k).getInicio().getX())][(int)arestas.get(k).getInicio().getY()].profundiade() > arestas.get(k).getInicio().getZ()){
+                            if((int)arestas.get(k).getInicio().getX() >= 0 && (int)arestas.get(k).getInicio().getY() >= 0 && (int)arestas.get(k).getInicio().getX() <= matrizTela.length && (int)arestas.get(k).getInicio().getY() <= matrizTela[0].length){
+                                matrizTela[(int)arestas.get(k).getInicio().getX()][(int)arestas.get(k).getInicio().getY()] = new pontoZbufferConstante(arestas.get(k).getInicio().getZ(), (int) It[0], (int) It[1], (int) It[2]);
+                            }
+                        }
+                        
+                        for(int incremento = (int) arestas.get(k).getInicio().getY() + 1; incremento < (int)arestas.get(k).getFim().getY(); incremento++){
+                            if(matrizTela[(int)(arestas.get(k).getInicio().getX()+incremento*taxaX)][incremento].profundiade() > arestas.get(k).getInicio().getZ()+incremento*taxaZ ){
+                                if((int)arestas.get(k).getInicio().getX() >= 0 && (int)arestas.get(k).getInicio().getY() >= 0 && (int)arestas.get(k).getInicio().getX() <= matrizTela.length && (int)arestas.get(k).getInicio().getY() <= matrizTela[0].length){
+                                    matrizTela[(int)(arestas.get(k).getInicio().getX()+incremento*taxaX)][incremento] = new pontoZbufferConstante(arestas.get(k).getInicio().getZ()+incremento*taxaZ, (int) It[0], (int) It[1], (int) It[2]);
+                                }
+                            }
+                        }
+                    }
+                    else{
+                        
+                    }
+                }
+                
+                
                 
             }
             
@@ -141,9 +180,9 @@ public class iluminacao {
 
 class pontoZbufferConstante{
     private Color cor;
-    private double Z;
+    private double Z = Double.MIN_VALUE;
     
-    public pontoZbufferConstante(double Z, byte R, byte G, byte B){
+    public pontoZbufferConstante(double Z, int R, int G, int B){
         this.cor = new Color((int)R,(int)G,(int)B,255);
         this.Z = Z;
     }
