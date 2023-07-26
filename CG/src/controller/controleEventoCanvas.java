@@ -83,7 +83,7 @@ public class controleEventoCanvas {
                             caractere perspectiva = universo.copia();
                             controle.refactChars4.set(controle.selectedChar, perspectiva);
                             
-                            
+                            // Necessário ARRUMAR o INVERT CHAR TODOS ERRADOS PARA FUNCIONAR
                             controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
                             //controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
 
