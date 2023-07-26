@@ -10,6 +10,7 @@ import javafx.geometry.Point3D;
  *
  * @author macedo
  */
+
 public class ctrlCam {
     public Point3D P;
     public Point3D Y;

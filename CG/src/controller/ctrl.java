@@ -72,23 +72,28 @@ public class ctrl extends Application {
     ArrayList<caractere> refactChars2   = new ArrayList<>();
     ArrayList<caractere> refactChars3   = new ArrayList<>();
     ArrayList<caractere> refactChars4   = new ArrayList<>();
+    ArrayList<ArrayList<caractere>> refactCharsAll;
     
     final protected static Point3D viewUP = new Point3D(0,1,0);
         
     final static Point3D VRPFrente      = new Point3D(0, 0, 19);
-    final static Point3D VRPLado        = new Point3D(0, 19, 0);
-    final static Point3D VRPTopo        = new Point3D(19, 0, 0);
+    final static Point3D VRPTopo        = new Point3D(0, 19, 0);
+    final static Point3D VRPLado        = new Point3D(19, 0, 0);
     
     final static Point3D PFrente        = new Point3D(0, 0, -2);
-    final static Point3D PLado          = new Point3D(0, -2, 0);
-    final static Point3D PTopo          = new Point3D(-2, 0, 0);
+    final static Point3D PTopo          = new Point3D(0, -2, 0);
+    final static Point3D PLado          = new Point3D(-2, 0, 0);
     Point3D PPerspectiva                = new Point3D(0, 0, -2);
     
     Point3D VRPPerspectiva = new Point3D(0, 0, 19);
     
+    final static double dPNormal = 21;
+    double dPPerspectiva = 21;
     
-    
-    
+    ctrlCam ct1;
+    ctrlCam ct2;
+    ctrlCam ct3;
+    ctrlCam ct4;
     
     public static double offSet;
     
@@ -300,10 +305,10 @@ public class ctrl extends Application {
         //Group root = new Group();
         //Scene scene = new Scene(root, 1920, 1080, Color.WHITE);
         
-        ctrlCam ct1 = new ctrlCam();
-        ctrlCam ct2 = new ctrlCam();
-        ctrlCam ct3 = new ctrlCam();
-        ctrlCam ct4 = new ctrlCam();
+        ct1 = new ctrlCam();
+        ct2 = new ctrlCam();
+        ct3 = new ctrlCam();
+        ct4 = new ctrlCam();
         
         final Canvas canvas1 = new Canvas(600, 200);
         final Canvas canvas2 = new Canvas(600, 200);
@@ -379,46 +384,31 @@ public class ctrl extends Application {
         }
         
         
-        ArrayList<ArrayList<caractere>> refactCharsAll = new  ArrayList<ArrayList<caractere>>();
+        refactCharsAll = new  ArrayList<>();
         refactCharsAll.add(refactChars1);
         refactCharsAll.add(refactChars2);
         refactCharsAll.add(refactChars3);
         refactCharsAll.add(refactChars4);
         
-        //função teste de visibilidade de face
+        // Função teste de visibilidade de face
         if(faceOcult){
-            faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
+            faceTestVisibilit(refactCharsAll, chars, VRPFrente, VRPTopo, VRPLado, VRPPerspectiva);
         }
         
-        //painter(refactCharsAll);
-        //for(int i = 0; refactChars1.get(0).vertices.size() > i; i++ ) System.out.println(refactChars1.get(0).vertices.get(i).ponto);
-            
+          
         
-        //VRP, P, Y, booelan projecao
-        System.out.println("0...");
-        ctrlVRP2SRU(ct1, refactChars1, gc1, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 1);
-        System.out.println("1...");
-        ctrlVRP2SRU(ct2, refactChars2, gc2, new Point3D(0, 19, 0), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 2);
-        System.out.println("2...");
-        ctrlVRP2SRU(ct3, refactChars3, gc3, new Point3D(19, 0, 0), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 3);
-        System.out.println("3...");
-        ctrlVRP2SRU(ct4, refactChars4, gc4, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
-        
-        //for(int i = 0; refactChars1.get(0).vertices.size() > i; i++ ) System.out.println(refactChars1.get(0).vertices.get(i).ponto);
+        // VRP, P, Y, booelan projecao
+        ctrlVRP2SRU(ct1, refactChars1, VRPFrente       , PFrente       , viewUP, dPNormal       , 1);
+        ctrlVRP2SRU(ct2, refactChars2, VRPTopo         , PTopo         , viewUP, dPNormal       , 2);
+        ctrlVRP2SRU(ct3, refactChars3, VRPLado         , PLado         , viewUP, dPNormal       , 3);
+        ctrlVRP2SRU(ct4, refactChars4, VRPPerspectiva  , PPerspectiva  , viewUP, dPPerspectiva  , 4);
         
         
-        /*System.out.println("Matriz Jp");
-        writMat(ct1.getMJp());
-        System.out.println("\n");
-        writMat(ct1.matrizInversa(ct1.getMJp()));
-        System.out.println("\n");*/
         if("Pintor".equals(metodChoice)){
             painter(refactChars4, canvas4);
         }
         
         for(int i = 0; i < refactChars1.size(); i++){
-            //System.out.println(refactChars1.get(i).vertices.get(0).ponto);
-            //System.out.println(refactChars1.get(i).vertices.get(refactChars1.get(i).vertices.size()-1).ponto);
             System.out.println(refactChars1.get(i).letra);
             desenhaFiguraPorAresta(gc1, refactChars1.get(i));
             desenhaFiguraPorArestaTopo(gc2, refactChars2.get(i));
@@ -426,8 +416,10 @@ public class ctrl extends Application {
             desenhaFiguraPorAresta(gc4, refactChars4.get(i));
         }
         
-        //carniça do martini
-        canvas1.addEventHandler(MouseEvent.MOUSE_PRESSED, e->{
+        
+        controleEventoCanvas.insereComportamento(canvas1, canvas2, canvas3, canvas4, this);
+        // Detecção de comando em tela, cada Canvas tem comportamento próprio
+        /*canvas1.addEventHandler(MouseEvent.MOUSE_PRESSED, e->{
             localX = (long) e.getX();
             localY = (long) e.getY();
             selectedChar = -1;
@@ -493,7 +485,7 @@ public class ctrl extends Application {
                             caractere perspectiva = refactChars4.get(selectedChar);
                             invertChar(mudanssa, ct1,universo);
                             copiaVertices(perspectiva,universo);
-                            ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
+                            ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc4, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
 
                             if(faceOcult){
                                 faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
@@ -563,7 +555,7 @@ public class ctrl extends Application {
                     nowLocalY = (long) event.getY();
                 }
             }
-        });
+        });*/
         
         canvas2.addEventHandler(MouseEvent.MOUSE_PRESSED, e->{
             localX = (long) e.getX();
@@ -748,6 +740,7 @@ public class ctrl extends Application {
                 }
             }
         });
+        // Fim das Instruções de comportamento dos Canvas
         
         
         
@@ -1008,7 +1001,7 @@ public class ctrl extends Application {
         return null;
     }
     
-    private void faceTestVisibilit(ArrayList<ArrayList<caractere>> refactChars, ArrayList<caractere> chars, Point3D vrp1, Point3D vrp2, Point3D vrp3, Point3D vrp4){
+    public void faceTestVisibilit(ArrayList<ArrayList<caractere>> refactChars, ArrayList<caractere> chars, Point3D vrp1, Point3D vrp2, Point3D vrp3, Point3D vrp4){
         ArrayList<vertice> vertList = new ArrayList<vertice>();
         
         for(int i = 0; i < chars.size(); i++){
@@ -1208,7 +1201,7 @@ public class ctrl extends Application {
         return max-min;
     }
     
-    private void desenhaFiguraPorAresta(GraphicsContext gc, caractere cart) {    
+    public void desenhaFiguraPorAresta(GraphicsContext gc, caractere cart) {    
         double[] xpoints = new double[2];
         double[] ypoints = new double[2];
        
@@ -1268,7 +1261,7 @@ public class ctrl extends Application {
         
     }
     
-    private void desenhaFiguraPorArestaTopo(GraphicsContext gc, caractere cart) {    
+    public void desenhaFiguraPorArestaTopo(GraphicsContext gc, caractere cart) {    
         double[] xpoints = new double[2];
         double[] ypoints = new double[2];
        
@@ -1327,7 +1320,7 @@ public class ctrl extends Application {
         gc.restore();
     }
     
-    private void desenhaFiguraPorArestaLateral(GraphicsContext gc, caractere cart) {    
+    public void desenhaFiguraPorArestaLateral(GraphicsContext gc, caractere cart) {    
         double[] xpoints = new double[2];
         double[] ypoints = new double[2];
        
@@ -1386,11 +1379,11 @@ public class ctrl extends Application {
         gc.restore();
     }
 
-    private void ctrlVRP2SRU(ctrlCam ct, ArrayList<caractere> refactChars, GraphicsContext gc, Point3D VRP, Point3D P, Point3D Y, int projecao){
+    private void ctrlVRP2SRU(ctrlCam ct, ArrayList<caractere> refactChars, Point3D VRP, Point3D P, Point3D Y, double dP, int projecao){
         ct.setVRP(VRP.getX(), VRP.getY(), VRP.getZ());
         ct.setP(P.getX(), P.getY(), P.getZ());
         ct.setYc(Y.getX(), Y.getY(), Y.getZ());
-        ct.setDp(21);
+        ct.setDp(dP);
         ct.setViewport(0, 0, 80*refactChars.size(), 199);
         ct.setWindow(-2*refactChars.size()-2, -2-1, 2*refactChars.size()+2, 2+1);
         
@@ -1465,7 +1458,7 @@ public class ctrl extends Application {
         writMat(ct.getNmPPLxMT());*/
     }
     
-    private void ctrlVRP2SRUParaUmCaractere(caractere modificado, ctrlCam ct, ArrayList<caractere> refactChars, GraphicsContext gc, Point3D VRP, Point3D P, Point3D Y, int projecao){
+    public void ctrlVRP2SRUParaUmCaractere(caractere modificado, ctrlCam ct, ArrayList<caractere> refactChars, GraphicsContext gc, Point3D VRP, Point3D P, Point3D Y, int projecao){
         ct.setVRP(VRP.getX(), VRP.getY(), VRP.getZ());
         ct.setP(P.getX(), P.getY(), P.getZ());
         ct.setYc(Y.getX(), Y.getY(), Y.getZ());
