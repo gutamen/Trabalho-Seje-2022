@@ -1277,7 +1277,7 @@ public class caractere {
         arestas.get(encontraAresta("HT_GT")).setArestasEsquerda(arestas.get(encontraAresta("IT_HT")), arestas.get(encontraAresta("GT_LT")));
         arestas.get(encontraAresta("HT_GT")).setArestasDireita(arestas.get(encontraAresta("GT_G")), arestas.get(encontraAresta("HT_H")));
         
-        arestas.get(encontraAresta("IT_HT")).setArestasEsquerda(arestas.get(encontraAresta("JT_IT")), arestas.get(encontraAresta("IT_HT")));
+        arestas.get(encontraAresta("IT_HT")).setArestasEsquerda(arestas.get(encontraAresta("JT_IT")), arestas.get(encontraAresta("HT_GT")));
         arestas.get(encontraAresta("IT_HT")).setArestasDireita(arestas.get(encontraAresta("HT_H")), arestas.get(encontraAresta("IT_I")));
         
         arestas.get(encontraAresta("JT_IT")).setArestasEsquerda(arestas.get(encontraAresta("KT_JT")), arestas.get(encontraAresta("IT_HT")));

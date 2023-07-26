@@ -45,6 +45,7 @@ public class ctrl extends Application {
     int selectedChar;
     long localX, localY;
     boolean mouseApertado;
+    boolean carregado = false;
     Button btConfirm;
     Button save;
     Button load;        
@@ -53,6 +54,7 @@ public class ctrl extends Application {
     TextArea txConfirmString;
     Spinner<Integer> setZ;
     Text txZ;
+    ArrayList<caractere> chars = new ArrayList<>();;
     
     public static Scanner read = new Scanner(System.in);
     public static double offSet;
@@ -161,21 +163,33 @@ public class ctrl extends Application {
             trueStart(stage, root, txConfirmString.getText(), scene, choice.getValue().toString(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
         });
         
-        save.setOnAction((ActionEvent evento) -> {
-            System.out.println("save");
-        });
+        
     
         load.setOnAction((ActionEvent evento) -> {
             System.out.println("load");
+            carregado = true;
+            controleArquivo.carregaArquivo(chars, stage);
         });
     
+        save.setOnAction((ActionEvent evento) -> {
+            System.out.println("save");
+            
+            controleArquivo.salvaArquivo(chars, stage);
+            
+        });
     }
     
     private void trueStart(Stage stage, Group root, String readed, Scene scene, String metodChoice, Boolean faceOcult, Double scaleZ){
         //String readed = read.nextLine();
         readed = readed.toLowerCase();
         
-        ArrayList<caractere> chars = new ArrayList<caractere>();
+        if(!carregado){
+            chars = new ArrayList<>();
+        }
+        else{
+            carregado = false;
+        }
+        
         
         
         //gambiarra para o Z aparecer
@@ -189,7 +203,7 @@ public class ctrl extends Application {
             }
         }
         
-        salvaString(chars);
+        
         
         tela2String(chars.size(), chars);
         
@@ -594,6 +608,9 @@ public class ctrl extends Application {
            
             
         });*/
+        
+        
+        
     }
         
     public void painter(ArrayList<caractere> refactChars, Canvas canvas4){
@@ -1357,29 +1374,7 @@ public class ctrl extends Application {
         return matrizR;
     }
     
-    public void salvaString(ArrayList<caractere> caracteres){
-        try {
-            File arquivo = new File("cu.txt");
-            if (!arquivo.exists()) {
-                arquivo.createNewFile();
-            }
-            
-            FileWriter escritor = new FileWriter(arquivo);
-            
-            for(int i = 0; i < caracteres.size(); i++){
-                escritor.write(i + "\n" + caracteres.get(i).letra + "\n");
-                for(int k = 0; k < caracteres.get(i).vertices.size(); k++){
-                    escritor.write(caracteres.get(i).vertices.get(k).ponto.toString() + "\n");
-                }
-                escritor.write("\n");
-            }           
-            escritor.close();
-            System.out.println("Dados salvos no arquivo com sucesso!");
-            
-        } catch (Exception e) {
-            System.out.println("Erro ao salvar dados no arquivo: " + e.getMessage());
-        }
-    }
+    
     
     
 }

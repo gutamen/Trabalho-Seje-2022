@@ -107,6 +107,24 @@ public class iluminacao {
                         }
                     }
                     else{
+                        double taxaX = (arestas.get(k).getInicio().getX() - arestas.get(k).getFim().getX())/((int)arestas.get(k).getInicio().getY() - (int)arestas.get(k).getFim().getY());
+                        double taxaZ = (arestas.get(k).getInicio().getZ() - arestas.get(k).getFim().getZ())/((int)arestas.get(k).getInicio().getY() - (int)arestas.get(k).getFim().getY());
+                        
+                        if(matrizTela[(int)(arestas.get(k).getFim().getX())][(int)arestas.get(k).getFim().getY()].profundiade() > arestas.get(k).getFim().getZ()){
+                            if((int)arestas.get(k).getFim().getX() >= 0 && (int)arestas.get(k).getFim().getY() >= 0 && (int)arestas.get(k).getFim().getX() <= matrizTela.length && (int)arestas.get(k).getFim().getY() <= matrizTela[0].length){
+                                matrizTela[(int)arestas.get(k).getFim().getX()][(int)arestas.get(k).getFim().getY()] = new pontoZbufferConstante(arestas.get(k).getFim().getZ(), (int) It[0], (int) It[1], (int) It[2]);
+                            }
+                        }
+                        
+                        for(int incremento = (int) arestas.get(k).getFim().getY() + 1; incremento < (int)arestas.get(k).getInicio().getY(); incremento++){
+                            if(matrizTela[(int)(arestas.get(k).getFim().getX()+incremento*taxaX)][incremento].profundiade() > arestas.get(k).getFim().getZ()+incremento*taxaZ ){
+                                if((int)arestas.get(k).getFim().getX() >= 0 && (int)arestas.get(k).getFim().getY() >= 0 && (int)arestas.get(k).getFim().getX() <= matrizTela.length && (int)arestas.get(k).getFim().getY() <= matrizTela[0].length){
+                                    matrizTela[(int)(arestas.get(k).getFim().getX()+incremento*taxaX)][incremento] = new pontoZbufferConstante(arestas.get(k).getFim().getZ()+incremento*taxaZ, (int) It[0], (int) It[1], (int) It[2]);
+                                }
+                            }
+                        }
+                        
+                        
                         
                     }
                 }
