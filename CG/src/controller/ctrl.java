@@ -72,7 +72,23 @@ public class ctrl extends Application {
     ArrayList<caractere> refactChars2   = new ArrayList<>();
     ArrayList<caractere> refactChars3   = new ArrayList<>();
     ArrayList<caractere> refactChars4   = new ArrayList<>();
+    
+    final protected static Point3D viewUP = new Point3D(0,1,0);
         
+    final static Point3D VRPFrente      = new Point3D(0, 0, 19);
+    final static Point3D VRPLado        = new Point3D(0, 19, 0);
+    final static Point3D VRPTopo        = new Point3D(19, 0, 0);
+    
+    final static Point3D PFrente        = new Point3D(0, 0, -2);
+    final static Point3D PLado          = new Point3D(0, -2, 0);
+    final static Point3D PTopo          = new Point3D(-2, 0, 0);
+    Point3D PPerspectiva                = new Point3D(0, 0, -2);
+    
+    Point3D VRPPerspectiva = new Point3D(0, 0, 19);
+    
+    
+    
+    
     
     public static double offSet;
     
@@ -456,43 +472,90 @@ public class ctrl extends Application {
                 if(mouseApertado){
                     if((nowLocalX <= canvas1.getWidth() && nowLocalX >= 0) && (nowLocalY <= canvas1.getHeight() && nowLocalY >= 0))
                     {
-                        localX = localX - ((long) event.getX());
-                        localX *= -1;
-                        localY = localY - ((long) event.getY());
-                        localY *= -1;
-                        caractere mudanssa = refactChars1.get(selectedChar);                       
-                        caractere mudanssa1 = refactChars2.get(selectedChar);  
-                        caractere mudanssa2 = refactChars3.get(selectedChar);  
-                        
-                        //writMat(getMatPts(universo));
-                        
-                        for(int k = 0; k < mudanssa.vertices.size(); k++){
-                            mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(localX, localY, 0);
-                            mudanssa1.vertices.get(k).ponto = mudanssa1.vertices.get(k).ponto.add(localX, localY, 0);
-                            mudanssa2.vertices.get(k).ponto = mudanssa2.vertices.get(k).ponto.add(localX, localY, 0);
-                        }
-                        
-                        caractere universo = chars.get(selectedChar);
-                        caractere perspectiva = refactChars4.get(selectedChar);
-                        invertChar(mudanssa, ct1,universo);
-                        copiaVertices(perspectiva,universo);
-                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
-                        
-                        if(faceOcult){
-                            faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
-                        }
+                        if(botaoLetra.isSelected() && botaoTranslacao.isSelected()){
+                            localX = localX - ((long) event.getX());
+                            localX *= -1;
+                            localY = localY - ((long) event.getY());
+                            localY *= -1;
+                            caractere mudanssa = refactChars1.get(selectedChar);                       
+                            caractere mudanssa1 = refactChars2.get(selectedChar);  
+                            caractere mudanssa2 = refactChars3.get(selectedChar);  
 
-                        
-                        canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
-                        canvas2.getGraphicsContext2D().clearRect(0, 0, canvas2.getWidth(), canvas2.getHeight());
-                        canvas3.getGraphicsContext2D().clearRect(0, 0, canvas3.getWidth(), canvas3.getHeight());
-                        canvas4.getGraphicsContext2D().clearRect(0, 0, canvas4.getWidth(), canvas4.getHeight());
-                        for(int k = 0; k < refactChars1.size(); k++){
-                            desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k));
-                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars2.get(k));
-                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k));
-                            desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k));
+                            //writMat(getMatPts(universo));
+
+                            for(int k = 0; k < mudanssa.vertices.size(); k++){
+                                mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(localX, localY, 0);
+                                mudanssa1.vertices.get(k).ponto = mudanssa1.vertices.get(k).ponto.add(localX, localY, 0);
+                                mudanssa2.vertices.get(k).ponto = mudanssa2.vertices.get(k).ponto.add(localX, localY, 0);
+                            }
+
+                            caractere universo = chars.get(selectedChar);
+                            caractere perspectiva = refactChars4.get(selectedChar);
+                            invertChar(mudanssa, ct1,universo);
+                            copiaVertices(perspectiva,universo);
+                            ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
+
+                            if(faceOcult){
+                                faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
+                            }
+
+
+                            canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
+                            canvas2.getGraphicsContext2D().clearRect(0, 0, canvas2.getWidth(), canvas2.getHeight());
+                            canvas3.getGraphicsContext2D().clearRect(0, 0, canvas3.getWidth(), canvas3.getHeight());
+                            canvas4.getGraphicsContext2D().clearRect(0, 0, canvas4.getWidth(), canvas4.getHeight());
+                            for(int k = 0; k < refactChars1.size(); k++){
+                                desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k));
+                                desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars2.get(k));
+                                desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k));
+                                desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k));
+                            }
                         }
+                        
+                        if(botaoTodaString.isSelected() && botaoTranslacao.isSelected()){
+                            localX = localX - ((long) event.getX());
+                            localX *= -1;
+                            localY = localY - ((long) event.getY());
+                            localY *= -1;
+                            caractere mudanssa = refactChars1.get(selectedChar);                       
+                            caractere mudanssa1 = refactChars2.get(selectedChar);  
+                            caractere mudanssa2 = refactChars3.get(selectedChar);  
+
+                            
+
+                            for(int k = 0; k < mudanssa.vertices.size(); k++){
+                                mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(localX, localY, 0);
+                                mudanssa1.vertices.get(k).ponto = mudanssa1.vertices.get(k).ponto.add(localX, localY, 0);
+                                mudanssa2.vertices.get(k).ponto = mudanssa2.vertices.get(k).ponto.add(localX, localY, 0);
+                            }
+
+                            caractere universo = chars.get(selectedChar);
+                            caractere perspectiva = refactChars4.get(selectedChar);
+                            invertChar(mudanssa, ct1,universo);
+                            copiaVertices(perspectiva,universo);
+                            ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
+
+                            if(faceOcult){
+                                faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
+                            }
+
+
+                            canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
+                            canvas2.getGraphicsContext2D().clearRect(0, 0, canvas2.getWidth(), canvas2.getHeight());
+                            canvas3.getGraphicsContext2D().clearRect(0, 0, canvas3.getWidth(), canvas3.getHeight());
+                            canvas4.getGraphicsContext2D().clearRect(0, 0, canvas4.getWidth(), canvas4.getHeight());
+                            for(int k = 0; k < refactChars1.size(); k++){
+                                desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k));
+                                desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars2.get(k));
+                                desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k));
+                                desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k));
+                            }
+                        }
+                        
+                        
+                        
+                        
+                        
                     }
                     localX = nowLocalX;
                     localY = nowLocalY;
@@ -547,39 +610,41 @@ public class ctrl extends Application {
                 if(mouseApertado){
                     if((nowLocalX <= canvas2.getWidth() && nowLocalX >= 0) && (nowLocalY <= canvas2.getHeight() && nowLocalY >= 0))
                     {
-                        localX = localX - ((long) event.getX());
-                        localX *= -1;
-                        localY = localY - ((long) event.getY());
-                        localY *= -1;
-                        caractere mudanssa = refactChars1.get(selectedChar);
-                        caractere mudanssa1 = refactChars2.get(selectedChar);
-                        caractere mudanssa2 = refactChars3.get(selectedChar);
-                        
-                        for(int k = 0; k < mudanssa.vertices.size(); k++){
-                            mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(localX, 0, localY);
-                            mudanssa1.vertices.get(k).ponto = mudanssa1.vertices.get(k).ponto.add(localX, 0, localY);
-                            mudanssa2.vertices.get(k).ponto = mudanssa2.vertices.get(k).ponto.add(localX, 0, localY);
-                        
-                        }
-                        caractere universo = chars.get(selectedChar);
-                        caractere perspectiva = refactChars4.get(selectedChar);
-                        invertChar(mudanssa, ct2,universo);
-                        copiaVertices(perspectiva,universo);
-                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc4, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
-                        
-                        if(faceOcult){
-                            faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
-                        }
-                        
-                        canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
-                        canvas2.getGraphicsContext2D().clearRect(0, 0, canvas2.getWidth(), canvas2.getHeight());
-                        canvas3.getGraphicsContext2D().clearRect(0, 0, canvas3.getWidth(), canvas3.getHeight());
-                        canvas4.getGraphicsContext2D().clearRect(0, 0, canvas4.getWidth(), canvas4.getHeight());
-                        for(int k = 0; k < refactChars1.size(); k++){
-                            desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k));
-                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars2.get(k));
-                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k));
-                            desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k));
+                        if(botaoLetra.isSelected() && botaoTranslacao.isSelected()){
+                            localX = localX - ((long) event.getX());
+                            localX *= -1;
+                            localY = localY - ((long) event.getY());
+                            localY *= -1;
+                            caractere mudanssa = refactChars1.get(selectedChar);
+                            caractere mudanssa1 = refactChars2.get(selectedChar);
+                            caractere mudanssa2 = refactChars3.get(selectedChar);
+
+                            for(int k = 0; k < mudanssa.vertices.size(); k++){
+                                mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(localX, 0, localY);
+                                mudanssa1.vertices.get(k).ponto = mudanssa1.vertices.get(k).ponto.add(localX, 0, localY);
+                                mudanssa2.vertices.get(k).ponto = mudanssa2.vertices.get(k).ponto.add(localX, 0, localY);
+
+                            }
+                            caractere universo = chars.get(selectedChar);
+                            caractere perspectiva = refactChars4.get(selectedChar);
+                            invertChar(mudanssa, ct2,universo);
+                            copiaVertices(perspectiva,universo);
+                            ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc4, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
+
+                            if(faceOcult){
+                                faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
+                            }
+
+                            canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
+                            canvas2.getGraphicsContext2D().clearRect(0, 0, canvas2.getWidth(), canvas2.getHeight());
+                            canvas3.getGraphicsContext2D().clearRect(0, 0, canvas3.getWidth(), canvas3.getHeight());
+                            canvas4.getGraphicsContext2D().clearRect(0, 0, canvas4.getWidth(), canvas4.getHeight());
+                            for(int k = 0; k < refactChars1.size(); k++){
+                                desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k));
+                                desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars2.get(k));
+                                desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k));
+                                desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k));
+                            }
                         }
                     }
                     localX = nowLocalX;
@@ -622,7 +687,8 @@ public class ctrl extends Application {
             else{
                 System.out.println("não apertou em nada");
             }
-        });   
+        });
+        
         canvas3.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
             mouseApertado = false;
             if("Pintor".equals(metodChoice)){
@@ -636,41 +702,45 @@ public class ctrl extends Application {
                 if(mouseApertado){
                     if((nowLocalX <= canvas3.getWidth() && nowLocalX >= 0) && (nowLocalY <= canvas3.getHeight() && nowLocalY >= 0))
                     {
-                        localX = localX - ((long) event.getX());
-                        localX *= -1;
-                        localY = localY - ((long) event.getY());
-                        localY *= -1;
-                        caractere mudanssa = refactChars1.get(selectedChar);
-                        caractere mudanssa1 = refactChars2.get(selectedChar);
-                        caractere mudanssa2 = refactChars3.get(selectedChar);
-                        for(int k = 0; k < mudanssa.vertices.size(); k++){
-                            mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(0, localY, localX);
-                            mudanssa1.vertices.get(k).ponto = mudanssa1.vertices.get(k).ponto.add(0, localY, localX);
-                            mudanssa2.vertices.get(k).ponto = mudanssa2.vertices.get(k).ponto.add(0, localY, localX);
-                        }
-                        caractere universo = chars.get(selectedChar);
-                        caractere perspectiva = refactChars4.get(selectedChar);
-                        invertChar(mudanssa, ct3,universo);
-                        copiaVertices(perspectiva,universo);
-                        ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
                         
-                        if(faceOcult){
-                            faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
+                        if(botaoLetra.isSelected() && botaoTranslacao.isSelected()){
+                            localX = localX - ((long) event.getX());
+                            localX *= -1;
+                            localY = localY - ((long) event.getY());
+                            localY *= -1;
+                            caractere mudanssa = refactChars1.get(selectedChar);
+                            caractere mudanssa1 = refactChars2.get(selectedChar);
+                            caractere mudanssa2 = refactChars3.get(selectedChar);
+                            for(int k = 0; k < mudanssa.vertices.size(); k++){
+                                mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(0, localY, localX);
+                                mudanssa1.vertices.get(k).ponto = mudanssa1.vertices.get(k).ponto.add(0, localY, localX);
+                                mudanssa2.vertices.get(k).ponto = mudanssa2.vertices.get(k).ponto.add(0, localY, localX);
+                            }
+                            caractere universo = chars.get(selectedChar);
+                            caractere perspectiva = refactChars4.get(selectedChar);
+                            invertChar(mudanssa, ct3,universo);
+                            copiaVertices(perspectiva,universo);
+                            ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
+
+                            if(faceOcult){
+                                faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
+                            }
+
+                            canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
+                            canvas2.getGraphicsContext2D().clearRect(0, 0, canvas2.getWidth(), canvas2.getHeight());
+                            canvas3.getGraphicsContext2D().clearRect(0, 0, canvas3.getWidth(), canvas3.getHeight());
+                            canvas4.getGraphicsContext2D().clearRect(0, 0, canvas4.getWidth(), canvas4.getHeight());
+                            for(int k = 0; k < refactChars1.size(); k++){
+                                desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k));
+                                desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars2.get(k));
+                                desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k));
+                                desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k));
+                            }
                         }
-                        
-                        canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
-                        canvas2.getGraphicsContext2D().clearRect(0, 0, canvas2.getWidth(), canvas2.getHeight());
-                        canvas3.getGraphicsContext2D().clearRect(0, 0, canvas3.getWidth(), canvas3.getHeight());
-                        canvas4.getGraphicsContext2D().clearRect(0, 0, canvas4.getWidth(), canvas4.getHeight());
-                        for(int k = 0; k < refactChars1.size(); k++){
-                            desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k));
-                            desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars2.get(k));
-                            desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k));
-                            desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k));
-                        }
-                        
                         
                     }
+                    
+                    
                     localX = nowLocalX;
                     localY = nowLocalY;
                     nowLocalX = (long) event.getX();
