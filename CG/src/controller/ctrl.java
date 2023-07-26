@@ -279,7 +279,7 @@ public class ctrl extends Application {
     }
     
     private void trueStart(Stage stage, Group root, String readed, Scene scene, String metodChoice, Boolean faceOcult, Double scaleZ){
-        
+       
         readed = readed.toLowerCase();
         
         
@@ -407,6 +407,11 @@ public class ctrl extends Application {
         if("Pintor".equals(metodChoice)){
             painter(refactChars4, canvas4);
         }
+        
+         
+        iluminacao ilum = new iluminacao();
+        ilum.normVertFace(refactChars1.get(0).faces, "O");
+        ilum.normVertFace(refactChars1.get(1).faces, "A");
         
         for(int i = 0; i < refactChars1.size(); i++){
             System.out.println(refactChars1.get(i).letra);

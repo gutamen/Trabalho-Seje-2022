@@ -139,6 +139,43 @@ public class iluminacao {
         
     }
     
+    public void normVertFace(ArrayList<face> faces, String vert){
+        ArrayList<face> faceWithVert = new ArrayList();
+        for(int j = 0; j < faces.size(); j ++){
+            aresta k = faces.get(j).getArestaFace();
+            int o = 0;
+
+            boolean rigth = false;
+            for(aresta p = new aresta("null"); !k.getNomeAresta().equals(p.getNomeAresta()); o++){//andando nas arestas da face
+                if(o < 1){
+                    p = k;
+                }
+
+                if(rigth){
+                    if(p.getFim().getNomeVertice().equals(vert)){
+                        faceWithVert.add(faces.get(j));
+                    }
+                }else{
+                    if(p.getInicio().getNomeVertice().equals(vert)){
+                        faceWithVert.add(faces.get(j));
+                    } 
+                }
+
+                if(p.getDireita().getNomeFace().equals(faces.get(j).getNomeFace())){
+                    p = p.getArestaDireitaSuc();
+                    rigth = true;
+                }else{
+                    p = p.getArestaEsquerdaSuc();
+                    rigth = false;
+                }
+            }
+        }
+        for(int k = 0; k < faceWithVert.size(); k++){
+            System.out.println("teste = "+faceWithVert.get(k).getNomeFace());
+        }
+
+    }
+    
     public Point3D centroidePorArestas(ArrayList<aresta> entry){
         double minX, minY, minZ;
         double maxX, maxY, maxZ;
@@ -186,13 +223,6 @@ public class iluminacao {
         
         return vetorX.normalize();
     }
-    
-    
-    
-    
-    
-    
-    
     
 }
 
