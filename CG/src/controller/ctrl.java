@@ -28,8 +28,10 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
@@ -54,15 +56,24 @@ public class ctrl extends Application {
     TextArea txConfirmString;
     Spinner<Integer> setZ;
     Text txZ;
-    ArrayList<caractere> carregamento = new ArrayList<>(), chars = new ArrayList<>();
     
-    ArrayList<caractere> refactChars1 = new ArrayList<caractere>();
-    ArrayList<caractere> refactChars2 = new ArrayList<caractere>();
-    ArrayList<caractere> refactChars3 = new ArrayList<caractere>();
-    ArrayList<caractere> refactChars4 = new ArrayList<caractere>();
+    ToggleGroup selecaoComando; 
+    RadioButton botaoTranslacao;
+    RadioButton botaoRotacao;
+    RadioButton botaoEscala;
+    
+    ToggleGroup selecaoString;
+    RadioButton botaoTodaString;
+    RadioButton botaoLetra;
+    
+    ArrayList<caractere> carregamento   = new ArrayList<>();
+    ArrayList<caractere> chars          = new ArrayList<>();
+    ArrayList<caractere> refactChars1   = new ArrayList<>();
+    ArrayList<caractere> refactChars2   = new ArrayList<>();
+    ArrayList<caractere> refactChars3   = new ArrayList<>();
+    ArrayList<caractere> refactChars4   = new ArrayList<>();
         
     
-    public static Scanner read = new Scanner(System.in);
     public static double offSet;
     
     @Override public void start(Stage stage) {
@@ -126,7 +137,38 @@ public class ctrl extends Application {
         load.setLayoutX(720);
         load.setLayoutY(500);
         
-        //trueStart(stage, root, ta.getText(), scene);
+        selecaoComando  = new ToggleGroup();
+        botaoTranslacao = new RadioButton("Translation");
+        botaoTranslacao.setSelected(true);
+        botaoTranslacao.setToggleGroup(selecaoComando);
+        botaoRotacao    = new RadioButton("Rotation");
+        botaoRotacao.setToggleGroup(selecaoComando);
+        botaoEscala     = new RadioButton("Escala");
+        botaoEscala.setToggleGroup(selecaoComando);
+        
+        selecaoString   = new ToggleGroup();
+        botaoTodaString = new RadioButton("String");
+        botaoTodaString.setToggleGroup(selecaoString);
+        botaoLetra      = new RadioButton("Letter");
+        botaoLetra.setSelected(true);
+        botaoLetra.setToggleGroup(selecaoString);
+        
+        botaoTranslacao.setLayoutX(720);
+        botaoTranslacao.setLayoutY(230);
+        
+        botaoRotacao.setLayoutX(720);
+        botaoRotacao.setLayoutY(250);
+        
+        botaoEscala.setLayoutX(720);
+        botaoEscala.setLayoutY(270);
+        
+        botaoTodaString.setLayoutX(720);
+        botaoTodaString.setLayoutY(320);
+        
+        botaoLetra.setLayoutX(720);
+        botaoLetra.setLayoutY(340);
+        
+        
         stage.setScene(scene);
         stage.show();
         
@@ -138,6 +180,11 @@ public class ctrl extends Application {
         root.getChildren().add(setFaceOcult);
         root.getChildren().add(choice);
         root.getChildren().add(txZ);
+        root.getChildren().add(botaoTranslacao);
+        root.getChildren().add(botaoRotacao);
+        root.getChildren().add(botaoEscala);
+        root.getChildren().add(botaoTodaString);
+        root.getChildren().add(botaoLetra);
         
         
         choice.setOnAction(new EventHandler<ActionEvent>() {
@@ -166,6 +213,12 @@ public class ctrl extends Application {
             root.getChildren().add(setFaceOcult);
             root.getChildren().add(choice);
             root.getChildren().add(txZ);
+            root.getChildren().add(botaoTranslacao);
+            root.getChildren().add(botaoRotacao);
+            root.getChildren().add(botaoEscala);
+            root.getChildren().add(botaoTodaString);
+            root.getChildren().add(botaoLetra);
+        
             trueStart(stage, root, txConfirmString.getText(), scene, choice.getValue().toString(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
         });
         
@@ -173,6 +226,22 @@ public class ctrl extends Application {
     
         load.setOnAction((ActionEvent evento) -> {
             System.out.println("load");
+            
+            root.getChildren().clear();
+            root.getChildren().add(txConfirmString);
+            root.getChildren().add(btConfirm);
+            root.getChildren().add(save);
+            root.getChildren().add(load);
+            root.getChildren().add(setZ);
+            root.getChildren().add(setFaceOcult);
+            root.getChildren().add(choice);
+            root.getChildren().add(txZ);
+            root.getChildren().add(botaoTranslacao);
+            root.getChildren().add(botaoRotacao);
+            root.getChildren().add(botaoEscala);
+            root.getChildren().add(botaoTodaString);
+            root.getChildren().add(botaoLetra);
+            
             carregado = true;
             carregamento = controleArquivo.carregaArquivo(stage);
             
@@ -189,7 +258,7 @@ public class ctrl extends Application {
     }
     
     private void trueStart(Stage stage, Group root, String readed, Scene scene, String metodChoice, Boolean faceOcult, Double scaleZ){
-        //String readed = read.nextLine();
+        
         readed = readed.toLowerCase();
         
         
@@ -277,19 +346,19 @@ public class ctrl extends Application {
         tela2String(chars.size(), refactChars4);
         
         if(carregado){
+            System.out.println("cy");
             chars = carregamento;
             carregado = false;
-            refactChars1 = new ArrayList<>();
-            refactChars2 = new ArrayList<>();
-            refactChars3 = new ArrayList<>();
-            refactChars4 = new ArrayList<>();
+            refactChars1.clear();
+            refactChars2.clear();
+            refactChars3.clear();
+            refactChars4.clear();
                     
             for(int i = 0; i < chars.size(); i++){
-                caractere copia = chars.get(i).copia();
-                refactChars1.add(copia);
-                refactChars2.add(copia);
-                refactChars3.add(copia);
-                refactChars4.add(copia);
+                refactChars1.add(chars.get(i).copia());
+                refactChars2.add(chars.get(i).copia());
+                refactChars3.add(chars.get(i).copia());
+                refactChars4.add(chars.get(i).copia());
             }
         }
         
@@ -299,12 +368,15 @@ public class ctrl extends Application {
         refactCharsAll.add(refactChars2);
         refactCharsAll.add(refactChars3);
         refactCharsAll.add(refactChars4);
+        
         //função teste de visibilidade de face
         if(faceOcult){
             faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
         }
         
         //painter(refactCharsAll);
+        //for(int i = 0; refactChars1.get(0).vertices.size() > i; i++ ) System.out.println(refactChars1.get(0).vertices.get(i).ponto);
+            
         
         //VRP, P, Y, booelan projecao
         System.out.println("0...");
@@ -315,6 +387,8 @@ public class ctrl extends Application {
         ctrlVRP2SRU(ct3, refactChars3, gc3, new Point3D(19, 0, 0), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 3);
         System.out.println("3...");
         ctrlVRP2SRU(ct4, refactChars4, gc4, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
+        
+        //for(int i = 0; refactChars1.get(0).vertices.size() > i; i++ ) System.out.println(refactChars1.get(0).vertices.get(i).ponto);
         
         
         /*System.out.println("Matriz Jp");
@@ -327,6 +401,9 @@ public class ctrl extends Application {
         }
         
         for(int i = 0; i < refactChars1.size(); i++){
+            //System.out.println(refactChars1.get(i).vertices.get(0).ponto);
+            //System.out.println(refactChars1.get(i).vertices.get(refactChars1.get(i).vertices.size()-1).ponto);
+            System.out.println(refactChars1.get(i).letra);
             desenhaFiguraPorAresta(gc1, refactChars1.get(i));
             desenhaFiguraPorArestaTopo(gc2, refactChars2.get(i));
             desenhaFiguraPorArestaLateral(gc3, refactChars3.get(i));
@@ -1247,10 +1324,14 @@ public class ctrl extends Application {
         ct.setViewport(0, 0, 80*refactChars.size(), 199);
         ct.setWindow(-2*refactChars.size()-2, -2-1, 2*refactChars.size()+2, 2+1);
         
+        
+        
         if(projecao == 1){
             for(int i = 0; i < refactChars.size(); i++){
+                
                 ct.setPPLxMT(ct.getPipeline_SRU2SRTNormal(), getMatPts(refactChars.get(i)));
-                refact(refactChars.get(i), ct);
+                refact(refactChars.get(i), ct);          
+                
             }
         }else if(projecao == 2){
             for(int i = 0; i < refactChars.size(); i++){
