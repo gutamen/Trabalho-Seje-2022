@@ -70,9 +70,7 @@ public class controleEventoCanvas {
                             controle.localY *= -1;
                             caractere mudanssa = controle.refactChars1.get(controle.selectedChar);                       
                             caractere mudanssa1 = controle.refactChars2.get(controle.selectedChar);  
-                            caractere mudanssa2 = controle.refactChars3.get(controle.selectedChar);  
-
-                            //writMat(getMatPts(universo));
+                            caractere mudanssa2 = controle.refactChars3.get(controle.selectedChar);
 
                             for(int k = 0; k < mudanssa.vertices.size(); k++){
                                 mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(controle.localX, controle.localY, 0);
@@ -81,10 +79,13 @@ public class controleEventoCanvas {
                             }
 
                             caractere universo = controle.chars.get(controle.selectedChar);
-                            caractere perspectiva = controle.refactChars4.get(controle.selectedChar);
                             controle.invertChar(mudanssa, controle.ct1,universo);
-                            controle.copiaVertices(perspectiva,universo);
-                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, canvasPerspectiva.getGraphicsContext2D(), controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
+                            caractere perspectiva = universo.copia();
+                            controle.refactChars4.set(controle.selectedChar, perspectiva);
+                            
+                            
+                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
+                            //controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
 
                             if(controle.setFaceOcult.isSelected()){
                                 controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
@@ -103,46 +104,72 @@ public class controleEventoCanvas {
                             }
                         }
                         
-                        /*if(controle.botaoTodaString.isSelected() && controle.botaoTranslacao.isSelected()){
-                            localX = localX - ((long) event.getX());
-                            localX *= -1;
-                            localY = localY - ((long) event.getY());
-                            localY *= -1;
-                            caractere mudanssa = refactChars1.get(selectedChar);                       
-                            caractere mudanssa1 = refactChars2.get(selectedChar);  
-                            caractere mudanssa2 = refactChars3.get(selectedChar);  
+                        if(controle.botaoTodaString.isSelected() && controle.botaoTranslacao.isSelected()){
+                            controle.localX = controle.localX - ((long) event.getX());
+                            controle.localX *= -1;
+                            controle.localY = controle.localY - ((long) event.getY());
+                            controle.localY *= -1;
+                            caractere mudanssa = controle.refactChars1.get(controle.selectedChar);                       
+                            caractere mudanssa1 = controle.refactChars2.get(controle.selectedChar);  
+                            caractere mudanssa2 = controle.refactChars3.get(controle.selectedChar);  
 
                             
-
+                            Runnable makeRefact1 = () -> {
+                                for(int l = 0; l < controle.refactChars1.size(); l++){
+                                    caractere alterado = controle.refactChars1.get(l);                         
+                                    for(int k = 0; k < alterado.vertices.size(); k++){
+                                       alterado.vertices.get(k).ponto = alterado.vertices.get(k).ponto.add(controle.localX, controle.localY, 0);
+                                    }
+                                }
+                            };
+                            
+                            Runnable makeRefact2 = () -> {
+                                for(int l = 0; l < controle.refactChars1.size(); l++){
+                                    caractere alterado = controle.refactChars1.get(l);                         
+                                    for(int k = 0; k < alterado.vertices.size(); k++){
+                                       alterado.vertices.get(k).ponto = alterado.vertices.get(k).ponto.add(controle.localX, controle.localY, 0);
+                                    }
+                                }
+                            };
+                            
+                            Runnable makeRefact3 = () -> {
+                                for(int l = 0; l < controle.refactChars1.size(); l++){
+                                    caractere alterado = controle.refactChars1.get(l);                         
+                                    for(int k = 0; k < alterado.vertices.size(); k++){
+                                       alterado.vertices.get(k).ponto = alterado.vertices.get(k).ponto.add(controle.localX, controle.localY, 0);
+                                    }
+                                }
+                            };
+                            
+                            
                             for(int k = 0; k < mudanssa.vertices.size(); k++){
-                                mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(localX, localY, 0);
-                                mudanssa1.vertices.get(k).ponto = mudanssa1.vertices.get(k).ponto.add(localX, localY, 0);
-                                mudanssa2.vertices.get(k).ponto = mudanssa2.vertices.get(k).ponto.add(localX, localY, 0);
+                                mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(controle.localX, controle.localY, 0);
+                                mudanssa1.vertices.get(k).ponto = mudanssa1.vertices.get(k).ponto.add(controle.localX, controle.localY, 0);
+                                mudanssa2.vertices.get(k).ponto = mudanssa2.vertices.get(k).ponto.add(controle.localX, controle.localY, 0);
                             }
 
-                            caractere universo = chars.get(selectedChar);
-                            caractere perspectiva = refactChars4.get(selectedChar);
-                            invertChar(mudanssa, ct1,universo);
-                            copiaVertices(perspectiva,universo);
-                            ctrlVRP2SRUParaUmCaractere(perspectiva, ct4, refactChars4, gc2, new Point3D(0, 0, 19), new Point3D(0, 0, -2), new Point3D(0, 1, 0), 4);
+                            caractere universo = controle.chars.get(controle.selectedChar);
+                            caractere perspectiva = controle.refactChars4.get(controle.selectedChar);
+                            controle.invertChar(mudanssa, controle.ct1,universo);
+                            controle.copiaVertices(perspectiva,universo);
+                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
 
-                            if(faceOcult){
-                                faceTestVisibilit(refactCharsAll, chars, new Point3D(0, 0, 19), new Point3D(0, 19, 0), new Point3D(19, 0, 0), new Point3D(0, 0, 19));
+                            if(controle.setFaceOcult.isSelected()){
+                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
                             }
 
 
-                            canvas1.getGraphicsContext2D().clearRect(0, 0, canvas1.getWidth(), canvas1.getHeight());
-                            canvas2.getGraphicsContext2D().clearRect(0, 0, canvas2.getWidth(), canvas2.getHeight());
-                            canvas3.getGraphicsContext2D().clearRect(0, 0, canvas3.getWidth(), canvas3.getHeight());
-                            canvas4.getGraphicsContext2D().clearRect(0, 0, canvas4.getWidth(), canvas4.getHeight());
-                            for(int k = 0; k < refactChars1.size(); k++){
-                                desenhaFiguraPorAresta(canvas1.getGraphicsContext2D(), refactChars1.get(k));
-                                desenhaFiguraPorArestaTopo(canvas2.getGraphicsContext2D(), refactChars2.get(k));
-                                desenhaFiguraPorArestaLateral(canvas3.getGraphicsContext2D(), refactChars3.get(k));
-                                desenhaFiguraPorAresta(canvas4.getGraphicsContext2D(), refactChars4.get(k));
+                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+                            for(int k = 0; k < controle.refactChars1.size(); k++){
+                                controle.desenhaFiguraPorAresta(canvasFrente.getGraphicsContext2D(), controle.refactChars1.get(k));
+                                controle.desenhaFiguraPorArestaTopo(canvasTopo.getGraphicsContext2D(), controle.refactChars2.get(k));
+                                controle.desenhaFiguraPorArestaLateral(canvasLado.getGraphicsContext2D(), controle.refactChars3.get(k));
+                                controle.desenhaFiguraPorAresta(canvasPerspectiva.getGraphicsContext2D(), controle.refactChars4.get(k));
                             }
-                        }*/
-                        
+                        }                        
                         
                         
                         
@@ -212,13 +239,13 @@ public class controleEventoCanvas {
                                 mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(controle.localX, 0, controle.localY);
                                 mudanssa1.vertices.get(k).ponto = mudanssa1.vertices.get(k).ponto.add(controle.localX, 0, controle.localY);
                                 mudanssa2.vertices.get(k).ponto = mudanssa2.vertices.get(k).ponto.add(controle.localX, 0, controle.localY);
-
                             }
+                            
                             caractere universo = controle.chars.get(controle.selectedChar);
                             caractere perspectiva = controle.refactChars4.get(controle.selectedChar);
                             controle.invertChar(mudanssa, controle.ct2,universo);
                             controle.copiaVertices(perspectiva,universo);
-                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, canvasPerspectiva.getGraphicsContext2D(), controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
+                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
 
                             if(controle.setFaceOcult.isSelected()){
                                 controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
@@ -295,19 +322,22 @@ public class controleEventoCanvas {
                             controle.localX *= -1;
                             controle.localY = controle.localY - ((long) event.getY());
                             controle.localY *= -1;
+                            
                             caractere mudanssa = controle.refactChars1.get(controle.selectedChar);
                             caractere mudanssa1 = controle.refactChars2.get(controle.selectedChar);
                             caractere mudanssa2 = controle.refactChars3.get(controle.selectedChar);
+                            
                             for(int k = 0; k < mudanssa.vertices.size(); k++){
                                 mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(0, controle.localY, controle.localX);
                                 mudanssa1.vertices.get(k).ponto = mudanssa1.vertices.get(k).ponto.add(0, controle.localY, controle.localX);
                                 mudanssa2.vertices.get(k).ponto = mudanssa2.vertices.get(k).ponto.add(0, controle.localY, controle.localX);
                             }
+                            
                             caractere universo = controle.chars.get(controle.selectedChar);
                             caractere perspectiva = controle.refactChars4.get(controle.selectedChar);
                             controle.invertChar(mudanssa, controle.ct3,universo);
                             controle.copiaVertices(perspectiva,universo);
-                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, canvasPerspectiva.getGraphicsContext2D(), controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
+                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
 
                             if(controle.setFaceOcult.isSelected()){
                                 controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
