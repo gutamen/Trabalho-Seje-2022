@@ -22,29 +22,42 @@ import letras.caractere;
 public class controleArquivo {
     
     
-    public static void carregaArquivo(ArrayList<caractere> caracteres, Stage tela){
+    public static ArrayList<caractere> carregaArquivo(Stage tela){
         FileChooser escolheArquivo = new FileChooser();
         escolheArquivo.setTitle("Selecione o Arquivo para Carregamento");
         escolheArquivo.getExtensionFilters().addAll(new ExtensionFilter("Arquivo de Letra", "*.ltr"));
         escolheArquivo.setInitialDirectory(new File("."));
         File arquivo = escolheArquivo.showOpenDialog(tela);
+        
+        ArrayList<caractere> caracteres = new ArrayList<>();
+        
         if (arquivo != null) {
             try {
                 BufferedReader leitor = new BufferedReader(new FileReader(arquivo));
                 caracteres = new ArrayList<>();
                 String linha;
-                boolean novoCaractere = false;
+                boolean novoCaractere = true;
                 int contadorVertice = 0;
-                int contadorCaractere = -1;
+                int contadorCaractere = 0;
                 
-                while ((linha = leitor.readLine()) != null && linha.length() > 0) {
-                    if(linha.charAt(0) >= 48 && linha.charAt(0) <= 57){
+                
+                while ((linha = leitor.readLine()) != null) {
+                    
+                    if(linha.length() == 0){ 
                         novoCaractere = true;
                         contadorVertice = 0;
                         contadorCaractere++;
-                        System.out.println("aqui");
                         continue;
                     }
+                    
+                    /*if(linha.charAt(0) >= 48 && linha.charAt(0) <= 57){
+                        novoCaractere = true;
+                        contadorVertice = 0;
+                        contadorCaractere++;
+                        System.out.println((int)linha.charAt(0) + " " + contaLinha);
+                        continue;
+                    }*/
+                    
                     if(novoCaractere){
                         
                         caracteres.add(new caractere(linha));
@@ -52,12 +65,14 @@ public class controleArquivo {
                         
                         continue;
                     }
+                    
                     if(linha.equals("\n")){
                         System.out.println("teste");
                         continue;
                     }
-                    String[] valores = linha.trim().split("-?\\d+(\\.\\d+)?");
-                    caracteres.get(contadorCaractere).vertices.get(contadorVertice).ponto = new Point3D(Double.parseDouble(valores[1]), Double.parseDouble(valores[2]), Double.parseDouble(valores[3]));
+                    
+                    String[] valores = linha.trim().split(",");
+                    caracteres.get(contadorCaractere).vertices.get(contadorVertice).ponto = new Point3D(Double.parseDouble(valores[0]), Double.parseDouble(valores[1]), Double.parseDouble(valores[2]));
                     contadorVertice++;
                     
                     
@@ -69,6 +84,7 @@ public class controleArquivo {
             
             
         }
+        return caracteres;
         
     }
     
@@ -93,9 +109,9 @@ public class controleArquivo {
             FileWriter escritor = new FileWriter(arquivo);
             
             for(int i = 0; i < caracteres.size(); i++){
-                escritor.write(i + "\n" + caracteres.get(i).letra + "\n");
+                escritor.write(caracteres.get(i).letra + "\n");
                 for(int k = 0; k < caracteres.get(i).vertices.size(); k++){
-                    escritor.write(caracteres.get(i).vertices.get(k).ponto.toString() + "\n");
+                    escritor.write(caracteres.get(i).vertices.get(k).getX() + "," + caracteres.get(i).vertices.get(k).getY() + "," + caracteres.get(i).vertices.get(k).getZ() +"\n");
                 }
                 escritor.write("\n");
             }           

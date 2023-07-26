@@ -54,7 +54,13 @@ public class ctrl extends Application {
     TextArea txConfirmString;
     Spinner<Integer> setZ;
     Text txZ;
-    ArrayList<caractere> chars = new ArrayList<>();;
+    ArrayList<caractere> carregamento = new ArrayList<>(), chars = new ArrayList<>();
+    
+    ArrayList<caractere> refactChars1 = new ArrayList<caractere>();
+    ArrayList<caractere> refactChars2 = new ArrayList<caractere>();
+    ArrayList<caractere> refactChars3 = new ArrayList<caractere>();
+    ArrayList<caractere> refactChars4 = new ArrayList<caractere>();
+        
     
     public static Scanner read = new Scanner(System.in);
     public static double offSet;
@@ -168,7 +174,10 @@ public class ctrl extends Application {
         load.setOnAction((ActionEvent evento) -> {
             System.out.println("load");
             carregado = true;
-            controleArquivo.carregaArquivo(chars, stage);
+            carregamento = controleArquivo.carregaArquivo(stage);
+            
+            System.out.println(carregamento.size());
+            trueStart(stage, root, txConfirmString.getText(), scene, choice.getValue().toString(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
         });
     
         save.setOnAction((ActionEvent evento) -> {
@@ -183,12 +192,8 @@ public class ctrl extends Application {
         //String readed = read.nextLine();
         readed = readed.toLowerCase();
         
-        if(!carregado){
-            chars = new ArrayList<>();
-        }
-        else{
-            carregado = false;
-        }
+        
+        chars = new ArrayList<>();
         
         
         
@@ -240,10 +245,10 @@ public class ctrl extends Application {
         
         //root.setAutoSizeChildren(false);
         
-        ArrayList<caractere> refactChars1 = new ArrayList<caractere>();
-        ArrayList<caractere> refactChars2 = new ArrayList<caractere>();
-        ArrayList<caractere> refactChars3 = new ArrayList<caractere>();
-        ArrayList<caractere> refactChars4 = new ArrayList<caractere>();
+        refactChars1 = new ArrayList<caractere>();
+        refactChars2 = new ArrayList<caractere>();
+        refactChars3 = new ArrayList<caractere>();
+        refactChars4 = new ArrayList<caractere>();
         
         
         for(int i = 0; i < readed.length(); i++){
@@ -270,6 +275,24 @@ public class ctrl extends Application {
         tela2String(chars.size(), refactChars2);
         tela2String(chars.size(), refactChars3);
         tela2String(chars.size(), refactChars4);
+        
+        if(carregado){
+            chars = carregamento;
+            carregado = false;
+            refactChars1 = new ArrayList<>();
+            refactChars2 = new ArrayList<>();
+            refactChars3 = new ArrayList<>();
+            refactChars4 = new ArrayList<>();
+                    
+            for(int i = 0; i < chars.size(); i++){
+                caractere copia = chars.get(i).copia();
+                refactChars1.add(copia);
+                refactChars2.add(copia);
+                refactChars3.add(copia);
+                refactChars4.add(copia);
+            }
+        }
+        
         
         ArrayList<ArrayList<caractere>> refactCharsAll = new  ArrayList<ArrayList<caractere>>();
         refactCharsAll.add(refactChars1);

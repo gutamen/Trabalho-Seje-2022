@@ -9249,7 +9249,7 @@ public class caractere {
     }
     
     
-    private caractere copia(){
+    public caractere copia(){
         caractere novo = new caractere(String.valueOf(this.letra));
         
         for(int i = 0; i < novo.vertices.size(); i++){
