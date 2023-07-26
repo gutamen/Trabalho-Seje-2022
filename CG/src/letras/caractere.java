@@ -9258,6 +9258,12 @@ public class caractere {
         return novo;    
     }
     
+    public void translada(Point3D movimento){
+        for(int i = 0; i < this.vertices.size(); i++){
+            this.vertices.get(i).ponto = this.vertices.get(i).ponto.add(movimento);
+        }
+    }
+    
     public ArrayList<ArrayList<aresta>> arestasFacesVisiveis(){
         ArrayList<ArrayList<aresta>> retorno = new ArrayList<>();
         
