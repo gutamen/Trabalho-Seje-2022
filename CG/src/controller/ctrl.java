@@ -418,7 +418,7 @@ public class ctrl extends Application {
         
         
         controleEventoCanvas.insereComportamento(canvas1, canvas2, canvas3, canvas4, this);
-       
+        
         
         
         root.getChildren().add(canvas1);
@@ -1135,7 +1135,7 @@ public class ctrl extends Application {
         writMat(ct.getNmPPLxMT());*/
     }
     
-    public void ctrlVRP2SRUParaUmCaractere(caractere modificado, ctrlCam ct, ArrayList<caractere> refactChars, GraphicsContext gc, Point3D VRP, Point3D P, Point3D Y, int projecao){
+    public void ctrlVRP2SRUParaUmCaractere(caractere modificado, ctrlCam ct, ArrayList<caractere> refactChars, Point3D VRP, Point3D P, Point3D Y, int projecao){
         ct.setVRP(VRP.getX(), VRP.getY(), VRP.getZ());
         ct.setP(P.getX(), P.getY(), P.getZ());
         ct.setYc(Y.getX(), Y.getY(), Y.getZ());
