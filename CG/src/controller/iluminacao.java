@@ -6,7 +6,9 @@ package controller;
 
 import estrutura.aresta;
 import estrutura.face;
+import estrutura.pontoZbufferConstante;
 import estrutura.vertice;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javafx.geometry.Point3D;
 import javafx.scene.canvas.Canvas;
@@ -33,57 +35,64 @@ public class iluminacao {
     }*/
     
     
-    public void iluminacaoConstante(Canvas tela, ArrayList<caractere> caracteresPerspectiva, ArrayList<caractere> universo, Point3D L, int[] Il, int[] Ila, double n, Point3D VRP ){
+    public void iluminacaoConstante(Canvas tela, ArrayList<caractere> caracteresPerspectiva, ArrayList<caractere> universo, Point3D L, int[] Il, int[] Ila, Point3D VRP ){
         this.pixels = tela.getGraphicsContext2D().getPixelWriter();
         this.caracteres = caracteresPerspectiva;
         this.canvasRelativo = tela;
         
         pontoZbufferConstante[][] matrizTela = new pontoZbufferConstante[(int)this.canvasRelativo.getWidth()][(int)this.canvasRelativo.getHeight()];
         
+        for(int i = 0; i < matrizTela.length; i++){
+            for(int j = 0; j < matrizTela[0].length; j++){
+                matrizTela[i][j] = new pontoZbufferConstante();
+            }
+        }
+        
         for(int i = 0; i < this.caracteres.size(); i++){
             
             
             double[] It = new double[3];
             
-            It[0] = this.caracteres.get(i).Ka.getX() * Il[0];
-            It[1] = this.caracteres.get(i).Ka.getY() * Il[1];
-            It[2] = this.caracteres.get(i).Ka.getZ() * Il[2];
+            It[0] = universo.get(i).Ka.getX() * Ila[0];
+            It[1] = universo.get(i).Ka.getY() * Ila[1];
+            It[2] = universo.get(i).Ka.getZ() * Ila[2];
             
-            ArrayList<ArrayList<aresta>> arestasPorFace = this.caracteres.get(i).arestasFacesVisiveis();
+            ArrayList<face> faces = universo.get(i).faces;
             
-            double[] pontosY = this.caracteres.get(i).extremosCoordenadaY();
-            double[] pontosX = this.caracteres.get(i).extremosCoordenadaX();
+            double[] pontosY = universo.get(i).extremosCoordenadaY();
+            double[] pontosX = universo.get(i).extremosCoordenadaX();
             
-            for(int j = 0; j < arestasPorFace.size(); j++){
+            for(int j = 0; j < faces.size(); j++){
+                if(!faces.get(j).isVisivel()){
+                    continue;
+                }
                 
-                Point3D centroide = centroidePorArestas(arestasPorFace.get(j));
-                Point3D normalFace = normalDaFace(arestasPorFace.get(j));
+                Point3D centroide = centroidePorArestas(faces.get(j).arestasFace());
+                Point3D normalFace = normalDaFace(faces.get(j).arestasFace());
                 
                 Point3D vetorIluminacao = L.subtract(centroide);
                 vetorIluminacao = vetorIluminacao.normalize();
                 double LN = normalFace.dotProduct(vetorIluminacao);
                 if(LN > 0){
                     
-                    It[0] += this.caracteres.get(i).Kd.getX()*  Il[0] * LN;
-                    It[1] += this.caracteres.get(i).Kd.getY()*  Il[1] * LN;
-                    It[2] += this.caracteres.get(i).Kd.getZ()*  Il[2] * LN;
+                    It[0] += universo.get(i).Kd.getX()*  Il[0] * LN;
+                    It[1] += universo.get(i).Kd.getY()*  Il[1] * LN;
+                    It[2] += universo.get(i).Kd.getZ()*  Il[2] * LN;
                 
                     Point3D R = normalFace.multiply(2 * LN).subtract(L);
                     Point3D S = VRP.subtract(centroide).normalize();
                     double RS = R.dotProduct(S);
                     if(RS > 0){
-                        RS = Math.pow(RS, n);
+                        RS = Math.pow(RS, this.caracteres.get(i).n);
                         
-                        It[0] += this.caracteres.get(i).Ks.getX()* Il[0] * RS;
-                        It[1] += this.caracteres.get(i).Ks.getY()* Il[1] * RS;
-                        It[2] += this.caracteres.get(i).Ks.getZ()* Il[2] * RS;
+                        It[0] += universo.get(i).Ks.getX()* Il[0] * RS;
+                        It[1] += universo.get(i).Ks.getY()* Il[1] * RS;
+                        It[2] += universo.get(i).Ks.getZ()* Il[2] * RS;
                         
                     }
-                    
-                
                 }
                 
-                ArrayList<aresta> arestas = arestasPorFace.get(j);
+                ArrayList<aresta> arestas = caracteresPerspectiva.get(i).faces.get(j).arestasFace();
                 for(int k = 0; arestas.size() > k; k++){
                     if((int)arestas.get(k).getFim().getY() == (int)arestas.get(k).getInicio().getY()){
                         
@@ -91,17 +100,19 @@ public class iluminacao {
                     else if((int)arestas.get(k).getFim().getY() > (int)arestas.get(k).getInicio().getY()){
                         double taxaX = (arestas.get(k).getFim().getX() - arestas.get(k).getInicio().getX())/((int)arestas.get(k).getFim().getY() - (int)arestas.get(k).getInicio().getY());
                         double taxaZ = (arestas.get(k).getFim().getZ() - arestas.get(k).getInicio().getZ())/((int)arestas.get(k).getFim().getY() - (int)arestas.get(k).getInicio().getY());
-                        
-                        if(matrizTela[(int)(arestas.get(k).getInicio().getX())][(int)arestas.get(k).getInicio().getY()].profundiade() > arestas.get(k).getInicio().getZ()){
-                            if((int)arestas.get(k).getInicio().getX() >= 0 && (int)arestas.get(k).getInicio().getY() >= 0 && (int)arestas.get(k).getInicio().getX() <= matrizTela.length && (int)arestas.get(k).getInicio().getY() <= matrizTela[0].length){
-                                matrizTela[(int)arestas.get(k).getInicio().getX()][(int)arestas.get(k).getInicio().getY()] = new pontoZbufferConstante(arestas.get(k).getInicio().getZ(), (int) It[0], (int) It[1], (int) It[2]);
+                        System.out.println("aquiY > = "+arestas.get(k).getFim().getY());
+                        System.out.println("aquiX > = "+arestas.get(k).getFim().getX());
+                        if((int)arestas.get(k).getInicio().getX() >= 0 && (int)arestas.get(k).getInicio().getY() >= 0 && (int)arestas.get(k).getInicio().getX() < matrizTela.length && (int)arestas.get(k).getInicio().getY() < matrizTela[0].length){   
+                            if(matrizTela[(int)(arestas.get(k).getInicio().getX())][(int)arestas.get(k).getInicio().getY()].profundiade() < arestas.get(k).getInicio().getZ()){
+                                matrizTela[(int)arestas.get(k).getInicio().getX()][(int)arestas.get(k).getInicio().getY()] = new pontoZbufferConstante(arestas.get(k).getInicio().getZ(), (int) It[0], (int) It[1], (int) It[2]); 
                             }
                         }
                         
-                        for(int incremento = (int) arestas.get(k).getInicio().getY() + 1; incremento < (int)arestas.get(k).getFim().getY(); incremento++){
-                            if(matrizTela[(int)(arestas.get(k).getInicio().getX()+incremento*taxaX)][incremento].profundiade() > arestas.get(k).getInicio().getZ()+incremento*taxaZ ){
-                                if((int)arestas.get(k).getInicio().getX() >= 0 && (int)arestas.get(k).getInicio().getY() >= 0 && (int)arestas.get(k).getInicio().getX() <= matrizTela.length && (int)arestas.get(k).getInicio().getY() <= matrizTela[0].length){
-                                    matrizTela[(int)(arestas.get(k).getInicio().getX()+incremento*taxaX)][incremento] = new pontoZbufferConstante(arestas.get(k).getInicio().getZ()+incremento*taxaZ, (int) It[0], (int) It[1], (int) It[2]);
+                        for(int incremento = (int) arestas.get(k).getInicio().getY() + 1, passo = 1; incremento < (int)arestas.get(k).getFim().getY(); incremento++, passo++){
+                            if(arestas.get(k).getInicio().getX()+passo*taxaX >= 0 && incremento >= 0
+                            && arestas.get(k).getInicio().getX()+passo*taxaX < matrizTela.length && incremento < matrizTela[0].length){
+                                if(matrizTela[(int)(arestas.get(k).getInicio().getX()+passo*taxaX)][incremento].profundiade() < arestas.get(k).getInicio().getZ()+(passo*taxaZ) ){
+                                    matrizTela[(int)(arestas.get(k).getInicio().getX()+passo*taxaX)][incremento] = new pontoZbufferConstante(arestas.get(k).getInicio().getZ()+passo*taxaZ, (int) It[0], (int) It[1], (int) It[2]);
                                 }
                             }
                         }
@@ -109,17 +120,19 @@ public class iluminacao {
                     else{
                         double taxaX = (arestas.get(k).getInicio().getX() - arestas.get(k).getFim().getX())/((int)arestas.get(k).getInicio().getY() - (int)arestas.get(k).getFim().getY());
                         double taxaZ = (arestas.get(k).getInicio().getZ() - arestas.get(k).getFim().getZ())/((int)arestas.get(k).getInicio().getY() - (int)arestas.get(k).getFim().getY());
-                        
-                        if(matrizTela[(int)(arestas.get(k).getFim().getX())][(int)arestas.get(k).getFim().getY()].profundiade() > arestas.get(k).getFim().getZ()){
-                            if((int)arestas.get(k).getFim().getX() >= 0 && (int)arestas.get(k).getFim().getY() >= 0 && (int)arestas.get(k).getFim().getX() <= matrizTela.length && (int)arestas.get(k).getFim().getY() <= matrizTela[0].length){
+                        System.out.println("aquiY > = "+(int)arestas.get(k).getFim().getY());
+                        System.out.println("aquiX > = "+(int)arestas.get(k).getFim().getX()); 
+                        if((int)arestas.get(k).getFim().getX() >= 0 && (int)arestas.get(k).getFim().getY() >= 0 && (int)arestas.get(k).getFim().getX() <= matrizTela.length && (int)arestas.get(k).getFim().getY() <= matrizTela[0].length){ 
+                            if(matrizTela[(int)(arestas.get(k).getFim().getX())][(int)arestas.get(k).getFim().getY()].profundiade() > arestas.get(k).getFim().getZ()){
                                 matrizTela[(int)arestas.get(k).getFim().getX()][(int)arestas.get(k).getFim().getY()] = new pontoZbufferConstante(arestas.get(k).getFim().getZ(), (int) It[0], (int) It[1], (int) It[2]);
                             }
                         }
                         
-                        for(int incremento = (int) arestas.get(k).getFim().getY() + 1; incremento < (int)arestas.get(k).getInicio().getY(); incremento++){
-                            if(matrizTela[(int)(arestas.get(k).getFim().getX()+incremento*taxaX)][incremento].profundiade() > arestas.get(k).getFim().getZ()+incremento*taxaZ ){
-                                if((int)arestas.get(k).getFim().getX() >= 0 && (int)arestas.get(k).getFim().getY() >= 0 && (int)arestas.get(k).getFim().getX() <= matrizTela.length && (int)arestas.get(k).getFim().getY() <= matrizTela[0].length){
-                                    matrizTela[(int)(arestas.get(k).getFim().getX()+incremento*taxaX)][incremento] = new pontoZbufferConstante(arestas.get(k).getFim().getZ()+incremento*taxaZ, (int) It[0], (int) It[1], (int) It[2]);
+                        for(int incremento = (int) arestas.get(k).getFim().getY() + 1, passo = 1; incremento < (int)arestas.get(k).getInicio().getY(); incremento++, passo++){
+                            if(arestas.get(k).getFim().getX()+passo*taxaX >= 0 && incremento >= 0
+                            && arestas.get(k).getFim().getX()+passo*taxaX <= matrizTela.length && incremento <= matrizTela[0].length){
+                                if(matrizTela[(int)(arestas.get(k).getFim().getX()+passo*taxaX)][incremento].profundiade() > arestas.get(k).getFim().getZ()+(passo*taxaZ) ){
+                                    matrizTela[(int)(arestas.get(k).getFim().getX()+passo*taxaX)][incremento] = new pontoZbufferConstante(arestas.get(k).getFim().getZ()+passo*taxaZ, (int) It[0], (int) It[1], (int) It[2]);
                                 }
                             }
                         }
@@ -133,9 +146,43 @@ public class iluminacao {
                 
             }
             
-            
-        }
+            writMat(matrizTela);
+            tela.getGraphicsContext2D().clearRect(0, 0, tela.getWidth(), tela.getHeight());
+            for(int a = 0; a < matrizTela.length; a++){
+                for(int j = 0; j < matrizTela[0].length; j++){
+                    this.pixels.setColor(a, j, matrizTela[a][j].corNoPonto());
+                }
+            }
+            tela.getGraphicsContext2D().restore();
         
+            
+        }        
+        
+    }
+    
+    public void writMat(pontoZbufferConstante[][] matrizR){
+        DecimalFormat formato = new DecimalFormat();
+        formato.setMaximumIntegerDigits(5);
+        formato.setMinimumFractionDigits(5);
+        formato.setMaximumFractionDigits(5);
+        formato.setMinimumIntegerDigits(5);
+        formato.setPositivePrefix("+");
+        String numeroFormatado = null;
+        System.out.println("Número formatado: " + numeroFormatado);
+        for(int i = 0; i < matrizR.length; i++){
+            for(int k = 0; k < matrizR[0].length; k++){
+                numeroFormatado = formato.format(matrizR[i][k].profundiade());
+                if(matrizR[i][k].profundiade() != Double.MIN_VALUE){
+                    System.out.print(numeroFormatado+" | ");
+                }else{
+                    
+                }
+            }
+            System.out.println("");
+        }
+    }
+    
+    public void gouraud(){
         
     }
     
@@ -246,25 +293,6 @@ public class iluminacao {
         vetorX = vetorX.crossProduct(vetorY);
         
         return vetorX.normalize();
-    }
-    
-}
-
-class pontoZbufferConstante{
-    private Color cor;
-    private double Z = Double.MIN_VALUE;
-    
-    public pontoZbufferConstante(double Z, int R, int G, int B){
-        this.cor = new Color((int)R,(int)G,(int)B,255);
-        this.Z = Z;
-    }
-    
-    public Color corNoPonto(){
-        return this.cor;
-    }
-    
-    public double profundiade(){
-        return this.Z;
     }
     
 }

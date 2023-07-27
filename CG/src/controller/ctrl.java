@@ -398,13 +398,16 @@ public class ctrl extends Application {
         iluminacao ilum = new iluminacao();
         ilum.normVertFace(refactChars1.get(0).faces, "A");
         //ilum.normVertFace(refactChars1.get(1).faces, "A");
-          
         
         // VRP, P, Y, booelan projecao
         ctrlVRP2SRU(ct1, refactChars1, VRPFrente       , PFrente       , viewUP, dPNormal       , 1);
         ctrlVRP2SRU(ct2, refactChars2, VRPTopo         , PTopo         , viewUP, dPNormal       , 2);
         ctrlVRP2SRU(ct3, refactChars3, VRPLado         , PLado         , viewUP, dPNormal       , 3);
         ctrlVRP2SRU(ct4, refactChars4, VRPPerspectiva  , PPerspectiva  , viewUP, dPPerspectiva  , 4);
+        
+        int[] Il = {80, 120, 150}; 
+        int[] Ila = {80, 100, 0};
+        ilum.iluminacaoConstante(canvas4, refactChars4, chars, new Point3D(-2, 2, 30), Il, Ila, VRPPerspectiva);
         
         
         if("Pintor".equals(metodChoice)){
@@ -417,7 +420,7 @@ public class ctrl extends Application {
             desenhaFiguraPorAresta(gc1, refactChars1.get(i));
             desenhaFiguraPorArestaTopo(gc2, refactChars2.get(i));
             desenhaFiguraPorArestaLateral(gc3, refactChars3.get(i));
-            desenhaFiguraPorAresta(gc4, refactChars4.get(i));
+            //desenhaFiguraPorAresta(gc4, refactChars4.get(i));
         }
         
         
@@ -1176,7 +1179,7 @@ public class ctrl extends Application {
         return verticesDaLetra;
     }
     
-    public static double[][] writMat(double[][] matrizR){
+    public double[][] writMat(double[][] matrizR){
         for(int i = 0; i < matrizR.length; i++){
             for(int k = 0; k < matrizR[0].length; k++){
                 System.out.print((Double.toString(matrizR[i][k]))+" | ");
