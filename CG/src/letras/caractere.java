@@ -9312,6 +9312,69 @@ public class caractere {
         
     }
     
+    
+    public static Point3D centroArrayListcaractere(ArrayList<caractere> caractere){
+        Point3D centro = Point3D.ZERO;
+        for(int i = 0; i < caractere.size(); i++){
+            centro = centro.add(caractere.get(i).calculaCentro());
+        }
+        return new Point3D(centro.getX()/caractere.size(), centro.getY()/caractere.size(), centro.getZ()/caractere.size());
+    }
+    
+    public void rotacaoFrenteString(double diferencaY, double diferencaX, Point3D centro){
+        double senoX = Math.sin(diferencaX);
+        double cossenoX = Math.cos(diferencaX);
+        double senoY = Math.sin(diferencaY);
+        double cossenoY = Math.cos(diferencaY);      
+        
+        
+        
+        
+        double[][] transporNegativo = {{1, 0, 0, -centro.getX()},
+                                        {0, 1, 0, -centro.getY()},
+                                        {0, 0, 1, -centro.getZ()},
+                                        {0, 0, 0, 1}};
+        
+        double[][] transporPositivo = {{1, 0, 0, centro.getX()},
+                                        {0, 1, 0, centro.getY()},
+                                        {0, 0, 1, centro.getZ()},
+                                        {0, 0, 0, 1}};
+        
+        double[][] matrizRotacao = {{cossenoY, 0, senoY, 0 },
+                                    {0, 1, 0, 0},
+                                    {-senoY, 0, cossenoY, 0},
+                                    {0, 0, 0, 1}};
+        
+        double[][] matrizRotacaoFinal = {{1, 0, 0, 0 },
+                                    {0, cossenoX, -senoX, 0},
+                                    {0, senoX, cossenoX, 0},
+                                    {0, 0, 0, 1}};
+        
+        matrizRotacaoFinal = mulM1M2(matrizRotacaoFinal, matrizRotacao);
+        matrizRotacaoFinal = mulM1M2(matrizRotacaoFinal, transporNegativo);
+        matrizRotacaoFinal = mulM1M2(transporPositivo, matrizRotacaoFinal);
+        
+        double[][] matrizCaractere = new double[4][this.vertices.size()];
+        
+        ArrayList<vertice> lista = this.vertices;
+        for(int i = 0; i < lista.size(); i++){
+            matrizCaractere[0][i] = lista.get(i).getX();
+            matrizCaractere[1][i] = lista.get(i).getY();
+            matrizCaractere[2][i] = lista.get(i).getZ();
+            matrizCaractere[3][i] = 1;
+        }
+        
+        matrizCaractere = mulM1M2(matrizRotacaoFinal, matrizCaractere);
+        
+        for(int i = 0; i < lista.size(); i++){
+            lista.get(i).ponto = new Point3D(matrizCaractere[0][i], matrizCaractere[1][i], matrizCaractere[2][i]);
+        }
+        
+    }
+    
+    
+    
+    
     public void rotacaoTopo(double diferencaZ, double diferencaX){
         double senoX = Math.sin(diferencaX);
         double cossenoX = Math.cos(diferencaX);
@@ -9358,6 +9421,55 @@ public class caractere {
             this.vertices.get(i).ponto = new Point3D(matrizCaractere[0][i], matrizCaractere[1][i], matrizCaractere[2][i]);
         }
     }
+    
+    public void rotacaoTopoString(double diferencaZ, double diferencaX, Point3D centro){
+        double senoX = Math.sin(diferencaX);
+        double cossenoX = Math.cos(diferencaX);
+        double senoZ = Math.sin(diferencaZ);
+        double cossenoZ = Math.cos(diferencaZ);      
+        
+        
+        double[][] transporNegativo = {{1, 0, 0, -centro.getX()},
+                                        {0, 1, 0, -centro.getY()},
+                                        {0, 0, 1, -centro.getZ()},
+                                        {0, 0, 0, 1}};
+        
+        double[][] transporPositivo = {{1, 0, 0, centro.getX()},
+                                        {0, 1, 0, centro.getY()},
+                                        {0, 0, 1, centro.getZ()},
+                                        {0, 0, 0, 1}};
+        
+        double[][] matrizRotacao = {{cossenoZ, -senoZ, 0, 0 },
+                                    {senoZ, cossenoZ, 0, 0},
+                                    {0, 0, 1, 0},
+                                    {0, 0, 0, 1}};
+        
+        double[][] matrizRotacaoFinal = {{1, 0, 0, 0 },
+                                    {0, cossenoX, -senoX, 0},
+                                    {0, senoX, cossenoX, 0},
+                                    {0, 0, 0, 1}};
+        
+        matrizRotacaoFinal = mulM1M2(matrizRotacaoFinal, matrizRotacao);
+        matrizRotacaoFinal = mulM1M2(matrizRotacaoFinal, transporNegativo);
+        matrizRotacaoFinal = mulM1M2(transporPositivo, matrizRotacaoFinal);
+        
+        double[][] matrizCaractere = new double[4][this.vertices.size()];
+        
+        ArrayList<vertice> lista = this.vertices;
+        for(int i = 0; i < lista.size(); i++){
+            matrizCaractere[0][i] = lista.get(i).getX();
+            matrizCaractere[1][i] = lista.get(i).getY();
+            matrizCaractere[2][i] = lista.get(i).getZ();
+            matrizCaractere[3][i] = 1;
+        }
+        
+        matrizCaractere = mulM1M2(matrizRotacaoFinal, matrizCaractere);
+        
+        for(int i = 0; i < lista.size(); i++){
+            lista.get(i).ponto = new Point3D(matrizCaractere[0][i], matrizCaractere[1][i], matrizCaractere[2][i]);
+        }
+    }
+    
     
     public void rotacaoLateral(double diferencaY, double diferencaZ){
         double senoZ = Math.sin(diferencaZ);
@@ -9406,14 +9518,135 @@ public class caractere {
         } 
     }
     
-    public void escala(double taxa){
+    public void rotacaoLateralString(double diferencaY, double diferencaZ, Point3D centro){
+        double senoZ = Math.sin(diferencaZ);
+        double cossenoZ = Math.cos(diferencaZ);
+        double senoY = Math.sin(diferencaY);
+        double cossenoY = Math.cos(diferencaY);      
+        
+        
+        double[][] transporNegativo = {{1, 0, 0, -centro.getX()},
+                                        {0, 1, 0, -centro.getY()},
+                                        {0, 0, 1, -centro.getZ()},
+                                        {0, 0, 0, 1}};
+        
+        double[][] transporPositivo = {{1, 0, 0, centro.getX()},
+                                        {0, 1, 0, centro.getY()},
+                                        {0, 0, 1, centro.getZ()},
+                                        {0, 0, 0, 1}};
+        
+        double[][] matrizRotacao = {{cossenoY, 0, senoY, 0 },
+                                    {0, 1, 0, 0},
+                                    {-senoY, 0, cossenoY, 0},
+                                    {0, 0, 0, 1}};
+        
+        double[][] matrizRotacaoFinal = {{cossenoZ, -senoZ, 0, 0 },
+                                    {senoZ, cossenoZ, 0, 0},
+                                    {0, 0, 1, 0},
+                                    {0, 0, 0, 1}};
+        
+        matrizRotacaoFinal = mulM1M2(matrizRotacaoFinal, matrizRotacao);
+        matrizRotacaoFinal = mulM1M2(matrizRotacaoFinal, transporNegativo);
+        matrizRotacaoFinal = mulM1M2(transporPositivo, matrizRotacaoFinal);
         
         ArrayList<vertice> lista = this.vertices;
+        
+        double[][] matrizCaractere = new double[4][lista.size()];
+        
         for(int i = 0; i < lista.size(); i++){
-            
-            lista.get(i).ponto = lista.get(i).ponto.multiply(taxa+1);
-            
+            matrizCaractere[0][i] = lista.get(i).getX();
+            matrizCaractere[1][i] = lista.get(i).getY();
+            matrizCaractere[2][i] = lista.get(i).getZ();
+            matrizCaractere[3][i] = 1;
         }
+        
+        matrizCaractere = mulM1M2(matrizRotacaoFinal, matrizCaractere);
+        
+        for(int i = 0; i < lista.size(); i++){
+            lista.get(i).ponto = new Point3D(matrizCaractere[0][i], matrizCaractere[1][i], matrizCaractere[2][i]);
+        } 
+    }
+    
+    public void escala(double taxa){
+        if(taxa + 1 < 0) return;
+        
+        Point3D centro = this.calculaCentro();
+        double[][] transporNegativo = {{1, 0, 0, -centro.getX()},
+                                        {0, 1, 0, -centro.getY()},
+                                        {0, 0, 1, -centro.getZ()},
+                                        {0, 0, 0, 1}};
+        
+        double[][] transporPositivo = {{1, 0, 0, centro.getX()},
+                                        {0, 1, 0, centro.getY()},
+                                        {0, 0, 1, centro.getZ()},
+                                        {0, 0, 0, 1}};
+        
+        double[][] matrizEscala = { {taxa+1, 0, 0, 0},
+                                    {0, taxa+1, 0, 0},
+                                    {0, 0, taxa+1, 0}, 
+                                    {0, 0, 0, 1}};                                
+        
+        matrizEscala = mulM1M2(matrizEscala, transporNegativo);
+        matrizEscala = mulM1M2(transporPositivo, matrizEscala);
+        
+        ArrayList<vertice> lista = this.vertices;
+        
+        double[][] matrizCaractere = new double[4][this.vertices.size()];
+        
+        for(int i = 0; i < lista.size(); i++){
+            matrizCaractere[0][i] = lista.get(i).getX();
+            matrizCaractere[1][i] = lista.get(i).getY();
+            matrizCaractere[2][i] = lista.get(i).getZ();
+            matrizCaractere[3][i] = 1;
+        }
+        
+        matrizCaractere = mulM1M2(matrizEscala, matrizCaractere);
+        
+        for(int i = 0; i < lista.size(); i++){
+            lista.get(i).ponto = new Point3D(matrizCaractere[0][i], matrizCaractere[1][i], matrizCaractere[2][i]);
+        } 
+        
+    }
+    
+    
+    public void escalaString(double taxa, Point3D centro){
+        if(taxa + 1 < 0) return;
+        
+        
+        double[][] transporNegativo = {{1, 0, 0, -centro.getX()},
+                                        {0, 1, 0, -centro.getY()},
+                                        {0, 0, 1, -centro.getZ()},
+                                        {0, 0, 0, 1}};
+        
+        double[][] transporPositivo = {{1, 0, 0, centro.getX()},
+                                        {0, 1, 0, centro.getY()},
+                                        {0, 0, 1, centro.getZ()},
+                                        {0, 0, 0, 1}};
+        
+        double[][] matrizEscala = { {taxa+1, 0, 0, 0},
+                                    {0, taxa+1, 0, 0},
+                                    {0, 0, taxa+1, 0}, 
+                                    {0, 0, 0, 1}};                                
+        
+        matrizEscala = mulM1M2(matrizEscala, transporNegativo);
+        matrizEscala = mulM1M2(transporPositivo, matrizEscala);
+        
+        ArrayList<vertice> lista = this.vertices;
+        
+        double[][] matrizCaractere = new double[4][this.vertices.size()];
+        
+        for(int i = 0; i < lista.size(); i++){
+            matrizCaractere[0][i] = lista.get(i).getX();
+            matrizCaractere[1][i] = lista.get(i).getY();
+            matrizCaractere[2][i] = lista.get(i).getZ();
+            matrizCaractere[3][i] = 1;
+        }
+        
+        matrizCaractere = mulM1M2(matrizEscala, matrizCaractere);
+        
+        for(int i = 0; i < lista.size(); i++){
+            lista.get(i).ponto = new Point3D(matrizCaractere[0][i], matrizCaractere[1][i], matrizCaractere[2][i]);
+        } 
         
     }
     
@@ -9434,6 +9667,7 @@ public class caractere {
 
         return new Point3D(centroX, centroY, centroZ);
     }
+    
     
     public double[][] mulM1M2(double[][] matriz, double[][] matriz1){
         double[][] matrizR = new double[matriz.length][matriz1[0].length];
