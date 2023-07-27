@@ -140,7 +140,8 @@ public class iluminacao {
     }
     
     public void normVertFace(ArrayList<face> faces, String vert){
-        ArrayList<face> faceWithVert = new ArrayList();
+        ArrayList<face> faceWithVert = new ArrayList<face>();
+        ArrayList<Point3D> midUnitVert = new ArrayList<Point3D>();
         for(int j = 0; j < faces.size(); j ++){
             aresta k = faces.get(j).getArestaFace();
             int o = 0;
@@ -170,9 +171,19 @@ public class iluminacao {
                 }
             }
         }
+        
         for(int k = 0; k < faceWithVert.size(); k++){
-            System.out.println("teste = "+faceWithVert.get(k).getNomeFace());
+            System.out.println("testeAnt = "+faceWithVert.get(k).getNomeFace());
+            midUnitVert.add(normalDaFace(faceWithVert.get(k).arestasFace()));
+            for(int b = 0; b < faceWithVert.get(k).arestasFace().size(); b++){
+                System.out.println("aqui = "+faceWithVert.get(k).arestasFace().get(b).getInicio().ponto);
+            }
         }
+        for(int a = 0; a < midUnitVert.size(); a++){
+            System.out.println("testeAnt = "+midUnitVert.get(a));
+        }
+        
+        
 
     }
     
