@@ -119,7 +119,8 @@ public class controleEventoCanvas {
                             
                             caractere alterado = controle.refactChars1.get(controle.selectedChar);
                             
-                            alterado.translada(new Point3D(controle.localX, controle.localY,0));
+                            alterado.rotacaoFrente(controle.localX*0.5, controle.localY);
+                            
                             
                             caractere universo = controle.chars.get(controle.selectedChar);
                             controle.invertChar(alterado, controle.ct1,universo, 1);
