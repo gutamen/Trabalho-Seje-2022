@@ -395,6 +395,9 @@ public class ctrl extends Application {
             faceTestVisibilit(refactCharsAll, chars, VRPFrente, VRPTopo, VRPLado, VRPPerspectiva);
         }
         
+        iluminacao ilum = new iluminacao();
+        ilum.normVertFace(refactChars1.get(0).faces, "A");
+        //ilum.normVertFace(refactChars1.get(1).faces, "A");
           
         
         // VRP, P, Y, booelan projecao
@@ -408,10 +411,6 @@ public class ctrl extends Application {
             painter(refactChars4, canvas4);
         }
         
-         
-        iluminacao ilum = new iluminacao();
-        ilum.normVertFace(refactChars1.get(0).faces, "O");
-        //ilum.normVertFace(refactChars1.get(1).faces, "A");
         
         for(int i = 0; i < refactChars1.size(); i++){
             System.out.println(refactChars1.get(i).letra);
@@ -796,7 +795,7 @@ public class ctrl extends Application {
         }else if("interna".contains(type)){
             vectN = vectN = vect2.crossProduct(vect1); 
         }*/
-        vectN = vectN = vect1.crossProduct(vect2);
+        vectN = vect1.crossProduct(vect2);
         
         System.out.println("vectN = "+vectN);
         

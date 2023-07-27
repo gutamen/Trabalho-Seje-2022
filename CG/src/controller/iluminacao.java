@@ -139,9 +139,8 @@ public class iluminacao {
         
     }
     
-    public void normVertFace(ArrayList<face> faces, String vert){
+    public Point3D normVertFace(ArrayList<face> faces, String vert){
         ArrayList<face> faceWithVert = new ArrayList<face>();
-        ArrayList<Point3D> midUnitVert = new ArrayList<Point3D>();
         for(int j = 0; j < faces.size(); j ++){
             aresta k = faces.get(j).getArestaFace();
             int o = 0;
@@ -172,19 +171,29 @@ public class iluminacao {
             }
         }
         
-        for(int k = 0; k < faceWithVert.size(); k++){
-            System.out.println("testeAnt = "+faceWithVert.get(k).getNomeFace());
-            midUnitVert.add(normalDaFace(faceWithVert.get(k).arestasFace()));
-            for(int b = 0; b < faceWithVert.get(k).arestasFace().size(); b++){
-                System.out.println("aqui = "+faceWithVert.get(k).arestasFace().get(b).getInicio().ponto);
-            }
+        Point3D midUnitVert = makeNormal(faceWithVert.get(0).verticesFace());
+
+        for(int k = 1; k < faceWithVert.size(); k++){
+            midUnitVert = midUnitVert.add(makeNormal(faceWithVert.get(k).verticesFace()));
         }
-        for(int a = 0; a < midUnitVert.size(); a++){
-            System.out.println("testeAnt = "+midUnitVert.get(a));
-        }
+
         
+        midUnitVert = midUnitVert.normalize();
         
 
+        System.out.println("testeAnt = "+midUnitVert);
+        
+        return midUnitVert;
+    }
+    
+    public Point3D makeNormal(ArrayList<vertice> vertList){  
+        Point3D vect1 = vertList.get(1).ponto.subtract(vertList.get(0).ponto);
+        Point3D vect2 = vertList.get(vertList.size()-1).ponto.subtract(vertList.get(0).ponto);
+
+        Point3D vectN = null;
+
+        vectN = vect1.crossProduct(vect2);
+        return vectN.normalize();
     }
     
     public Point3D centroidePorArestas(ArrayList<aresta> entry){
