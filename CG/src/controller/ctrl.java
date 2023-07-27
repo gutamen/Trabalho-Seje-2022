@@ -1187,11 +1187,19 @@ public class ctrl extends Application {
         return matrizR;
     }
     
-    public void invertChar(caractere charParaConta, ctrlCam camera, caractere charParaInverter){
+    public void invertChar(caractere charParaConta, ctrlCam camera, caractere charParaInverter, int sentido){
         double[][] matPts = getMatPts(charParaConta);
         
-        matPts = mulM1M2(camera.matrizInversa(camera.getMJp()),matPts);
-        
+        switch(sentido){
+            case 1:
+                matPts = mulM1M2(camera.matrizInversa(camera.getMJp()),matPts);
+                break;
+            case 2:
+                matPts = mulM1M2(camera.matrizInversa(camera.getMJpTop()),matPts);
+                break;
+            case 3:
+                matPts = mulM1M2(camera.matrizInversa(camera.getMJpSide()),matPts);
+        }
         for(int i = 0; i < charParaInverter.vertices.size(); i++){
             charParaInverter.vertices.get(i).setVertice(matPts[0][i], matPts[1][i], matPts[2][i]);
         }
