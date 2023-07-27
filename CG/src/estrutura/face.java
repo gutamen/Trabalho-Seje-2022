@@ -102,4 +102,32 @@ public class face {
         return arestas;
     }
     
+    public ArrayList<vertice> verticesFace(){
+        ArrayList<vertice> vertices = new ArrayList<>();
+        
+        
+        if(this.arestaFace.direita.equals(this)){
+            vertices.add(this.arestaFace.getFim());
+        }
+        else{
+            vertices.add(this.arestaFace.getInicio());
+        }
+        
+        aresta k = this.arestaFace;
+        
+        do{
+            
+            if(k.direita.equals(this)){
+                k = k.arestaDireitaSuc;
+                vertices.add(k.getFim());
+            }
+            else{
+                k = k.arestaEsquerdaSuc;
+                vertices.add(k.getInicio());
+            }            
+        }while(!this.arestaFace.equals(k));
+        
+        return vertices;
+    }
+    
 }
