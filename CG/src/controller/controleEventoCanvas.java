@@ -84,7 +84,7 @@ public class controleEventoCanvas {
                             controle.refactChars4.set(controle.selectedChar, perspectiva);
                             
                             
-                            // Necessário ARRUMAR o INVERT CHAR TODOS ERRADOS PARA FUNCIONAR
+                            
                             controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, 2);
                             controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, 3);
                             controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
@@ -235,23 +235,23 @@ public class controleEventoCanvas {
                             controle.localY = controle.localY - ((long) event.getY());
                             controle.localY *= -1;
                             
-                            caractere alterado = controle.refactChars1.get(controle.selectedChar);
+                            caractere alterado = controle.refactChars2.get(controle.selectedChar);
                             
-                            alterado.translada(new Point3D(controle.localX, controle.localY,0));
+                            alterado.translada(new Point3D(controle.localX, 0,controle.localY));
                             
                             caractere universo = controle.chars.get(controle.selectedChar);
-                            controle.invertChar(alterado, controle.ct1,universo, 1);
+                            controle.invertChar(alterado, controle.ct1,universo, 2);
                             
-                            caractere topo = universo.copia();
+                            caractere frente = universo.copia();
                             caractere lado = universo.copia();
                             caractere perspectiva = universo.copia();
-                            controle.refactChars2.set(controle.selectedChar, topo);
+                            controle.refactChars1.set(controle.selectedChar, frente);
                             controle.refactChars3.set(controle.selectedChar, lado);
                             controle.refactChars4.set(controle.selectedChar, perspectiva);
                             
                             
-                            // Necessário ARRUMAR o INVERT CHAR TODOS ERRADOS PARA FUNCIONAR
-                            controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, 2);
+                            
+                            controle.ctrlVRP2SRUParaUmCaractere(frente, controle.ct1, controle.refactChars1, ctrl.VRPFrente, ctrl.PFrente, ctrl.viewUP, 1);
                             controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, 3);
                             controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
                             
@@ -332,24 +332,22 @@ public class controleEventoCanvas {
                             controle.localY = controle.localY - ((long) event.getY());
                             controle.localY *= -1;
                             
-                            caractere alterado = controle.refactChars1.get(controle.selectedChar);
+                            caractere alterado = controle.refactChars3.get(controle.selectedChar);
                             
-                            alterado.translada(new Point3D(controle.localX, controle.localY,0));
+                            alterado.translada(new Point3D(0, controle.localY,controle.localX));
                             
                             caractere universo = controle.chars.get(controle.selectedChar);
-                            controle.invertChar(alterado, controle.ct1,universo, 1);
+                            controle.invertChar(alterado, controle.ct3,universo, 3);
                             
+                            caractere frente = universo.copia();
                             caractere topo = universo.copia();
-                            caractere lado = universo.copia();
                             caractere perspectiva = universo.copia();
+                            controle.refactChars1.set(controle.selectedChar, frente);
                             controle.refactChars2.set(controle.selectedChar, topo);
-                            controle.refactChars3.set(controle.selectedChar, lado);
                             controle.refactChars4.set(controle.selectedChar, perspectiva);
                             
-                            
-                            // Necessário ARRUMAR o INVERT CHAR TODOS ERRADOS PARA FUNCIONAR
+                            controle.ctrlVRP2SRUParaUmCaractere(frente, controle.ct1, controle.refactChars1, ctrl.VRPFrente, ctrl.PFrente, ctrl.viewUP, 1);
                             controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, 2);
-                            controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, 3);
                             controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
                             
 
