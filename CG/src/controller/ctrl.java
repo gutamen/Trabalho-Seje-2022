@@ -1191,14 +1191,9 @@ public class ctrl extends Application {
         double[][] matPts = getMatPts(charParaConta);
         
         switch(sentido){
-            case 1:
-                matPts = mulM1M2(camera.matrizInversa(camera.getMJp()),matPts);
-                break;
-            case 2:
-                matPts = mulM1M2(camera.matrizInversa(camera.getMJpTop()),matPts);
-                break;
-            case 3:
-                matPts = mulM1M2(camera.matrizInversa(camera.getMJpSide()),matPts);
+            case 1 -> matPts = mulM1M2(camera.matrizInversa(camera.getMJp()),matPts);
+            case 2 -> matPts = mulM1M2(camera.matrizInversa(camera.getMJpTop()),matPts);
+            case 3 -> matPts = mulM1M2(camera.matrizInversa(camera.getMJpSide()),matPts);
         }
         for(int i = 0; i < charParaInverter.vertices.size(); i++){
             charParaInverter.vertices.get(i).setVertice(matPts[0][i], matPts[1][i], matPts[2][i]);
