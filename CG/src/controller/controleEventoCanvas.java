@@ -68,24 +68,27 @@ public class controleEventoCanvas {
                             controle.localX *= -1;
                             controle.localY = controle.localY - ((long) event.getY());
                             controle.localY *= -1;
-                            caractere mudanssa = controle.refactChars1.get(controle.selectedChar);                       
-                            caractere mudanssa1 = controle.refactChars2.get(controle.selectedChar);  
-                            caractere mudanssa2 = controle.refactChars3.get(controle.selectedChar);
-
-                            for(int k = 0; k < mudanssa.vertices.size(); k++){
-                                mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(controle.localX, controle.localY, 0);
-                                mudanssa1.vertices.get(k).ponto = mudanssa1.vertices.get(k).ponto.add(controle.localX, controle.localY, 0);
-                                mudanssa2.vertices.get(k).ponto = mudanssa2.vertices.get(k).ponto.add(controle.localX, controle.localY, 0);
-                            }
-
+                            
+                            caractere alterado = controle.refactChars1.get(controle.selectedChar);
+                            
+                            alterado.translada(new Point3D(controle.localX, controle.localY,0));
+                            
                             caractere universo = controle.chars.get(controle.selectedChar);
-                            controle.invertChar(mudanssa, controle.ct1,universo);
+                            controle.invertChar(alterado, controle.ct1,universo, 1);
+                            
+                            caractere topo = universo.copia();
+                            caractere lado = universo.copia();
                             caractere perspectiva = universo.copia();
+                            controle.refactChars2.set(controle.selectedChar, topo);
+                            controle.refactChars3.set(controle.selectedChar, lado);
                             controle.refactChars4.set(controle.selectedChar, perspectiva);
                             
+                            
                             // Necessário ARRUMAR o INVERT CHAR TODOS ERRADOS PARA FUNCIONAR
+                            controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, 2);
+                            controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, 3);
                             controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
-                            //controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
+                            
 
                             if(controle.setFaceOcult.isSelected()){
                                 controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
@@ -150,7 +153,7 @@ public class controleEventoCanvas {
 
                             caractere universo = controle.chars.get(controle.selectedChar);
                             caractere perspectiva = controle.refactChars4.get(controle.selectedChar);
-                            controle.invertChar(mudanssa, controle.ct1,universo);
+                            //controle.invertChar(mudanssa, controle.ct1,universo);
                             controle.copiaVertices(perspectiva,universo);
                             controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
 
@@ -231,21 +234,27 @@ public class controleEventoCanvas {
                             controle.localX *= -1;
                             controle.localY = controle.localY - ((long) event.getY());
                             controle.localY *= -1;
-                            caractere mudanssa = controle.refactChars1.get(controle.selectedChar);
-                            caractere mudanssa1 = controle.refactChars2.get(controle.selectedChar);
-                            caractere mudanssa2 = controle.refactChars3.get(controle.selectedChar);
-
-                            for(int k = 0; k < mudanssa.vertices.size(); k++){
-                                mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(controle.localX, 0, controle.localY);
-                                mudanssa1.vertices.get(k).ponto = mudanssa1.vertices.get(k).ponto.add(controle.localX, 0, controle.localY);
-                                mudanssa2.vertices.get(k).ponto = mudanssa2.vertices.get(k).ponto.add(controle.localX, 0, controle.localY);
-                            }
+                            
+                            caractere alterado = controle.refactChars1.get(controle.selectedChar);
+                            
+                            alterado.translada(new Point3D(controle.localX, controle.localY,0));
                             
                             caractere universo = controle.chars.get(controle.selectedChar);
-                            caractere perspectiva = controle.refactChars4.get(controle.selectedChar);
-                            controle.invertChar(mudanssa, controle.ct2,universo);
-                            controle.copiaVertices(perspectiva,universo);
+                            controle.invertChar(alterado, controle.ct1,universo, 1);
+                            
+                            caractere topo = universo.copia();
+                            caractere lado = universo.copia();
+                            caractere perspectiva = universo.copia();
+                            controle.refactChars2.set(controle.selectedChar, topo);
+                            controle.refactChars3.set(controle.selectedChar, lado);
+                            controle.refactChars4.set(controle.selectedChar, perspectiva);
+                            
+                            
+                            // Necessário ARRUMAR o INVERT CHAR TODOS ERRADOS PARA FUNCIONAR
+                            controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, 2);
+                            controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, 3);
                             controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
+                            
 
                             if(controle.setFaceOcult.isSelected()){
                                 controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
@@ -323,21 +332,26 @@ public class controleEventoCanvas {
                             controle.localY = controle.localY - ((long) event.getY());
                             controle.localY *= -1;
                             
-                            caractere mudanssa = controle.refactChars1.get(controle.selectedChar);
-                            caractere mudanssa1 = controle.refactChars2.get(controle.selectedChar);
-                            caractere mudanssa2 = controle.refactChars3.get(controle.selectedChar);
+                            caractere alterado = controle.refactChars1.get(controle.selectedChar);
                             
-                            for(int k = 0; k < mudanssa.vertices.size(); k++){
-                                mudanssa.vertices.get(k).ponto = mudanssa.vertices.get(k).ponto.add(0, controle.localY, controle.localX);
-                                mudanssa1.vertices.get(k).ponto = mudanssa1.vertices.get(k).ponto.add(0, controle.localY, controle.localX);
-                                mudanssa2.vertices.get(k).ponto = mudanssa2.vertices.get(k).ponto.add(0, controle.localY, controle.localX);
-                            }
+                            alterado.translada(new Point3D(controle.localX, controle.localY,0));
                             
                             caractere universo = controle.chars.get(controle.selectedChar);
-                            caractere perspectiva = controle.refactChars4.get(controle.selectedChar);
-                            controle.invertChar(mudanssa, controle.ct3,universo);
-                            controle.copiaVertices(perspectiva,universo);
+                            controle.invertChar(alterado, controle.ct1,universo, 1);
+                            
+                            caractere topo = universo.copia();
+                            caractere lado = universo.copia();
+                            caractere perspectiva = universo.copia();
+                            controle.refactChars2.set(controle.selectedChar, topo);
+                            controle.refactChars3.set(controle.selectedChar, lado);
+                            controle.refactChars4.set(controle.selectedChar, perspectiva);
+                            
+                            
+                            // Necessário ARRUMAR o INVERT CHAR TODOS ERRADOS PARA FUNCIONAR
+                            controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, 2);
+                            controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, 3);
                             controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
+                            
 
                             if(controle.setFaceOcult.isSelected()){
                                 controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
