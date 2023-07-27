@@ -13,6 +13,7 @@ import javafx.scene.paint.Color;
 public class pontoZbufferConstante {
     private Color cor = Color.WHITE;
     private double Z = Double.MIN_VALUE;
+    private double X = 0;
     
     public pontoZbufferConstante(){
     
@@ -23,8 +24,18 @@ public class pontoZbufferConstante {
         this.Z = Z;
     }
     
+    public pontoZbufferConstante(double X, double Z, int R, int G, int B){
+        this.cor = Color.rgb((int)R,(int)G,(int)B);
+        this.Z = Z;
+        this.X = X;
+    }
+    
     public Color corNoPonto(){
         return this.cor;
+    }
+    
+    public double getX(){
+        return this.X;
     }
     
     public double profundiade(){

@@ -102,6 +102,35 @@ public class face {
         return arestas;
     }
     
+    public ArrayList<aresta> arestasFaceComBuraco(){
+        ArrayList<aresta> arestas = new ArrayList<>();
+        
+        aresta i = this.arestaFace;
+        do{
+            arestas.add(i);
+            if(i.esquerda.equals(this)){
+                i = i.arestaEsquerdaSuc;
+            }
+            else{
+                i = i.arestaDireitaSuc;
+            }            
+        }while(!this.arestaFace.equals(i));
+
+        for(int l = 0; l < this.quantosBuracos; l++){
+
+            i = this.arestaBuraco[l];
+            do{
+
+                arestas.add(i);
+                i = i.arestaEsquerdaSuc;
+
+            }while(!this.arestaBuraco[l].equals(i));
+
+        }
+        
+        return arestas;
+    }
+    
     public ArrayList<vertice> verticesFace(){
         ArrayList<vertice> vertices = new ArrayList<>();
         
@@ -123,5 +152,62 @@ public class face {
         
         return vertices;
     }
+    
+    public ArrayList<vertice> verticesFaceComBuraco(){
+        ArrayList<vertice> vertices = new ArrayList<>();
+        
+        
+        
+        aresta k = this.arestaFace;
+        
+        do{
+            
+            if(k.direita.equals(this)){
+                vertices.add(k.getFim());
+                k = k.arestaDireitaSuc;
+            }
+            else{
+                vertices.add(k.getInicio());
+                k = k.arestaEsquerdaSuc;
+            }            
+        }while(!this.arestaFace.equals(k));
+        
+        for(int i = 0; i < this.quantosBuracos; i++){
+            k = this.arestaBuraco[i];
+        
+            do{
+                    vertices.add(k.getInicio());
+                    k = k.arestaEsquerdaSuc;             
+
+            }while(!this.arestaBuraco[i].equals(k));
+        }
+        
+        return vertices;
+    }
+    
+    
+    public vertice[] minmaxY(){
+        vertice[] retorno = new vertice[2];
+        int[] testes = {Integer.MAX_VALUE, Integer.MIN_VALUE};
+        
+        ArrayList<vertice> lista = this.verticesFaceComBuraco();
+        
+        for(int i = 0; i < lista.size(); i++){
+            int teste = (int)lista.get(i).getX();
+            
+            if(teste > testes[1]){
+                testes[1] = teste;
+                retorno[1] = lista.get(i);
+            }
+            
+            if(teste < testes[0]){
+                testes[0] = teste;
+                retorno[0] = lista.get(i);
+            }
+        }
+        
+        return retorno;
+    }
+    
     
 }

@@ -92,58 +92,210 @@ public class iluminacao {
                     }
                 }
                 
-                ArrayList<aresta> arestas = caracteresPerspectiva.get(i).faces.get(j).arestasFace();
-                for(int k = 0; arestas.size() > k; k++){
-                    if((int)arestas.get(k).getFim().getY() == (int)arestas.get(k).getInicio().getY()){
-                        
-                    }
-                    else if((int)arestas.get(k).getFim().getY() > (int)arestas.get(k).getInicio().getY()){
-                        double taxaX = (arestas.get(k).getFim().getX() - arestas.get(k).getInicio().getX())/((int)arestas.get(k).getFim().getY() - (int)arestas.get(k).getInicio().getY());
-                        double taxaZ = (arestas.get(k).getFim().getZ() - arestas.get(k).getInicio().getZ())/((int)arestas.get(k).getFim().getY() - (int)arestas.get(k).getInicio().getY());
-                        System.out.println("aquiY > = "+arestas.get(k).getFim().getY());
-                        System.out.println("aquiX > = "+arestas.get(k).getFim().getX());
-                        if((int)arestas.get(k).getInicio().getX() >= 0 && (int)arestas.get(k).getInicio().getY() >= 0 && (int)arestas.get(k).getInicio().getX() < matrizTela.length && (int)arestas.get(k).getInicio().getY() < matrizTela[0].length){   
-                            if(matrizTela[(int)(arestas.get(k).getInicio().getX())][(int)arestas.get(k).getInicio().getY()].profundiade() < arestas.get(k).getInicio().getZ()){
-                                matrizTela[(int)arestas.get(k).getInicio().getX()][(int)arestas.get(k).getInicio().getY()] = new pontoZbufferConstante(arestas.get(k).getInicio().getZ(), (int) It[0], (int) It[1], (int) It[2]); 
+                ArrayList<aresta> arestas = caracteresPerspectiva.get(i).faces.get(j).arestasFaceComBuraco();
+                
+                vertice[] minimoMaximo = caracteresPerspectiva.get(i).faces.get(j).minmaxY();
+                
+                int yMin = (int)minimoMaximo[0].getY();
+                
+                ArrayList<pontoZbufferConstante>[] bufferFace = new ArrayList[(int)minimoMaximo[1].getY()-yMin];
+                if((int)minimoMaximo[1].getY()-yMin == 0){
+                    for(int l = 0; l < arestas.size(); l++){
+                        aresta auxiliar = arestas.get(i);
+                        if(auxiliar.getFim().getY() > auxiliar.getInicio().getY()){
+                            continue;
+                        }else if(auxiliar.getFim().getY() > auxiliar.getInicio().getY()){
+
+                            int posicaoBuffer = (int)auxiliar.getInicio().getY()-yMin;
+
+                            if(bufferFace[posicaoBuffer] == null){
+                                bufferFace[posicaoBuffer] = new ArrayList<>();
                             }
+
+                            if(bufferFace[posicaoBuffer].isEmpty()){
+                                bufferFace[posicaoBuffer].add(new pontoZbufferConstante(auxiliar.getInicio().getX(), auxiliar.getInicio().getZ(), (int) It[0], (int) It[1], (int) It[2]));
+                            }else{
+                                int avanco = 0;
+
+                                do{
+                                   avanco++; 
+                                }while(bufferFace[posicaoBuffer].size() <= avanco && bufferFace[posicaoBuffer].get(avanco).getX() <= auxiliar.getInicio().getX());
+
+                                bufferFace[posicaoBuffer].add(avanco, new pontoZbufferConstante(auxiliar.getInicio().getX(), auxiliar.getInicio().getZ(), (int) It[0], (int) It[1], (int) It[2]));
+
+                                double taxaZ = (auxiliar.getFim().getZ() - auxiliar.getInicio().getZ()) / (auxiliar.getFim().getY() - auxiliar.getInicio().getY());
+                                double taxaX = (auxiliar.getFim().getX() - auxiliar.getInicio().getX()) / (auxiliar.getFim().getY() - auxiliar.getInicio().getY());
+
+                                posicaoBuffer++;
+
+                                for(int k = posicaoBuffer; k <= (int) auxiliar.getFim().getY() ; k++){
+
+                                    if(bufferFace[k] == null){
+                                        bufferFace[k] = new ArrayList<>();
+                                    }
+
+                                    if(bufferFace[k].isEmpty()){
+                                        bufferFace[k].add(new pontoZbufferConstante(auxiliar.getInicio().getX()+(taxaX*(k-posicaoBuffer)), auxiliar.getInicio().getZ()+(taxaZ*(k-posicaoBuffer+1)), (int) It[0], (int) It[1], (int) It[2]));
+                                    }else{
+                                        avanco = 0;
+
+                                        do{
+                                           avanco++; 
+                                        }while(bufferFace[k].size() <= avanco && bufferFace[k].get(avanco).getX() <= auxiliar.getInicio().getX()+(taxaX*(k-posicaoBuffer)));
+
+                                        bufferFace[k].add(avanco, new pontoZbufferConstante(auxiliar.getInicio().getX()+(taxaX*(k-posicaoBuffer)), auxiliar.getInicio().getZ()+(taxaZ*(k-posicaoBuffer)), (int) It[0], (int) It[1], (int) It[2]));
+
+
+                                    }
+                                }   
+                            }
+
+                        }else{
+
+
+                            int posicaoBuffer = (int)auxiliar.getInicio().getY()-yMin;
+                            
+                            if(bufferFace[posicaoBuffer] == null){
+                                bufferFace[posicaoBuffer] = new ArrayList<>();
+                            }
+
+                            if(bufferFace[posicaoBuffer].isEmpty()){
+                                bufferFace[posicaoBuffer].add(new pontoZbufferConstante(auxiliar.getFim().getX(), auxiliar.getFim().getZ(), (int) It[0], (int) It[1], (int) It[2]));
+                            }else{
+                                int avanco = 0;
+
+                                do{
+                                   avanco++; 
+                                }while(bufferFace[posicaoBuffer].size() <= avanco && bufferFace[posicaoBuffer].get(avanco).getX() <= auxiliar.getFim().getX());
+
+                                bufferFace[posicaoBuffer].add(avanco, new pontoZbufferConstante(auxiliar.getFim().getX(), auxiliar.getFim().getZ(), (int) It[0], (int) It[1], (int) It[2]));
+
+                                double taxaZ = auxiliar.getInicio().getZ() - auxiliar.getFim().getZ() / (auxiliar.getInicio().getY() - auxiliar.getFim().getY());
+                                double taxaX = auxiliar.getInicio().getX() - auxiliar.getFim().getX() / (auxiliar.getInicio().getY() - auxiliar.getFim().getY());
+
+                                posicaoBuffer++;
+
+                                for(int k = posicaoBuffer; k <= (int) auxiliar.getInicio().getY() ; k++){
+
+                                    if(bufferFace[k] == null){
+                                        bufferFace[k] = new ArrayList<>();
+                                    }
+
+                                    if(bufferFace[k].isEmpty()){
+                                        bufferFace[k].add(new pontoZbufferConstante(auxiliar.getFim().getX()+(taxaX*(k-posicaoBuffer)), auxiliar.getFim().getZ()+(taxaZ*(k-posicaoBuffer+1)), (int) It[0], (int) It[1], (int) It[2]));
+                                    }else{
+                                        avanco = 0;
+
+                                        do{
+                                           avanco++; 
+                                        }while(bufferFace[k].size() <= avanco && bufferFace[k].get(avanco).getX() <= auxiliar.getFim().getX()+(taxaX*(k-posicaoBuffer)));
+
+                                        bufferFace[k].add(avanco, new pontoZbufferConstante(auxiliar.getFim().getX()+(taxaX*(k-posicaoBuffer)), auxiliar.getFim().getZ()+(taxaZ*(k-posicaoBuffer)), (int) It[0], (int) It[1], (int) It[2]));
+
+
+                                    }
+                                }   
+                            }
+
+
                         }
-                        
-                        for(int incremento = (int) arestas.get(k).getInicio().getY() + 1, passo = 1; incremento < (int)arestas.get(k).getFim().getY(); incremento++, passo++){
-                            if(arestas.get(k).getInicio().getX()+passo*taxaX >= 0 && incremento >= 0
-                            && arestas.get(k).getInicio().getX()+passo*taxaX < matrizTela.length && incremento < matrizTela[0].length){
-                                if(matrizTela[(int)(arestas.get(k).getInicio().getX()+passo*taxaX)][incremento].profundiade() < arestas.get(k).getInicio().getZ()+(passo*taxaZ) ){
-                                    matrizTela[(int)(arestas.get(k).getInicio().getX()+passo*taxaX)][incremento] = new pontoZbufferConstante(arestas.get(k).getInicio().getZ()+passo*taxaZ, (int) It[0], (int) It[1], (int) It[2]);
+
+
+                    }
+
+                    for(int k = 0; k < bufferFace.length; k++){
+
+                        ArrayList<pontoZbufferConstante> lista = bufferFace[k];
+                        if(lista.size() > 1){
+                            for(int l = 0; l < lista.size(); l+=2){
+                                double taxaZ = (lista.get(l+1).profundiade() - lista.get(l).profundiade()) / (lista.get(l+1).getX() - lista.get(l).getX()); 
+
+                                if(lista.get(l).getX() > 0 && k+yMin >= 0 && lista.get(l).getX() <= matrizTela.length && k+yMin <= matrizTela[0].length){
+                                    if(matrizTela[(int)lista.get(l).getX()][k+yMin].profundiade() < lista.get(l).profundiade()){
+                                        matrizTela[(int)lista.get(l).getX()][k+yMin] = lista.get(l);
+                                    }
+                                }
+
+                                int avanco = 1;
+                                for(int coluna = 1 + ((int) lista.get(l).getX()); coluna < (int) lista.get(l+1).getX(); coluna++ ){
+                                    pontoZbufferConstante pontoIncrementado = new pontoZbufferConstante(lista.get(l).profundiade()+(taxaZ*avanco), (int) It[0], (int) It[1], (int) It[2]);
+
+                                    if(coluna > 0 && k+yMin >= 0 && coluna <= matrizTela.length && k+yMin <= matrizTela[0].length){
+                                        if(matrizTela[(int)lista.get(0).getX()][k+yMin].profundiade() < pontoIncrementado.profundiade()){
+                                            matrizTela[(int)lista.get(0).getX()][k+yMin] = pontoIncrementado;
+                                        }
+                                    }
+
+                                }
+
+                            }
+                        }else{
+                            if(lista.get(0).getX() > 0 && k+yMin >= 0 && lista.get(0).getX() <= matrizTela.length && k+yMin <= matrizTela[0].length){
+                                if(matrizTela[(int)lista.get(0).getX()][k+yMin].profundiade() < lista.get(0).profundiade()){
+                                    matrizTela[(int)lista.get(0).getX()][k+yMin] = lista.get(0);
                                 }
                             }
                         }
+
                     }
-                    else{
-                        double taxaX = (arestas.get(k).getInicio().getX() - arestas.get(k).getFim().getX())/((int)arestas.get(k).getInicio().getY() - (int)arestas.get(k).getFim().getY());
-                        double taxaZ = (arestas.get(k).getInicio().getZ() - arestas.get(k).getFim().getZ())/((int)arestas.get(k).getInicio().getY() - (int)arestas.get(k).getFim().getY());
-                        System.out.println("aquiY > = "+(int)arestas.get(k).getFim().getY());
-                        System.out.println("aquiX > = "+(int)arestas.get(k).getFim().getX()); 
-                        if((int)arestas.get(k).getFim().getX() >= 0 && (int)arestas.get(k).getFim().getY() >= 0 && (int)arestas.get(k).getFim().getX() <= matrizTela.length && (int)arestas.get(k).getFim().getY() <= matrizTela[0].length){ 
-                            if(matrizTela[(int)(arestas.get(k).getFim().getX())][(int)arestas.get(k).getFim().getY()].profundiade() > arestas.get(k).getFim().getZ()){
-                                matrizTela[(int)arestas.get(k).getFim().getX()][(int)arestas.get(k).getFim().getY()] = new pontoZbufferConstante(arestas.get(k).getFim().getZ(), (int) It[0], (int) It[1], (int) It[2]);
-                            }
-                        }
-                        
-                        for(int incremento = (int) arestas.get(k).getFim().getY() + 1, passo = 1; incremento < (int)arestas.get(k).getInicio().getY(); incremento++, passo++){
-                            if(arestas.get(k).getFim().getX()+passo*taxaX >= 0 && incremento >= 0
-                            && arestas.get(k).getFim().getX()+passo*taxaX <= matrizTela.length && incremento <= matrizTela[0].length){
-                                if(matrizTela[(int)(arestas.get(k).getFim().getX()+passo*taxaX)][incremento].profundiade() > arestas.get(k).getFim().getZ()+(passo*taxaZ) ){
-                                    matrizTela[(int)(arestas.get(k).getFim().getX()+passo*taxaX)][incremento] = new pontoZbufferConstante(arestas.get(k).getFim().getZ()+passo*taxaZ, (int) It[0], (int) It[1], (int) It[2]);
-                                }
-                            }
-                        }
-                        
-                        
-                        
-                    }
+                    
                 }
                 
                 
-                
+//                for(int k = 0; arestas.size() > k; k++){
+//                    if((int)arestas.get(k).getFim().getY() == (int)arestas.get(k).getInicio().getY()){
+//
+//                    }
+//                    else if((int)arestas.get(k).getFim().getY() > (int)arestas.get(k).getInicio().getY()){
+//                        double taxaX = (arestas.get(k).getFim().getX() - arestas.get(k).getInicio().getX())/((int)arestas.get(k).getFim().getY() - (int)arestas.get(k).getInicio().getY());
+//                        double taxaZ = (arestas.get(k).getFim().getZ() - arestas.get(k).getInicio().getZ())/((int)arestas.get(k).getFim().getY() - (int)arestas.get(k).getInicio().getY());
+//                        System.out.println("aquiY > = "+arestas.get(k).getFim().getY());
+//                        System.out.println("aquiX > = "+arestas.get(k).getFim().getX());
+//                        if((int)arestas.get(k).getInicio().getX() >= 0 && (int)arestas.get(k).getInicio().getY() >= 0 && (int)arestas.get(k).getInicio().getX() < matrizTela.length && (int)arestas.get(k).getInicio().getY() < matrizTela[0].length){   
+//                            if(matrizTela[(int)(arestas.get(k).getInicio().getX())][(int)arestas.get(k).getInicio().getY()].profundiade() < arestas.get(k).getInicio().getZ()){
+//                                matrizTela[(int)arestas.get(k).getInicio().getX()][(int)arestas.get(k).getInicio().getY()] = new pontoZbufferConstante(arestas.get(k).getInicio().getZ(), (int) It[0], (int) It[1], (int) It[2]); 
+//                            }
+//                        }
+//
+//                        for(int incremento = (int) arestas.get(k).getInicio().getY() + 1, passo = 1; incremento < (int)arestas.get(k).getFim().getY(); incremento++, passo++){
+//                            if(arestas.get(k).getInicio().getX()+passo*taxaX >= 0 && incremento >= 0
+//                            && arestas.get(k).getInicio().getX()+passo*taxaX < matrizTela.length && incremento < matrizTela[0].length){
+//                                if(matrizTela[(int)(arestas.get(k).getInicio().getX()+passo*taxaX)][incremento].profundiade() < arestas.get(k).getInicio().getZ()+(passo*taxaZ) ){
+//                                    matrizTela[(int)(arestas.get(k).getInicio().getX()+passo*taxaX)][incremento] = new pontoZbufferConstante(arestas.get(k).getInicio().getZ()+passo*taxaZ, (int) It[0], (int) It[1], (int) It[2]);
+//                                }
+//                            }
+//                        }
+//                    }
+//                    else{
+//                        double taxaX = (arestas.get(k).getInicio().getX() - arestas.get(k).getFim().getX())/((int)arestas.get(k).getInicio().getY() - (int)arestas.get(k).getFim().getY());
+//                        double taxaZ = (arestas.get(k).getInicio().getZ() - arestas.get(k).getFim().getZ())/((int)arestas.get(k).getInicio().getY() - (int)arestas.get(k).getFim().getY());
+//                        System.out.println("aquiY > = "+(int)arestas.get(k).getFim().getY());
+//                        System.out.println("aquiX > = "+(int)arestas.get(k).getFim().getX()); 
+//                        if((int)arestas.get(k).getFim().getX() >= 0 && (int)arestas.get(k).getFim().getY() >= 0 && (int)arestas.get(k).getFim().getX() <= matrizTela.length && (int)arestas.get(k).getFim().getY() <= matrizTela[0].length){ 
+//                            if(matrizTela[(int)(arestas.get(k).getFim().getX())][(int)arestas.get(k).getFim().getY()].profundiade() > arestas.get(k).getFim().getZ()){
+//                                matrizTela[(int)arestas.get(k).getFim().getX()][(int)arestas.get(k).getFim().getY()] = new pontoZbufferConstante(arestas.get(k).getFim().getZ(), (int) It[0], (int) It[1], (int) It[2]);
+//                            }
+//                        }
+//
+//                        for(int incremento = (int) arestas.get(k).getFim().getY() + 1, passo = 1; incremento < (int)arestas.get(k).getInicio().getY(); incremento++, passo++){
+//                            if(arestas.get(k).getFim().getX()+passo*taxaX >= 0 && incremento >= 0
+//                            && arestas.get(k).getFim().getX()+passo*taxaX <= matrizTela.length && incremento <= matrizTela[0].length){
+//                                if(matrizTela[(int)(arestas.get(k).getFim().getX()+passo*taxaX)][incremento].profundiade() > arestas.get(k).getFim().getZ()+(passo*taxaZ) ){
+//                                    matrizTela[(int)(arestas.get(k).getFim().getX()+passo*taxaX)][incremento] = new pontoZbufferConstante(arestas.get(k).getFim().getZ()+passo*taxaZ, (int) It[0], (int) It[1], (int) It[2]);
+//                                }
+//                            }
+//                        }
+//
+//
+//
+//                    }
+//                }
+//
+//
+//
+            
+
+
             }
             
             writMat(matrizTela);
