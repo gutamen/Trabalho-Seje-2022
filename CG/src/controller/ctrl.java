@@ -411,7 +411,7 @@ public class ctrl extends Application {
          
         iluminacao ilum = new iluminacao();
         ilum.normVertFace(refactChars1.get(0).faces, "O");
-        ilum.normVertFace(refactChars1.get(1).faces, "A");
+        //ilum.normVertFace(refactChars1.get(1).faces, "A");
         
         for(int i = 0; i < refactChars1.size(); i++){
             System.out.println(refactChars1.get(i).letra);
@@ -684,7 +684,7 @@ public class ctrl extends Application {
     }
     
     public void faceTestVisibilit(ArrayList<ArrayList<caractere>> refactChars, ArrayList<caractere> chars, Point3D vrp1, Point3D vrp2, Point3D vrp3, Point3D vrp4){
-        ArrayList<vertice> vertList = new ArrayList<vertice>();
+        ArrayList<vertice> vertList;
         
         for(int i = 0; i < chars.size(); i++){
             for(int j = 0; j < chars.get(i).faces.size(); j ++){
@@ -694,7 +694,7 @@ public class ctrl extends Application {
                 /*if(true){*/
                     System.out.println("j = "+j);
                     boolean rigth = false;
-                    for(aresta p = new aresta("null"); !k.getNomeAresta().equals(p.getNomeAresta()); o++){
+                    /*for(aresta p = new aresta("null"); !k.getNomeAresta().equals(p.getNomeAresta()); o++){
                         if(o < 1){
                             p = k;
                         }
@@ -714,9 +714,10 @@ public class ctrl extends Application {
                             p = p.getArestaEsquerdaSuc();
                             rigth = false;
                         }
-                    }
-                    
+                    }*/
+                    vertList = chars.get(i).faces.get(j).verticesFace();
                     System.out.println(" entro aqui");
+                    
                     allInOne(refactChars, vertList, vrp1, vrp2, vrp3, vrp4, i, j, "notinterna");
                 /*}else{
                     for(aresta p = chars.get(i).faces.get(j).getArestaFace().getArestaDireitaSuc();

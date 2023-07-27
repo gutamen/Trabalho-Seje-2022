@@ -106,24 +106,18 @@ public class face {
         ArrayList<vertice> vertices = new ArrayList<>();
         
         
-        if(this.arestaFace.direita.equals(this)){
-            vertices.add(this.arestaFace.getFim());
-        }
-        else{
-            vertices.add(this.arestaFace.getInicio());
-        }
         
         aresta k = this.arestaFace;
         
         do{
             
             if(k.direita.equals(this)){
-                k = k.arestaDireitaSuc;
                 vertices.add(k.getFim());
+                k = k.arestaDireitaSuc;
             }
             else{
-                k = k.arestaEsquerdaSuc;
                 vertices.add(k.getInicio());
+                k = k.arestaEsquerdaSuc;
             }            
         }while(!this.arestaFace.equals(k));
         
