@@ -84,4 +84,22 @@ public class face {
     public void setArestaFace(aresta arestaFace) {
         this.arestaFace = arestaFace;
     }
+    
+    public ArrayList<aresta> arestasFace(){
+        ArrayList<aresta> arestas = new ArrayList<>();
+        
+        aresta i = this.arestaFace;
+        do{
+            arestas.add(i);
+            if(i.esquerda.equals(this)){
+                i = i.arestaEsquerdaSuc;
+            }
+            else{
+                i = i.arestaDireitaSuc;
+            }            
+        }while(!this.arestaFace.equals(i));
+        
+        return arestas;
+    }
+    
 }
