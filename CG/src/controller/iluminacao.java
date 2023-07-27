@@ -160,7 +160,11 @@ public class iluminacao {
                         faceWithVert.add(faces.get(j));
                     } 
                 }
-
+                
+                if(faceWithVert.size() == 3){
+                    break;
+                }
+                
                 if(p.getDireita().getNomeFace().equals(faces.get(j).getNomeFace())){
                     p = p.getArestaDireitaSuc();
                     rigth = true;
