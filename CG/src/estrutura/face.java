@@ -128,6 +128,12 @@ public class face {
 
         }
         
+//        System.out.println(this.getNomeFace());
+//        for(int a = 0; a < arestas.size(); a++){
+//            System.out.print("  " + arestas.get(a).getNomeAresta());
+//        }
+//        System.out.println("");
+        
         return arestas;
     }
     
@@ -193,7 +199,7 @@ public class face {
         ArrayList<vertice> lista = this.verticesFaceComBuraco();
         
         for(int i = 0; i < lista.size(); i++){
-            int teste = (int)lista.get(i).getX();
+            int teste = (int)lista.get(i).getY();
             
             if(teste > testes[1]){
                 testes[1] = teste;
@@ -205,6 +211,10 @@ public class face {
                 retorno[0] = lista.get(i);
             }
         }
+        
+//        System.out.println("pontos da face " + this.getNomeFace());
+//        System.out.println(retorno[0].getNomeVertice() + " " + retorno[0].ponto);
+//        System.out.println(retorno[1].getNomeVertice() + " " + retorno[1].ponto);
         
         return retorno;
     }
