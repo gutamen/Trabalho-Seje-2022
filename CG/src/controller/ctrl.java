@@ -27,6 +27,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
@@ -36,6 +37,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
@@ -70,7 +72,11 @@ public class ctrl extends Application {
     Text txChar;
     Spinner<String> getChar;
     SpinnerValueFactory<String> strChar;
-            
+    Button next;
+    Button prev;
+    TextArea choiceChar;
+    int nn;
+    
     ToggleGroup selecaoComando; 
     RadioButton botaoTranslacao;
     RadioButton botaoRotacao;
@@ -141,7 +147,9 @@ public class ctrl extends Application {
         kd = new TextArea();
         n = new TextArea();
         txChar = new Text("CHAR");
-        getChar = new Spinner<String>();
+        next = new Button("NXT");
+        prev = new Button("PRV");
+        choiceChar = new TextArea();
         
         txZ.setLayoutX(765);
         txZ.setLayoutY(115);
@@ -161,10 +169,21 @@ public class ctrl extends Application {
         txChar.setLayoutX(820);
         txChar.setLayoutY(548);
         
-        getChar.setMinSize(0, 0);
-        getChar.setMaxSize(55, 100);
-        getChar.setLayoutX(810);
-        getChar.setLayoutY(552);
+        choiceChar.setMinSize(0, 0);
+        choiceChar.setMaxSize(44, 28);
+        choiceChar.setLayoutX(818);
+        choiceChar.setLayoutY(574);
+        
+        next.setMinSize(0, 0);
+        next.setMaxSize(70, 28);
+        next.setLayoutX(818);
+        next.setLayoutY(550);
+        
+        prev.setMinSize(0, 0);
+        prev.setMaxSize(70, 28);
+        prev.setLayoutX(818);
+        prev.setLayoutY(602);
+        
         
         ka.setLayoutX(724);
         ka.setLayoutY(550);
@@ -278,9 +297,12 @@ public class ctrl extends Application {
         root.getChildren().add(txkd);
         root.getChildren().add(txks);
         root.getChildren().add(txn);
-        root.getChildren().add(getChar);
         root.getChildren().add(txChar);
+        root.getChildren().add(next);
+        root.getChildren().add(prev);
+        root.getChildren().add(choiceChar);
 
+        nn = 0;
         
         choice.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -321,22 +343,15 @@ public class ctrl extends Application {
             root.getChildren().add(txkd);
             root.getChildren().add(txks);
             root.getChildren().add(txn);
-            root.getChildren().add(getChar);
             root.getChildren().add(txChar);
+            root.getChildren().add(next);
+            root.getChildren().add(prev);
             
-            /*char[] ssr = new char[2*txConfirmString.getText().toCharArray().length];
-            String st = new String();
-            for(int i = 0, j = i+1, k = 0; i < 2*txConfirmString.getText().toCharArray().length; i+=2,k++){
-                ssr[i] = txConfirmString.getText().toCharArray()[k];
-                st.concat(ssr[i]);
-                ssr[j] = ',';
-            }
+            nn=0;
+            choiceChar.setText(txConfirmString.getText().subSequence(nn, nn+1).toString().toUpperCase());
+            root.getChildren().add(choiceChar);
             
-            System.out.println("str = "+str);
-            ObservableList<String> chr = FXCollections.observableArrayList(str);
-            System.out.println("chr = "+chr);
-            strChar = new SpinnerValueFactory.ListSpinnerValueFactory<String>(chr);
-            */
+            
             trueStart(stage, root, txConfirmString.getText(), scene, choice.getValue().toString(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
         });
         
@@ -369,6 +384,10 @@ public class ctrl extends Application {
             root.getChildren().add(txn);
             root.getChildren().add(getChar);
             root.getChildren().add(txChar);
+            root.getChildren().add(next);
+            root.getChildren().add(prev);
+            root.getChildren().add(choiceChar);
+
 
             carregado = true;
             carregamento = controleArquivo.carregaArquivo(stage);
@@ -383,6 +402,17 @@ public class ctrl extends Application {
             controleArquivo.salvaArquivo(chars, stage);
             
         });
+    
+        next.setOnAction((ActionEvent evento) -> {
+            nn++;
+            choiceChar.setText(txConfirmString.getText().subSequence(nn, nn+1).toString().toUpperCase());
+            
+        });
+        
+        prev.setOnAction((ActionEvent evento) -> {    
+            nn--;
+            choiceChar.setText(txConfirmString.getText().subSequence(nn, nn+1).toString().toUpperCase());
+        });    
     }
     
     private void trueStart(Stage stage, Group root, String readed, Scene scene, String metodChoice, Boolean faceOcult, Double scaleZ){
