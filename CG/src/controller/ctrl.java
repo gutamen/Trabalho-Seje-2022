@@ -23,6 +23,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import letras.*;
 import java.util.Scanner;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -30,6 +32,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
@@ -56,7 +59,18 @@ public class ctrl extends Application {
     TextArea txConfirmString;
     Spinner<Integer> setZ;
     Text txZ;
-    
+    TextArea ka;
+    TextArea kd;
+    TextArea ks;
+    TextArea n;
+    Text txka;
+    Text txkd;
+    Text txks; 
+    Text txn;
+    Text txChar;
+    Spinner<String> getChar;
+    SpinnerValueFactory<String> strChar;
+            
     ToggleGroup selecaoComando; 
     RadioButton botaoTranslacao;
     RadioButton botaoRotacao;
@@ -118,9 +132,59 @@ public class ctrl extends Application {
         //escala para 1 para 0.2
         setZ = new Spinner(1, 50, 1);
         txZ = new Text("profundidade Z");
+        txka = new Text("ka");
+        txkd = new Text("kd");
+        txks = new Text("ks");
+        txn = new Text("n");
+        ka = new TextArea();
+        ks = new TextArea();
+        kd = new TextArea();
+        n = new TextArea();
+        txChar = new Text("CHAR");
+        getChar = new Spinner<String>();
         
         txZ.setLayoutX(765);
         txZ.setLayoutY(115);
+        
+        txka.setLayoutX(700);
+        txka.setLayoutY(568);
+        
+        txkd.setLayoutX(700);
+        txkd.setLayoutY(596);
+        
+        txks.setLayoutX(700);
+        txks.setLayoutY(626);
+        
+        txn.setLayoutX(704);
+        txn.setLayoutY(650);
+        
+        txChar.setLayoutX(820);
+        txChar.setLayoutY(548);
+        
+        getChar.setMinSize(0, 0);
+        getChar.setMaxSize(55, 100);
+        getChar.setLayoutX(810);
+        getChar.setLayoutY(552);
+        
+        ka.setLayoutX(724);
+        ka.setLayoutY(550);
+        ka.setMinSize(0, 0);
+        ka.setMaxSize(70, 28);
+        
+        ks.setLayoutX(724);
+        ks.setLayoutY(578);
+        ks.setMinSize(0, 0);
+        ks.setMaxSize(70, 28);
+        
+        kd.setLayoutX(724);
+        kd.setLayoutY(606);
+        kd.setMinSize(0, 0);
+        kd.setMaxSize(70, 28);
+        
+        n.setLayoutX(724);
+        n.setLayoutY(634);
+        n.setMinSize(0, 0);
+        n.setMaxSize(70, 28);
         
         setFaceOcult.setMinSize(0, 0);
         setFaceOcult.setMaxSize(200, 50);
@@ -206,7 +270,17 @@ public class ctrl extends Application {
         root.getChildren().add(botaoEscala);
         root.getChildren().add(botaoTodaString);
         root.getChildren().add(botaoLetra);
-        
+        root.getChildren().add(ka);
+        root.getChildren().add(kd);
+        root.getChildren().add(ks);
+        root.getChildren().add(n);
+        root.getChildren().add(txka);
+        root.getChildren().add(txkd);
+        root.getChildren().add(txks);
+        root.getChildren().add(txn);
+        root.getChildren().add(getChar);
+        root.getChildren().add(txChar);
+
         
         choice.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -239,7 +313,30 @@ public class ctrl extends Application {
             root.getChildren().add(botaoEscala);
             root.getChildren().add(botaoTodaString);
             root.getChildren().add(botaoLetra);
-        
+            root.getChildren().add(ka);
+            root.getChildren().add(kd);
+            root.getChildren().add(ks);
+            root.getChildren().add(n);
+            root.getChildren().add(txka);
+            root.getChildren().add(txkd);
+            root.getChildren().add(txks);
+            root.getChildren().add(txn);
+            root.getChildren().add(getChar);
+            root.getChildren().add(txChar);
+            
+            /*char[] ssr = new char[2*txConfirmString.getText().toCharArray().length];
+            String st = new String();
+            for(int i = 0, j = i+1, k = 0; i < 2*txConfirmString.getText().toCharArray().length; i+=2,k++){
+                ssr[i] = txConfirmString.getText().toCharArray()[k];
+                st.concat(ssr[i]);
+                ssr[j] = ',';
+            }
+            
+            System.out.println("str = "+str);
+            ObservableList<String> chr = FXCollections.observableArrayList(str);
+            System.out.println("chr = "+chr);
+            strChar = new SpinnerValueFactory.ListSpinnerValueFactory<String>(chr);
+            */
             trueStart(stage, root, txConfirmString.getText(), scene, choice.getValue().toString(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
         });
         
@@ -262,7 +359,17 @@ public class ctrl extends Application {
             root.getChildren().add(botaoEscala);
             root.getChildren().add(botaoTodaString);
             root.getChildren().add(botaoLetra);
-            
+            root.getChildren().add(ka);
+            root.getChildren().add(kd);
+            root.getChildren().add(ks);
+            root.getChildren().add(n);
+            root.getChildren().add(txka);
+            root.getChildren().add(txkd);
+            root.getChildren().add(txks);
+            root.getChildren().add(txn);
+            root.getChildren().add(getChar);
+            root.getChildren().add(txChar);
+
             carregado = true;
             carregamento = controleArquivo.carregaArquivo(stage);
             
