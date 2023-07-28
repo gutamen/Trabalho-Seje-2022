@@ -20,9 +20,9 @@ public class caractere {
     public ArrayList<aresta>    arestasInternas;
     public ArrayList<face>      faces;
     public char                 letra;
-    public Point3D Ka = new Point3D(0.8, 0.1, 0.1);
-    public Point3D Kd = new Point3D(0.8, 0.1, 0.1);
-    public Point3D Ks = new Point3D(0.8, 0.1, 0.1);
+    public Point3D Ka = new Point3D(0.5, 0.5, 0.5);
+    public Point3D Kd = new Point3D(0.5, 0.5, 0.5);
+    public Point3D Ks = new Point3D(0.5, 0.5, 0.5);
     public double n = 1;
     
     public void alteraKa(Point3D novoCoeficiente){

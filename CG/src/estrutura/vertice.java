@@ -13,6 +13,11 @@ public class vertice {
         
         this.arestaVertice = arestaVertice;
     }
+    
+    public vertice(String nomeVertice, Point3D ponto) {
+        this.nomeVertice = nomeVertice;
+        this.ponto = ponto;
+    }
 
     public String getNomeVertice() {
         return nomeVertice;
