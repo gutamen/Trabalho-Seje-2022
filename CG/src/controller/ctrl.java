@@ -57,7 +57,7 @@ public class ctrl extends Application {
     Button save;
     Button load;        
     CheckBox setFaceOcult;
-    ChoiceBox choice;
+    ChoiceBox escolheMetodo;
     TextArea txConfirmString;
     Spinner<Integer> setZ;
     Text txZ;
@@ -107,7 +107,7 @@ public class ctrl extends Application {
     final static Point3D PLado          = new Point3D(-2, 0, 0);
     Point3D PPerspectiva                = new Point3D(0, 0, -2);
     
-    Point3D VRPPerspectiva = new Point3D(0, 0, -19);
+    Point3D VRPPerspectiva = new Point3D(0, 0, 19);
     
     final static double dPNormal = 21;
     double dPPerspectiva = 21;
@@ -137,9 +137,9 @@ public class ctrl extends Application {
         save = new Button("SAVE");
         load = new Button("LOAD");
         setFaceOcult = new CheckBox("Ocutacao de face");
-        choice = new ChoiceBox();
-        choice.setValue("WireFrame");
-        choice.getItems().addAll("WireFrame", "Pintor", "Constante", "Phong");
+        escolheMetodo = new ChoiceBox();
+        escolheMetodo.setValue("WireFrame");
+        escolheMetodo.getItems().addAll("WireFrame", "Pintor", "Constante", "Phong");
         txConfirmString = new TextArea();
         //escala para 1 para 0.2
         setZ = new Spinner(1, 50, 1);
@@ -216,10 +216,10 @@ public class ctrl extends Application {
         setFaceOcult.setLayoutX(720);
         setFaceOcult.setLayoutY(150);
         
-        choice.setMinSize(0, 0);
-        choice.setMaxSize(100, 50);
-        choice.setLayoutX(720);
-        choice.setLayoutY(190);
+        escolheMetodo.setMinSize(0, 0);
+        escolheMetodo.setMaxSize(100, 50);
+        escolheMetodo.setLayoutX(720);
+        escolheMetodo.setLayoutY(190);
         
         txConfirmString.setLayoutX(660);
         txConfirmString.setLayoutY(40);
@@ -288,7 +288,7 @@ public class ctrl extends Application {
         root.getChildren().add(load);
         root.getChildren().add(setZ);
         root.getChildren().add(setFaceOcult);
-        root.getChildren().add(choice);
+        root.getChildren().add(escolheMetodo);
         root.getChildren().add(txZ);
         root.getChildren().add(botaoTranslacao);
         root.getChildren().add(botaoRotacao);
@@ -310,19 +310,19 @@ public class ctrl extends Application {
 
         nn = 0;
         
-        choice.setOnAction(new EventHandler<ActionEvent>() {
+        escolheMetodo.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent evento) {
-                if("WireFrame".equals(choice.getValue().toString())){
+                if("WireFrame".equals(escolheMetodo.getValue().toString())){
                     setFaceOcult.setSelected(false);
                     setFaceOcult.setDisable(false);
-                }else if("Pintor".equals(choice.getValue().toString())){
+                }else if("Pintor".equals(escolheMetodo.getValue().toString())){
                     setFaceOcult.setSelected(false);
                     setFaceOcult.setDisable(true);
-                }else if("Constante".equals(choice.getValue().toString())){
+                }else if("Constante".equals(escolheMetodo.getValue().toString())){
                     setFaceOcult.setSelected(true);
                     setFaceOcult.setDisable(true);
-                }else if("Phong".equals(choice.getValue().toString())){
+                }else if("Phong".equals(escolheMetodo.getValue().toString())){
                     setFaceOcult.setSelected(true);
                     setFaceOcult.setDisable(true);
                 } 
@@ -341,7 +341,7 @@ public class ctrl extends Application {
             root.getChildren().add(load);
             root.getChildren().add(setZ);
             root.getChildren().add(setFaceOcult);
-            root.getChildren().add(choice);
+            root.getChildren().add(escolheMetodo);
             root.getChildren().add(txZ);
             root.getChildren().add(botaoTranslacao);
             root.getChildren().add(botaoRotacao);
@@ -365,7 +365,7 @@ public class ctrl extends Application {
             root.getChildren().add(choiceChar);
             
             
-            trueStart(stage, root, txConfirmString.getText(), scene, choice.getValue().toString(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
+            trueStart(stage, root, txConfirmString.getText(), scene, escolheMetodo.getValue().toString(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
         });
         
         
@@ -380,7 +380,7 @@ public class ctrl extends Application {
             root.getChildren().add(load);
             root.getChildren().add(setZ);
             root.getChildren().add(setFaceOcult);
-            root.getChildren().add(choice);
+            root.getChildren().add(escolheMetodo);
             root.getChildren().add(txZ);
             root.getChildren().add(botaoTranslacao);
             root.getChildren().add(botaoRotacao);
@@ -395,7 +395,6 @@ public class ctrl extends Application {
             root.getChildren().add(txkd);
             root.getChildren().add(txks);
             root.getChildren().add(txn);
-            root.getChildren().add(getChar);
             root.getChildren().add(txChar);
             root.getChildren().add(next);
             root.getChildren().add(prev);
@@ -406,7 +405,7 @@ public class ctrl extends Application {
             carregamento = controleArquivo.carregaArquivo(stage);
             
             System.out.println(carregamento.size());
-            trueStart(stage, root, txConfirmString.getText(), scene, choice.getValue().toString(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
+            trueStart(stage, root, txConfirmString.getText(), scene, escolheMetodo.getValue().toString(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
         });
     
         save.setOnAction((ActionEvent evento) -> {

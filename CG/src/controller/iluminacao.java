@@ -385,18 +385,18 @@ public class iluminacao {
 
                     }
                      
-                    System.out.println(caracteresPerspectiva.get(i).faces.get(j).getNomeFace());
-                    for(int teste = 0; teste < bufferFace.length; teste++){
-                        
-                        if(bufferFace[teste] != null){
-                            System.out.println("Linha "+teste);
-                            for(int testi = 0; testi < bufferFace[teste].size(); testi++){
-                                System.out.print("   "+bufferFace[teste].get(testi).getX());
-                            }
-                            System.out.println();
-                        }
-                    }
-                    
+//                    System.out.println(caracteresPerspectiva.get(i).faces.get(j).getNomeFace());
+//                    for(int teste = 0; teste < bufferFace.length; teste++){
+//                        
+//                        if(bufferFace[teste] != null){
+//                            System.out.println("Linha "+teste);
+//                            for(int testi = 0; testi < bufferFace[teste].size(); testi++){
+//                                System.out.print("   "+bufferFace[teste].get(testi).getX());
+//                            }
+//                            System.out.println();
+//                        }
+//                    }
+//                    
                     for(int k = 0; k < bufferFace.length-1; k++){
                         
                         ArrayList<pontoZbufferConstante> lista = bufferFace[k];
