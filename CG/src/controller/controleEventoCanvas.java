@@ -60,6 +60,10 @@ public class controleEventoCanvas {
             controle.mouseApertado = false;
             if("Pintor".equals(controle.choice.getValue().toString())){
                 controle.painter(controle.refactChars4, canvasPerspectiva);
+            }else if("Constante".equals(controle.choice.getValue().toString())){
+                controle.ilum.iluminacaoConstante(canvasPerspectiva, controle.refactChars4, controle.chars, new Point3D(-2, 2, 30), controle.Il, controle.Ila, controle.VRPPerspectiva);
+            }if("Phong".equals(controle.choice.getValue().toString())){
+                controle.ilum.iluminacaoPhong(canvasPerspectiva, controle.refactChars4, controle.chars, new Point3D(-2, 2, 30), controle.Il, controle.Ila, controle.VRPPerspectiva);
             }
         });
         
@@ -549,6 +553,10 @@ public class controleEventoCanvas {
             controle.mouseApertado = false;
             if("Pintor".equals(controle.choice.getValue().toString())){
                 controle.painter(controle.refactChars4, canvasPerspectiva);
+            }else if("Constante".equals(controle.choice.getValue().toString())){
+                controle.ilum.iluminacaoConstante(canvasPerspectiva, controle.refactChars4, controle.chars, new Point3D(-2, 2, 30), controle.Il, controle.Ila, controle.VRPPerspectiva);
+            }if("Phong".equals(controle.choice.getValue().toString())){
+                controle.ilum.iluminacaoPhong(canvasPerspectiva, controle.refactChars4, controle.chars, new Point3D(-2, 2, 30), controle.Il, controle.Ila, controle.VRPPerspectiva);
             }
         });
         
@@ -1043,6 +1051,10 @@ public class controleEventoCanvas {
             controle.mouseApertado = false;
             if("Pintor".equals(controle.choice.getValue().toString())){
                 controle.painter(controle.refactChars4, canvasPerspectiva);
+            }else if("Constante".equals(controle.choice.getValue().toString())){
+                controle.ilum.iluminacaoConstante(canvasPerspectiva, controle.refactChars4, controle.chars, controle.lugarLuz, controle.Il, controle.Ila, controle.VRPPerspectiva);
+            }if("Phong".equals(controle.choice.getValue().toString())){
+                controle.ilum.iluminacaoPhong(canvasPerspectiva, controle.refactChars4, controle.chars, controle.lugarLuz, controle.Il, controle.Ila, controle.VRPPerspectiva);
             }
         });
         

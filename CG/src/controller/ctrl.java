@@ -77,6 +77,8 @@ public class ctrl extends Application {
     TextArea choiceChar;
     int nn;
     
+    iluminacao ilum;
+    
     ToggleGroup selecaoComando; 
     RadioButton botaoTranslacao;
     RadioButton botaoRotacao;
@@ -105,7 +107,7 @@ public class ctrl extends Application {
     final static Point3D PLado          = new Point3D(-2, 0, 0);
     Point3D PPerspectiva                = new Point3D(0, 0, -2);
     
-    Point3D VRPPerspectiva = new Point3D(0, 0, 19);
+    Point3D VRPPerspectiva = new Point3D(0, 0, -19);
     
     final static double dPNormal = 21;
     double dPPerspectiva = 21;
@@ -114,6 +116,10 @@ public class ctrl extends Application {
     ctrlCam ct2;
     ctrlCam ct3;
     ctrlCam ct4;
+    
+    Point3D lugarLuz = new Point3D(0,0,19);
+    int[] Il;
+    int[] Ila;
     
     public static double offSet;
     
@@ -133,7 +139,7 @@ public class ctrl extends Application {
         setFaceOcult = new CheckBox("Ocutacao de face");
         choice = new ChoiceBox();
         choice.setValue("WireFrame");
-        choice.getItems().addAll("WireFrame", "Pintor", "Guro", "Phong");
+        choice.getItems().addAll("WireFrame", "Pintor", "Constante", "Phong");
         txConfirmString = new TextArea();
         //escala para 1 para 0.2
         setZ = new Spinner(1, 50, 1);
@@ -309,13 +315,20 @@ public class ctrl extends Application {
             public void handle(ActionEvent evento) {
                 if("WireFrame".equals(choice.getValue().toString())){
                     setFaceOcult.setSelected(false);
-                    setFaceOcult.setDisable(true);;
+                    setFaceOcult.setDisable(false);
                 }else if("Pintor".equals(choice.getValue().toString())){
                     setFaceOcult.setSelected(false);
-                    setFaceOcult.setDisable(true);;
-                }else{
+                    setFaceOcult.setDisable(true);
+                }else if("Constante".equals(choice.getValue().toString())){
                     setFaceOcult.setSelected(true);
                     setFaceOcult.setDisable(true);
+                }else if("Phong".equals(choice.getValue().toString())){
+                    setFaceOcult.setSelected(true);
+                    setFaceOcult.setDisable(true);
+                } 
+                else{
+                    setFaceOcult.setSelected(false);
+                    setFaceOcult.setDisable(false);
                 }
             }
         });
@@ -532,7 +545,7 @@ public class ctrl extends Application {
             faceTestVisibilit(refactCharsAll, chars, VRPFrente, VRPTopo, VRPLado, VRPPerspectiva);
         }
         
-        iluminacao ilum = new iluminacao();
+        ilum = new iluminacao();
         ilum.normVertFace(refactChars1.get(0).faces, "A");
         //ilum.normVertFace(refactChars1.get(1).faces, "A");
         
@@ -542,14 +555,23 @@ public class ctrl extends Application {
         ctrlVRP2SRU(ct3, refactChars3, VRPLado         , PLado         , viewUP, dPNormal       , 3);
         ctrlVRP2SRU(ct4, refactChars4, VRPPerspectiva  , PPerspectiva  , viewUP, dPPerspectiva  , 4);
         
-        int[] Il = {80, 120, 150}; 
-        int[] Ila = {80, 100, 0};
-        ilum.iluminacaoConstante(canvas4, refactChars4, chars, new Point3D(-2, 2, 30), Il, Ila, VRPPerspectiva);
+        int[] sIl = {200, 120, 150}; 
+        int[] sIla = {80, 100, 0};
+        
+        Il = sIl; 
+        Ila = sIla;
+        
+        //ilum.iluminacaoConstante(canvas4, refactChars4, chars, new Point3D(-2, 2, 30), Il, Ila, VRPPerspectiva);
         
         
         if("Pintor".equals(metodChoice)){
             painter(refactChars4, canvas4);
+        }else if("Phong".equals(metodChoice)){
+            ilum.iluminacaoPhong(canvas4, refactChars4, chars, lugarLuz, Il, Ila, VRPPerspectiva);
+        }else if("Constante".equals(metodChoice)){
+            ilum.iluminacaoConstante(canvas4, refactChars4, chars, lugarLuz, Il, Ila, VRPPerspectiva);
         }
+        
         
         
         for(int i = 0; i < refactChars1.size(); i++){
@@ -557,7 +579,10 @@ public class ctrl extends Application {
             desenhaFiguraPorAresta(gc1, refactChars1.get(i));
             desenhaFiguraPorArestaTopo(gc2, refactChars2.get(i));
             desenhaFiguraPorArestaLateral(gc3, refactChars3.get(i));
-            //desenhaFiguraPorAresta(gc4, refactChars4.get(i));
+            
+            if("WireFrame".equals(metodChoice)){
+                desenhaFiguraPorAresta(gc4, refactChars4.get(i));
+            }
         }
         
         
@@ -611,20 +636,20 @@ public class ctrl extends Application {
             arrayListHash.add(listHash);
             zTest = Double.MAX_VALUE;
         }
-        System.out.println("under");
-        for(int u = 0; u < arrayListHash.size(); u++){
-            System.out.println(arrayListHash.get(u).chars.letra);
-            
-            System.out.println(arrayListHash.get(u).val);
-        }
+//        System.out.println("under");
+//        for(int u = 0; u < arrayListHash.size(); u++){
+//            System.out.println(arrayListHash.get(u).chars.letra);
+//            
+//            System.out.println(arrayListHash.get(u).val);
+//        }
         
         quickSort(arrayListHash, 0, arrayListHash.size()-1);
         
-        System.out.println("after +++++");
-        for(int uu = 0; uu < arrayListHash.size(); uu++){
-            System.out.println(arrayListHash.get(uu).chars.letra);
-            System.out.println(arrayListHash.get(uu).val);
-        }
+//        System.out.println("after +++++");
+//        for(int uu = 0; uu < arrayListHash.size(); uu++){
+//            System.out.println(arrayListHash.get(uu).chars.letra);
+//            System.out.println(arrayListHash.get(uu).val);
+//        }
         
         ArrayList<fakeHash> listFace = new ArrayList<fakeHash>();
         zTest = Double.MAX_VALUE;
@@ -665,23 +690,23 @@ public class ctrl extends Application {
                     }
                     listHash = new fakeHash(arrayListHash.get(g).chars, arrayListHash.get(g).chars.faces.get(j), zTest);
 
-                    System.out.println("face ="+arrayListHash.get(g).chars.faces.get(j).getNomeFace()+" and ="
-                    +zTest);
-                    System.out.println("j = "+j);
+//                    System.out.println("face ="+arrayListHash.get(g).chars.faces.get(j).getNomeFace()+" and ="
+//                    +zTest);
+//                    System.out.println("j = "+j);
                     listFace.add(listHash);
                     zTest = Double.MAX_VALUE;
                 }
             }
             quickSort(listFace, 0, listFace.size()-1);
             
-            System.out.println("=============================");
-            System.out.println("size ="+listFace.size());
-            for(int j = 0; j < listFace.size(); j ++){
-                System.out.println("face ="+listFace.get(j).face.getNomeFace()+" and ="
-                +listFace.get(j).val+" char = "+listFace.get(j).chars.letra);
-            }
-            System.out.println("+++++++++++++++++++++++++++++++++++");
-            
+//            System.out.println("=============================");
+//            System.out.println("size ="+listFace.size());
+//            for(int j = 0; j < listFace.size(); j ++){
+//                System.out.println("face ="+listFace.get(j).face.getNomeFace()+" and ="
+//                +listFace.get(j).val+" char = "+listFace.get(j).chars.letra);
+//            }
+//            System.out.println("+++++++++++++++++++++++++++++++++++");
+//            
             for(int j = 0; j < listFace.size(); j ++){
                 ArrayList<vertice> faceVertice = new ArrayList<vertice>();
                 aresta k = listFace.get(j).face.getArestaFace();
@@ -707,7 +732,7 @@ public class ctrl extends Application {
                         rigth = false;
                     }
                 }
-                System.out.println("---------------------------------");
+//                System.out.println("---------------------------------");
                 double[] x = new double[faceVertice.size()];
                 double[] y = new double[faceVertice.size()];
                 for(int q = 0; q < faceVertice.toArray().length; q++){
@@ -831,7 +856,7 @@ public class ctrl extends Application {
                 int o = 0;
                 
                 /*if(true){*/
-                    System.out.println("j = "+j);
+//                    System.out.println("j = "+j);
                     boolean rigth = false;
                     /*for(aresta p = new aresta("null"); !k.getNomeAresta().equals(p.getNomeAresta()); o++){
                         if(o < 1){
@@ -855,7 +880,7 @@ public class ctrl extends Application {
                         }
                     }*/
                     vertList = chars.get(i).faces.get(j).verticesFace();
-                    System.out.println(" entro aqui");
+//                    System.out.println(" entro aqui");
                     
                     allInOne(refactChars, vertList, vrp1, vrp2, vrp3, vrp4, i, j, "notinterna");
                 /*}else{
@@ -875,20 +900,20 @@ public class ctrl extends Application {
     }
     
     private void allInOne(ArrayList<ArrayList<caractere>> refactChars, ArrayList<vertice> vertList, Point3D vrp1, Point3D vrp2, Point3D vrp3, Point3D vrp4, int i, int j, String type){
-        for(int l = 0; l < vertList.size(); l++){
-            System.out.println(vertList.get(l).ponto);
-        }
+//        for(int l = 0; l < vertList.size(); l++){
+//            System.out.println(vertList.get(l).ponto);
+//        }
 
         double xc, yc, zc;
-        System.out.println("vertice tam = "+vertList.size());
+//        System.out.println("vertice tam = "+vertList.size());
         xc = (makeCentroid(vertList, "min").getX()+makeCentroid(vertList, "max").getX())/2;
         yc = (makeCentroid(vertList, "min").getY()+makeCentroid(vertList, "max").getY())/2;
         zc = (makeCentroid(vertList, "min").getZ()+makeCentroid(vertList, "max").getZ())/2;
         
-        System.out.println("xc = "+xc);
-        System.out.println("yc = "+yc);
-        System.out.println("zc = "+zc);
-        
+//        System.out.println("xc = "+xc);
+//        System.out.println("yc = "+yc);
+//        System.out.println("zc = "+zc);
+//        
         Point3D centroidFace = new Point3D(xc, yc, zc);
         
         double dVRPtoFaceView1 = Math.sqrt(Math.pow(vrp1.getX()-centroidFace.getX(), 2)+
@@ -921,8 +946,8 @@ public class ctrl extends Application {
         Point3D vect1 = vertList.get(1).ponto.subtract(vertList.get(0).ponto);
         Point3D vect2 = vertList.get(vertList.size()-1).ponto.subtract(vertList.get(0).ponto);
 
-        System.out.println("vect1 = "+vect1);
-        System.out.println("vect2 = "+vect2);
+//        System.out.println("vect1 = "+vect1);
+//        System.out.println("vect2 = "+vect2);
         /*
         i   j  k  
         u1 u2 u3  
