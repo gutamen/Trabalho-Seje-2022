@@ -51,11 +51,11 @@ public class iluminacao {
         for(int i = 0; i < this.caracteres.size(); i++){
             
             
-            double[] It = new double[3];
+            double[] Ita = new double[3];
             
-            It[0] = universo.get(i).Ka.getX() * Ila[0];
-            It[1] = universo.get(i).Ka.getY() * Ila[1];
-            It[2] = universo.get(i).Ka.getZ() * Ila[2];
+            Ita[0] = universo.get(i).Ka.getX() * Ila[0];
+            Ita[1] = universo.get(i).Ka.getY() * Ila[1];
+            Ita[2] = universo.get(i).Ka.getZ() * Ila[2];
             
             ArrayList<face> faces = universo.get(i).faces;
             
@@ -66,22 +66,37 @@ public class iluminacao {
                 if(!faces.get(j).isVisivel()){
                     continue;
                 }
+                double[] It = new double[3];
                 
-                Point3D centroide = centroidePorArestas(faces.get(j).arestasFace());
-                Point3D normalFace = normalDaFace(faces.get(j).arestasFace());
+                It[0] = Ita[0];
+                It[1] = Ita[1];
+                It[2] = Ita[2];
+                
+                Point3D centroide = faces.get(j).centroide();
+                Point3D normalFace = makeNormal(faces.get(j).verticesFace());
                 
                 Point3D vetorIluminacao = L.subtract(centroide);
                 vetorIluminacao = vetorIluminacao.normalize();
                 double LN = normalFace.dotProduct(vetorIluminacao);
+//                System.out.println("LN = " + LN);
+                
                 if(LN > 0){
                     
                     It[0] += universo.get(i).Kd.getX()*  Il[0] * LN;
                     It[1] += universo.get(i).Kd.getY()*  Il[1] * LN;
                     It[2] += universo.get(i).Kd.getZ()*  Il[2] * LN;
                 
-                    Point3D R = normalFace.multiply(2 * LN).subtract(L);
+                    Point3D R = normalFace.multiply(2 * LN);
+                    R = R.subtract(vetorIluminacao);
+                    
+//                    System.out.println("L = " + vetorIluminacao);
+//                    System.out.println("N = " + normalFace);
+//                    System.out.println("R = " + R);
+                    
                     Point3D S = VRP.subtract(centroide).normalize();
                     double RS = R.dotProduct(S);
+                    
+//                    System.out.println("RS = " + RS);
                     if(RS > 0){
                         RS = Math.pow(RS, this.caracteres.get(i).n);
                         
@@ -92,6 +107,8 @@ public class iluminacao {
                     }
                 }
                 
+                
+                
                 ArrayList<aresta> arestas = caracteresPerspectiva.get(i).faces.get(j).arestasFaceComBuraco();
                 
                 vertice[] minimoMaximo = caracteresPerspectiva.get(i).faces.get(j).minmaxY();
@@ -99,6 +116,8 @@ public class iluminacao {
                 int yMin = (int)minimoMaximo[0].getY();
                 
                 ArrayList<pontoZbufferConstante>[] bufferFace = new ArrayList[(int)minimoMaximo[1].getY()-yMin+1];
+                
+                
                 
                 //System.out.println(caracteresPerspectiva.get(i).faces.get(j).getNomeFace());
                 
@@ -109,23 +128,48 @@ public class iluminacao {
                 if((int)minimoMaximo[1].getY()- yMin > 0){
 //                    System.out.println(" aresta "+ caracteresPerspectiva.get(i).faces.get(j).getNomeFace());
                     for(int l = 0; l < arestas.size(); l++){
+                        
+                        
                         aresta auxiliar = arestas.get(l);
+                        
+//                        System.out.println(auxiliar.getNomeAresta());
+//                        System.out.println("InicioX = " + ((int) auxiliar.getInicio().getX()) + "    FinalX = " + ((int) auxiliar.getFim().getX()));
+//                        System.out.println("InicioY = " + ((int) auxiliar.getInicio().getY()) + "    FinalY = " + ((int) auxiliar.getFim().getY()));
+//                        System.out.println("");
+//                        
+                        
                         if((int)auxiliar.getFim().getY() == (int)auxiliar.getInicio().getY()){
+                            
                             //System.out.println(auxiliar.getNomeAresta());
+                            
                         }else if((int)auxiliar.getFim().getY() > (int)auxiliar.getInicio().getY()){
                              
                             //System.out.println(auxiliar.getNomeAresta());
+                            
+                            // Cuidar arredondamento para truncamento
+                            
                             int posicaoBuffer = (int)auxiliar.getInicio().getY()-yMin;
+                            
                             //System.out.println(posicaoBuffer);
 
+                            
                             if(bufferFace[posicaoBuffer] == null){
                                 bufferFace[posicaoBuffer] = new ArrayList<>();
-                            }
+                            
+                            
 
-                            if(bufferFace[posicaoBuffer].isEmpty()){
+                            
                                 pontoZbufferConstante pontoAdicionado = new pontoZbufferConstante((int)auxiliar.getInicio().getX(), auxiliar.getInicio().getZ(), (int) It[0], (int) It[1], (int) It[2]);
                                 bufferFace[posicaoBuffer].add(pontoAdicionado);
                                 
+//                                System.out.println(auxiliar.getNomeAresta() + "  Linha = " + posicaoBuffer);
+//                                for(int jegue = 0; jegue < bufferFace[posicaoBuffer].size(); jegue++){
+//                                    System.out.print("   "+bufferFace[posicaoBuffer].get(jegue).getX());
+//                                }
+//                                System.out.println();
+//                                System.out.println(pontoAdicionado.getX());
+//                                System.out.println();
+//                                
                                 
 //                                System.out.println("face " + caracteresPerspectiva.get(i).faces.get(j).getNomeFace()  );
 //                                System.out.println("aresta " + arestas.get(l).getNomeAresta());
@@ -138,9 +182,18 @@ public class iluminacao {
                                 do{
                                    //System.out.println("esrtive aqui");
                                    avanco++; 
-                                }while(bufferFace[posicaoBuffer].size() < avanco && (int)bufferFace[posicaoBuffer].get(avanco).getX() >= (int)auxiliar.getInicio().getX());
-
-                                bufferFace[posicaoBuffer].add(avanco, new pontoZbufferConstante((int)auxiliar.getInicio().getX(), auxiliar.getInicio().getZ(), (int) It[0], (int) It[1], (int) It[2]));
+                                }while( avanco < bufferFace[posicaoBuffer].size() && (int)auxiliar.getInicio().getX() >= (int)bufferFace[posicaoBuffer].get(avanco).getX() );
+                                
+                                pontoZbufferConstante pontoAdicionado = new pontoZbufferConstante((int)auxiliar.getInicio().getX(), auxiliar.getInicio().getZ(), (int) It[0], (int) It[1], (int) It[2]);
+                                bufferFace[posicaoBuffer].add(avanco, pontoAdicionado );
+                                
+//                                System.out.println(auxiliar.getNomeAresta() + "  Linha = " + posicaoBuffer);
+//                                for(int jegue = 0; jegue < bufferFace[posicaoBuffer].size(); jegue++){
+//                                    System.out.print("   "+bufferFace[posicaoBuffer].get(jegue).getX());
+//                                }
+//                                System.out.println();
+//                                System.out.println(pontoAdicionado.getX());
+//                                System.out.println();
                             }
 
                             double taxaZ = (auxiliar.getFim().getZ() - auxiliar.getInicio().getZ()) / (auxiliar.getFim().getY() - auxiliar.getInicio().getY());
@@ -148,47 +201,65 @@ public class iluminacao {
                             
                             //System.out.println("TaxaZ = "+taxaZ);
                             //System.out.println("TaxaX = "+taxaX);
-                            posicaoBuffer++;
+//                            posicaoBuffer++;
                             
+                            //int k = posicaoBuffer + 1;
                             
-                            
-                            for(int k = posicaoBuffer; k <= ((int) auxiliar.getFim().getY()) - ((int)auxiliar.getInicio().getY())  ; k++){
+                            for(int k = 1; k < ((int) auxiliar.getFim().getY()) - ((int)auxiliar.getInicio().getY())  ; k++){
                                
-                                if(bufferFace[k] == null){
-                                    bufferFace[k] = new ArrayList<>();
+                                if(bufferFace[k+posicaoBuffer] == null){
+                                    bufferFace[k+posicaoBuffer] = new ArrayList<>();
                                     
-                                }
-
-                                if(bufferFace[k].isEmpty()){
+                                
                                     
-                                    pontoZbufferConstante pontoAdicionado = new pontoZbufferConstante((int)auxiliar.getInicio().getX()+(int)(taxaX*(k-posicaoBuffer)), auxiliar.getInicio().getZ()+(taxaZ*(k-posicaoBuffer+1)), (int) It[0], (int) It[1], (int) It[2]);
+                                    pontoZbufferConstante pontoAdicionado = new pontoZbufferConstante((int)auxiliar.getInicio().getX()+(int)(taxaX*(k)), auxiliar.getInicio().getZ()+(taxaZ*(k)), (int) It[0], (int) It[1], (int) It[2]);
 //                                    System.out.println("face " + caracteresPerspectiva.get(i).faces.get(j).getNomeFace()  );
 //                                    System.out.println("aresta " + arestas.get(l).getNomeAresta());
 //                                    System.out.println("ponto");
 //                                    System.out.println("  " + pontoAdicionado.getX() + "    "+ pontoAdicionado.profundiade() + "   " + k );
                                     
-                                    bufferFace[k].add(pontoAdicionado);
+                                    bufferFace[k+posicaoBuffer].add(pontoAdicionado);
+                                    
+                                    
+//                                    System.out.println(auxiliar.getNomeAresta() + "  Linha = " + (k+posicaoBuffer));
+//                                    for(int jegue = 0; jegue < bufferFace[k+posicaoBuffer].size(); jegue++){
+//                                        System.out.print("   "+bufferFace[k+posicaoBuffer].get(jegue).getX());
+//                                    }
+//                                    System.out.println();
+//                                    System.out.println(pontoAdicionado.getX());
+//                                    System.out.println();
+                                    
                                 }else{
+                                    
                                     int avanco = -1;
 
                                     do{
                                        avanco++; 
-                                    }while(bufferFace[k].size() < avanco && (int)bufferFace[k].get(avanco).getX() >= (int)auxiliar.getInicio().getX()+(int)(taxaX*(k-posicaoBuffer)));
+                                    }while( avanco < bufferFace[k+posicaoBuffer].size() &&  (int)auxiliar.getInicio().getX()+(int)(taxaX*(k)) >= (int)bufferFace[k+posicaoBuffer].get(avanco).getX());
                                     
-                                    pontoZbufferConstante pontoAdicionado = new pontoZbufferConstante((int)auxiliar.getInicio().getX()+(int)(taxaX*(k-posicaoBuffer)), auxiliar.getInicio().getZ()+(taxaZ*(k-posicaoBuffer)), (int) It[0], (int) It[1], (int) It[2]);
+                                    
+                                    pontoZbufferConstante pontoAdicionado = new pontoZbufferConstante((int)auxiliar.getInicio().getX()+(int)(taxaX*(k)), auxiliar.getInicio().getZ()+(taxaZ*(k)), (int) It[0], (int) It[1], (int) It[2]);
 //                                    System.out.println("face " + caracteresPerspectiva.get(i).faces.get(j).getNomeFace()  );
 //                                    System.out.println("aresta " + arestas.get(l).getNomeAresta());
 //                                    System.out.println("ponto");
 //                                    System.out.println("  " + pontoAdicionado.getX() + "    "+ pontoAdicionado.profundiade() + "   " + k );
                                     
-                                    bufferFace[k].add(avanco, pontoAdicionado);
+                                    bufferFace[k+posicaoBuffer].add(avanco, pontoAdicionado);
+                                    
+//                                    System.out.println(auxiliar.getNomeAresta() + "  Linha = " + (k+posicaoBuffer));
+//                                    for(int jegue = 0; jegue < bufferFace[k+posicaoBuffer].size(); jegue++){
+//                                        System.out.print("   "+bufferFace[k+posicaoBuffer].get(jegue).getX());
+//                                    }
+//                                    System.out.println();
+//                                    System.out.println(pontoAdicionado.getX());
+//                                    System.out.println();
 
 
                                 }
                                    
                             }
 
-                        }else{
+                        }else if((int)auxiliar.getInicio().getY() > (int)auxiliar.getFim().getY()){
 
                             
                             int posicaoBuffer = (int)auxiliar.getFim().getY()-yMin;
@@ -196,15 +267,21 @@ public class iluminacao {
                             
                             if(bufferFace[posicaoBuffer] == null){
                                 bufferFace[posicaoBuffer] = new ArrayList<>();
-                            }
-
-                            if(bufferFace[posicaoBuffer].isEmpty()){
+                            
                                 pontoZbufferConstante pontoAdicionado = new pontoZbufferConstante((int)auxiliar.getFim().getX(), auxiliar.getFim().getZ(), (int) It[0], (int) It[1], (int) It[2]);
                                 bufferFace[posicaoBuffer].add(pontoAdicionado);
 //                                System.out.println("face " + caracteresPerspectiva.get(i).faces.get(j).getNomeFace()  );
 //                                System.out.println("aresta " + arestas.get(l).getNomeAresta());
 //                                System.out.println("ponto");
 //                                System.out.println("  " + pontoAdicionado.getX() + "    "+ pontoAdicionado.profundiade() + "   " + posicaoBuffer );
+
+//                                System.out.println(auxiliar.getNomeAresta() + "  Linha = " + posicaoBuffer);
+//                                for(int jegue = 0; jegue < bufferFace[posicaoBuffer].size(); jegue++){
+//                                    System.out.print("   "+bufferFace[posicaoBuffer].get(jegue).getX());
+//                                }
+//                                System.out.println();
+//                                System.out.println(pontoAdicionado.getX());
+//                                System.out.println();
                                     
                                 
                             }else{
@@ -212,7 +289,7 @@ public class iluminacao {
 
                                 do{
                                    avanco++; 
-                                }while(bufferFace[posicaoBuffer].size() < avanco && (int)bufferFace[posicaoBuffer].get(avanco).getX() >= (int)auxiliar.getFim().getX());
+                                }while(avanco < bufferFace[posicaoBuffer].size() &&   (int)auxiliar.getFim().getX() >= (int)bufferFace[posicaoBuffer].get(avanco).getX());
                                 
                                 pontoZbufferConstante pontoAdicionado = new pontoZbufferConstante((int)auxiliar.getFim().getX(), auxiliar.getFim().getZ(), (int) It[0], (int) It[1], (int) It[2]);
 //                                System.out.println("face " + caracteresPerspectiva.get(i).faces.get(j).getNomeFace()  );
@@ -221,6 +298,14 @@ public class iluminacao {
 //                                System.out.println("  " + pontoAdicionado.getX() + "    "+ pontoAdicionado.profundiade() + "   " + posicaoBuffer );
                                 
                                 bufferFace[posicaoBuffer].add(avanco, pontoAdicionado);
+                                
+//                                System.out.println(auxiliar.getNomeAresta() + "  Linha = " + posicaoBuffer);
+//                                for(int jegue = 0; jegue < bufferFace[posicaoBuffer].size(); jegue++){
+//                                    System.out.print("   "+bufferFace[posicaoBuffer].get(jegue).getX());
+//                                }
+//                                System.out.println();
+//                                System.out.println(pontoAdicionado.getX());
+//                                System.out.println();
                             }
 
                             double taxaZ = (auxiliar.getInicio().getZ() - auxiliar.getFim().getZ()) / (auxiliar.getInicio().getY() - auxiliar.getFim().getY());
@@ -230,30 +315,57 @@ public class iluminacao {
 //                            System.out.println("taxaZ = " + taxaZ);
 //                            System.out.println("");
                             
-                            posicaoBuffer++;
+//                            posicaoBuffer++;
+                            //int k = posicaoBuffer + 1;
+//                            if(auxiliar.getNomeAresta().equals("H_G")){
+//                                System.out.println(((int) auxiliar.getInicio().getY()) - ((int)auxiliar.getFim().getY()) + " MACACO   bufferFace = " + posicaoBuffer +  "      yMin = " + (yMin));
+//                            }
 
-                            for(int k = posicaoBuffer; k <= ((int) auxiliar.getInicio().getY()) - ((int)auxiliar.getFim().getY()) ; k++){
+                            for(int k = 1; k < ((int) auxiliar.getInicio().getY()) - ((int)auxiliar.getFim().getY()) ; k++){
+//                                System.out.println(bufferFace[k]);
+                                
+//                                if(auxiliar.getNomeAresta().equals("H_G")){
+//                                    System.out.println("MACEDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo");
+//                                    
+//                                }
 
-                                if(bufferFace[k] == null){
-                                    bufferFace[k] = new ArrayList<>();
-                                }
-
-                                if(bufferFace[k].isEmpty()){
-                                    pontoZbufferConstante pontoAdicionado = new pontoZbufferConstante((int)auxiliar.getFim().getX()+(int)(taxaX*(k-posicaoBuffer)), auxiliar.getFim().getZ()+(taxaZ*(k-posicaoBuffer+1)), (int) It[0], (int) It[1], (int) It[2]);
-                                    bufferFace[k].add(pontoAdicionado);
+                                if(bufferFace[k+posicaoBuffer] == null){
+                                    bufferFace[k+posicaoBuffer] = new ArrayList<>();
+                                
+                                    pontoZbufferConstante pontoAdicionado = new pontoZbufferConstante((int)auxiliar.getFim().getX()+(int)(taxaX*(k)), auxiliar.getFim().getZ()+(taxaZ*(k)), (int) It[0], (int) It[1], (int) It[2]);
+                                    bufferFace[k+posicaoBuffer].add(pontoAdicionado);
                                     
 //                                    System.out.println("face " + caracteresPerspectiva.get(i).faces.get(j).getNomeFace()  );
 //                                    System.out.println("aresta " + arestas.get(l).getNomeAresta());
 //                                    System.out.println("ponto");
 //                                    System.out.println("  " + pontoAdicionado.getX() + "    "+ pontoAdicionado.profundiade() + "   " + k );
+
+//                                    System.out.println(auxiliar.getNomeAresta() + "  Linha = " + (k+posicaoBuffer));
+//                                    for(int jegue = 0; jegue < bufferFace[k+posicaoBuffer].size(); jegue++){
+//                                        System.out.print("   "+bufferFace[k+posicaoBuffer].get(jegue).getX());
+//                                    }
+//                                    System.out.println();
+//                                    System.out.println(pontoAdicionado.getX());
+//                                    System.out.println();
+                                    
                                 }else{
                                     int avanco = -1;
 
                                     do{
                                        avanco++; 
-                                    }while(bufferFace[k].size() < avanco && (int)bufferFace[k].get(avanco).getX() >= (int)auxiliar.getFim().getX()+(int)(taxaX*(k-posicaoBuffer)));
-                                    pontoZbufferConstante pontoAdicionado = new pontoZbufferConstante((int)auxiliar.getFim().getX()+(int)(taxaX*(k-posicaoBuffer)), auxiliar.getFim().getZ()+(taxaZ*(k-posicaoBuffer)), (int) It[0], (int) It[1], (int) It[2]);
-                                    bufferFace[k].add(avanco, pontoAdicionado);
+                                    }while( avanco < bufferFace[k+posicaoBuffer].size() &&    (int)auxiliar.getFim().getX()+(int)(taxaX*(k)) >= (int)bufferFace[k+posicaoBuffer].get(avanco).getX() );
+                                    
+                                    
+                                    pontoZbufferConstante pontoAdicionado = new pontoZbufferConstante((int)auxiliar.getFim().getX()+(int)(taxaX*(k)), auxiliar.getFim().getZ()+(taxaZ*(k)), (int) It[0], (int) It[1], (int) It[2]);
+                                    bufferFace[k+posicaoBuffer].add(avanco, pontoAdicionado);
+                                    
+//                                    System.out.println(auxiliar.getNomeAresta() + "  Linha = " + (k+posicaoBuffer));
+//                                    for(int jegue = 0; jegue < bufferFace[k+posicaoBuffer].size(); jegue++){
+//                                        System.out.print("   "+bufferFace[k+posicaoBuffer].get(jegue).getX());
+//                                    }
+//                                    System.out.println();
+//                                    System.out.println(pontoAdicionado.getX());
+//                                    System.out.println();
                                     
 //                                    System.out.println("face " + caracteresPerspectiva.get(i).faces.get(j).getNomeFace()  );
 //                                    System.out.println("aresta " + arestas.get(l).getNomeAresta());
@@ -270,30 +382,31 @@ public class iluminacao {
 
                     }
                      
-                    System.out.println(caracteresPerspectiva.get(i).faces.get(j).getNomeFace());
-                    for(int teste = 0; teste < bufferFace.length; teste++){
-                        
-                        if(bufferFace[teste] != null){
-                            System.out.println("Linha "+teste);
-                            for(int testi = 0; testi < bufferFace[teste].size(); testi++){
-                                System.out.print("   "+bufferFace[teste].get(testi).getX());
-                            }
-                            System.out.println();
-                        }
-                    }
+//                    System.out.println(caracteresPerspectiva.get(i).faces.get(j).getNomeFace());
+//                    for(int teste = 0; teste < bufferFace.length; teste++){
+//                        
+//                        if(bufferFace[teste] != null){
+//                            System.out.println("Linha "+teste);
+//                            for(int testi = 0; testi < bufferFace[teste].size(); testi++){
+//                                System.out.print("   "+bufferFace[teste].get(testi).getX());
+//                            }
+//                            System.out.println();
+//                        }
+//                    }
 //                    
                     for(int k = 0; k < bufferFace.length-1; k++){
                         
                         ArrayList<pontoZbufferConstante> lista = bufferFace[k];
                         
-                        /*if(lista == null ){
-                            //System.out.println(k);
-                            continue;
-                        }*/
+//                        if(lista == null ){
+//                            System.out.println("Linha Y = "+ (k+yMin) +" está nula");
+//                            
+//                            continue;
+//                        }
                         
                         if(lista.size() > 1){
                             
-                            for(int l = 0; l < lista.size()-1; l+=2){
+                            for(int l = 0; l < lista.size(); l+=2){
                                 double taxaZ = (lista.get(l+1).profundiade() - lista.get(l).profundiade()) / (lista.get(l+1).getX() - lista.get(l).getX()); 
 //                                System.out.println("taxa = "+taxaZ);
                                 

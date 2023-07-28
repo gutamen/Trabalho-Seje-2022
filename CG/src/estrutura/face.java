@@ -5,6 +5,7 @@
 package estrutura;
 
 import java.util.ArrayList;
+import javafx.geometry.Point3D;
 
 
 /**
@@ -215,6 +216,21 @@ public class face {
 //        System.out.println("pontos da face " + this.getNomeFace());
 //        System.out.println(retorno[0].getNomeVertice() + " " + retorno[0].ponto);
 //        System.out.println(retorno[1].getNomeVertice() + " " + retorno[1].ponto);
+        
+        return retorno;
+    }
+    
+    public Point3D centroide(){
+        
+        Point3D retorno = Point3D.ZERO;
+        
+        ArrayList<vertice> lista = this.verticesFace();
+        
+        for(int i = 0; i < lista.size(); i++){
+            retorno = retorno.add(lista.get(i).ponto);
+        }
+        
+        retorno = new Point3D(retorno.getX()/lista.size(), retorno.getY()/lista.size(), retorno.getZ()/lista.size());
         
         return retorno;
     }
