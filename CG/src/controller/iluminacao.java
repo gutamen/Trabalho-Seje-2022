@@ -21,26 +21,20 @@ import letras.caractere;
  * @author gustavo
  */
 public class iluminacao {
-    private PixelWriter pixels;
-    private ArrayList<caractere> caracteres;
-    private Canvas canvasRelativo;
-    //private Point3D L;
-    //private byte[] Il = new byte[3], Ila = new byte[3];
     
     
-   /*public iluminacao(Canvas tela, ArrayList<caractere> caracteres){
-        this.pixels = tela.getGraphicsContext2D().getPixelWriter();
-        this.caracteres = caracteres;
-        this.canvasRelativo = tela;
-    }*/
+    
+    
+    
+    
+   
     
     
     public void iluminacaoConstante(Canvas tela, ArrayList<caractere> caracteresPerspectiva, ArrayList<caractere> universo, Point3D L, int[] Il, int[] Ila, Point3D VRP ){
-        this.pixels = tela.getGraphicsContext2D().getPixelWriter();
-        this.caracteres = caracteresPerspectiva;
-        this.canvasRelativo = tela;
+        PixelWriter pixels = tela.getGraphicsContext2D().getPixelWriter();
         
-        pontoZbufferConstante[][] matrizTela = new pontoZbufferConstante[(int)this.canvasRelativo.getWidth()][(int)this.canvasRelativo.getHeight()];
+        
+        pontoZbufferConstante[][] matrizTela = new pontoZbufferConstante[(int)tela.getWidth()][(int)tela.getHeight()];
         
         for(int i = 0; i < matrizTela.length; i++){
             for(int j = 0; j < matrizTela[0].length; j++){
@@ -48,7 +42,7 @@ public class iluminacao {
             }
         }
         
-        for(int i = 0; i < this.caracteres.size(); i++){
+        for(int i = 0; i < caracteresPerspectiva.size(); i++){
             
             
             double[] Ita = new double[3];
@@ -101,7 +95,7 @@ public class iluminacao {
                     
 //                    System.out.println("RS = " + RS);
                     if(RS > 0){
-                        RS = Math.pow(RS, this.caracteres.get(i).n);
+                        RS = Math.pow(RS, caracteresPerspectiva.get(i).n);
                         
                         It[0] += universo.get(i).Ks.getX()* Il[0] * RS;
                         It[1] += universo.get(i).Ks.getY()* Il[1] * RS;
@@ -458,7 +452,7 @@ public class iluminacao {
             tela.getGraphicsContext2D().clearRect(0, 0, tela.getWidth(), tela.getHeight());
             for(int a = 0; a < matrizTela.length; a++){
                 for(int j = 0; j < matrizTela[0].length; j++){
-                    this.pixels.setColor(a, j, matrizTela[a][j].corNoPonto());
+                    pixels.setColor(a, j, matrizTela[a][j].corNoPonto());
                 }
             }
             tela.getGraphicsContext2D().restore();
@@ -492,11 +486,10 @@ public class iluminacao {
     
     
     public void iluminacaoPhong(Canvas tela, ArrayList<caractere> caracteresPerspectiva, ArrayList<caractere> universo, Point3D L, int[] Il, int[] Ila, Point3D VRP ){
-        this.pixels = tela.getGraphicsContext2D().getPixelWriter();
-        this.caracteres = caracteresPerspectiva;
-        this.canvasRelativo = tela;
+        PixelWriter pixels = tela.getGraphicsContext2D().getPixelWriter();
         
-        pontoZbufferPhong[][] matrizTela = new pontoZbufferPhong[(int)this.canvasRelativo.getWidth()][(int)this.canvasRelativo.getHeight()];
+        
+        pontoZbufferPhong[][] matrizTela = new pontoZbufferPhong[(int)tela.getWidth()][(int)tela.getHeight()];
         
         for(int i = 0; i < matrizTela.length; i++){
             for(int j = 0; j < matrizTela[0].length; j++){
@@ -504,7 +497,7 @@ public class iluminacao {
             }
         }
         
-        for(int i = 0; i < this.caracteres.size(); i++){
+        for(int i = 0; i < caracteresPerspectiva.size(); i++){
             
             
             double[] Ita = new double[3];
@@ -521,8 +514,8 @@ public class iluminacao {
             
             ArrayList<vertice> listaNormais = new ArrayList<>();
             
-            for(int criaNormais = 0 ; criaNormais < this.caracteres.get(i).vertices.size(); criaNormais++){
-                listaNormais.add(new vertice(this.caracteres.get(i).vertices.get(criaNormais).getNomeVertice(), normVertFace(universo.get(i).faces, this.caracteres.get(i).vertices.get(criaNormais).getNomeVertice())));
+            for(int criaNormais = 0 ; criaNormais < caracteresPerspectiva.get(i).vertices.size(); criaNormais++){
+                listaNormais.add(new vertice(caracteresPerspectiva.get(i).vertices.get(criaNormais).getNomeVertice(), normVertFace(universo.get(i).faces, caracteresPerspectiva.get(i).vertices.get(criaNormais).getNomeVertice())));
             }
             
             for(int j = 0; j < faces.size(); j++){
@@ -910,7 +903,7 @@ public class iluminacao {
                                             
                                             double HN = vetorNormalizado.dotProduct(H);
                                             if(HN > 0){
-                                                HN = Math.pow(HN, this.caracteres.get(i).n);
+                                                HN = Math.pow(HN, caracteresPerspectiva.get(i).n);
 
                                                 It[0] += universo.get(i).Ks.getX()* Il[0] * HN;
                                                 It[1] += universo.get(i).Ks.getY()* Il[1] * HN;
@@ -948,7 +941,7 @@ public class iluminacao {
 
                                                 double HN = vetorNormalizado.dotProduct(H);
                                                 if(HN > 0){
-                                                    HN = Math.pow(HN, this.caracteres.get(i).n);
+                                                    HN = Math.pow(HN, caracteresPerspectiva.get(i).n);
 
                                                     It[0] += universo.get(i).Ks.getX()* Il[0] * HN;
                                                     It[1] += universo.get(i).Ks.getY()* Il[1] * HN;
@@ -987,7 +980,7 @@ public class iluminacao {
 
                                         double HN = vetorNormalizado.dotProduct(H);
                                         if(HN > 0){
-                                            HN = Math.pow(HN, this.caracteres.get(i).n);
+                                            HN = Math.pow(HN, caracteresPerspectiva.get(i).n);
 
                                             It[0] += universo.get(i).Ks.getX()* Il[0] * HN;
                                             It[1] += universo.get(i).Ks.getY()* Il[1] * HN;
@@ -1020,7 +1013,7 @@ public class iluminacao {
             tela.getGraphicsContext2D().clearRect(0, 0, tela.getWidth(), tela.getHeight());
             for(int a = 0; a < matrizTela.length; a++){
                 for(int j = 0; j < matrizTela[0].length; j++){
-                    this.pixels.setColor(a, j, matrizTela[a][j].corNoPonto());
+                    pixels.setColor(a, j, matrizTela[a][j].corNoPonto());
                 }
             }
             tela.getGraphicsContext2D().restore();

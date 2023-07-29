@@ -49,22 +49,31 @@ import javafx.scene.text.Text;
  * @author macedo
  */
 public class ctrl extends Application {
+    
+    // controle de tela
     int selectedChar;
     long localX, localY;
     boolean mouseApertado;
+    
+    
     boolean carregado = false;
+    
     Button btConfirm;
     Button save;
-    Button load;        
+    Button load;   
+    
     CheckBox setFaceOcult;
     ChoiceBox escolheMetodo;
-    TextArea txConfirmString;
+    
     Spinner<Integer> setZ;
-    Text txZ;
+    
+    TextArea txConfirmString;
     TextArea ka;
     TextArea kd;
     TextArea ks;
     TextArea n;
+    
+    Text txZ;
     Text txka;
     Text txkd;
     Text txks; 
@@ -109,6 +118,7 @@ public class ctrl extends Application {
     
     Point3D VRPPerspectiva = new Point3D(0, 0, 19);
     
+    
     final static double dPNormal = 21;
     double dPPerspectiva = 21;
     
@@ -117,14 +127,20 @@ public class ctrl extends Application {
     ctrlCam ct3;
     ctrlCam ct4;
     
-    Point3D lugarLuz = new Point3D(0,0,19);
+    Canvas canvasFrente = new Canvas(600, 200);
+    Canvas canvasTopo = new Canvas(600, 200);
+    Canvas canvasLado = new Canvas(600, 200);
+    Canvas canvasPerspectiva = new Canvas(600, 200);
+
+    
+    Point3D lugarLuz = new Point3D(0,0,-19);
     int[] Il;
     int[] Ila;
     
-    public static double offSet;
+//    public static double offSet;
     
     @Override public void start(Stage stage) {
-        //falseStart(stage);
+        //falseStart(stage);  
         Group root = new Group();
         Scene scene = new Scene(root, 880, 800, Color.WHITE);
         intFace(stage, root, scene);
@@ -313,22 +329,30 @@ public class ctrl extends Application {
         escolheMetodo.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent evento) {
-                if("WireFrame".equals(escolheMetodo.getValue().toString())){
+                if(null == escolheMetodo.getValue().toString()){
                     setFaceOcult.setSelected(false);
                     setFaceOcult.setDisable(false);
-                }else if("Pintor".equals(escolheMetodo.getValue().toString())){
-                    setFaceOcult.setSelected(false);
-                    setFaceOcult.setDisable(true);
-                }else if("Constante".equals(escolheMetodo.getValue().toString())){
-                    setFaceOcult.setSelected(true);
-                    setFaceOcult.setDisable(true);
-                }else if("Phong".equals(escolheMetodo.getValue().toString())){
-                    setFaceOcult.setSelected(true);
-                    setFaceOcult.setDisable(true);
-                } 
-                else{
-                    setFaceOcult.setSelected(false);
-                    setFaceOcult.setDisable(false);
+                }else switch (escolheMetodo.getValue().toString()) {
+                    case "WireFrame" -> {
+                        setFaceOcult.setSelected(false);
+                        setFaceOcult.setDisable(false);
+                    }
+                    case "Pintor" -> {
+                        setFaceOcult.setSelected(false);
+                        setFaceOcult.setDisable(true);
+                    }
+                    case "Constante" -> {
+                        setFaceOcult.setSelected(true);
+                        setFaceOcult.setDisable(true);
+                    }
+                    case "Phong" -> {
+                        setFaceOcult.setSelected(true);
+                        setFaceOcult.setDisable(true);
+                    }
+                    default -> {
+                        setFaceOcult.setSelected(false);
+                        setFaceOcult.setDisable(false);
+                    }
                 }
             }
         });
@@ -361,17 +385,18 @@ public class ctrl extends Application {
             root.getChildren().add(prev);
             
             nn=0;
+            
             choiceChar.setText(txConfirmString.getText().subSequence(nn, nn+1).toString().toUpperCase());
+            
             root.getChildren().add(choiceChar);
             
             
-            trueStart(stage, root, txConfirmString.getText(), scene, escolheMetodo.getValue().toString(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
+            trueStart(stage, root, txConfirmString.getText(), scene, setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
         });
         
         
     
         load.setOnAction((ActionEvent evento) -> {
-            System.out.println("load");
             
             root.getChildren().clear();
             root.getChildren().add(txConfirmString);
@@ -404,12 +429,12 @@ public class ctrl extends Application {
             carregado = true;
             carregamento = controleArquivo.carregaArquivo(stage);
             
-            System.out.println(carregamento.size());
-            trueStart(stage, root, txConfirmString.getText(), scene, escolheMetodo.getValue().toString(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
+            
+            trueStart(stage, root, txConfirmString.getText(), scene, setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
+            
         });
     
         save.setOnAction((ActionEvent evento) -> {
-            System.out.println("save");
             
             controleArquivo.salvaArquivo(chars, stage);
             
@@ -427,7 +452,8 @@ public class ctrl extends Application {
         });    
     }
     
-    private void trueStart(Stage stage, Group root, String readed, Scene scene, String metodChoice, Boolean faceOcult, Double scaleZ){
+    // Tentando matar essa desgraça
+    private void trueStart(Stage stage, Group root, String readed, Scene scene, Boolean faceOcult, Double scaleZ){
        
         readed = readed.toLowerCase();
         
@@ -436,93 +462,48 @@ public class ctrl extends Application {
         
         
         
-        //gambiarra para o Z aparecer
+        //Colocar a profundidade na string
         for(int i = 0; i < readed.length(); i++){
             chars.add(new caractere(readed.substring(i, i+1)));
             for(int j = chars.get(i).vertices.size()/2; j < chars.get(i).vertices.size(); j++){
                 chars.get(i).vertices.get(j).setZ(scaleZ);
             }
-            for(int j = 0; j < chars.get(i).vertices.size()/2; j++){
-                chars.get(i).vertices.get(j).setZ(1);
-            }
         }
         
-        
-        
         tela2String(chars.size(), chars);
-        
-        //Group root = new Group();
-        //Scene scene = new Scene(root, 1920, 1080, Color.WHITE);
         
         ct1 = new ctrlCam();
         ct2 = new ctrlCam();
         ct3 = new ctrlCam();
         ct4 = new ctrlCam();
         
-        final Canvas canvas1 = new Canvas(600, 200);
-        final Canvas canvas2 = new Canvas(600, 200);
-        final Canvas canvas3 = new Canvas(600, 200);
-        final Canvas canvas4 = new Canvas(600, 200);
+        canvasFrente = new Canvas(600, 200);
+        canvasTopo = new Canvas(600, 200);
+        canvasLado = new Canvas(600, 200);
+        canvasPerspectiva = new Canvas(600, 200);
 
-        canvas1.setLayoutX(0);
-        canvas1.setLayoutY(0);
-        canvas2.setLayoutY(200);
-        canvas3.setLayoutY(400);
-        canvas4.setLayoutY(600);
-        //canvas4.setLayoutX(500);
-        
-        GraphicsContext gc1 = canvas1.getGraphicsContext2D();
-        GraphicsContext gc2 = canvas2.getGraphicsContext2D();
-        GraphicsContext gc3 = canvas3.getGraphicsContext2D();
-        GraphicsContext gc4 = canvas4.getGraphicsContext2D();
+
+
+        canvasFrente.setLayoutY(0);
+        canvasTopo.setLayoutY(200);
+        canvasLado.setLayoutY(400);
+        canvasPerspectiva.setLayoutY(600);
         
         
-        //Button bt = new Button("jeugue");
-        //root.getChildren().add(bt);
+        GraphicsContext gc1 = canvasFrente.getGraphicsContext2D();
+        GraphicsContext gc2 = canvasTopo.getGraphicsContext2D();
+        GraphicsContext gc3 = canvasLado.getGraphicsContext2D();
+        GraphicsContext gc4 = canvasPerspectiva.getGraphicsContext2D();
         
         
-        
-        //root.setAutoSizeChildren(false);
-        
-        refactChars1 = new ArrayList<caractere>();
-        refactChars2 = new ArrayList<caractere>();
-        refactChars3 = new ArrayList<caractere>();
-        refactChars4 = new ArrayList<caractere>();
-        
-        
-        for(int i = 0; i < readed.length(); i++){
-            refactChars1.add(new caractere(readed.substring(i, i+1)));
-            refactChars2.add(new caractere(readed.substring(i, i+1)));
-            refactChars3.add(new caractere(readed.substring(i, i+1)));
-            refactChars4.add(new caractere(readed.substring(i, i+1)));
-            
-            for(int j = refactChars1.get(i).vertices.size()/2; j < refactChars1.get(i).vertices.size(); j++){
-                refactChars1.get(i).vertices.get(j).setZ(scaleZ);
-                refactChars2.get(i).vertices.get(j).setZ(scaleZ);
-                refactChars3.get(i).vertices.get(j).setZ(scaleZ);
-                refactChars4.get(i).vertices.get(j).setZ(scaleZ);
-            }
-            for(int j = 0; j < refactChars1.get(i).vertices.size()/2; j++){
-                refactChars1.get(i).vertices.get(j).setZ(1);
-                refactChars2.get(i).vertices.get(j).setZ(1);
-                refactChars3.get(i).vertices.get(j).setZ(1);
-                refactChars4.get(i).vertices.get(j).setZ(1);
-            }
-        }
-        
-        tela2String(chars.size(), refactChars1);
-        tela2String(chars.size(), refactChars2);
-        tela2String(chars.size(), refactChars3);
-        tela2String(chars.size(), refactChars4);
         
         if(carregado){
-            System.out.println("cy");
             chars = carregamento;
             carregado = false;
-            refactChars1.clear();
-            refactChars2.clear();
-            refactChars3.clear();
-            refactChars4.clear();
+            refactChars1 = new ArrayList<>();
+            refactChars2 = new ArrayList<>();
+            refactChars3 = new ArrayList<>();
+            refactChars4 = new ArrayList<>();
                     
             for(int i = 0; i < chars.size(); i++){
                 refactChars1.add(chars.get(i).copia());
@@ -530,8 +511,20 @@ public class ctrl extends Application {
                 refactChars3.add(chars.get(i).copia());
                 refactChars4.add(chars.get(i).copia());
             }
+        }else{
+            refactChars1 = new ArrayList<>();
+            refactChars2 = new ArrayList<>();
+            refactChars3 = new ArrayList<>();
+            refactChars4 = new ArrayList<>();
+            
+            for(int i = 0; i < chars.size(); i++){
+                refactChars1.add(chars.get(i).copia());
+                refactChars2.add(chars.get(i).copia());
+                refactChars3.add(chars.get(i).copia());
+                refactChars4.add(chars.get(i).copia());
+            }
         }
-        
+      
         
         refactCharsAll = new  ArrayList<>();
         refactCharsAll.add(refactChars1);
@@ -539,14 +532,14 @@ public class ctrl extends Application {
         refactCharsAll.add(refactChars3);
         refactCharsAll.add(refactChars4);
         
+        
         // Função teste de visibilidade de face
         if(faceOcult){
             faceTestVisibilit(refactCharsAll, chars, VRPFrente, VRPTopo, VRPLado, VRPPerspectiva);
         }
         
         ilum = new iluminacao();
-        ilum.normVertFace(refactChars1.get(0).faces, "A");
-        //ilum.normVertFace(refactChars1.get(1).faces, "A");
+        
         
         // VRP, P, Y, booelan projecao
         ctrlVRP2SRU(ct1, refactChars1, VRPFrente       , PFrente       , viewUP, dPNormal       , 1);
@@ -560,62 +553,35 @@ public class ctrl extends Application {
         Il = sIl; 
         Ila = sIla;
         
-        //ilum.iluminacaoConstante(canvas4, refactChars4, chars, new Point3D(-2, 2, 30), Il, Ila, VRPPerspectiva);
         
         
-        if("Pintor".equals(metodChoice)){
-            painter(refactChars4, canvas4);
-        }else if("Phong".equals(metodChoice)){
-            ilum.iluminacaoPhong(canvas4, refactChars4, chars, lugarLuz, Il, Ila, VRPPerspectiva);
-        }else if("Constante".equals(metodChoice)){
-            ilum.iluminacaoConstante(canvas4, refactChars4, chars, lugarLuz, Il, Ila, VRPPerspectiva);
+        
+        if(null != escolheMetodo.getValue().toString())
+            switch (escolheMetodo.getValue().toString()) {
+                case "Pintor" -> painter(refactChars4, canvasPerspectiva);
+                case "Phong" -> ilum.iluminacaoPhong(canvasPerspectiva, refactChars4, chars, lugarLuz, Il, Ila, VRPPerspectiva);
+                case "Constante" -> ilum.iluminacaoConstante(canvasPerspectiva, refactChars4, chars, lugarLuz, Il, Ila, VRPPerspectiva);
+                case "WireFrame" -> desenhaStringPorAresta(gc4, refactChars4);
+                default -> {}
         }
         
+        desenhaStringPorAresta(gc1, refactChars1);
+        desenhaStringPorArestaTopo(gc2, refactChars2);
+        desenhaStringPorArestaLado(gc3, refactChars3);
         
-        
-        for(int i = 0; i < refactChars1.size(); i++){
-            System.out.println(refactChars1.get(i).letra);
-            desenhaFiguraPorAresta(gc1, refactChars1.get(i));
-            desenhaFiguraPorArestaTopo(gc2, refactChars2.get(i));
-            desenhaFiguraPorArestaLateral(gc3, refactChars3.get(i));
-            
-            if("WireFrame".equals(metodChoice)){
-                desenhaFiguraPorAresta(gc4, refactChars4.get(i));
-            }
-        }
-        
-        
-        controleEventoCanvas.insereComportamento(canvas1, canvas2, canvas3, canvas4, this);
+ 
+        controleEventoCanvas.insereComportamento(canvasFrente, canvasTopo, canvasLado, canvasPerspectiva, this);
         
         
         
-        root.getChildren().add(canvas1);
-        root.getChildren().add(canvas2);
-        root.getChildren().add(canvas3);
-        root.getChildren().add(canvas4);
+        root.getChildren().add(canvasFrente);
+        root.getChildren().add(canvasTopo);
+        root.getChildren().add(canvasLado);
+        root.getChildren().add(canvasPerspectiva);
         
       
         
-        /*stage.addEventHandler(KeyEvent.KEY_PRESSED,  (event) -> {
-            System.out.println("Key pressed: " + event.toString());
-
-            switch(event.getCode().getCode()) {
-                case 27 : { // 27 = ESC key
-                    stage.close();
-                    break;
-                }
-                case 10 : { // 10 = Return
-                    stage.setWidth( stage.getWidth() * 2);
-                }
-                default:  {
-                    System.out.println("Unrecognized key");
-                }
-            }
-            
-           
-           
-            
-        });*/
+       
         
         
         
@@ -915,22 +881,7 @@ public class ctrl extends Application {
 //        
         Point3D centroidFace = new Point3D(xc, yc, zc);
         
-        double dVRPtoFaceView1 = Math.sqrt(Math.pow(vrp1.getX()-centroidFace.getX(), 2)+
-                                           Math.pow(vrp1.getY()-centroidFace.getY(), 2)+
-                                           Math.pow(vrp1.getZ()-centroidFace.getZ(), 2));
-
-        double dVRPtoFaceView2 = Math.sqrt(Math.pow(vrp2.getX()-centroidFace.getX(), 2)+
-                                           Math.pow(vrp2.getY()-centroidFace.getY(), 2)+
-                                           Math.pow(vrp2.getZ()-centroidFace.getZ(), 2));
-
-        double dVRPtoFaceView3 = Math.sqrt(Math.pow(vrp3.getX()-centroidFace.getX(), 2)+
-                                           Math.pow(vrp3.getY()-centroidFace.getY(), 2)+
-                                           Math.pow(vrp3.getZ()-centroidFace.getZ(), 2));
-
-
-        double dVRPtoFaceView4 = Math.sqrt(Math.pow(vrp4.getX()-centroidFace.getX(), 2)+
-                                           Math.pow(vrp4.getY()-centroidFace.getY(), 2)+
-                                           Math.pow(vrp4.getZ()-centroidFace.getZ(), 2));
+        
 
         Point3D vectO1 = vrp1.subtract(centroidFace);
         Point3D vectO2 = vrp2.subtract(centroidFace);
@@ -1047,6 +998,20 @@ public class ctrl extends Application {
         return max-min;
     }
     
+    
+    public void desenhaStringPorAresta(GraphicsContext gc, ArrayList<caractere> caracteres){
+        for(int i = 0; i < caracteres.size(); i++) desenhaFiguraPorAresta( gc, caracteres.get(i));
+    }
+    
+    public void desenhaStringPorArestaTopo(GraphicsContext gc, ArrayList<caractere> caracteres){
+        for(int i = 0; i < caracteres.size(); i++) desenhaFiguraPorArestaTopo( gc, caracteres.get(i));
+    }
+    
+    public void desenhaStringPorArestaLado(GraphicsContext gc, ArrayList<caractere> caracteres){
+        for(int i = 0; i < caracteres.size(); i++) desenhaFiguraPorArestaLateral( gc, caracteres.get(i));
+    }
+    
+    
     public void desenhaFiguraPorAresta(GraphicsContext gc, caractere cart) {    
         double[] xpoints = new double[2];
         double[] ypoints = new double[2];
@@ -1085,22 +1050,8 @@ public class ctrl extends Application {
                         }
                     }
                 }
-                
-                /*
-                for(int h = 0; h < cart.arestas.size(); h++){
-                    if(cart.arestas.get(h).getEsquerda().equals(cart.faces.get(k).getNomeFace())){
-                        xpoints[0]=(cart.arestas.get(h).getInicio().getX());
-                        ypoints[0]=((cart.arestas.get(h).getInicio().getY()));
-
-                        xpoints[1]=(cart.arestas.get(h).getFim().getX());
-                        ypoints[1]=((cart.arestas.get(h).getFim().getY()));
-                        gc.strokePolyline(xpoints, ypoints, 2);
-                    }
-                }*/
             }
         }
-        //System.out.println(Arrays.toString(xpoints));
-        //System.out.println(Arrays.toString(ypoints));
         
         
         gc.restore();
@@ -1145,24 +1096,8 @@ public class ctrl extends Application {
                         }
                     }
                 }
-                
-                /*
-                for(int h = 0; h < cart.arestas.size(); h++){
-                    if(cart.arestas.get(h).getEsquerda().equals(cart.faces.get(k).getNomeFace())){
-                        xpoints[0]=(cart.arestas.get(h).getInicio().getX());
-                        ypoints[0]=((cart.arestas.get(h).getInicio().getY()));
-
-                        xpoints[1]=(cart.arestas.get(h).getFim().getX());
-                        ypoints[1]=((cart.arestas.get(h).getFim().getY()));
-                        gc.strokePolyline(xpoints, ypoints, 2);
-                    }
-                }*/
             }
         }
-        //System.out.println(Arrays.toString(xpoints));
-        //System.out.println(Arrays.toString(ypoints));
-        
-        
         gc.restore();
     }
     
