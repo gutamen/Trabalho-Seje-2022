@@ -148,6 +148,11 @@ public class ctrl extends Application {
     }
     
     public void intFace(Stage stage, Group root, Scene scene){        
+        canvasFrente = new Canvas(600, 200);
+        canvasTopo = new Canvas(600, 200);
+        canvasLado = new Canvas(600, 200);
+        canvasPerspectiva = new Canvas(600, 200);
+        
         
         btConfirm = new Button("OK");
         save = new Button("SAVE");
@@ -172,6 +177,11 @@ public class ctrl extends Application {
         next = new Button("NXT");
         prev = new Button("PRV");
         choiceChar = new TextArea();
+        
+        canvasFrente.setLayoutY(0);
+        canvasTopo.setLayoutY(200);
+        canvasLado.setLayoutY(400);
+        canvasPerspectiva.setLayoutY(600);
         
         txZ.setLayoutX(765);
         txZ.setLayoutY(115);
@@ -323,6 +333,10 @@ public class ctrl extends Application {
         root.getChildren().add(next);
         root.getChildren().add(prev);
         root.getChildren().add(choiceChar);
+        root.getChildren().add(canvasFrente);
+        root.getChildren().add(canvasTopo);
+        root.getChildren().add(canvasLado);
+        root.getChildren().add(canvasPerspectiva);
 
         nn = 0;
         
@@ -358,37 +372,13 @@ public class ctrl extends Application {
         });
         
         btConfirm.setOnAction((ActionEvent evento) -> {
-            root.getChildren().clear();
-            root.getChildren().add(txConfirmString);
-            root.getChildren().add(btConfirm);
-            root.getChildren().add(save);
-            root.getChildren().add(load);
-            root.getChildren().add(setZ);
-            root.getChildren().add(setFaceOcult);
-            root.getChildren().add(escolheMetodo);
-            root.getChildren().add(txZ);
-            root.getChildren().add(botaoTranslacao);
-            root.getChildren().add(botaoRotacao);
-            root.getChildren().add(botaoEscala);
-            root.getChildren().add(botaoTodaString);
-            root.getChildren().add(botaoLetra);
-            root.getChildren().add(ka);
-            root.getChildren().add(kd);
-            root.getChildren().add(ks);
-            root.getChildren().add(n);
-            root.getChildren().add(txka);
-            root.getChildren().add(txkd);
-            root.getChildren().add(txks);
-            root.getChildren().add(txn);
-            root.getChildren().add(txChar);
-            root.getChildren().add(next);
-            root.getChildren().add(prev);
+            
             
             nn=0;
             
             choiceChar.setText(txConfirmString.getText().subSequence(nn, nn+1).toString().toUpperCase());
             
-            root.getChildren().add(choiceChar);
+            
             
             
             trueStart(stage, root, txConfirmString.getText(), scene, setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
@@ -398,32 +388,7 @@ public class ctrl extends Application {
     
         load.setOnAction((ActionEvent evento) -> {
             
-            root.getChildren().clear();
-            root.getChildren().add(txConfirmString);
-            root.getChildren().add(btConfirm);
-            root.getChildren().add(save);
-            root.getChildren().add(load);
-            root.getChildren().add(setZ);
-            root.getChildren().add(setFaceOcult);
-            root.getChildren().add(escolheMetodo);
-            root.getChildren().add(txZ);
-            root.getChildren().add(botaoTranslacao);
-            root.getChildren().add(botaoRotacao);
-            root.getChildren().add(botaoEscala);
-            root.getChildren().add(botaoTodaString);
-            root.getChildren().add(botaoLetra);
-            root.getChildren().add(ka);
-            root.getChildren().add(kd);
-            root.getChildren().add(ks);
-            root.getChildren().add(n);
-            root.getChildren().add(txka);
-            root.getChildren().add(txkd);
-            root.getChildren().add(txks);
-            root.getChildren().add(txn);
-            root.getChildren().add(txChar);
-            root.getChildren().add(next);
-            root.getChildren().add(prev);
-            root.getChildren().add(choiceChar);
+           
 
 
             carregado = true;
@@ -460,6 +425,11 @@ public class ctrl extends Application {
         
         chars = new ArrayList<>();
         
+        canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+        canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+        canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+        canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+        
         
         
         //Colocar a profundidade na string
@@ -477,17 +447,7 @@ public class ctrl extends Application {
         ct3 = new ctrlCam();
         ct4 = new ctrlCam();
         
-        canvasFrente = new Canvas(600, 200);
-        canvasTopo = new Canvas(600, 200);
-        canvasLado = new Canvas(600, 200);
-        canvasPerspectiva = new Canvas(600, 200);
-
-
-
-        canvasFrente.setLayoutY(0);
-        canvasTopo.setLayoutY(200);
-        canvasLado.setLayoutY(400);
-        canvasPerspectiva.setLayoutY(600);
+        
         
         
         GraphicsContext gc1 = canvasFrente.getGraphicsContext2D();
@@ -571,19 +531,6 @@ public class ctrl extends Application {
         
  
         controleEventoCanvas.insereComportamento(canvasFrente, canvasTopo, canvasLado, canvasPerspectiva, this);
-        
-        
-        
-        root.getChildren().add(canvasFrente);
-        root.getChildren().add(canvasTopo);
-        root.getChildren().add(canvasLado);
-        root.getChildren().add(canvasPerspectiva);
-        
-      
-        
-       
-        
-        
         
     }
         
