@@ -58,6 +58,8 @@ public class controleEventoCanvas {
         
         canvasFrente.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
             controle.mouseApertado = false;
+            
+            
             if("Pintor".equals(controle.escolheMetodo.getValue().toString())){
                 controle.painter(controle.refactChars4, canvasPerspectiva);
             }else if("Constante".equals(controle.escolheMetodo.getValue().toString())){
@@ -65,6 +67,8 @@ public class controleEventoCanvas {
             }if("Phong".equals(controle.escolheMetodo.getValue().toString())){
                 controle.ilum.iluminacaoPhong(canvasPerspectiva, controle.refactChars4, controle.chars, controle.lugarLuz, controle.Il, controle.Ila, controle.VRPPerspectiva);
             }
+            
+            
         });
         
         canvasFrente.addEventHandler(MouseEvent.ANY, (event)->{

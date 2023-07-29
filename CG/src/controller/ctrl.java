@@ -148,10 +148,7 @@ public class ctrl extends Application {
     }
     
     public void intFace(Stage stage, Group root, Scene scene){        
-        canvasFrente = new Canvas(600, 200);
-        canvasTopo = new Canvas(600, 200);
-        canvasLado = new Canvas(600, 200);
-        canvasPerspectiva = new Canvas(600, 200);
+        
         
         
         btConfirm = new Button("OK");
@@ -162,6 +159,7 @@ public class ctrl extends Application {
         escolheMetodo.setValue("WireFrame");
         escolheMetodo.getItems().addAll("WireFrame", "Pintor", "Constante", "Phong");
         txConfirmString = new TextArea();
+        
         //escala para 1 para 0.2
         setZ = new Spinner(1, 50, 1);
         txZ = new Text("profundidade Z");
@@ -279,7 +277,7 @@ public class ctrl extends Application {
         botaoTranslacao.setToggleGroup(selecaoComando);
         botaoRotacao    = new RadioButton("Rotation");
         botaoRotacao.setToggleGroup(selecaoComando);
-        botaoEscala     = new RadioButton("Escala");
+        botaoEscala     = new RadioButton("Scale");
         botaoEscala.setToggleGroup(selecaoComando);
         
         selecaoString   = new ToggleGroup();
@@ -381,7 +379,7 @@ public class ctrl extends Application {
             
             
             
-            trueStart(stage, root, txConfirmString.getText(), scene, setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
+            trueStart(stage, root, txConfirmString.getText(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
         });
         
         
@@ -395,7 +393,7 @@ public class ctrl extends Application {
             carregamento = controleArquivo.carregaArquivo(stage);
             
             
-            trueStart(stage, root, txConfirmString.getText(), scene, setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
+            trueStart(stage, root, txConfirmString.getText(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
             
         });
     
@@ -418,7 +416,7 @@ public class ctrl extends Application {
     }
     
     // Tentando matar essa desgraça
-    private void trueStart(Stage stage, Group root, String readed, Scene scene, Boolean faceOcult, Double scaleZ){
+    private void trueStart(Stage stage, Group root, String readed, Boolean faceOcult, Double scaleZ){
        
         readed = readed.toLowerCase();
         
@@ -495,7 +493,12 @@ public class ctrl extends Application {
         
         // Função teste de visibilidade de face
         if(faceOcult){
-            faceTestVisibilit(refactCharsAll, chars, VRPFrente, VRPTopo, VRPLado, VRPPerspectiva);
+            //faceTestVisibilit(refactCharsAll, chars, VRPFrente, VRPTopo, VRPLado, VRPPerspectiva);
+            testeVisibilidade(chars, refactChars1, ctrl.VRPFrente);
+            testeVisibilidade(chars, refactChars2, ctrl.VRPTopo);
+            testeVisibilidade(chars, refactChars3, ctrl.VRPLado);
+            testeVisibilidade(chars, refactChars4, VRPPerspectiva);
+            
         }
         
         ilum = new iluminacao();
@@ -757,6 +760,27 @@ public class ctrl extends Application {
             return new Point3D(maxX, maxY, maxZ);
         }
         return null;
+    }
+    
+    public static void testeVisibilidade(ArrayList<caractere> universo, ArrayList<caractere> stringModificada, Point3D VRP){
+        for(int i = 0; i < universo.size(); i++){
+            for (int j = 0; j < universo.get(i).faces.size(); j++) {
+                face faceAtual = universo.get(i).faces.get(j);
+                Point3D pontoParaTeste = faceAtual.getArestaFace().getFim().ponto;
+                
+                Point3D O = VRP.subtract(pontoParaTeste).normalize();
+                
+                double resultaVisibilidade = O.dotProduct(faceAtual.normalFace());
+                
+                if(resultaVisibilidade > 0){
+                    stringModificada.get(i).faces.get(j).setVisivel(true);
+                }else{
+                    stringModificada.get(i).faces.get(j).setVisivel(false);
+                }
+                
+            }
+        }
+        
     }
     
     public void faceTestVisibilit(ArrayList<ArrayList<caractere>> refactChars, ArrayList<caractere> chars, Point3D vrp1, Point3D vrp2, Point3D vrp3, Point3D vrp4){

@@ -50,13 +50,7 @@ public class controleArquivo {
                         continue;
                     }
                     
-                    /*if(linha.charAt(0) >= 48 && linha.charAt(0) <= 57){
-                        novoCaractere = true;
-                        contadorVertice = 0;
-                        contadorCaractere++;
-                        System.out.println((int)linha.charAt(0) + " " + contaLinha);
-                        continue;
-                    }*/
+                    
                     
                     if(novoCaractere){
                         

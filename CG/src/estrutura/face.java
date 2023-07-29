@@ -235,5 +235,12 @@ public class face {
         return retorno;
     }
     
+    public Point3D normalFace(){
+        ArrayList<vertice> lista = this.verticesFace();
+        Point3D vetor1 = lista.get(1).ponto.subtract(lista.get(0).ponto);
+        Point3D vetor2 = lista.get(lista.size()-1).ponto.subtract(lista.get(0).ponto);
+        return vetor1.crossProduct(vetor2).normalize();
+    }
+    
     
 }
