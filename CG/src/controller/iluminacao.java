@@ -30,7 +30,7 @@ public class iluminacao {
    
     
     
-    public void iluminacaoConstante(Canvas tela, ArrayList<caractere> caracteresPerspectiva, ArrayList<caractere> universo, Point3D L, int[] Il, int[] Ila, Point3D VRP ){
+    public static void iluminacaoConstante(Canvas tela, ArrayList<caractere> caracteresPerspectiva, ArrayList<caractere> universo, Point3D L, int[] Il, int[] Ila, Point3D VRP ){
         PixelWriter pixels = tela.getGraphicsContext2D().getPixelWriter();
         
         
@@ -485,7 +485,7 @@ public class iluminacao {
     }
     
     
-    public void iluminacaoPhong(Canvas tela, ArrayList<caractere> caracteresPerspectiva, ArrayList<caractere> universo, Point3D L, int[] Il, int[] Ila, Point3D VRP ){
+    public static void iluminacaoPhong(Canvas tela, ArrayList<caractere> caracteresPerspectiva, ArrayList<caractere> universo, Point3D L, int[] Il, int[] Ila, Point3D VRP ){
         PixelWriter pixels = tela.getGraphicsContext2D().getPixelWriter();
         
         
@@ -1029,7 +1029,7 @@ public class iluminacao {
     }
     
     
-    public Point3D vetorNormalVertice(String verticeNome, ArrayList<vertice> vertices){
+    public static Point3D vetorNormalVertice(String verticeNome, ArrayList<vertice> vertices){
         
         for(int i = 0; i < vertices.size(); i++){
             if(verticeNome.equals(vertices.get(i).getNomeVertice())){
@@ -1040,8 +1040,8 @@ public class iluminacao {
         
     }
     
-    public Point3D normVertFace(ArrayList<face> faces, String vert){
-        ArrayList<face> faceWithVert = new ArrayList<face>();
+    public static Point3D normVertFace(ArrayList<face> faces, String vert){
+        ArrayList<face> faceWithVert = new ArrayList<>();
         for(int j = 0; j < faces.size(); j ++){
             aresta k = faces.get(j).getArestaFace();
             int o = 0;
@@ -1091,7 +1091,7 @@ public class iluminacao {
         return midUnitVert;
     }
     
-    public Point3D makeNormal(ArrayList<vertice> vertList){  
+    public static Point3D makeNormal(ArrayList<vertice> vertList){  
         Point3D vect1 = vertList.get(1).ponto.subtract(vertList.get(0).ponto);
         Point3D vect2 = vertList.get(vertList.size()-1).ponto.subtract(vertList.get(0).ponto);
 

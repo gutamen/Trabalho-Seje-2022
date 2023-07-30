@@ -41,6 +41,8 @@ public class controleEventoCanvas {
                     }
                     if((controle.localX >= minX && controle.localX <= maxX) && (controle.localY >= minY && controle.localY <= maxY)){
                         controle.selectedChar = i;
+                        controle.selecao = controle.chars.get(i);
+                        
                         break;
                     }
                 }
@@ -58,15 +60,17 @@ public class controleEventoCanvas {
         
         canvasFrente.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
             controle.mouseApertado = false;
+            controle.iluminacaoCaractereSelecionado();
             
-            
-            if("Pintor".equals(controle.escolheMetodo.getValue().toString())){
-                controle.painter(controle.refactChars4, canvasPerspectiva);
-            }else if("Constante".equals(controle.escolheMetodo.getValue().toString())){
-                controle.ilum.iluminacaoConstante(canvasPerspectiva, controle.refactChars4, controle.chars, controle.lugarLuz, controle.Il, controle.Ila, controle.VRPPerspectiva);
-            }if("Phong".equals(controle.escolheMetodo.getValue().toString())){
-                controle.ilum.iluminacaoPhong(canvasPerspectiva, controle.refactChars4, controle.chars, controle.lugarLuz, controle.Il, controle.Ila, controle.VRPPerspectiva);
+            if(null != controle.escolheMetodo.getValue().toString())
+            switch (controle.escolheMetodo.getValue().toString()) {
+                case "Pintor" -> controle.painter(controle.refactChars4, canvasPerspectiva);
+                case "Phong" -> iluminacao.iluminacaoPhong(canvasPerspectiva, controle.refactChars4, controle.chars, controle.lugarLuz, controle.Il, controle.Ila, controle.VRPPerspectiva);
+                case "Constante" -> iluminacao.iluminacaoConstante(canvasPerspectiva, controle.refactChars4, controle.chars, controle.lugarLuz, controle.Il, controle.Ila, controle.VRPPerspectiva);
+                default -> {}
             }
+            
+            
             
             
         });
@@ -114,11 +118,11 @@ public class controleEventoCanvas {
                             }
 
 
-                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
-                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
-                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
-                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
-                            
+////                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+////                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+////                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+////                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+//                            
                             ctrl.desenhaStringPorAresta(canvasFrente.getGraphicsContext2D(), controle.refactChars1);
                             ctrl.desenhaStringPorArestaTopo(canvasTopo.getGraphicsContext2D(), controle.refactChars2);
                             ctrl.desenhaStringPorArestaLado(canvasLado.getGraphicsContext2D(), controle.refactChars3);
@@ -161,11 +165,11 @@ public class controleEventoCanvas {
                             }
 
 
-                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
-                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
-                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
-                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
-                            
+////                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+////                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+////                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+////                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+//                            
                             ctrl.desenhaStringPorAresta(canvasFrente.getGraphicsContext2D(), controle.refactChars1);
                             ctrl.desenhaStringPorArestaTopo(canvasTopo.getGraphicsContext2D(), controle.refactChars2);
                             ctrl.desenhaStringPorArestaLado(canvasLado.getGraphicsContext2D(), controle.refactChars3);
@@ -204,10 +208,10 @@ public class controleEventoCanvas {
                             }
 
 
-                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
-                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
-                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
-                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+////                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+////                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+////                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+////                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
                             
                             ctrl.desenhaStringPorAresta(canvasFrente.getGraphicsContext2D(), controle.refactChars1);
                             ctrl.desenhaStringPorArestaTopo(canvasTopo.getGraphicsContext2D(), controle.refactChars2);
@@ -253,7 +257,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, 2);
                                     
                                 }
-                                canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+////                                canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
                                 
                                 
@@ -269,7 +273,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, 3);
                                     
                                 }
-                                canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+////                                canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
                                 
@@ -286,7 +290,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
                                     
                                 }
-                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+////                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 
@@ -299,7 +303,7 @@ public class controleEventoCanvas {
                             Platform.runLater(refazLado);
                             Platform.runLater(refazPerspectiva);
 
-                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+//                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
                             
                             if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
                             
@@ -339,7 +343,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, 2);
                                     
                                 }
-                                canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+//                                canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
                                 
                                 
@@ -355,7 +359,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, 3);
                                     
                                 }
-                                canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+//                                canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
                                 
@@ -372,7 +376,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
                                     
                                 }
-                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+//                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 
@@ -385,7 +389,7 @@ public class controleEventoCanvas {
                             Platform.runLater(refazLado);
                             Platform.runLater(refazPerspectiva);
 
-                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+//                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
                             
                             if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
                             
@@ -424,7 +428,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, 2);
                                     
                                 }
-                                canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+//                                canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
                                 
                                 
@@ -440,7 +444,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, 3);
                                     
                                 }
-                                canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+//                                canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
                                 
@@ -457,7 +461,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
                                     
                                 }
-                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+//                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 
@@ -470,7 +474,7 @@ public class controleEventoCanvas {
                             Platform.runLater(refazLado);
                             Platform.runLater(refazPerspectiva);
 
-                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+//                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
                             
                             if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
                             
@@ -510,6 +514,8 @@ public class controleEventoCanvas {
                     }
                     if((controle.localX >= minX && controle.localX <= maxX) && (controle.localY >= minY && controle.localY <= maxY)){
                         controle.selectedChar = i;
+                        controle.selecao = controle.chars.get(i);
+                        
                         break;
                     }
                 }
@@ -524,14 +530,14 @@ public class controleEventoCanvas {
         });   
         canvasTopo.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
             controle.mouseApertado = false;
+            controle.iluminacaoCaractereSelecionado();
             
-            
-            if("Pintor".equals(controle.escolheMetodo.getValue().toString())){
-                controle.painter(controle.refactChars4, canvasPerspectiva);
-            }else if("Constante".equals(controle.escolheMetodo.getValue().toString())){
-                controle.ilum.iluminacaoConstante(canvasPerspectiva, controle.refactChars4, controle.chars, controle.lugarLuz, controle.Il, controle.Ila, controle.VRPPerspectiva);
-            }if("Phong".equals(controle.escolheMetodo.getValue().toString())){
-                controle.ilum.iluminacaoPhong(canvasPerspectiva, controle.refactChars4, controle.chars, controle.lugarLuz, controle.Il, controle.Ila, controle.VRPPerspectiva);
+            if(null != controle.escolheMetodo.getValue().toString())
+            switch (controle.escolheMetodo.getValue().toString()) {
+                case "Pintor" -> controle.painter(controle.refactChars4, canvasPerspectiva);
+                case "Phong" -> iluminacao.iluminacaoPhong(canvasPerspectiva, controle.refactChars4, controle.chars, controle.lugarLuz, controle.Il, controle.Ila, controle.VRPPerspectiva);
+                case "Constante" -> iluminacao.iluminacaoConstante(canvasPerspectiva, controle.refactChars4, controle.chars, controle.lugarLuz, controle.Il, controle.Ila, controle.VRPPerspectiva);
+                default -> {}
             }
             
             
@@ -578,10 +584,10 @@ public class controleEventoCanvas {
                                 ctrl.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                             }
 
-                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
-                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
-                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
-                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+//                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+//                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+//                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+//                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
                             
                             ctrl.desenhaStringPorAresta(canvasFrente.getGraphicsContext2D(), controle.refactChars1);
                             ctrl.desenhaStringPorArestaTopo(canvasTopo.getGraphicsContext2D(), controle.refactChars2);
@@ -624,10 +630,10 @@ public class controleEventoCanvas {
                                 ctrl.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                             }
 
-                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
-                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
-                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
-                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+//                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+//                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+//                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+//                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
                             
                             ctrl.desenhaStringPorAresta(canvasFrente.getGraphicsContext2D(), controle.refactChars1);
                             ctrl.desenhaStringPorArestaTopo(canvasTopo.getGraphicsContext2D(), controle.refactChars2);
@@ -666,10 +672,10 @@ public class controleEventoCanvas {
                                 ctrl.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                             }
 
-                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
-                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
-                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
-                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+//                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+//                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+//                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+//                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
                             
                             ctrl.desenhaStringPorAresta(canvasFrente.getGraphicsContext2D(), controle.refactChars1);
                             ctrl.desenhaStringPorArestaTopo(canvasTopo.getGraphicsContext2D(), controle.refactChars2);
@@ -710,7 +716,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(frente, controle.ct1, controle.refactChars1, ctrl.VRPFrente, ctrl.PFrente, ctrl.viewUP, 1);
                                     
                                 }
-                                canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+//                                canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
                                 ctrl.desenhaStringPorAresta(canvasFrente.getGraphicsContext2D(), controle.refactChars1);
@@ -726,7 +732,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, 3);
                                     
                                 }
-                                canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+//                                canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
                                 ctrl.desenhaStringPorArestaLado(canvasLado.getGraphicsContext2D(), controle.refactChars3);
@@ -741,7 +747,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
                                     
                                 }
-                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+//                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 ctrl.desenhaStringPorAresta(canvasPerspectiva.getGraphicsContext2D(), controle.refactChars4);
@@ -754,7 +760,7 @@ public class controleEventoCanvas {
                             Platform.runLater(refazLado);
                             Platform.runLater(refazPerspectiva);
 
-                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+//                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                             if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
                             ctrl.desenhaStringPorArestaTopo(canvasTopo.getGraphicsContext2D(), controle.refactChars2);
                             
@@ -798,7 +804,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(frente, controle.ct1, controle.refactChars1, ctrl.VRPFrente, ctrl.PFrente, ctrl.viewUP, 1);
                                     
                                 }
-                                canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+//                                canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
                                 ctrl.desenhaStringPorAresta(canvasFrente.getGraphicsContext2D(), controle.refactChars1);
@@ -814,7 +820,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, 3);
                                     
                                 }
-                                canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+//                                canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
                                 ctrl.desenhaStringPorArestaLado(canvasLado.getGraphicsContext2D(), controle.refactChars3);
@@ -829,7 +835,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
                                     
                                 }
-                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+//                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 ctrl.desenhaStringPorAresta(canvasPerspectiva.getGraphicsContext2D(), controle.refactChars4);
@@ -844,7 +850,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, 2);
                                     
                                 }
-                                canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+//                                canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
                                 
                                 
@@ -883,7 +889,7 @@ public class controleEventoCanvas {
                                 controle.ctrlVRP2SRUParaUmCaractere(frente, controle.ct1, controle.refactChars1, ctrl.VRPFrente, ctrl.PFrente, ctrl.viewUP, 1);
 
                             }
-                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+//                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
 
                             if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
                             
@@ -902,7 +908,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, 3);
                                     
                                 }
-                                canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+//                                canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
                                 ctrl.desenhaStringPorArestaLado(canvasLado.getGraphicsContext2D(), controle.refactChars3);
@@ -917,7 +923,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
                                     
                                 }
-                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+//                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 ctrl.desenhaStringPorAresta(canvasPerspectiva.getGraphicsContext2D(), controle.refactChars4);
@@ -932,7 +938,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, 2);
                                     
                                 }
-                                canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+//                                canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
                                 
                                 
@@ -984,6 +990,8 @@ public class controleEventoCanvas {
                     }
                     if((controle.localX >= minX && controle.localX <= maxX) && (controle.localY >= minY && controle.localY <= maxY)){
                         controle.selectedChar = i;
+                        controle.selecao = controle.chars.get(i);
+                        
                         break;
                     }
                 }
@@ -1002,14 +1010,14 @@ public class controleEventoCanvas {
         
         canvasLado.addEventHandler(MouseEvent.MOUSE_RELEASED, (event)->{
             controle.mouseApertado = false;
+            controle.iluminacaoCaractereSelecionado();
             
-            
-            if("Pintor".equals(controle.escolheMetodo.getValue().toString())){
-                controle.painter(controle.refactChars4, canvasPerspectiva);
-            }else if("Constante".equals(controle.escolheMetodo.getValue().toString())){
-                controle.ilum.iluminacaoConstante(canvasPerspectiva, controle.refactChars4, controle.chars, controle.lugarLuz, controle.Il, controle.Ila, controle.VRPPerspectiva);
-            }if("Phong".equals(controle.escolheMetodo.getValue().toString())){
-                controle.ilum.iluminacaoPhong(canvasPerspectiva, controle.refactChars4, controle.chars, controle.lugarLuz, controle.Il, controle.Ila, controle.VRPPerspectiva);
+            if(null != controle.escolheMetodo.getValue().toString())
+            switch (controle.escolheMetodo.getValue().toString()) {
+                case "Pintor" -> controle.painter(controle.refactChars4, canvasPerspectiva);
+                case "Phong" -> iluminacao.iluminacaoPhong(canvasPerspectiva, controle.refactChars4, controle.chars, controle.lugarLuz, controle.Il, controle.Ila, controle.VRPPerspectiva);
+                case "Constante" -> iluminacao.iluminacaoConstante(canvasPerspectiva, controle.refactChars4, controle.chars, controle.lugarLuz, controle.Il, controle.Ila, controle.VRPPerspectiva);
+                default -> {}
             }
             
         });
@@ -1057,10 +1065,10 @@ public class controleEventoCanvas {
                                 ctrl.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                             }
 
-                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
-                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
-                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
-                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+//                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+//                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+//                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+//                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
                             
                             ctrl.desenhaStringPorAresta(canvasFrente.getGraphicsContext2D(), controle.refactChars1);
                             ctrl.desenhaStringPorArestaTopo(canvasTopo.getGraphicsContext2D(), controle.refactChars2);
@@ -1103,10 +1111,10 @@ public class controleEventoCanvas {
                                 ctrl.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                             }
 
-                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
-                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
-                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
-                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+//                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+//                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+//                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+//                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
                             
                             ctrl.desenhaStringPorAresta(canvasFrente.getGraphicsContext2D(), controle.refactChars1);
                             ctrl.desenhaStringPorArestaTopo(canvasTopo.getGraphicsContext2D(), controle.refactChars2);
@@ -1146,10 +1154,10 @@ public class controleEventoCanvas {
                                 ctrl.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                             }
 
-                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
-                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
-                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
-                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+//                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+//                            canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+//                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+//                            canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
                             
                             ctrl.desenhaStringPorAresta(canvasFrente.getGraphicsContext2D(), controle.refactChars1);
                             ctrl.desenhaStringPorArestaTopo(canvasTopo.getGraphicsContext2D(), controle.refactChars2);
@@ -1197,7 +1205,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(frente, controle.ct1, controle.refactChars1, ctrl.VRPFrente, ctrl.PFrente, ctrl.viewUP, 1);
                                     
                                 }
-                                canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+//                                canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
                             
@@ -1214,7 +1222,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, 2);
                                     
                                 }
-                                canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+//                                canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
                                 
@@ -1230,7 +1238,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
                                     
                                 }
-                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+//                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 
@@ -1244,7 +1252,7 @@ public class controleEventoCanvas {
                             Platform.runLater(refazTopo);
                             Platform.runLater(refazPerspectiva);
 
-                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+//                            canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
                             if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
                             ctrl.desenhaStringPorArestaLado(canvasLado.getGraphicsContext2D(), controle.refactChars3);
                             
@@ -1280,7 +1288,7 @@ public class controleEventoCanvas {
                                 controle.ctrlVRP2SRUParaUmCaractere(frente, controle.ct1, controle.refactChars1, ctrl.VRPFrente, ctrl.PFrente, ctrl.viewUP, 1);
 
                             }
-                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+//                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
 
                             if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
                             
@@ -1297,7 +1305,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, 2);
                                     
                                 }
-                                canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+//                                canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                                 
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
@@ -1314,7 +1322,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, 3);
                                     
                                 }
-                                canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+//                                canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
                                 
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
@@ -1332,7 +1340,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
                                     
                                 }
-                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+//                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 
@@ -1371,7 +1379,7 @@ public class controleEventoCanvas {
                                 controle.ctrlVRP2SRUParaUmCaractere(frente, controle.ct1, controle.refactChars1, ctrl.VRPFrente, ctrl.PFrente, ctrl.viewUP, 1);
 
                             }
-                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
+//                            canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
 
                             if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
                             
@@ -1388,7 +1396,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, 2);
                                     
                                 }
-                                canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
+//                                canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                                 
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
@@ -1405,7 +1413,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, 3);
                                     
                                 }
-                                canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
+//                                canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
                                 
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
@@ -1423,7 +1431,7 @@ public class controleEventoCanvas {
                                     controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
                                     
                                 }
-                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
+//                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
                                 
                                 if(controle.setFaceOcult.isSelected()) ctrl.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 

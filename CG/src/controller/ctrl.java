@@ -9,10 +9,7 @@ import estrutura.aresta;
 import estrutura.face;
 import estrutura.fakeHash;
 import estrutura.vertice;
-import java.io.File;
-import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import javafx.application.Application;
 import javafx.geometry.Point3D;
 import javafx.scene.Group;
@@ -22,12 +19,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import letras.*;
-import java.util.Scanner;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
@@ -36,10 +29,6 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 
 
@@ -52,6 +41,7 @@ public class ctrl extends Application {
     
     // controle de tela
     int selectedChar;
+    caractere selecao;
     long localX, localY;
     boolean mouseApertado;
     
@@ -66,27 +56,33 @@ public class ctrl extends Application {
     ChoiceBox escolheMetodo;
     
     Spinner<Integer> setZ;
+    Text txZ;
     
     TextArea txConfirmString;
-    TextArea ka;
-    TextArea kd;
-    TextArea ks;
-    TextArea n;
     
-    Text txZ;
-    Text txka;
-    Text txkd;
-    Text txks; 
-    Text txn;
-    Text txChar;
-    Spinner<String> getChar;
-    SpinnerValueFactory<String> strChar;
-    Button next;
-    Button prev;
-    TextArea choiceChar;
-    int nn;
     
-    iluminacao ilum;
+    TextArea caractereSelecionado;
+    
+    Text textoKa;
+    Spinner<Double> taxaKaR;
+    Spinner<Double> taxaKaG;
+    Spinner<Double> taxaKaB;
+    
+    Text textoKd;
+    Spinner<Double> taxaKdR;
+    Spinner<Double> taxaKdG;
+    Spinner<Double> taxaKdB;
+    
+    Text textoKs;
+    Spinner<Double> taxaKsR;
+    Spinner<Double> taxaKsG;
+    Spinner<Double> taxaKsB;
+    
+    Text textoCoeficienteRefracao;
+    Spinner<Double> coeficienteRefracao;
+    
+    Button confirmaLuz;
+    
     
     ToggleGroup selecaoComando; 
     RadioButton botaoTranslacao;
@@ -137,12 +133,12 @@ public class ctrl extends Application {
     int[] Il;
     int[] Ila;
     
-//    public static double offSet;
+
     
     @Override public void start(Stage stage) {
         //falseStart(stage);  
         Group root = new Group();
-        Scene scene = new Scene(root, 880, 800, Color.WHITE);
+        Scene scene = new Scene(root, 900, 800, Color.WHITE);
         intFace(stage, root, scene);
         
     }
@@ -161,20 +157,20 @@ public class ctrl extends Application {
         txConfirmString = new TextArea();
         
         //escala para 1 para 0.2
+        
         setZ = new Spinner(1, 50, 1);
         txZ = new Text("profundidade Z");
-        txka = new Text("ka");
-        txkd = new Text("kd");
-        txks = new Text("ks");
-        txn = new Text("n");
-        ka = new TextArea();
-        ks = new TextArea();
-        kd = new TextArea();
-        n = new TextArea();
-        txChar = new Text("CHAR");
-        next = new Button("NXT");
-        prev = new Button("PRV");
-        choiceChar = new TextArea();
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         canvasFrente.setLayoutY(0);
         canvasTopo.setLayoutY(200);
@@ -184,56 +180,96 @@ public class ctrl extends Application {
         txZ.setLayoutX(765);
         txZ.setLayoutY(115);
         
-        txka.setLayoutX(700);
-        txka.setLayoutY(568);
         
-        txkd.setLayoutX(700);
-        txkd.setLayoutY(596);
+        caractereSelecionado = new TextArea("Selected Char == NULL");
+        caractereSelecionado.setLayoutX(695);
+        caractereSelecionado.setLayoutY(700);
+        caractereSelecionado.setMinSize(0, 0);
+        caractereSelecionado.setMaxSize(188, 25);
         
-        txks.setLayoutX(700);
-        txks.setLayoutY(626);
+        textoCoeficienteRefracao = new Text("n");
+        textoCoeficienteRefracao.setLayoutX(695);
+        textoCoeficienteRefracao.setLayoutY(680);
         
-        txn.setLayoutX(704);
-        txn.setLayoutY(650);
+        coeficienteRefracao = new Spinner(0, 10, 1, 0.01);
+        coeficienteRefracao.setLayoutX(714);
+        coeficienteRefracao.setLayoutY(664);
+        coeficienteRefracao.setMinSize(0, 0);
+        coeficienteRefracao.setMaxSize(62, 28);
+        coeficienteRefracao.setDisable(true);
         
-        txChar.setLayoutX(820);
-        txChar.setLayoutY(548);
+        textoKa = new Text("Ka");
+        textoKa.setLayoutX(695);
+        textoKa.setLayoutY(598);
         
-        choiceChar.setMinSize(0, 0);
-        choiceChar.setMaxSize(44, 28);
-        choiceChar.setLayoutX(818);
-        choiceChar.setLayoutY(574);
+        taxaKaR = new Spinner(0, 1, 0, 0.01);
+        taxaKaG = new Spinner(0, 1, 0, 0.01);
+        taxaKaB = new Spinner(0, 1, 0, 0.01);
+        taxaKaR.setLayoutX(714);
+        taxaKaR.setLayoutY(580);
+        taxaKaR.setMinSize(0, 0);
+        taxaKaR.setMaxSize(62, 28);
+        taxaKaG.setLayoutX(776);
+        taxaKaG.setLayoutY(580);
+        taxaKaG.setMinSize(0, 0);
+        taxaKaG.setMaxSize(62, 28);
+        taxaKaB.setLayoutX(838);
+        taxaKaB.setLayoutY(580);
+        taxaKaB.setMinSize(0, 0);
+        taxaKaB.setMaxSize(62, 28);
+        taxaKaR.setDisable(true);
+        taxaKaG.setDisable(true);
+        taxaKaB.setDisable(true);
         
-        next.setMinSize(0, 0);
-        next.setMaxSize(70, 28);
-        next.setLayoutX(818);
-        next.setLayoutY(550);
+        textoKd = new Text("Kd");
+        textoKd.setLayoutX(695);
+        textoKd.setLayoutY(626);
         
-        prev.setMinSize(0, 0);
-        prev.setMaxSize(70, 28);
-        prev.setLayoutX(818);
-        prev.setLayoutY(602);
+        taxaKdR = new Spinner(0, 1, 0, 0.01);
+        taxaKdG = new Spinner(0, 1, 0, 0.01);
+        taxaKdB = new Spinner(0, 1, 0, 0.01);
+        taxaKdR.setLayoutX(714);
+        taxaKdR.setLayoutY(608);
+        taxaKdR.setMinSize(0, 0);
+        taxaKdR.setMaxSize(62, 28);
+        taxaKdG.setLayoutX(776);
+        taxaKdG.setLayoutY(608);
+        taxaKdG.setMinSize(0, 0);
+        taxaKdG.setMaxSize(62, 28);
+        taxaKdB.setLayoutX(838);
+        taxaKdB.setLayoutY(608);
+        taxaKdB.setMinSize(0, 0);
+        taxaKdB.setMaxSize(62, 28);
+        taxaKdR.setDisable(true);
+        taxaKdG.setDisable(true);
+        taxaKdB.setDisable(true);
         
+        textoKs = new Text("Ks");
+        textoKs.setLayoutX(695);
+        textoKs.setLayoutY(656);
         
-        ka.setLayoutX(724);
-        ka.setLayoutY(550);
-        ka.setMinSize(0, 0);
-        ka.setMaxSize(70, 28);
+        taxaKsR = new Spinner(0, 1, 0, 0.01);
+        taxaKsG = new Spinner(0, 1, 0, 0.01);
+        taxaKsB = new Spinner(0, 1, 0, 0.01);
+        taxaKsR.setLayoutX(714);
+        taxaKsR.setLayoutY(636);
+        taxaKsR.setMinSize(0, 0);
+        taxaKsR.setMaxSize(62, 28);
+        taxaKsG.setLayoutX(776);
+        taxaKsG.setLayoutY(636);
+        taxaKsG.setMinSize(0, 0);
+        taxaKsG.setMaxSize(62, 28);
+        taxaKsB.setLayoutX(838);
+        taxaKsB.setLayoutY(636);
+        taxaKsB.setMinSize(0, 0);
+        taxaKsB.setMaxSize(62, 28);
+        taxaKsR.setDisable(true);
+        taxaKsG.setDisable(true);
+        taxaKsB.setDisable(true);
         
-        ks.setLayoutX(724);
-        ks.setLayoutY(578);
-        ks.setMinSize(0, 0);
-        ks.setMaxSize(70, 28);
-        
-        kd.setLayoutX(724);
-        kd.setLayoutY(606);
-        kd.setMinSize(0, 0);
-        kd.setMaxSize(70, 28);
-        
-        n.setLayoutX(724);
-        n.setLayoutY(634);
-        n.setMinSize(0, 0);
-        n.setMaxSize(70, 28);
+        confirmaLuz = new Button("Light Update");
+        confirmaLuz.setLayoutX(800);
+        confirmaLuz.setLayoutY(664);
         
         setFaceOcult.setMinSize(0, 0);
         setFaceOcult.setMaxSize(200, 50);
@@ -319,24 +355,35 @@ public class ctrl extends Application {
         root.getChildren().add(botaoEscala);
         root.getChildren().add(botaoTodaString);
         root.getChildren().add(botaoLetra);
-        root.getChildren().add(ka);
-        root.getChildren().add(kd);
-        root.getChildren().add(ks);
-        root.getChildren().add(n);
-        root.getChildren().add(txka);
-        root.getChildren().add(txkd);
-        root.getChildren().add(txks);
-        root.getChildren().add(txn);
-        root.getChildren().add(txChar);
-        root.getChildren().add(next);
-        root.getChildren().add(prev);
-        root.getChildren().add(choiceChar);
+        
+        root.getChildren().add(caractereSelecionado);
+        
+        root.getChildren().add(textoKa);
+        root.getChildren().add(taxaKaR);
+        root.getChildren().add(taxaKaG);
+        root.getChildren().add(taxaKaB);
+        
+        root.getChildren().add(textoKd);
+        root.getChildren().add(taxaKdR);
+        root.getChildren().add(taxaKdG);
+        root.getChildren().add(taxaKdB);
+        
+        root.getChildren().add(textoKs);
+        root.getChildren().add(taxaKsR);
+        root.getChildren().add(taxaKsG);
+        root.getChildren().add(taxaKsB);
+        
+        root.getChildren().add(textoCoeficienteRefracao);
+        root.getChildren().add(coeficienteRefracao);
+        
+        root.getChildren().add(confirmaLuz);
+        
         root.getChildren().add(canvasFrente);
         root.getChildren().add(canvasTopo);
         root.getChildren().add(canvasLado);
         root.getChildren().add(canvasPerspectiva);
 
-        nn = 0;
+        
         
         escolheMetodo.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -348,6 +395,22 @@ public class ctrl extends Application {
                     case "WireFrame" -> {
                         setFaceOcult.setSelected(false);
                         setFaceOcult.setDisable(false);
+                        if(!refactChars4.isEmpty()){ 
+                            for(int i = 0; i < refactChars1.size(); i++){
+                                for(int j = 0; j < refactChars1.get(i).faces.size(); j++){
+                                    refactChars1.get(i).faces.get(j).setVisivel(true);
+                                    refactChars2.get(i).faces.get(j).setVisivel(true);
+                                    refactChars3.get(i).faces.get(j).setVisivel(true);
+                                    refactChars4.get(i).faces.get(j).setVisivel(true);
+                                    chars.get(i).faces.get(j).setVisivel(true);
+                                }
+                            }    
+                            desenhaStringPorAresta(canvasFrente.getGraphicsContext2D(), refactChars1);
+                            desenhaStringPorArestaLado(canvasLado.getGraphicsContext2D(), refactChars3);
+                            desenhaStringPorArestaTopo(canvasTopo.getGraphicsContext2D(), refactChars2);
+                            desenhaStringPorAresta( canvasPerspectiva.getGraphicsContext2D(), refactChars4);
+                        }
+                        
                     }
                     case "Pintor" -> {
                         setFaceOcult.setSelected(false);
@@ -356,10 +419,34 @@ public class ctrl extends Application {
                     case "Constante" -> {
                         setFaceOcult.setSelected(true);
                         setFaceOcult.setDisable(true);
+                        if(setFaceOcult.isSelected()){
+                            testeVisibilidade(chars, refactChars1, ctrl.VRPFrente);
+                            testeVisibilidade(chars, refactChars2, ctrl.VRPTopo);
+                            testeVisibilidade(chars, refactChars3, ctrl.VRPLado);
+                            testeVisibilidade(chars, refactChars4, VRPPerspectiva);
+                        }
+                        if(!refactChars4.isEmpty()){
+                            iluminacao.iluminacaoConstante(canvasPerspectiva, refactChars4, chars, lugarLuz, Il, Ila, viewUP);
+                            desenhaStringPorAresta(canvasFrente.getGraphicsContext2D(), refactChars1);
+                            desenhaStringPorArestaLado(canvasLado.getGraphicsContext2D(), refactChars3);
+                            desenhaStringPorArestaTopo(canvasTopo.getGraphicsContext2D(), refactChars2);
+                        }
                     }
                     case "Phong" -> {
                         setFaceOcult.setSelected(true);
                         setFaceOcult.setDisable(true);
+                        if(setFaceOcult.isSelected()){
+                            testeVisibilidade(chars, refactChars1, ctrl.VRPFrente);
+                            testeVisibilidade(chars, refactChars2, ctrl.VRPTopo);
+                            testeVisibilidade(chars, refactChars3, ctrl.VRPLado);
+                            testeVisibilidade(chars, refactChars4, VRPPerspectiva);
+                        }
+                        if(!refactChars4.isEmpty()){
+                            iluminacao.iluminacaoPhong(canvasPerspectiva, refactChars4, chars, lugarLuz, Il, Ila, viewUP);
+                            desenhaStringPorAresta(canvasFrente.getGraphicsContext2D(), refactChars1);
+                            desenhaStringPorArestaLado(canvasLado.getGraphicsContext2D(), refactChars3);
+                            desenhaStringPorArestaTopo(canvasTopo.getGraphicsContext2D(), refactChars2);
+                        }
                     }
                     default -> {
                         setFaceOcult.setSelected(false);
@@ -370,63 +457,84 @@ public class ctrl extends Application {
         });
         
         btConfirm.setOnAction((ActionEvent evento) -> {
-            
-            
-            nn=0;
-            
-            choiceChar.setText(txConfirmString.getText().subSequence(nn, nn+1).toString().toUpperCase());
-            
-            
-            
-            
-            trueStart(stage, root, txConfirmString.getText(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
+            trueStart(txConfirmString.getText(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
         });
         
-        
+        confirmaLuz.setOnAction((ActionEvent Evento) ->{
+            if(selectedChar > -1){
+                
+            }
+            
+        });
     
         load.setOnAction((ActionEvent evento) -> {
-            
-           
-
-
             carregado = true;
             carregamento = controleArquivo.carregaArquivo(stage);
-            
-            
-            trueStart(stage, root, txConfirmString.getText(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
-            
+            trueStart(txConfirmString.getText(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
         });
     
         save.setOnAction((ActionEvent evento) -> {
-            
             controleArquivo.salvaArquivo(chars, stage);
-            
         });
     
-        next.setOnAction((ActionEvent evento) -> {
-            nn++;
-            choiceChar.setText(txConfirmString.getText().subSequence(nn, nn+1).toString().toUpperCase());
-            
-        });
         
-        prev.setOnAction((ActionEvent evento) -> {    
-            nn--;
-            choiceChar.setText(txConfirmString.getText().subSequence(nn, nn+1).toString().toUpperCase());
-        });    
+        
+           
+    }
+    
+    public void iluminacaoCaractereSelecionado(){
+        if(this.selectedChar > -1){
+            this.caractereSelecionado.setText("Selected Char == " + String.valueOf(this.selecao.letra).toUpperCase());
+            
+            this.taxaKaR.setDisable(false);
+            this.taxaKaG.setDisable(false);
+            this.taxaKaB.setDisable(false);
+            this.taxaKdR.setDisable(false);
+            this.taxaKdG.setDisable(false);
+            this.taxaKdB.setDisable(false);
+            this.taxaKsR.setDisable(false);
+            this.taxaKsG.setDisable(false);
+            this.taxaKsB.setDisable(false);
+            this.coeficienteRefracao.setDisable(false);
+            
+            this.taxaKaR.getValueFactory().setValue(this.selecao.Ka.getX());
+            this.taxaKaG.getValueFactory().setValue(this.selecao.Ka.getY());
+            this.taxaKaB.getValueFactory().setValue(this.selecao.Ka.getZ());
+
+            this.taxaKdR.getValueFactory().setValue(this.selecao.Kd.getX());
+            this.taxaKdG.getValueFactory().setValue(this.selecao.Kd.getY());
+            this.taxaKdB.getValueFactory().setValue(this.selecao.Kd.getZ());
+
+            this.taxaKsR.getValueFactory().setValue(this.selecao.Ks.getX());
+            this.taxaKsG.getValueFactory().setValue(this.selecao.Ks.getY());
+            this.taxaKsB.getValueFactory().setValue(this.selecao.Ks.getZ());
+
+            this.coeficienteRefracao.getValueFactory().setValue(this.selecao.n);
+        }else{
+            
+            this.caractereSelecionado.setText("Selected Char == NULL");
+            
+            this.taxaKaR.setDisable(true);
+            this.taxaKaG.setDisable(true);
+            this.taxaKaB.setDisable(true);
+            this.taxaKdR.setDisable(true);
+            this.taxaKdG.setDisable(true);
+            this.taxaKdB.setDisable(true);
+            this.taxaKsR.setDisable(true);
+            this.taxaKsG.setDisable(true);
+            this.taxaKsB.setDisable(true);
+            this.coeficienteRefracao.setDisable(true);
+        }
     }
     
     // Tentando matar essa desgraça
-    private void trueStart(Stage stage, Group root, String readed, Boolean faceOcult, Double scaleZ){
+    private void trueStart(String readed, Boolean faceOcult, Double scaleZ){
        
         readed = readed.toLowerCase();
         
         
         chars = new ArrayList<>();
         
-        canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
-        canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
-        canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
-        canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
         
         
         
@@ -499,7 +607,7 @@ public class ctrl extends Application {
             testeVisibilidade(chars, refactChars4, VRPPerspectiva);
         }
         
-        ilum = new iluminacao();
+        
         
         
         // VRP, P, Y, booelan projecao
@@ -520,9 +628,9 @@ public class ctrl extends Application {
         if(null != escolheMetodo.getValue().toString())
             switch (escolheMetodo.getValue().toString()) {
                 case "Pintor" -> painter(refactChars4, canvasPerspectiva);
-                case "Phong" -> ilum.iluminacaoPhong(canvasPerspectiva, refactChars4, chars, lugarLuz, Il, Ila, VRPPerspectiva);
-                case "Constante" -> ilum.iluminacaoConstante(canvasPerspectiva, refactChars4, chars, lugarLuz, Il, Ila, VRPPerspectiva);
-                case "WireFrame" -> desenhaStringPorAresta(gc4, refactChars4);
+                case "Phong" -> iluminacao.iluminacaoPhong(canvasPerspectiva, refactChars4, chars, lugarLuz, Il, Ila, VRPPerspectiva);
+                case "Constante" -> iluminacao.iluminacaoConstante(canvasPerspectiva, refactChars4, chars, lugarLuz, Il, Ila, VRPPerspectiva);
+                case "WireFrame" -> ctrl.desenhaStringPorAresta(gc4, refactChars4);
                 default -> {}
         }
         
@@ -969,15 +1077,18 @@ public class ctrl extends Application {
     
     
     public static void desenhaStringPorAresta(GraphicsContext gc, ArrayList<caractere> caracteres){
+        gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
         for(int i = 0; i < caracteres.size(); i++) desenhaFiguraPorAresta( gc, caracteres.get(i));
     }
     
     public static void desenhaStringPorArestaTopo(GraphicsContext gc, ArrayList<caractere> caracteres){
+        gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
         for(int i = 0; i < caracteres.size(); i++) desenhaFiguraPorArestaTopo( gc, caracteres.get(i));
     }
     
     public static void desenhaStringPorArestaLado(GraphicsContext gc, ArrayList<caractere> caracteres){
-        for(int i = 0; i < caracteres.size(); i++) desenhaFiguraPorArestaLateral( gc, caracteres.get(i));
+        gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+        for(int i = 0; i < caracteres.size(); i++) desenhaFiguraPorArestaLado( gc, caracteres.get(i));
     }
     
     
@@ -1070,7 +1181,7 @@ public class ctrl extends Application {
         gc.restore();
     }
     
-    public static void desenhaFiguraPorArestaLateral(GraphicsContext gc, caractere cart) {    
+    public static void desenhaFiguraPorArestaLado(GraphicsContext gc, caractere cart) {    
         double[] xpoints = new double[2];
         double[] ypoints = new double[2];
        
