@@ -493,12 +493,10 @@ public class ctrl extends Application {
         
         // Função teste de visibilidade de face
         if(faceOcult){
-            //faceTestVisibilit(refactCharsAll, chars, VRPFrente, VRPTopo, VRPLado, VRPPerspectiva);
             testeVisibilidade(chars, refactChars1, ctrl.VRPFrente);
             testeVisibilidade(chars, refactChars2, ctrl.VRPTopo);
             testeVisibilidade(chars, refactChars3, ctrl.VRPLado);
             testeVisibilidade(chars, refactChars4, VRPPerspectiva);
-            
         }
         
         ilum = new iluminacao();
@@ -942,7 +940,7 @@ public class ctrl extends Application {
         }
     }
     
-    private void tela2String(int sizeChar, ArrayList<caractere> arrsc){
+    private static void tela2String(int sizeChar, ArrayList<caractere> arrsc){
         sizeChar *= -2;
         sizeChar += 2;
         for(int i = 0; i < arrsc.size(); i++){
@@ -970,20 +968,20 @@ public class ctrl extends Application {
     }
     
     
-    public void desenhaStringPorAresta(GraphicsContext gc, ArrayList<caractere> caracteres){
+    public static void desenhaStringPorAresta(GraphicsContext gc, ArrayList<caractere> caracteres){
         for(int i = 0; i < caracteres.size(); i++) desenhaFiguraPorAresta( gc, caracteres.get(i));
     }
     
-    public void desenhaStringPorArestaTopo(GraphicsContext gc, ArrayList<caractere> caracteres){
+    public static void desenhaStringPorArestaTopo(GraphicsContext gc, ArrayList<caractere> caracteres){
         for(int i = 0; i < caracteres.size(); i++) desenhaFiguraPorArestaTopo( gc, caracteres.get(i));
     }
     
-    public void desenhaStringPorArestaLado(GraphicsContext gc, ArrayList<caractere> caracteres){
+    public static void desenhaStringPorArestaLado(GraphicsContext gc, ArrayList<caractere> caracteres){
         for(int i = 0; i < caracteres.size(); i++) desenhaFiguraPorArestaLateral( gc, caracteres.get(i));
     }
     
     
-    public void desenhaFiguraPorAresta(GraphicsContext gc, caractere cart) {    
+    public static void desenhaFiguraPorAresta(GraphicsContext gc, caractere cart) {    
         double[] xpoints = new double[2];
         double[] ypoints = new double[2];
        
@@ -1029,7 +1027,7 @@ public class ctrl extends Application {
         
     }
     
-    public void desenhaFiguraPorArestaTopo(GraphicsContext gc, caractere cart) {    
+    public static void desenhaFiguraPorArestaTopo(GraphicsContext gc, caractere cart) {    
         double[] xpoints = new double[2];
         double[] ypoints = new double[2];
        
@@ -1072,7 +1070,7 @@ public class ctrl extends Application {
         gc.restore();
     }
     
-    public void desenhaFiguraPorArestaLateral(GraphicsContext gc, caractere cart) {    
+    public static void desenhaFiguraPorArestaLateral(GraphicsContext gc, caractere cart) {    
         double[] xpoints = new double[2];
         double[] ypoints = new double[2];
        
