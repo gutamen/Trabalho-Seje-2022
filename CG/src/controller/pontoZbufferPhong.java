@@ -60,6 +60,13 @@ public class pontoZbufferPhong {
         return this.cor;
     }
     
+    public void novaCor(int R, int G, int B){
+        if(R > 255) R = 255;
+        if(G > 255) G = 255;
+        if(B > 255) B = 255;
+        this.cor = Color.rgb(R, G, B);
+    }
+    
     public void novaCor(Color cor){
         this.cor = cor;
     }

@@ -21,15 +21,19 @@ import javafx.stage.Stage;
 import letras.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
+import javafx.stage.StageStyle;
 
 
 
@@ -38,6 +42,10 @@ import javafx.scene.text.Text;
  * @author macedo
  */
 public class ctrl extends Application {
+    
+    // Universo
+    int Umax = 0, Umin = 0, Vmax = 0, Vmin = 0, larguraCaractere = 80;
+    
     
     // controle de tela
     int selectedChar;
@@ -50,7 +58,8 @@ public class ctrl extends Application {
     
     Button btConfirm;
     Button save;
-    Button load;   
+    Button load;  
+    Button mudancaLuz;
     
     CheckBox setFaceOcult;
     ChoiceBox escolheMetodo;
@@ -102,6 +111,7 @@ public class ctrl extends Application {
     ArrayList<ArrayList<caractere>> refactCharsAll;
     
     final static Point3D viewUP = new Point3D(0,1,0);
+    Point3D viewUPPerspectiva = new Point3D(0,1,0);
         
     final static Point3D VRPFrente      = new Point3D(0, 0, 19);
     final static Point3D VRPTopo        = new Point3D(0, 19, 0);
@@ -130,27 +140,29 @@ public class ctrl extends Application {
 
     
     Point3D lugarLuz = new Point3D(0,0,-19);
-    int[] Il;
-    int[] Ila;
+    int[] Il = {160, 160,160};
+    int[] Ila = {50, 50, 50};
     
 
     
     @Override public void start(Stage stage) {
         //falseStart(stage);  
+        stage.initStyle(StageStyle.UTILITY);
+        stage.setResizable(false);
         Group root = new Group();
         Scene scene = new Scene(root, 900, 800, Color.WHITE);
+        
+        
         intFace(stage, root, scene);
         
     }
     
-    public void intFace(Stage stage, Group root, Scene scene){        
+    public void intFace(Stage stage, Group root, Scene scene){
         
-        
-        
-        btConfirm = new Button("OK");
-        save = new Button("SAVE");
-        load = new Button("LOAD");
-        setFaceOcult = new CheckBox("Ocutacao de face");
+        btConfirm = new Button("Ok");
+        save = new Button("Save");
+        load = new Button("Load");
+        setFaceOcult = new CheckBox("Face Concealment");
         escolheMetodo = new ChoiceBox();
         escolheMetodo.setValue("WireFrame");
         escolheMetodo.getItems().addAll("WireFrame", "Pintor", "Constante", "Phong");
@@ -160,17 +172,6 @@ public class ctrl extends Application {
         
         setZ = new Spinner(1, 50, 1);
         txZ = new Text("profundidade Z");
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         canvasFrente.setLayoutY(0);
         canvasTopo.setLayoutY(200);
@@ -338,6 +339,9 @@ public class ctrl extends Application {
         botaoLetra.setLayoutX(720);
         botaoLetra.setLayoutY(340);
         
+        mudancaLuz = new Button("Change of View");
+        mudancaLuz.setLayoutX(695);
+        mudancaLuz.setLayoutY(750);
         
         stage.setScene(scene);
         stage.show();
@@ -377,6 +381,8 @@ public class ctrl extends Application {
         root.getChildren().add(coeficienteRefracao);
         
         root.getChildren().add(confirmaLuz);
+        
+        root.getChildren().add(mudancaLuz);
         
         root.getChildren().add(canvasFrente);
         root.getChildren().add(canvasTopo);
@@ -460,9 +466,212 @@ public class ctrl extends Application {
             trueStart(txConfirmString.getText(), setFaceOcult.selectedProperty().get(), setZ.getValue()*(-0.2));
         });
         
-        confirmaLuz.setOnAction((ActionEvent Evento) ->{
+        mudancaLuz.setOnAction((ActionEvent evento) -> {
+            Alert alteracao = new Alert(Alert.AlertType.CONFIRMATION);
+            Group editores = new Group();
+            
+            Text labelVRP = new Text("VRP (X, Y, Z)");
+            Spinner<Double> XVRP = new Spinner(-100,100,0,0.1);
+            Spinner<Double> YVRP = new Spinner(-100,100,0, 0.1);
+            Spinner<Double> ZVRP = new Spinner(-100,100,0,0.1);
+            XVRP.setLayoutY(5);
+            YVRP.setLayoutY(5);
+            YVRP.setLayoutX(63);
+            ZVRP.setLayoutY(5);
+            ZVRP.setLayoutX(125);
+            XVRP.setMaxSize(62, 5);
+            YVRP.setMaxSize(62, 5);
+            ZVRP.setMaxSize(62, 5);
+            XVRP.getValueFactory().setValue(VRPPerspectiva.getX());
+            YVRP.getValueFactory().setValue(VRPPerspectiva.getY());
+            ZVRP.getValueFactory().setValue(VRPPerspectiva.getZ());
+            
+            Text labelL = new Text("L   (X, Y, Z)");
+            labelL.setLayoutX(200);
+            Spinner<Double> XL = new Spinner(-100,100,0,0.1);
+            Spinner<Double> YL = new Spinner(-100,100,0,0.1);
+            Spinner<Double> ZL = new Spinner(-100,100,0,0.1);
+            XL.setLayoutX(200);
+            XL.setLayoutY(5);
+            YL.setLayoutX(263);
+            YL.setLayoutY(5);
+            ZL.setLayoutX(325);
+            ZL.setLayoutY(5);
+            XL.setMaxSize(62, 5);
+            YL.setMaxSize(62, 5);
+            ZL.setMaxSize(62, 5);
+            XL.getValueFactory().setValue(lugarLuz.getX());
+            YL.getValueFactory().setValue(lugarLuz.getY());
+            ZL.getValueFactory().setValue(lugarLuz.getZ());
+
+            Text labelILa = new Text("Ambient Light (R, G, B)");
+            labelILa.setLayoutY(42);
+            Spinner<Integer> ILaR = new Spinner(0,255,0,1);
+            Spinner<Integer> ILaG = new Spinner(0,255,0,1);
+            Spinner<Integer> ILaB = new Spinner(0,255,0,1);
+            ILaR.setLayoutY(47);
+            ILaG.setLayoutX(63);
+            ILaG.setLayoutY(47);
+            ILaB.setLayoutX(125);
+            ILaB.setLayoutY(47);
+            ILaR.setMaxSize(62, 5);
+            ILaG.setMaxSize(62, 5);
+            ILaB.setMaxSize(62, 5);
+            ILaR.getValueFactory().setValue(Ila[0]);
+            ILaG.getValueFactory().setValue(Ila[1]);
+            ILaB.getValueFactory().setValue(Ila[2]);
+            
+            Text labelIL = new Text("Light (R, G, B)");
+            labelIL.setLayoutX(200);
+            labelIL.setLayoutY(42);
+            Spinner<Integer> ILR = new Spinner(0,255,0,1);
+            Spinner<Integer> ILG = new Spinner(0,255,0,1);
+            Spinner<Integer> ILB = new Spinner(0,255,0,1);
+            ILR.setLayoutY(47);
+            ILR.setLayoutX(200);
+            ILG.setLayoutX(263);
+            ILG.setLayoutY(47);
+            ILB.setLayoutX(325);
+            ILB.setLayoutY(47);
+            ILR.setMaxSize(62, 5);
+            ILG.setMaxSize(62, 5);
+            ILB.setMaxSize(62, 5);
+            ILR.getValueFactory().setValue(Il[0]);
+            ILG.getValueFactory().setValue(Il[1]);
+            ILB.getValueFactory().setValue(Il[2]);
+            
+            Text labelView = new Text("View Up (X, Y, Z)");
+            labelView.setLayoutY(84);
+            Spinner<Double> XView = new Spinner(-100,100,0,0.1);
+            Spinner<Double> YView = new Spinner(-100,100,0, 0.1);
+            Spinner<Double> ZView = new Spinner(-100,100,0,0.1);
+            XView.setLayoutY(89);
+            YView.setLayoutX(63);
+            YView.setLayoutY(89);
+            ZView.setLayoutX(125);
+            ZView.setLayoutY(89);
+            XView.setMaxSize(62, 5);
+            YView.setMaxSize(62, 5);
+            ZView.setMaxSize(62, 5);
+            XView.getValueFactory().setValue(viewUPPerspectiva.getX());
+            YView.getValueFactory().setValue(viewUPPerspectiva.getY());
+            ZView.getValueFactory().setValue(viewUPPerspectiva.getZ());
+            
+            Text labelU = new Text("U Min   Max");
+            labelU.setLayoutY(126);
+            Spinner<Integer> Umin = new Spinner(-100,0,0,1);
+            Spinner<Integer> Umax = new Spinner(0,100,0,1);
+            Umin.setLayoutY(131);
+            Umin.setLayoutX(63);
+            Umax.setLayoutY(131);
+            Umin.setMaxSize(62, 5);
+            Umax.setMaxSize(62, 5);
+            Umin.getValueFactory().setValue(this.Umin);
+            Umax.getValueFactory().setValue(this.Umax);
+            
+            Text labelV = new Text("V Min   Max");
+            labelV.setLayoutX(140);
+            labelV.setLayoutY(126);
+            Spinner<Integer> Vmin = new Spinner(-100,0,0,1);
+            Spinner<Integer> Vmax = new Spinner(0,100,0,1);
+            Vmin.setLayoutX(140);
+            Vmin.setLayoutY(131);
+            Vmax.setLayoutY(131);
+            Vmax.setLayoutX(203);
+            Vmin.setMaxSize(62, 5);
+            Vmax.setMaxSize(62, 5);
+            Vmin.getValueFactory().setValue(this.Vmin);
+            Vmax.getValueFactory().setValue(this.Vmax);
+            
+            Text labeldP = new Text("DP");
+            labeldP.setLayoutY(168);
+            Spinner<Double> dP = new Spinner(0.,300,0,1);
+            dP.getValueFactory().setValue(this.dPPerspectiva);
+            dP.setLayoutY(173);
+            dP.setMaxSize(62, 5);
+             
+            editores.getChildren().add(labelVRP);
+            editores.getChildren().add(XVRP);
+            editores.getChildren().add(YVRP);
+            editores.getChildren().add(ZVRP);
+            
+            editores.getChildren().add(labelL);
+            editores.getChildren().add(XL);
+            editores.getChildren().add(YL);
+            editores.getChildren().add(ZL);
+            
+            editores.getChildren().add(labelILa);
+            editores.getChildren().add(ILaR);
+            editores.getChildren().add(ILaG);
+            editores.getChildren().add(ILaB);
+            
+            editores.getChildren().add(labelIL);
+            editores.getChildren().add(ILR);
+            editores.getChildren().add(ILG);
+            editores.getChildren().add(ILB);
+            
+            editores.getChildren().add(labelView);
+            editores.getChildren().add(XView);
+            editores.getChildren().add(YView);
+            editores.getChildren().add(ZView);
+            
+            editores.getChildren().add(labelU);
+            editores.getChildren().add(Umin);
+            editores.getChildren().add(Umax);
+            
+            editores.getChildren().add(labelV);
+            editores.getChildren().add(Vmin);
+            editores.getChildren().add(Vmax);
+            
+            editores.getChildren().add(labeldP);
+            editores.getChildren().add(dP);
+            
+            
+            DialogPane painel = new DialogPane();
+            painel.setContent(editores);
+            alteracao.setDialogPane(painel);
+            
+            alteracao.getButtonTypes().clear();
+            alteracao.getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+            alteracao.showAndWait();
+            
+        });
+        
+        confirmaLuz.setOnAction((ActionEvent evento) ->{
             if(selectedChar > -1){
                 
+                selecao.alteraKa(new Point3D(taxaKaR.getValue(), taxaKaG.getValue(), taxaKaB.getValue()));
+                selecao.alteraKd(new Point3D(taxaKdR.getValue(), taxaKdG.getValue(), taxaKdB.getValue()));
+                selecao.alteraKs(new Point3D(taxaKsR.getValue(), taxaKsG.getValue(), taxaKsB.getValue()));
+                selecao.n = coeficienteRefracao.getValue();
+                
+                refactChars1.get(selectedChar).alteraKa(new Point3D(taxaKaR.getValue(), taxaKaG.getValue(), taxaKaB.getValue()));
+                refactChars1.get(selectedChar).alteraKd(new Point3D(taxaKdR.getValue(), taxaKdG.getValue(), taxaKdB.getValue()));
+                refactChars1.get(selectedChar).alteraKs(new Point3D(taxaKsR.getValue(), taxaKsG.getValue(), taxaKsB.getValue()));
+                refactChars1.get(selectedChar).n = coeficienteRefracao.getValue();
+                
+                refactChars2.get(selectedChar).alteraKa(new Point3D(taxaKaR.getValue(), taxaKaG.getValue(), taxaKaB.getValue()));
+                refactChars2.get(selectedChar).alteraKd(new Point3D(taxaKdR.getValue(), taxaKdG.getValue(), taxaKdB.getValue()));
+                refactChars2.get(selectedChar).alteraKs(new Point3D(taxaKsR.getValue(), taxaKsG.getValue(), taxaKsB.getValue()));
+                refactChars2.get(selectedChar).n = coeficienteRefracao.getValue();
+                
+                refactChars3.get(selectedChar).alteraKa(new Point3D(taxaKaR.getValue(), taxaKaG.getValue(), taxaKaB.getValue()));
+                refactChars3.get(selectedChar).alteraKd(new Point3D(taxaKdR.getValue(), taxaKdG.getValue(), taxaKdB.getValue()));
+                refactChars3.get(selectedChar).alteraKs(new Point3D(taxaKsR.getValue(), taxaKsG.getValue(), taxaKsB.getValue()));
+                refactChars3.get(selectedChar).n = coeficienteRefracao.getValue();
+                
+                refactChars4.get(selectedChar).alteraKa(new Point3D(taxaKaR.getValue(), taxaKaG.getValue(), taxaKaB.getValue()));
+                refactChars4.get(selectedChar).alteraKd(new Point3D(taxaKdR.getValue(), taxaKdG.getValue(), taxaKdB.getValue()));
+                refactChars4.get(selectedChar).alteraKs(new Point3D(taxaKsR.getValue(), taxaKsG.getValue(), taxaKsB.getValue()));
+                refactChars4.get(selectedChar).n = coeficienteRefracao.getValue();
+                
+            }
+            
+            if(escolheMetodo.getValue().toString().equals("Constante")){
+                iluminacao.iluminacaoConstante(canvasPerspectiva, refactChars4, chars, lugarLuz, Il, Ila, viewUP);
+            }else if(escolheMetodo.getValue().toString().equals("Phong")){
+                iluminacao.iluminacaoPhong(canvasPerspectiva, refactChars4, chars, lugarLuz, Il, Ila, viewUP);
             }
             
         });
@@ -533,6 +742,7 @@ public class ctrl extends Application {
         readed = readed.toLowerCase();
         
         
+        
         chars = new ArrayList<>();
         
         
@@ -592,6 +802,13 @@ public class ctrl extends Application {
         }
       
         
+        
+        Umin = chars.size()*-2-2;
+        Umax = 2+chars.size()*2;
+        Vmin = -3;
+        Vmax = 3;
+        
+        
         refactCharsAll = new  ArrayList<>();
         refactCharsAll.add(refactChars1);
         refactCharsAll.add(refactChars2);
@@ -616,11 +833,11 @@ public class ctrl extends Application {
         ctrlVRP2SRU(ct3, refactChars3, VRPLado         , PLado         , viewUP, dPNormal       , 3);
         ctrlVRP2SRU(ct4, refactChars4, VRPPerspectiva  , PPerspectiva  , viewUP, dPPerspectiva  , 4);
         
-        int[] sIl = {200, 120, 150}; 
-        int[] sIla = {80, 100, 0};
+//        int[] sIl = {200, 120, 150}; 
+//        int[] sIla = {80, 100, 0};
         
-        Il = sIl; 
-        Ila = sIla;
+//        Il = sIl; 
+//        Ila = sIla;
         
         
         
@@ -1245,8 +1462,9 @@ public class ctrl extends Application {
         ct.setP(P.getX(), P.getY(), P.getZ());
         ct.setYc(Y.getX(), Y.getY(), Y.getZ());
         ct.setDp(dP);
-        ct.setViewport(0, 0, 80*refactChars.size(), 199);
-        ct.setWindow(-2*refactChars.size()-2, -2-1, 2*refactChars.size()+2, 2+1);
+        ct.setViewport(0, 0, larguraCaractere*refactChars.size(), 199);
+        ct.setWindow(Umin, Vmin, Umax, Vmax);
+
         
         
         
@@ -1319,13 +1537,13 @@ public class ctrl extends Application {
         writMat(ct.getNmPPLxMT());*/
     }
     
-    public void ctrlVRP2SRUParaUmCaractere(caractere modificado, ctrlCam ct, ArrayList<caractere> refactChars, Point3D VRP, Point3D P, Point3D Y, int projecao){
+    public void ctrlVRP2SRUParaUmCaractere(caractere modificado, ctrlCam ct, ArrayList<caractere> refactChars, Point3D VRP, Point3D P, Point3D Y, double dP, int projecao){
         ct.setVRP(VRP.getX(), VRP.getY(), VRP.getZ());
         ct.setP(P.getX(), P.getY(), P.getZ());
         ct.setYc(Y.getX(), Y.getY(), Y.getZ());
-        ct.setDp(21);
-        ct.setViewport(0, 0, 80*refactChars.size(), 199);
-        ct.setWindow(-2*refactChars.size()-2, -2-1, 2*refactChars.size()+2, 2+1);
+        ct.setDp(dP);
+        ct.setViewport(0, 0, larguraCaractere*refactChars.size(), 199);
+        ct.setWindow(Umin, Vmin, Umax, Vmax);
         
         if(projecao == 1){
             ct.setPPLxMT(ct.getPipeline_SRU2SRTNormal(), getMatPts(modificado));
