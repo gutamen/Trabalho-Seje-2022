@@ -107,7 +107,12 @@ public class controleEventoCanvas {
                             controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, 4);
 
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                             }
 
 
@@ -151,7 +156,12 @@ public class controleEventoCanvas {
                             
 
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                             }
 
 
@@ -192,7 +202,12 @@ public class controleEventoCanvas {
                             
 
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                             }
 
 
@@ -295,7 +310,11 @@ public class controleEventoCanvas {
                             
                             
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
                                 canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                                 canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
@@ -398,7 +417,11 @@ public class controleEventoCanvas {
                             
                             
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
                                 canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                                 canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
@@ -494,7 +517,11 @@ public class controleEventoCanvas {
                             
                            
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
                                 canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                                 canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
@@ -599,7 +626,11 @@ public class controleEventoCanvas {
                             
 
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                             }
 
                             canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
@@ -642,7 +673,11 @@ public class controleEventoCanvas {
                             
 
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                             }
 
 
@@ -683,7 +718,11 @@ public class controleEventoCanvas {
                             
 
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                             }
 
 
@@ -782,7 +821,11 @@ public class controleEventoCanvas {
                             }
                             
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
                                 canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                                 canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
@@ -885,7 +928,11 @@ public class controleEventoCanvas {
                             
                             
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
                                 canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                                 canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
@@ -982,7 +1029,11 @@ public class controleEventoCanvas {
                             
                            
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
                                 canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                                 canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
@@ -1099,7 +1150,11 @@ public class controleEventoCanvas {
                             
 
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                             }
 
                             canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
@@ -1142,7 +1197,11 @@ public class controleEventoCanvas {
                             
 
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                             }
 
 
@@ -1183,7 +1242,11 @@ public class controleEventoCanvas {
                             
 
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                             }
 
 
@@ -1288,7 +1351,11 @@ public class controleEventoCanvas {
                             }
                             
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
                                 canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                                 canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
@@ -1391,7 +1458,11 @@ public class controleEventoCanvas {
                             
                             
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
                                 canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                                 canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
@@ -1488,7 +1559,11 @@ public class controleEventoCanvas {
                             
                            
                             if(controle.setFaceOcult.isSelected()){
-                                controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                //controle.faceTestVisibilit(controle.refactCharsAll, controle.chars, ctrl.VRPFrente, ctrl.VRPTopo, ctrl.VRPLado, controle.VRPPerspectiva);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars2, ctrl.VRPTopo);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars3, ctrl.VRPLado);
+                                controle.testeVisibilidade(controle.chars, controle.refactChars4, controle.VRPPerspectiva);
                                 canvasFrente.getGraphicsContext2D().clearRect(0, 0, canvasFrente.getWidth(), canvasFrente.getHeight());
                                 canvasTopo.getGraphicsContext2D().clearRect(0, 0, canvasTopo.getWidth(), canvasTopo.getHeight());
                                 canvasLado.getGraphicsContext2D().clearRect(0, 0, canvasLado.getWidth(), canvasLado.getHeight());
