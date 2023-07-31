@@ -935,8 +935,8 @@ public class iluminacao {
 //                                System.out.println("Fim = "+lista.get(l+1).vetor());
 //                                System.out.println("");
                                 int avanco2 = 1;
-//                                avanco = (int) lista.get(lista.size()-1).getX() - lista.get(0).getX() + lista.get(l).getX();
-                                //System.out.println("av" + avanco);
+//                                avanco =  (int) lista.get(l).getX() - (int) lista.get(0).getX();
+//                                System.out.println("av " + avanco + "    Linha = " + (k+yMin));
                                 
                                 for(int coluna = 1 + ((int) lista.get(l).getX()); coluna < (int) lista.get(l+1).getX(); coluna++ ){
                                     pontoZbufferPhong pontoIncrementado = new pontoZbufferPhong(lista.get(l).profundiade()+(taxaZ*avanco2), taxaIJK.multiply(avanco2).add(lista.get(l).vetor()));
@@ -975,7 +975,7 @@ public class iluminacao {
                                             matrizTela[coluna][k+yMin] = pontoIncrementado;
                                         }
                                     }
-//                                    avanco++;
+                                    
                                     avanco2++;
                                 }
 //                                System.out.println("");
@@ -1117,7 +1117,7 @@ public class iluminacao {
         }
 
         
-        midUnitVert = midUnitVert.normalize();
+        //midUnitVert = midUnitVert.normalize();
         
 
 //        System.out.println("testeAnt = "+midUnitVert);

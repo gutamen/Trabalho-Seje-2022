@@ -149,7 +149,7 @@ public class ctrl extends Application {
     @Override public void start(Stage stage) {
         //falseStart(stage);  
         stage.initStyle(StageStyle.DECORATED);
-        stage.setResizable(false);
+//        stage.setResizable(false);
         stage.setFullScreen(false);
         //stage.initModality(Modality.WINDOW_MODAL);
         Group root = new Group();
