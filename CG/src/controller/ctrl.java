@@ -61,6 +61,7 @@ public class ctrl extends Application {
     Button mudancaLuz;
     
     CheckBox setFaceOcult;
+    CheckBox projecaoParalela;
     ChoiceBox escolheMetodo;
     
     Spinner<Integer> setZ;
@@ -180,6 +181,11 @@ public class ctrl extends Application {
         txZ.setLayoutX(765);
         txZ.setLayoutY(115);
         
+        projecaoParalela = new CheckBox("Parallel Projection");
+        projecaoParalela.setMinSize(0, 0);
+        projecaoParalela.setMaxSize(200, 50);
+        projecaoParalela.setLayoutX(720);
+        projecaoParalela.setLayoutY(400);
         
         caractereSelecionado = new TextArea("Selected Char == NULL");
         caractereSelecionado.setLayoutX(695);
@@ -358,6 +364,8 @@ public class ctrl extends Application {
         root.getChildren().add(botaoEscala);
         root.getChildren().add(botaoTodaString);
         root.getChildren().add(botaoLetra);
+        
+        root.getChildren().add(projecaoParalela);
         
         root.getChildren().add(caractereSelecionado);
         
@@ -882,6 +890,7 @@ public class ctrl extends Application {
             testeVisibilidade(chars, refactChars2, ctrl.VRPTopo);
             testeVisibilidade(chars, refactChars3, ctrl.VRPLado);
             testeVisibilidade(chars, refactChars4, VRPPerspectiva);
+            ctrl.testeVisibilidade(chars, chars, VRPPerspectiva);
         }
         
         
@@ -1517,7 +1526,7 @@ public class ctrl extends Application {
         gc.restore();
     }
 
-    private void ctrlVRP2SRU(ctrlCam ct, ArrayList<caractere> refactChars, Point3D VRP, Point3D P, Point3D Y, double dP, int projecao){
+    public void ctrlVRP2SRU(ctrlCam ct, ArrayList<caractere> refactChars, Point3D VRP, Point3D P, Point3D Y, double dP, int projecao){
         ct.setVRP(VRP.getX(), VRP.getY(), VRP.getZ());
         ct.setP(P.getX(), P.getY(), P.getZ());
         ct.setYc(Y.getX(), Y.getY(), Y.getZ());

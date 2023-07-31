@@ -60,9 +60,9 @@ public class iluminacao {
             
             
             for(int j = 0; j < faces.size(); j++){
-                System.out.println(faces.get(j).isVisivel());
+//                System.out.println(faces.get(j).isVisivel());
                 if(!faces.get(j).isVisivel()){
-                    System.out.println("aqui");
+//                    System.out.println("aqui");
                     continue;
                 }
                 double[] It = new double[3];
@@ -503,8 +503,7 @@ public class iluminacao {
             
             ArrayList<face> faces = universo.get(i).faces;
             
-            double[] pontosY = universo.get(i).extremosCoordenadaY();
-            double[] pontosX = universo.get(i).extremosCoordenadaX();
+            
             
             
             ArrayList<vertice> listaNormais = new ArrayList<>();
@@ -622,13 +621,13 @@ public class iluminacao {
                                 pontoZbufferPhong pontoAdicionado = new pontoZbufferPhong((int)auxiliar.getInicio().getX(), auxiliar.getInicio().getZ(), inicio );
                                 bufferFace[posicaoBuffer].add(pontoAdicionado);
                                 
-                                System.out.println(auxiliar.getNomeAresta() + "  Linha = " + posicaoBuffer);
-                                for(int jegue = 0; jegue < bufferFace[posicaoBuffer].size(); jegue++){
-                                    System.out.print("   "+bufferFace[posicaoBuffer].get(jegue).getX());
-                                }
-                                System.out.println();
-                                System.out.println(pontoAdicionado.getX());
-                                System.out.println();
+//                                System.out.println(auxiliar.getNomeAresta() + "  Linha = " + posicaoBuffer);
+//                                for(int jegue = 0; jegue < bufferFace[posicaoBuffer].size(); jegue++){
+//                                    System.out.print("   "+bufferFace[posicaoBuffer].get(jegue).getX());
+//                                }
+//                                System.out.println();
+//                                System.out.println(pontoAdicionado.getX());
+//                                System.out.println();
                                 
                                 
 //                                System.out.println("face " + caracteresPerspectiva.get(i).faces.get(j).getNomeFace()  );
@@ -645,15 +644,15 @@ public class iluminacao {
                                 }while( avanco < bufferFace[posicaoBuffer].size() && (int)auxiliar.getInicio().getX() >= (int)bufferFace[posicaoBuffer].get(avanco).getX() );
                                 
                                 pontoZbufferPhong pontoAdicionado = new pontoZbufferPhong((int)auxiliar.getInicio().getX(), auxiliar.getInicio().getZ(), inicio );
-                                bufferFace[posicaoBuffer].add(pontoAdicionado);
+                                bufferFace[posicaoBuffer].add(avanco, pontoAdicionado);
                                 
-                                System.out.println(auxiliar.getNomeAresta() + "  Linha = " + posicaoBuffer);
-                                for(int jegue = 0; jegue < bufferFace[posicaoBuffer].size(); jegue++){
-                                    System.out.print("   "+bufferFace[posicaoBuffer].get(jegue).getX());
-                                }
-                                System.out.println();
-                                System.out.println(pontoAdicionado.getX());
-                                System.out.println();
+//                                System.out.println(auxiliar.getNomeAresta() + "  Linha = " + posicaoBuffer);
+//                                for(int jegue = 0; jegue < bufferFace[posicaoBuffer].size(); jegue++){
+//                                    System.out.print("   "+bufferFace[posicaoBuffer].get(jegue).getX());
+//                                }
+//                                System.out.println();
+//                                System.out.println(pontoAdicionado.getX());
+//                                System.out.println();
                             }
                             
                             
@@ -684,13 +683,13 @@ public class iluminacao {
                                     bufferFace[k+posicaoBuffer].add(pontoAdicionado);
                                     
                                     
-                                    System.out.println(auxiliar.getNomeAresta() + "  Linha = " + (k+posicaoBuffer));
-                                    for(int jegue = 0; jegue < bufferFace[k+posicaoBuffer].size(); jegue++){
-                                        System.out.print("   "+bufferFace[k+posicaoBuffer].get(jegue).getX());
-                                    }
-                                    System.out.println();
-                                    System.out.println(pontoAdicionado.getX());
-                                    System.out.println();
+//                                    System.out.println(auxiliar.getNomeAresta() + "  Linha = " + (k+posicaoBuffer));
+//                                    for(int jegue = 0; jegue < bufferFace[k+posicaoBuffer].size(); jegue++){
+//                                        System.out.print("   "+bufferFace[k+posicaoBuffer].get(jegue).getX());
+//                                    }
+//                                    System.out.println();
+//                                    System.out.println(pontoAdicionado.getX());
+//                                    System.out.println();
                                     
                                 }else{
                                     
@@ -709,13 +708,13 @@ public class iluminacao {
                                     
                                     bufferFace[k+posicaoBuffer].add(avanco, pontoAdicionado);
                                     
-                                    System.out.println(auxiliar.getNomeAresta() + "  Linha = " + (k+posicaoBuffer));
-                                    for(int jegue = 0; jegue < bufferFace[k+posicaoBuffer].size(); jegue++){
-                                        System.out.print("   "+bufferFace[k+posicaoBuffer].get(jegue).getX());
-                                    }
-                                    System.out.println();
-                                    System.out.println(pontoAdicionado.getX());
-                                    System.out.println();
+//                                    System.out.println(auxiliar.getNomeAresta() + "  Linha = " + (k+posicaoBuffer));
+//                                    for(int jegue = 0; jegue < bufferFace[k+posicaoBuffer].size(); jegue++){
+//                                        System.out.print("   "+bufferFace[k+posicaoBuffer].get(jegue).getX());
+//                                    }
+//                                    System.out.println();
+//                                    System.out.println(pontoAdicionado.getX());
+//                                    System.out.println();
 
 
                                 }
@@ -740,13 +739,13 @@ public class iluminacao {
 //                                System.out.println("ponto");
 //                                System.out.println("  " + pontoAdicionado.getX() + "    "+ pontoAdicionado.profundiade() + "   " + posicaoBuffer );
 
-                                System.out.println(auxiliar.getNomeAresta() + "  Linha = " + posicaoBuffer);
-                                for(int jegue = 0; jegue < bufferFace[posicaoBuffer].size(); jegue++){
-                                    System.out.print("   "+bufferFace[posicaoBuffer].get(jegue).getX());
-                                }
-                                System.out.println();
-                                System.out.println(pontoAdicionado.getX());
-                                System.out.println();
+//                                System.out.println(auxiliar.getNomeAresta() + "  Linha = " + posicaoBuffer);
+//                                for(int jegue = 0; jegue < bufferFace[posicaoBuffer].size(); jegue++){
+//                                    System.out.print("   "+bufferFace[posicaoBuffer].get(jegue).getX());
+//                                }
+//                                System.out.println();
+//                                System.out.println(pontoAdicionado.getX());
+//                                System.out.println();
                                     
                                 
                             }else{
@@ -764,13 +763,13 @@ public class iluminacao {
                                 
                                 bufferFace[posicaoBuffer].add(avanco, pontoAdicionado);
                                 
-                                System.out.println(auxiliar.getNomeAresta() + "  Linha = " + posicaoBuffer);
-                                for(int jegue = 0; jegue < bufferFace[posicaoBuffer].size(); jegue++){
-                                    System.out.print("   "+bufferFace[posicaoBuffer].get(jegue).getX());
-                                }
-                                System.out.println();
-                                System.out.println(pontoAdicionado.getX());
-                                System.out.println();
+//                                System.out.println(auxiliar.getNomeAresta() + "  Linha = " + posicaoBuffer);
+//                                for(int jegue = 0; jegue < bufferFace[posicaoBuffer].size(); jegue++){
+//                                    System.out.print("   "+bufferFace[posicaoBuffer].get(jegue).getX());
+//                                }
+//                                System.out.println();
+//                                System.out.println(pontoAdicionado.getX());
+//                                System.out.println();
                             }
 
                             double taxaZ = (auxiliar.getInicio().getZ() - auxiliar.getFim().getZ()) / (auxiliar.getInicio().getY() - auxiliar.getFim().getY());
@@ -806,13 +805,13 @@ public class iluminacao {
 //                                    System.out.println("ponto");
 //                                    System.out.println("  " + pontoAdicionado.getX() + "    "+ pontoAdicionado.profundiade() + "   " + k );
 
-                                    System.out.println(auxiliar.getNomeAresta() + "  Linha = " + (k+posicaoBuffer));
-                                    for(int jegue = 0; jegue < bufferFace[k+posicaoBuffer].size(); jegue++){
-                                        System.out.print("   "+bufferFace[k+posicaoBuffer].get(jegue).getX());
-                                    }
-                                    System.out.println();
-                                    System.out.println(pontoAdicionado.getX());
-                                    System.out.println();
+//                                    System.out.println(auxiliar.getNomeAresta() + "  Linha = " + (k+posicaoBuffer));
+//                                    for(int jegue = 0; jegue < bufferFace[k+posicaoBuffer].size(); jegue++){
+//                                        System.out.print("   "+bufferFace[k+posicaoBuffer].get(jegue).getX());
+//                                    }
+//                                    System.out.println();
+//                                    System.out.println(pontoAdicionado.getX());
+//                                    System.out.println();
                                     
                                 }else{
                                     int avanco = -1;
@@ -825,13 +824,13 @@ public class iluminacao {
                                     pontoZbufferPhong pontoAdicionado = new pontoZbufferPhong((int)auxiliar.getFim().getX()+(int)(taxaX*(k)), auxiliar.getFim().getZ()+(taxaZ*(k)),taxaIJK.multiply(k).add(fim) );
                                     bufferFace[k+posicaoBuffer].add(avanco, pontoAdicionado);
                                     
-                                    System.out.println(auxiliar.getNomeAresta() + "  Linha = " + (k+posicaoBuffer));
-                                    for(int jegue = 0; jegue < bufferFace[k+posicaoBuffer].size(); jegue++){
-                                        System.out.print("   "+bufferFace[k+posicaoBuffer].get(jegue).getX());
-                                    }
-                                    System.out.println();
-                                    System.out.println(pontoAdicionado.getX());
-                                    System.out.println();
+//                                    System.out.println(auxiliar.getNomeAresta() + "  Linha = " + (k+posicaoBuffer));
+//                                    for(int jegue = 0; jegue < bufferFace[k+posicaoBuffer].size(); jegue++){
+//                                        System.out.print("   "+bufferFace[k+posicaoBuffer].get(jegue).getX());
+//                                    }
+//                                    System.out.println();
+//                                    System.out.println(pontoAdicionado.getX());
+//                                    System.out.println();
                                     
 //                                    System.out.println("face " + caracteresPerspectiva.get(i).faces.get(j).getNomeFace()  );
 //                                    System.out.println("aresta " + arestas.get(l).getNomeAresta());
@@ -847,19 +846,25 @@ public class iluminacao {
 
 
                     }
-                     
+                    
+//                    for(int loco = 0; loco < listaNormais.size();  loco++ ){
+//                        System.out.println(" normal do vértice "+listaNormais.get(loco).getNomeVertice()+"  "+ listaNormais.get(loco).ponto);
+//                    }
+//                     
                     System.out.println(caracteresPerspectiva.get(i).faces.get(j).getNomeFace());
                     for(int teste = 0; teste < bufferFace.length; teste++){
                         
                         if(bufferFace[teste] != null){
                             System.out.println("Linha "+teste);
                             for(int testi = 0; testi < bufferFace[teste].size(); testi++){
-                                System.out.print("   "+bufferFace[teste].get(testi).getX());
+                                System.out.print("   "+bufferFace[teste].get(testi).getX() + "   ");
+//                                System.out.print((bufferFace[teste].get(testi).vetorNormalizado()));
+                                System.out.print(" ///");
                             }
                             System.out.println();
                         }
                     }
-//                    
+                    
                     for(int k = 0; k < bufferFace.length-1; k++){
                         
                         ArrayList<pontoZbufferPhong> lista = bufferFace[k];
@@ -908,7 +913,7 @@ public class iluminacao {
                                         
                                         }
                                         
-                                        lista.get(l).novaCor(Color.rgb((int)It[0], (int)It[1], (int)It[2]));
+                                        lista.get(l).novaCor((int)It[0], (int)It[1], (int)It[2]);
                                         
                                         
                                         
@@ -918,6 +923,12 @@ public class iluminacao {
                                 }
 
                                 int avanco = 1;
+                                
+//                                System.out.println("Linha = "+(k+yMin));
+//                                System.out.println(((int) lista.get(l).getX()));
+//                                System.out.println(((int) lista.get(l+1).getX()));
+//                                System.out.println("");
+                                
                                 for(int coluna = 1 + ((int) lista.get(l).getX()); coluna < (int) lista.get(l+1).getX(); coluna++ ){
                                     pontoZbufferPhong pontoIncrementado = new pontoZbufferPhong(lista.get(l).profundiade()+(taxaZ*avanco), taxaIJK.multiply(avanco).add(lista.get(l).vetor()));
 
@@ -946,7 +957,7 @@ public class iluminacao {
 
                                             }
 
-                                            pontoIncrementado.novaCor(Color.rgb((int)It[0], (int)It[1], (int)It[2]));
+                                            pontoIncrementado.novaCor((int)It[0], (int)It[1], (int)It[2]);
 
 
                                             
@@ -985,7 +996,7 @@ public class iluminacao {
 
                                     }
 
-                                    lista.get(0).novaCor(Color.rgb((int)It[0], (int)It[1], (int)It[2]));
+                                    lista.get(0).novaCor((int)It[0], (int)It[1], (int)It[2]);
                                     
                                     
                                     matrizTela[(int)lista.get(0).getX()][k+yMin] = lista.get(0);
@@ -1037,10 +1048,21 @@ public class iluminacao {
     
     public static Point3D normVertFace(ArrayList<face> faces, String vert){
         ArrayList<face> faceWithVert = new ArrayList<>();
-        for(int j = 0; j < faces.size(); j ++){
-            aresta k = faces.get(j).getArestaFace();
+        
+        int parada = 0;
+        for(int j = 0; j < faces.size() && parada < 3; j ++){
+//            ArrayList<vertice> auxiliar = faces.get(j).verticesFaceComBuraco();
+//            
+//            for(int k = 0; k < auxiliar.size(); k++){
+//                if(auxiliar.get(k).getNomeVertice().equals(vert)){
+//                    faceWithVert.add(faces.get(j));
+//                    parada++;
+//                    break;
+//                }
+//            }
             int o = 0;
-
+            aresta k = faces.get(j).getArestaFace();
+            
             boolean rigth = false;
             for(aresta p = new aresta("null"); !k.getNomeAresta().equals(p.getNomeAresta()); o++){//andando nas arestas da face
                 if(o < 1){
@@ -1081,7 +1103,7 @@ public class iluminacao {
         midUnitVert = midUnitVert.normalize();
         
 
-        System.out.println("testeAnt = "+midUnitVert);
+//        System.out.println("testeAnt = "+midUnitVert);
         
         return midUnitVert;
     }
