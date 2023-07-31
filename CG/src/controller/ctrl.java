@@ -32,6 +32,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.StageStyle;
 
 
@@ -149,6 +150,8 @@ public class ctrl extends Application {
         //falseStart(stage);  
         stage.initStyle(StageStyle.DECORATED);
         stage.setResizable(false);
+        stage.setFullScreen(false);
+        //stage.initModality(Modality.WINDOW_MODAL);
         Group root = new Group();
         Scene scene = new Scene(root, 900, 800, Color.WHITE);
         

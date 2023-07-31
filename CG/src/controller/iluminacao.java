@@ -589,11 +589,11 @@ public class iluminacao {
                         
                         aresta auxiliar = arestas.get(l);
                         
-                        System.out.println(auxiliar.getNomeAresta());
-                        System.out.println("InicioX = " + ((int) auxiliar.getInicio().getX()) + "    FinalX = " + ((int) auxiliar.getFim().getX()));
-                        System.out.println("InicioY = " + ((int) auxiliar.getInicio().getY()) + "    FinalY = " + ((int) auxiliar.getFim().getY()));
-                        System.out.println("");
-//                        
+//                        System.out.println(auxiliar.getNomeAresta());
+//                        System.out.println("InicioX = " + ((int) auxiliar.getInicio().getX()) + "    FinalX = " + ((int) auxiliar.getFim().getX()));
+//                        System.out.println("InicioY = " + ((int) auxiliar.getInicio().getY()) + "    FinalY = " + ((int) auxiliar.getFim().getY()));
+//                        System.out.println("");
+                        
                         
                         if((int)auxiliar.getFim().getY() == (int)auxiliar.getInicio().getY()){
                             
@@ -850,20 +850,20 @@ public class iluminacao {
 //                    for(int loco = 0; loco < listaNormais.size();  loco++ ){
 //                        System.out.println(" normal do vértice "+listaNormais.get(loco).getNomeVertice()+"  "+ listaNormais.get(loco).ponto);
 //                    }
-//                     
-                    System.out.println(caracteresPerspectiva.get(i).faces.get(j).getNomeFace());
-                    for(int teste = 0; teste < bufferFace.length; teste++){
-                        
-                        if(bufferFace[teste] != null){
-                            System.out.println("Linha "+teste);
-                            for(int testi = 0; testi < bufferFace[teste].size(); testi++){
-                                System.out.print("   "+bufferFace[teste].get(testi).getX() + "   ");
+                     
+//                    System.out.println(caracteresPerspectiva.get(i).faces.get(j).getNomeFace());
+//                    for(int teste = 0; teste < bufferFace.length; teste++){
+//                        
+//                        if(bufferFace[teste] != null){
+//                            System.out.println("Linha "+teste);
+//                            for(int testi = 0; testi < bufferFace[teste].size(); testi++){
+//                                System.out.print("   "+bufferFace[teste].get(testi).getX() + "   ");
 //                                System.out.print((bufferFace[teste].get(testi).vetorNormalizado()));
-                                System.out.print(" ///");
-                            }
-                            System.out.println();
-                        }
-                    }
+//                                System.out.print(" ///");
+//                            }
+//                            System.out.println();
+//                        }
+//                    }
                     
                     for(int k = 0; k < bufferFace.length-1; k++){
                         
@@ -882,9 +882,13 @@ public class iluminacao {
                                 Point3D taxaIJK = (lista.get(l+1).vetor().subtract(lista.get(l).vetor()));
                                 taxaIJK = new Point3D(taxaIJK.getX() / (lista.get(l+1).getX() - lista.get(l).getX()), taxaIJK.getY() / (lista.get(l+1).getX() - lista.get(l).getX()), taxaIJK.getZ() / (lista.get(l+1).getX() - lista.get(l).getX()));
                                 
+//                                double taxaZ = (lista.get(l+1).profundiade() - lista.get(l).profundiade()) / (lista.get(l+1).getX() - lista.get(l).getX()); 
+//                                Point3D taxaIJK = (lista.get(0).vetor().subtract(lista.get(lista.size()-1).vetor()));
+//                                taxaIJK = new Point3D(taxaIJK.getX() / (lista.get(lista.size()-1).getX() - lista.get(0).getX()), taxaIJK.getY() / (lista.get(lista.size()-1).getX() - lista.get(0).getX()), taxaIJK.getZ() / (lista.get(lista.size()-1).getX() - lista.get(0).getX()));
                                 
                                 
-//                                System.out.println("taxa = "+taxaZ);
+                                
+//                                int avanco;
                                 
                                 
                                 if(lista.get(l).getX() >= 0 && k+yMin >= 0 && lista.get(l).getX() < matrizTela.length && k+yMin < matrizTela[0].length){
@@ -922,16 +926,21 @@ public class iluminacao {
                                     }
                                 }
 
-                                int avanco = 1;
+                                
                                 
 //                                System.out.println("Linha = "+(k+yMin));
-//                                System.out.println(((int) lista.get(l).getX()));
+//                                System.out.print(((int) lista.get(l).getX())+ "    ");
 //                                System.out.println(((int) lista.get(l+1).getX()));
+//                                System.out.println("Inicio = " + lista.get(l).vetor());
+//                                System.out.println("Fim = "+lista.get(l+1).vetor());
 //                                System.out.println("");
+                                int avanco2 = 1;
+//                                avanco = (int) lista.get(lista.size()-1).getX() - lista.get(0).getX() + lista.get(l).getX();
+                                //System.out.println("av" + avanco);
                                 
                                 for(int coluna = 1 + ((int) lista.get(l).getX()); coluna < (int) lista.get(l+1).getX(); coluna++ ){
-                                    pontoZbufferPhong pontoIncrementado = new pontoZbufferPhong(lista.get(l).profundiade()+(taxaZ*avanco), taxaIJK.multiply(avanco).add(lista.get(l).vetor()));
-
+                                    pontoZbufferPhong pontoIncrementado = new pontoZbufferPhong(lista.get(l).profundiade()+(taxaZ*avanco2), taxaIJK.multiply(avanco2).add(lista.get(l).vetor()));
+//                                    System.out.print(taxaIJK.multiply(avanco).add(lista.get(l).vetor())+ "    ");
                                     if(coluna >= 0 && k+yMin >= 0 && coluna < matrizTela.length && k+yMin < matrizTela[0].length){
                                         if(matrizTela[coluna][k+yMin].profundiade() < pontoIncrementado.profundiade()){
                                             
@@ -966,10 +975,13 @@ public class iluminacao {
                                             matrizTela[coluna][k+yMin] = pontoIncrementado;
                                         }
                                     }
-                                    avanco++;
+//                                    avanco++;
+                                    avanco2++;
                                 }
+//                                System.out.println("");
 
                             }
+//                            System.out.println("");
                         }else{
                             if(lista.get(0).getX() >= 0 && k+yMin >= 0 && lista.get(0).getX() < matrizTela.length && k+yMin < matrizTela[0].length){
                                 if(matrizTela[(int)lista.get(0).getX()][k+yMin].profundiade() < lista.get(0).profundiade()){
@@ -1051,47 +1063,52 @@ public class iluminacao {
         
         int parada = 0;
         for(int j = 0; j < faces.size() && parada < 3; j ++){
-//            ArrayList<vertice> auxiliar = faces.get(j).verticesFaceComBuraco();
-//            
-//            for(int k = 0; k < auxiliar.size(); k++){
-//                if(auxiliar.get(k).getNomeVertice().equals(vert)){
-//                    faceWithVert.add(faces.get(j));
-//                    parada++;
-//                    break;
-//                }
-//            }
-            int o = 0;
-            aresta k = faces.get(j).getArestaFace();
+            ArrayList<vertice> auxiliar = faces.get(j).verticesFaceComBuraco();
             
-            boolean rigth = false;
-            for(aresta p = new aresta("null"); !k.getNomeAresta().equals(p.getNomeAresta()); o++){//andando nas arestas da face
-                if(o < 1){
-                    p = k;
-                }
-
-                if(rigth){
-                    if(p.getFim().getNomeVertice().equals(vert)){
-                        faceWithVert.add(faces.get(j));
-                    }
-                }else{
-                    if(p.getInicio().getNomeVertice().equals(vert)){
-                        faceWithVert.add(faces.get(j));
-                    } 
-                }
-                
-                if(faceWithVert.size() == 3){
+            for(int k = 0; k < auxiliar.size(); k++){
+                if(auxiliar.get(k).getNomeVertice().equals(vert)){
+                    faceWithVert.add(faces.get(j));
+                    parada++;
                     break;
                 }
-                
-                if(p.getDireita().getNomeFace().equals(faces.get(j).getNomeFace())){
-                    p = p.getArestaDireitaSuc();
-                    rigth = true;
-                }else{
-                    p = p.getArestaEsquerdaSuc();
-                    rigth = false;
-                }
             }
+            
+//            int o = 0;
+//            aresta k = faces.get(j).getArestaFace();
+//            
+//            boolean rigth = false;
+//            for(aresta p = new aresta("null"); !k.getNomeAresta().equals(p.getNomeAresta()); o++){//andando nas arestas da face
+//                if(o < 1){
+//                    p = k;
+//                }
+//
+//                if(rigth){
+//                    if(p.getFim().getNomeVertice().equals(vert)){
+//                        faceWithVert.add(faces.get(j));
+//                    }
+//                }else{
+//                    if(p.getInicio().getNomeVertice().equals(vert)){
+//                        faceWithVert.add(faces.get(j));
+//                    } 
+//                }
+//                
+//                if(faceWithVert.size() == 3){
+//                    break;
+//                }
+//                
+//                if(p.getDireita().getNomeFace().equals(faces.get(j).getNomeFace())){
+//                    p = p.getArestaDireitaSuc();
+//                    rigth = true;
+//                }else{
+//                    p = p.getArestaEsquerdaSuc();
+//                    rigth = false;
+//                }
+//            }
         }
+//        System.out.println(vert);
+//        for(int i = 0; i < faceWithVert.size(); i++){
+//            System.out.println(faceWithVert.get(i).getNomeFace());
+//        }
         
         Point3D midUnitVert = makeNormal(faceWithVert.get(0).verticesFace());
 
