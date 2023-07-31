@@ -29,7 +29,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
@@ -139,7 +138,7 @@ public class ctrl extends Application {
     Canvas canvasPerspectiva = new Canvas(600, 200);
 
     
-    Point3D lugarLuz = new Point3D(0,0,-19);
+    Point3D lugarLuz = new Point3D(0,0,19);
     int[] Il = {160, 160,160};
     int[] Ila = {50, 50, 50};
     
@@ -147,7 +146,7 @@ public class ctrl extends Application {
     
     @Override public void start(Stage stage) {
         //falseStart(stage);  
-        stage.initStyle(StageStyle.UTILITY);
+        stage.initStyle(StageStyle.DECORATED);
         stage.setResizable(false);
         Group root = new Group();
         Scene scene = new Scene(root, 900, 800, Color.WHITE);
@@ -559,36 +558,46 @@ public class ctrl extends Application {
             
             Text labelU = new Text("U Min   Max");
             labelU.setLayoutY(126);
-            Spinner<Integer> Umin = new Spinner(-100,0,0,1);
-            Spinner<Integer> Umax = new Spinner(0,100,0,1);
-            Umin.setLayoutY(131);
-            Umin.setLayoutX(63);
-            Umax.setLayoutY(131);
-            Umin.setMaxSize(62, 5);
-            Umax.setMaxSize(62, 5);
-            Umin.getValueFactory().setValue(this.Umin);
-            Umax.getValueFactory().setValue(this.Umax);
+            Spinner<Integer> UminS = new Spinner(-100,0,0,1);
+            Spinner<Integer> UmaxS = new Spinner(0,100,0,1);
+            UminS.setLayoutY(131);
+            UminS.setLayoutX(63);
+            UmaxS.setLayoutY(131);
+            UminS.setMaxSize(62, 5);
+            UmaxS.setMaxSize(62, 5);
+            UminS.getValueFactory().setValue(Umin);
+            UmaxS.getValueFactory().setValue(Umax);
             
             Text labelV = new Text("V Min   Max");
             labelV.setLayoutX(140);
             labelV.setLayoutY(126);
-            Spinner<Integer> Vmin = new Spinner(-100,0,0,1);
-            Spinner<Integer> Vmax = new Spinner(0,100,0,1);
-            Vmin.setLayoutX(140);
-            Vmin.setLayoutY(131);
-            Vmax.setLayoutY(131);
-            Vmax.setLayoutX(203);
-            Vmin.setMaxSize(62, 5);
-            Vmax.setMaxSize(62, 5);
-            Vmin.getValueFactory().setValue(this.Vmin);
-            Vmax.getValueFactory().setValue(this.Vmax);
+            Spinner<Integer> VminS = new Spinner(-100,0,0,1);
+            Spinner<Integer> VmaxS = new Spinner(0,100,0,1);
+            VminS.setLayoutX(140);
+            VminS.setLayoutY(131);
+            VmaxS.setLayoutY(131);
+            VmaxS.setLayoutX(203);
+            VminS.setMaxSize(62, 5);
+            VmaxS.setMaxSize(62, 5);
+            VminS.getValueFactory().setValue(Vmin);
+            VmaxS.getValueFactory().setValue(Vmax);
             
             Text labeldP = new Text("DP");
             labeldP.setLayoutY(168);
             Spinner<Double> dP = new Spinner(0.,300,0,1);
-            dP.getValueFactory().setValue(this.dPPerspectiva);
+            dP.getValueFactory().setValue(dPPerspectiva);
             dP.setLayoutY(173);
             dP.setMaxSize(62, 5);
+            
+            Text labelLargura = new Text("Char Width");
+            labelLargura.setLayoutY(168);
+            labelLargura.setLayoutX(80);
+            Spinner<Integer> largura = new Spinner(0,200,0,1);
+            largura.setMaxSize(62, 5);
+            largura.setLayoutY(173);
+            largura.setLayoutX(80);
+            largura.getValueFactory().setValue(larguraCaractere);
+            
              
             editores.getChildren().add(labelVRP);
             editores.getChildren().add(XVRP);
@@ -616,16 +625,18 @@ public class ctrl extends Application {
             editores.getChildren().add(ZView);
             
             editores.getChildren().add(labelU);
-            editores.getChildren().add(Umin);
-            editores.getChildren().add(Umax);
+            editores.getChildren().add(UminS);
+            editores.getChildren().add(UmaxS);
             
             editores.getChildren().add(labelV);
-            editores.getChildren().add(Vmin);
-            editores.getChildren().add(Vmax);
+            editores.getChildren().add(VminS);
+            editores.getChildren().add(VmaxS);
             
             editores.getChildren().add(labeldP);
             editores.getChildren().add(dP);
             
+            editores.getChildren().add(labelLargura);
+            editores.getChildren().add(largura);
             
             DialogPane painel = new DialogPane();
             painel.setContent(editores);
@@ -634,12 +645,53 @@ public class ctrl extends Application {
             alteracao.getButtonTypes().clear();
             alteracao.getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
-            alteracao.showAndWait();
+            ButtonType resultado = alteracao.showAndWait().orElse(ButtonType.CANCEL);
+            if(resultado == ButtonType.OK){
+                VRPPerspectiva = new Point3D(XVRP.getValue(), YVRP.getValue(), ZVRP.getValue());
+                lugarLuz = new Point3D(XL.getValue(), YL.getValue(), ZL.getValue());
+                
+                Ila[0] = ILaR.getValue();
+                Ila[1] = ILaG.getValue();
+                Ila[2] = ILaB.getValue();
+                
+                Il[0] = ILR.getValue();
+                Il[1] = ILG.getValue();
+                Il[2] = ILB.getValue();
+                
+                viewUPPerspectiva = new Point3D(XView.getValue(), YView.getValue(), ZView.getValue());
+                
+                Umin = UminS.getValue();
+                Umax = UmaxS.getValue();
+                
+                Vmin = VminS.getValue();
+                Vmax = VmaxS.getValue();
+                
+                larguraCaractere = largura.getValue();
+                
+                dPPerspectiva = dP.getValue();
+                
+                if(!refactChars4.isEmpty()){
+                    for(int i = 0; i < refactChars4.size(); i++){
+                        refactChars4.set(i, chars.get(i).copia());
+                    }
+                    
+                    ctrlVRP2SRU(ct4, refactChars4, VRPPerspectiva  , PPerspectiva  , viewUPPerspectiva, dPPerspectiva  , 4);
+                    if(null != escolheMetodo.getValue().toString())
+                        switch (escolheMetodo.getValue().toString()) {
+                            case "Pintor" -> painter(refactChars4, canvasPerspectiva);
+                            case "Phong" -> iluminacao.iluminacaoPhong(canvasPerspectiva, refactChars4, chars, lugarLuz, Il, Ila, VRPPerspectiva);
+                            case "Constante" -> iluminacao.iluminacaoConstante(canvasPerspectiva, refactChars4, chars, lugarLuz, Il, Ila, VRPPerspectiva);
+                            case "WireFrame" -> ctrl.desenhaStringPorAresta(canvasPerspectiva.getGraphicsContext2D(), refactChars4);
+                            default -> {}
+                    }
+                }
+                
+            }
             
         });
         
         confirmaLuz.setOnAction((ActionEvent evento) ->{
-            if(selectedChar > -1){
+            if(selectedChar > -1 && selecao != null){
                 
                 selecao.alteraKa(new Point3D(taxaKaR.getValue(), taxaKaG.getValue(), taxaKaB.getValue()));
                 selecao.alteraKd(new Point3D(taxaKdR.getValue(), taxaKdG.getValue(), taxaKdB.getValue()));
@@ -741,8 +793,16 @@ public class ctrl extends Application {
        
         readed = readed.toLowerCase();
         
-        
-        
+//        caractere teste = new caractere("8");
+//        
+//        for(int i = 0; i < teste.faces.size(); i++){
+//            System.out.println(teste.faces.get(i).getNomeFace());
+//            for(int j = 0; j < teste.faces.get(i).verticesFaceComBuraco().size();j++){
+//                System.out.println(teste.faces.get(i).verticesFaceComBuraco().get(j).getNomeVertice());
+//            }
+//            System.out.println("");
+//        }
+//        
         chars = new ArrayList<>();
         
         

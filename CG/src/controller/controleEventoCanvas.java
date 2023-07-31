@@ -108,7 +108,7 @@ public class controleEventoCanvas {
                             
                             controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, ctrl.dPNormal, 2);
                             controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, ctrl.dPNormal, 3);
-                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
 
                             if(controle.setFaceOcult.isSelected()){
                                 ctrl.testeVisibilidade(controle.chars, controle.refactChars1, ctrl.VRPFrente);
@@ -154,7 +154,7 @@ public class controleEventoCanvas {
                             controle.ctrlVRP2SRUParaUmCaractere(frente, controle.ct1, controle.refactChars1, ctrl.VRPFrente, ctrl.PFrente, ctrl.viewUP, ctrl.dPNormal, 1);
                             controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, ctrl.dPNormal, 2);
                             controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, ctrl.dPNormal, 3);
-                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
                             
 
                             if(controle.setFaceOcult.isSelected()){
@@ -197,7 +197,7 @@ public class controleEventoCanvas {
                             controle.ctrlVRP2SRUParaUmCaractere(frente, controle.ct1, controle.refactChars1, ctrl.VRPFrente, ctrl.PFrente, ctrl.viewUP, ctrl.dPNormal, 1);
                             controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, ctrl.dPNormal, 2);
                             controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, ctrl.dPNormal, 3);
-                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
                             
 
                             if(controle.setFaceOcult.isSelected()){
@@ -287,7 +287,7 @@ public class controleEventoCanvas {
                                     caractere universo = controle.chars.get(l);                       
                                     caractere perspectiva = universo.copia();
                                     controle.refactChars4.set(l, perspectiva);
-                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
                                     
                                 }
 ////                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
@@ -373,7 +373,7 @@ public class controleEventoCanvas {
                                     caractere universo = controle.chars.get(l);                       
                                     caractere perspectiva = universo.copia();
                                     controle.refactChars4.set(l, perspectiva);
-                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
                                     
                                 }
 //                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
@@ -458,7 +458,7 @@ public class controleEventoCanvas {
                                     caractere universo = controle.chars.get(l);                       
                                     caractere perspectiva = universo.copia();
                                     controle.refactChars4.set(l, perspectiva);
-                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
                                     
                                 }
 //                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
@@ -574,7 +574,7 @@ public class controleEventoCanvas {
                             
                             controle.ctrlVRP2SRUParaUmCaractere(frente, controle.ct1, controle.refactChars1, ctrl.VRPFrente, ctrl.PFrente, ctrl.viewUP, ctrl.dPNormal, 1);
                             controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, ctrl.dPNormal, 3);
-                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
                             
 
                             if(controle.setFaceOcult.isSelected()){
@@ -620,7 +620,7 @@ public class controleEventoCanvas {
                             controle.ctrlVRP2SRUParaUmCaractere(frente, controle.ct1, controle.refactChars1, ctrl.VRPFrente, ctrl.PFrente, ctrl.viewUP, ctrl.dPNormal, 1);
                             controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, ctrl.dPNormal, 2);
                             controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, ctrl.dPNormal, 3);
-                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
                             
 
                             if(controle.setFaceOcult.isSelected()){
@@ -662,7 +662,7 @@ public class controleEventoCanvas {
                             controle.ctrlVRP2SRUParaUmCaractere(frente, controle.ct1, controle.refactChars1, ctrl.VRPFrente, ctrl.PFrente, ctrl.viewUP, ctrl.dPNormal, 1);
                             controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, ctrl.dPNormal, 2);
                             controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, ctrl.dPNormal, 3);
-                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
                             
 
                             if(controle.setFaceOcult.isSelected()){
@@ -744,7 +744,7 @@ public class controleEventoCanvas {
                                     caractere universo = controle.chars.get(l);                       
                                     caractere perspectiva = universo.copia();
                                     controle.refactChars4.set(l, perspectiva);
-                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
                                     
                                 }
 //                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
@@ -832,7 +832,7 @@ public class controleEventoCanvas {
                                     caractere universo = controle.chars.get(l);                       
                                     caractere perspectiva = universo.copia();
                                     controle.refactChars4.set(l, perspectiva);
-                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
                                     
                                 }
 //                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
@@ -920,7 +920,7 @@ public class controleEventoCanvas {
                                     caractere universo = controle.chars.get(l);                       
                                     caractere perspectiva = universo.copia();
                                     controle.refactChars4.set(l, perspectiva);
-                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
                                     
                                 }
 //                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
@@ -1012,6 +1012,8 @@ public class controleEventoCanvas {
             controle.mouseApertado = false;
             controle.iluminacaoCaractereSelecionado();
             
+
+            
             if(null != controle.escolheMetodo.getValue().toString())
             switch (controle.escolheMetodo.getValue().toString()) {
                 case "Pintor" -> controle.painter(controle.refactChars4, canvasPerspectiva);
@@ -1055,7 +1057,7 @@ public class controleEventoCanvas {
                             
                             controle.ctrlVRP2SRUParaUmCaractere(frente, controle.ct1, controle.refactChars1, ctrl.VRPFrente, ctrl.PFrente, ctrl.viewUP, ctrl.dPNormal, 1);
                             controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, ctrl.dPNormal, 2);
-                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
                             
 
                             if(controle.setFaceOcult.isSelected()){                               
@@ -1101,7 +1103,7 @@ public class controleEventoCanvas {
                             controle.ctrlVRP2SRUParaUmCaractere(frente, controle.ct1, controle.refactChars1, ctrl.VRPFrente, ctrl.PFrente, ctrl.viewUP, ctrl.dPNormal, 1);
                             controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, ctrl.dPNormal, 2);
                             controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, ctrl.dPNormal, 3);
-                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
                             
 
                             if(controle.setFaceOcult.isSelected()){                               
@@ -1144,7 +1146,7 @@ public class controleEventoCanvas {
                             controle.ctrlVRP2SRUParaUmCaractere(frente, controle.ct1, controle.refactChars1, ctrl.VRPFrente, ctrl.PFrente, ctrl.viewUP, ctrl.dPNormal, 1);
                             controle.ctrlVRP2SRUParaUmCaractere(topo, controle.ct2, controle.refactChars2, ctrl.VRPTopo, ctrl.PTopo, ctrl.viewUP, ctrl.dPNormal, 2);
                             controle.ctrlVRP2SRUParaUmCaractere(lado, controle.ct3, controle.refactChars3, ctrl.VRPLado, ctrl.PLado, ctrl.viewUP, ctrl.dPNormal, 3);
-                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                            controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
                             
 
                             if(controle.setFaceOcult.isSelected()){                               
@@ -1235,7 +1237,7 @@ public class controleEventoCanvas {
                                     caractere universo = controle.chars.get(l);                       
                                     caractere perspectiva = universo.copia();
                                     controle.refactChars4.set(l, perspectiva);
-                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
                                     
                                 }
 //                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
@@ -1337,7 +1339,7 @@ public class controleEventoCanvas {
                                     caractere universo3 = controle.chars.get(l);                       
                                     caractere perspectiva = universo3.copia();
                                     controle.refactChars4.set(l, perspectiva);
-                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
                                     
                                 }
 //                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());
@@ -1428,7 +1430,7 @@ public class controleEventoCanvas {
                                     caractere universo3 = controle.chars.get(l);                       
                                     caractere perspectiva = universo3.copia();
                                     controle.refactChars4.set(l, perspectiva);
-                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, ctrl.viewUP, controle.dPPerspectiva, 4);
+                                    controle.ctrlVRP2SRUParaUmCaractere(perspectiva, controle.ct4, controle.refactChars4, controle.VRPPerspectiva, controle.PPerspectiva, controle.viewUPPerspectiva, controle.dPPerspectiva, 4);
                                     
                                 }
 //                                canvasPerspectiva.getGraphicsContext2D().clearRect(0, 0, canvasPerspectiva.getWidth(), canvasPerspectiva.getHeight());

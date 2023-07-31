@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
  */
 public class pontoZbufferConstante {
     private Color cor = Color.WHITE;
-    private double Z = Double.MIN_VALUE;
+    private double Z = Double.NEGATIVE_INFINITY;
     private int X = 0;
     
     public pontoZbufferConstante(){

@@ -60,7 +60,9 @@ public class iluminacao {
             
             
             for(int j = 0; j < faces.size(); j++){
+                System.out.println(faces.get(j).isVisivel());
                 if(!faces.get(j).isVisivel()){
+                    System.out.println("aqui");
                     continue;
                 }
                 double[] It = new double[3];
@@ -130,8 +132,9 @@ public class iluminacao {
                         aresta auxiliar = arestas.get(l);
                         
 //                        System.out.println(auxiliar.getNomeAresta());
-//                        System.out.println("InicioX = " + ((int) auxiliar.getInicio().getX()) + "    FinalX = " + ((int) auxiliar.getFim().getX()));
-//                        System.out.println("InicioY = " + ((int) auxiliar.getInicio().getY()) + "    FinalY = " + ((int) auxiliar.getFim().getY()));
+//                        System.out.println("InicioX = " + ((int) auxiliar.getInicio().getX()) + "    FinalX = " + ((int) auxiliar.getFim().getX()) + "    FinalZ = " + ((int) auxiliar.getFim().getZ()));
+//                        System.out.println("InicioY = " + ((int) auxiliar.getInicio().getY()) + "    FinalY = " + ((int) auxiliar.getFim().getY()) + "    IncioZ = " + ((int) auxiliar.getInicio().getZ()));
+//                        System.out.println(yMin);
 //                        System.out.println("");
 //                        
                         
@@ -313,18 +316,12 @@ public class iluminacao {
 //                            System.out.println("");
                             
 //                            posicaoBuffer++;
-                            //int k = posicaoBuffer + 1;
-//                            if(auxiliar.getNomeAresta().equals("H_G")){
-//                                System.out.println(((int) auxiliar.getInicio().getY()) - ((int)auxiliar.getFim().getY()) + " MACACO   bufferFace = " + posicaoBuffer +  "      yMin = " + (yMin));
-//                            }
+                            
 
                             for(int k = 1; k < ((int) auxiliar.getInicio().getY()) - ((int)auxiliar.getFim().getY()) ; k++){
 //                                System.out.println(bufferFace[k]);
                                 
-//                                if(auxiliar.getNomeAresta().equals("H_G")){
-//                                    System.out.println("MACEDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo");
-//                                    
-//                                }
+
 
                                 if(bufferFace[k+posicaoBuffer] == null){
                                     bufferFace[k+posicaoBuffer] = new ArrayList<>();
@@ -385,12 +382,12 @@ public class iluminacao {
 //                        if(bufferFace[teste] != null){
 //                            System.out.println("Linha "+teste);
 //                            for(int testi = 0; testi < bufferFace[teste].size(); testi++){
-//                                System.out.print("   "+bufferFace[teste].get(testi).getX());
+//                                System.out.print("   "+bufferFace[teste].get(testi).getX() + " Z = "+ bufferFace[teste].get(testi).profundiade() + " \\");
 //                            }
 //                            System.out.println();
 //                        }
 //                    }
-//                    
+                    
                     for(int k = 0; k < bufferFace.length-1; k++){
                         
                         ArrayList<pontoZbufferConstante> lista = bufferFace[k];
@@ -409,9 +406,7 @@ public class iluminacao {
                                 
                                 
                                 if(lista.get(l).getX() >= 0 && k+yMin >= 0 && lista.get(l).getX() < matrizTela.length && k+yMin < matrizTela[0].length){
-                                    
-                                    if(matrizTela[(int)lista.get(l).getX()][k+yMin].profundiade() > lista.get(l).profundiade()){
-                                        //System.out.println("X = " + (int)lista.get(l).getX()+ "   Y = "+ k+yMin);
+                                    if(matrizTela[(int)lista.get(l).getX()][k+yMin].profundiade() < lista.get(l).profundiade()){
                                         matrizTela[(int)lista.get(l).getX()][k+yMin] = lista.get(l);
                                     }
                                 }
@@ -421,7 +416,7 @@ public class iluminacao {
                                     pontoZbufferConstante pontoIncrementado = new pontoZbufferConstante(lista.get(l).profundiade()+(taxaZ*avanco), (int) It[0], (int) It[1], (int) It[2]);
 
                                     if(coluna >= 0 && k+yMin >= 0 && coluna < matrizTela.length && k+yMin < matrizTela[0].length){
-                                        if(matrizTela[coluna][k+yMin].profundiade() > pontoIncrementado.profundiade()){
+                                        if(matrizTela[coluna][k+yMin].profundiade() < pontoIncrementado.profundiade()){
                                             matrizTela[coluna][k+yMin] = pontoIncrementado;
                                         }
                                     }
@@ -889,7 +884,7 @@ public class iluminacao {
                                 
                                 if(lista.get(l).getX() >= 0 && k+yMin >= 0 && lista.get(l).getX() < matrizTela.length && k+yMin < matrizTela[0].length){
                                     
-                                    if(matrizTela[(int)lista.get(l).getX()][k+yMin].profundiade() > lista.get(l).profundiade()){  
+                                    if(matrizTela[(int)lista.get(l).getX()][k+yMin].profundiade() < lista.get(l).profundiade()){  
                                         
                                         double[] It = {Ita[0], Ita[1], Ita[2]};
                                         Point3D vetorNormalizado = lista.get(l).vetorNormalizado();
@@ -927,7 +922,7 @@ public class iluminacao {
                                     pontoZbufferPhong pontoIncrementado = new pontoZbufferPhong(lista.get(l).profundiade()+(taxaZ*avanco), taxaIJK.multiply(avanco).add(lista.get(l).vetor()));
 
                                     if(coluna >= 0 && k+yMin >= 0 && coluna < matrizTela.length && k+yMin < matrizTela[0].length){
-                                        if(matrizTela[coluna][k+yMin].profundiade() > pontoIncrementado.profundiade()){
+                                        if(matrizTela[coluna][k+yMin].profundiade() < pontoIncrementado.profundiade()){
                                             
                                             double[] It = {Ita[0], Ita[1], Ita[2]};
                                             Point3D vetorNormalizado = pontoIncrementado.vetorNormalizado();

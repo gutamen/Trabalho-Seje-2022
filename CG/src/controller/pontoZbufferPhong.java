@@ -15,7 +15,7 @@ public class pontoZbufferPhong {
     
     private Color cor = Color.WHITE;
     private Point3D vetorPonto = Point3D.ZERO;
-    private double Z = Double.MIN_VALUE;
+    private double Z = Double.NEGATIVE_INFINITY;
     private int X = 0;
     
     public pontoZbufferPhong(){
