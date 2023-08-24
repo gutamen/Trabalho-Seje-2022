@@ -1,4 +1,10 @@
-# Trabalho-Seje-2022
-
-Para arestas da esquerda sentido certo
-Para arestas da direita sentido ao contrário
+# Trabalho Anual da disciplina de Computação Gráfica
+Os requisitos para o trabalho são:
+  1) Modelar uma fonte tipográfica composta pelos 26 caracteres (apenas maiúsculas) e pelos 10 dígitos numéricos. O perfil 2D dos caracteres pode ser construído pela ligação de seus vértices por segmentos de reta (20 pontos).
+  2) O sistema deverá receber como entrada uma string, que será convertida para o conjunto de poliedros equivalentes (3D). O comprimento dos poliedros (dimensão no eixo z) é, também, um parâmetro de entrada para o sistema. Os poliedros deverão ser exibidos em uma interface composta por 3 viewports correspondentes às vistas ortográficas: frente, lateral e topo. (20 pontos).
+  3) As vistas ortográficas serão sempre exibidas em representação aramada (wireframe), sem e com ocultação de faces (20 pontos).
+  4) A seleção de poliedros deve ser realizada através do clique do mouse sobre a imagem em qualquer uma das vistas ortográficas. Pode ser selecionado um único poliedro (qualquer caractere) ou todos eles (string de entrada). Os poliedros selecionados podem sofrer as transformações geométricas de translação, rotação e escala. Estas operações devem ser realizadas apenas nas viewports das vistas ortográficas, respeitando seus respectivos eixos.Na vista frontal, por exemplo, tem-se apenas os eixos X e Y e, portanto, o objeto só pode ser transladado e rotacionado nos eixos X e Y. A operação de escala sempre deve ser realizada nas três dimensões; o objeto aumenta ou diminui igualmente em todas as direções. A entrada dos parâmetros para as operações de translação, rotação e escala deve ser efetuada através do uso do mouse, sem digitação de valores através do teclado (30 pontos);
+  5) Durante a execução do aplicativo o usuário poderá salvar e abrir outras cenas (objetos) modeladas, sem necessitar encerrar e reiniciar a execução do aplicativo (10 pontos);
+  6) O sistema deverá permitir a edição das propriedades associadas às fontes luminosas ambiente e pontuais (intensidades e posição), dos materiais (Ka’s, Kd’s, Ks’s e n) associados a cada um dos objetos, dos parâmetros da cena e da câmera (posição do observador, ponto observado, vetor view-up, distância ao plano de projeção, dimensões do mundo) em tempo de execução, sem que seja necessário reiniciar o software (20 pontos);
+  7) O sistema deve apresentar uma quarta viewport para exibir os poliedros em projeção paralela ou em projeção em perspectiva, com sombreamento constante (30 pontos).
+  8) A quarta viewport também poderá apresentar os objetos em sombreamento Phong, incluindo o algoritmo de ocultação de superfícies z-buffer. (50 pontos)
