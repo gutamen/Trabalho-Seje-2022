@@ -8,3 +8,5 @@ Os requisitos para o trabalho são:
   6) O sistema deverá permitir a edição das propriedades associadas às fontes luminosas ambiente e pontuais (intensidades e posição), dos materiais (Ka’s, Kd’s, Ks’s e n) associados a cada um dos objetos, dos parâmetros da cena e da câmera (posição do observador, ponto observado, vetor view-up, distância ao plano de projeção, dimensões do mundo) em tempo de execução, sem que seja necessário reiniciar o software (20 pontos);
   7) O sistema deve apresentar uma quarta viewport para exibir os poliedros em projeção paralela ou em projeção em perspectiva, com sombreamento constante (30 pontos).
   8) A quarta viewport também poderá apresentar os objetos em sombreamento Phong, incluindo o algoritmo de ocultação de superfícies z-buffer. (50 pontos)
+
+Execução ==  java --module-path ./lib --add-modules javafx.controls,javafx.fxml -jar CG.jar
